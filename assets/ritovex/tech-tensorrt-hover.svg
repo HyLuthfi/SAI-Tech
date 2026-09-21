@@ -1,0 +1,6 @@
+<svg width="120" height="86" viewBox="0 0 120 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#ffffff">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l7 4.5-7 4.5z" transform="translate(42, 10) scale(1.5)"/><rect x="34" y="24" width="6" height="6" rx="1" fill="currentColor"/><rect x="80" y="24" width="6" height="6" rx="1" fill="currentColor"/>
+  </g>
+  <text x="60" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="-0.2px">TensorRT</text>
+</svg>

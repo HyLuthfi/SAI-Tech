@@ -1,0 +1,10 @@
+<svg width="1290" height="229" viewBox="0 0 1290 229" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="saiTechGrad" x1="645" y1="0" x2="645" y2="229" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#F6F6F9" stop-opacity="0.25"/>
+    <stop offset="60%" stop-color="#F6F6F9" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#F6F6F9" stop-opacity="0.0"/>
+  </linearGradient>
+</defs>
+<text x="50%" y="170" text-anchor="middle" fill="url(#saiTechGrad)" font-family="Satoshi, Arial, sans-serif" font-weight="900" font-size="160" letter-spacing="20">SAI TECH</text>
+</svg>

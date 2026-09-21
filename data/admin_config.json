@@ -1,0 +1,9 @@
+{
+  "google_client_id": "",
+  "allowed_emails": [
+    "owner@saitech.id",
+    "admin@saitech.id"
+  ],
+  "dev_mode_allowed": true,
+  "token_salt": "sai_tech_secure_salt_2026"
+}

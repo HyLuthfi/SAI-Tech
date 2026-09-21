@@ -1,0 +1,6 @@
+<svg width="120" height="86" viewBox="0 0 120 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#141414">
+    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-3.5 7.5a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5zm7 0a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5zm-3.5 8a5.5 5.5 0 0 1-4.9-3h9.8a5.5 5.5 0 0 1-4.9 3z" transform="translate(42, 10) scale(1.5)"/>
+  </g>
+  <text x="60" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="700" fill="#141414" letter-spacing="-0.2px">Hugging Face</text>
+</svg>

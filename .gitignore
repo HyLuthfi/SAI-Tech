@@ -1,0 +1,20 @@
+# Environment variables
+.env
+
+# Admin sessions & cache
+__pycache__/
+*.pyc
+data/admin_sessions.json
+
+# Uploaded proof of payments
+uploads/bukti_transfer/*
+!uploads/bukti_transfer/.gitkeep
+
+# Node modules
+node_modules/
+
+# Agent configuration
+.agents/
+
+# Scratch notes
+scratch_analysis.txt

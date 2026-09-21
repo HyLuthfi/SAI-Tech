@@ -1,0 +1,6 @@
+<svg width="120" height="86" viewBox="0 0 120 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#ffffff">
+    <path d="M13 3h2v2h-2zm-3 0h2v2h-2zm-3 3h2v2H7zm3 0h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm-9 3h2v2H4zm3 0h2v2H7zm3 0h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm-12.7 3c.6 3.8 3.8 6.8 7.7 7 4.5.2 8.3-2.8 9.3-7.2.9.2 1.8 0 2.4-.6.3-.3.4-.7.3-1.1-.3-.9-1.2-1.4-2.1-1.4-.4 0-.8.1-1.2.3-.5-1.3-1.6-2.2-3-2.5v-.5H1.6c-.2.7-.3 1.4-.3 2.1 0 1.3.4 2.6 1 3.9z" transform="translate(42, 10) scale(1.5)"/>
+  </g>
+  <text x="60" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="-0.2px">Docker</text>
+</svg>

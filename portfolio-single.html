@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html data-wf-domain="ritovex.webflow.io" data-wf-page="68a8cd7e721346091b0ccf26" data-wf-site="6877e02f5387b6bdd6d338ec" data-wf-status="1" lang="id">
+<head>
+<meta charset="utf-8"/>
+<title>Studi Kasus: Sovereign Financial RAG &amp; Private LLM Engine : SAI Tech</title>
+<meta content="Studi kasus teknis implementasi model AI privat terisolasi on-premise untuk perbankan: RAG Engine, vLLM, Qdrant Vector Search, dan kepatuhan regulasi finansial." name="description"/>
+<meta content="Studi Kasus: Sovereign Financial RAG &amp; Private LLM Engine : SAI Tech" property="og:title"/>
+<meta content="Studi kasus teknis implementasi model AI privat terisolasi on-premise untuk perbankan: RAG Engine, vLLM, Qdrant Vector Search, dan kepatuhan regulasi finansial." property="og:description"/>
+<meta content="assets/ritovex/01.png" property="og:image"/>
+<meta content="Studi Kasus: Sovereign Financial RAG &amp; Private LLM Engine : SAI Tech" name="twitter:title"/>
+<meta content="Studi kasus teknis implementasi model AI privat terisolasi on-premise untuk perbankan: RAG Engine, vLLM, Qdrant Vector Search, dan kepatuhan regulasi finansial." name="twitter:description"/>
+<meta content="assets/ritovex/01.png" name="twitter:image"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="ritovex.css?v=18.0" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      !(function (o, c) {
+        var n = c.documentElement,
+          t = " w-mod-";
+        ((n.className += t + "js"),
+          ("ontouchstart" in o ||
+            (o.DocumentTouch && c instanceof DocumentTouch)) &&
+            (n.className += t + "touch"));
+      })(window, document);
+    </script>
+<link href="assets/ritovex/saitech-favicon-32x32.png" rel="shortcut icon" type="image/x-icon"/>
+<link href="assets/ritovex/saitech-apple-touch-icon.png" rel="apple-touch-icon"/>
+<style>
+      .w-webflow-badge,
+      a[href*="webflow.com?utm_campaign=brandjs"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        clip: rect(0, 0, 0, 0) !important;
+      }
+
+      /* Ensure page wrapper and base layout are visible */
+      html,
+      body,
+      .page-wrapper {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    </style>
+    <style id="sai-portfolio-single-kinetic-styles">
+      /* ==========================================================================
+         SAI TECH ENTERPRISE: KINETIC MOTION SUITE (PAGE: PORTFOLIO-SINGLE.HTML)
+         Fokus Murni: Animasi & Motion Sinematik (1.65s - 1.85s)
+         Tanpa modifikasi visual styling / warna / border bawaan
+         ========================================================================== */
+
+      /* 1. Zoom & Focus Blur (Case Study Title & Banner Image) */
+      .sai-zoom-fade {
+        opacity: 0 !important;
+        transform: scale(0.88) translateY(-25px) !important;
+        filter: blur(10px) !important;
+        will-change: transform, opacity, filter;
+        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1),
+                    filter 1.75s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      }
+
+      .sai-zoom-fade.sai-in-view {
+        opacity: 1 !important;
+        transform: scale(1) translateY(0) !important;
+        filter: blur(0px) !important;
+      }
+
+      /* 2. Slide Down (Description & Meta Chips) */
+      .sai-slide-down {
+        opacity: 0 !important;
+        transform: translateY(-35px) !important;
+        will-change: transform, opacity;
+        transition: transform 1.7s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 1.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      }
+
+      .sai-slide-down.sai-in-view {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      /* 3. Tri-Directional KPI Cards Convergence (Left, Center, Right) */
+      .sai-card-left {
+        opacity: 0 !important;
+        transform: translateX(-70px) !important;
+        will-change: transform, opacity;
+        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s !important;
+      }
+
+      .sai-card-center {
+        opacity: 0 !important;
+        transform: translateY(70px) scale(0.95) !important;
+        will-change: transform, opacity;
+        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s !important;
+      }
+
+      .sai-card-right {
+        opacity: 0 !important;
+        transform: translateX(70px) !important;
+        will-change: transform, opacity;
+        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s !important;
+      }
+
+      .sai-card-left.sai-in-view,
+      .sai-card-center.sai-in-view,
+      .sai-card-right.sai-in-view {
+        opacity: 1 !important;
+        transform: translate(0, 0) scale(1) !important;
+      }
+
+      @media screen and (max-width: 991px) {
+        .sai-card-left,
+        .sai-card-center,
+        .sai-card-right {
+          transform: translateY(45px) scale(0.97) !important;
+        }
+      }
+
+      /* 4. CTA Scale In */
+      .sai-cta-scale {
+        opacity: 0 !important;
+        transform: scale(0.92) translateY(40px) !important;
+        will-change: transform, opacity;
+        transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      }
+
+      .sai-cta-scale.sai-in-view {
+        opacity: 1 !important;
+        transform: scale(1) translateY(0) !important;
+      }
+
+      /* 5. Footer Kinetic Fade */
+      .sai-footer-fade {
+        opacity: 0 !important;
+        transform: translateY(35px) !important;
+        will-change: transform, opacity;
+        transition: transform 1.7s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 1.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      }
+
+      .sai-footer-fade.sai-in-view {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      .sai-delay-1 { transition-delay: 0.15s !important; }
+      .sai-delay-2 { transition-delay: 0.30s !important; }
+    </style>
+  </head>
+<body>
+<div class="page-wrapper">
+<!-- NAVBAR -->
+<div class="navbar w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-w-id="dc85cfd6-5958-0268-b0b5-61e0ce28d0e1" role="banner">
+<div class="container">
+<div class="navbar-wrapper">
+<a class="navbar-logo w-nav-brand" href="/"><img alt="SAI" class="navbar-logo-emblem" loading="lazy" src="assets/ritovex/saitech-emblem-white.png"/><span class="navbar-tech-word"><span class="tech-char tech-char-1"><img alt="T" loading="lazy" src="assets/ritovex/saitech-t.png"/></span><span class="tech-char tech-char-2"><img alt="e" loading="lazy" src="assets/ritovex/saitech-e.png"/></span><span class="tech-char tech-char-3"><img alt="c" loading="lazy" src="assets/ritovex/saitech-c.png"/></span><span class="tech-char tech-char-4"><img alt="h" loading="lazy" src="assets/ritovex/saitech-h.png"/></span></span></a>
+<nav class="nav-menu w-nav-menu" role="navigation">
+<a class="nav-link w-nav-link" href="/">Beranda</a>
+<div class="menu-dropdown-wrapper w-dropdown" data-delay="0" data-hover="true" data-w-id="adea58f2-b13b-4194-cc28-b3683c945515">
+<div class="dropdown-toggle w-dropdown-toggle">
+<div class="dropdown-toggle-text-block">Tentang</div>
+<div class="dropdown-toggle-arrow"></div>
+</div>
+<nav class="resource-dropdown-wrap w-dropdown-list">
+<div class="resource-dropdown-content-wrap">
+<div class="dropdown-menu-wrapper">
+<a class="dropdown-menu-text-link-text w-inline-block" href="about"><div>Profil Perusahaan</div></a><a class="dropdown-menu-text-link-text mb0 w-inline-block" href="team"><div>Tim Insinyur</div></a>
+</div>
+</div>
+</nav>
+</div>
+<a class="nav-link w-nav-link" href="services">Layanan</a><a class="nav-link w-nav-link" href="katalog">Katalog</a><a aria-current="page" class="nav-link w-nav-link w--current" href="portfolio">Portofolio</a><a class="nav-link w-nav-link" href="pricing">Harga</a><a class="nav-link w-nav-link" href="blog">Blog &amp; Riset</a><a class="nav-link w-nav-link" href="contact">Kontak</a>
+</nav>
+<div class="navbar-contact-wrapper">
+<a class="navbar-contact-link-block w-inline-block" href="https://wa.me/6282163732969" rel="noopener noreferrer" target="_blank" title="Hubungi Tim Insinyur SAI Tech via WhatsApp"><div class="navbar-contact-icon-wrap">
+<img alt="Phone Icon" class="contact-icon" loading="lazy" src="assets/ritovex/687802f515a83fbfc32a6ae4_Contact%20Icon.svg"/>
+</div>
+<div class="navbar-contact-title-number">
+<div class="navbar-contact-title">Konsultasi Teknis</div>
+<div class="navbar-contact-number">+62 821 6373 2969</div>
+</div></a>
+<div class="menu-button w-nav-button">
+<div class="hamburger-menu-icon" data-animation-type="lottie" data-autoplay="0" data-direction="1" data-duration="0" data-is-ix2-target="1" data-ix2-initial-state="0" data-loading="eager" data-loop="0" data-renderer="svg" data-src="assets/ritovex/hamburger-black.json" data-w-id="0252e172-0813-2e01-a890-033f2b17bb38"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- BANNER / CASE STUDY HEADER -->
+<section class="section inner-banner">
+<div class="container">
+<div class="inner-banner-content">
+<div class="inner-banner-typography">
+<div class="section-subtitle-wrap" style="margin-bottom: 16px;">
+<div class="section-subtitle-single">
+<img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/687810aa5293f9e8c955c26a_Section%20Subtitle%20Icon.svg"/>
+<div class="section-subtitle">Studi Kasus Rekayasa AI</div>
+</div>
+</div>
+<h1 class="inner-banner-title portfolio-details-title sai-zoom-fade" id="caseStudyTitle">
+                Sovereign Financial RAG &amp; Private LLM Engine
+              </h1>
+<p class="inner-banner-description sai-slide-down" id="caseStudySummary">
+                Implementasi arsitektur Retrieval-Augmented Generation (RAG) dan model bahasa 70B privat on-premise untuk perbankan nasional: query jutaan lembar regulasi OJK &amp; SOP internal tanpa risiko kebocoran data ke cloud publik.
+              </p>
+</div>
+<div class="portfolio-information-wrapper sai-slide-down sai-delay-1">
+<div class="portfolio-information-single">
+<div class="portfolio-information-title">Tanggal Rilis</div>
+<div class="portfolio-information-text">14 September 2026</div>
+</div>
+<div class="portfolio-information-line"></div>
+<div class="portfolio-information-single">
+<div class="portfolio-information-title">Kategori</div>
+<div class="portfolio-information-text">Private LLM &amp; Sovereign RAG</div>
+</div>
+<div class="portfolio-information-line"></div>
+<div class="portfolio-information-single">
+<div class="portfolio-information-title">Sektor Industri</div>
+<div class="portfolio-information-text">Perbankan &amp; Finansial</div>
+</div>
+<div class="portfolio-information-line"></div>
+<div class="portfolio-information-single">
+<div class="portfolio-information-title">Infrastruktur</div>
+<div class="portfolio-information-text">On-Premise GPU Cluster (Air-Gapped)</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CASE STUDY CONTENT -->
+<section class="section portfolio-details">
+<div class="container">
+<div class="portfolio-details-content">
+<div class="portfolio-details-image-wrapper sai-zoom-fade">
+<img alt="AI Case Study Architecture" class="portfolio-details-image" id="caseStudyBannerImg" loading="lazy" src="assets/ritovex/01.png"/>
+</div>
+<div class="portfolio-details-typography">
+<div class="portfolio-details-rich-text w-richtext">
+<!-- KPI HIGHLIGHTS -->
+<div class="kpi-grid-container">
+<div class="kpi-box sai-card-left">
+<div class="kpi-number">45 ms</div>
+<div class="kpi-desc">Latensi Inferensi Vector + TTFT</div>
+</div>
+<div class="kpi-box sai-card-center">
+<div class="kpi-number">100%</div>
+<div class="kpi-desc">Isolasi Data (Zero Cloud Leakage)</div>
+</div>
+<div class="kpi-box sai-card-right">
+<div class="kpi-number">85%</div>
+<div class="kpi-desc">Penghematan Waktu Analisis Regulasi</div>
+</div>
+</div>
+<h3>1. Latar Belakang &amp; Tantangan Klien</h3>
+<p>
+                  Institusi perbankan menghadapi tantangan kompleksitas regulasi yang tinggi dengan ribuan dokumen surat edaran, panduan kepatuhan OJK &amp; Bank Indonesia, serta dokumen SOP internal perbankan yang terus diperbarui. Karyawan membutuhkan waktu berjam-jam untuk memverifikasi kebijakan kredit dan kepatuhan hukum secara manual.
+                </p>
+<p>
+                  Di sisi lain, regulasi kerahasiaan data perbankan yang ketat melarang pengiriman data nasabah dan dokumen internal ke API LLM publik berbasis cloud (seperti OpenAI atau Claude publik). Klien membutuhkan sistem kecerdasan buatan mandiri yang terpasang 100% di server on-premise (air-gapped) dengan akurasi faktual mutlak dan sitasi bab/pasal yang tepat.
+                </p>
+<h3>2. Solusi Rekayasa Sistem oleh SAI Tech</h3>
+<p>
+                  SAI Tech merekayasa sistem end-to-end <strong>Sovereign RAG &amp; Private LLM Engine</strong> yang dibangun khusus di infrastruktur server on-premise klien:
+                </p>
+<ul>
+<li><strong>Private LLM Fine-Tuning:</strong> Adaptasi model fondasi 70B parameter dengan domain kepatuhan perbankan Indonesia menggunakan teknik QLoRA terisolasi.</li>
+<li><strong>Dense + Sparse Hybrid Vector Search:</strong> Menggunakan database vektor <em>Qdrant</em> terdistribusi dengan kompresi HNSW untuk mencari relevansi regulasi dalam waktu kurang dari 15ms.</li>
+<li><strong>vLLM Serving Engine:</strong> Pipelining throughput tinggi dengan PagedAttention dan continuous batching untuk melayani ribuan kueri karyawan secara bersamaan tanpa degradasi performa.</li>
+<li><strong>Anti-Hallucination Grounding Guardrail:</strong> Mekanisme verifikasi lintas dokumen yang menjamin setiap jawaban yang dihasilkan memiliki tautan referensi langsung ke nomor surat edaran dan ayat regulasi yang valid.</li>
+</ul>
+<figure class="w-richtext-align-fullwidth w-richtext-figure-type-image">
+<div>
+<img alt="AI Pipeline Schema" loading="lazy" src="assets/ritovex/68af70dec5a40cc59af1c741_Portfolio%20Rich%20Image.jpg"/>
+</div>
+</figure>
+<h3>3. Spesifikasi Teknis &amp; Komponen Rekayasa</h3>
+<table class="tech-spec-table">
+<thead>
+<tr>
+<th>Komponen</th>
+<th>Teknologi Terpasang</th>
+<th>Fungsi Spesifik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation LLM</td>
+<td>Llama-3-70B-Instruct (Quantized FP8)</td>
+<td>Pemahaman penalaran regulasi &amp; penalaran finansial</td>
+</tr>
+<tr>
+<td>Inference Serving</td>
+<td>vLLM Engine + Ray Cluster</td>
+<td>Akselerasi inferensi PagedAttention &amp; load balancing</td>
+</tr>
+<tr>
+<td>Vector Storage</td>
+<td>Qdrant Enterprise (On-Prem Cluster)</td>
+<td>Pencarian semantik miliaran potongan teks dokumen</td>
+</tr>
+<tr>
+<td>Embedding Model</td>
+<td>BGE-M3 (Multilingual &amp; Cross-Lingual)</td>
+<td>Representasi vektor dokumen bilingual Indonesia-Inggris</td>
+</tr>
+<tr>
+<td>Security Layer</td>
+<td>Air-Gapped Docker Container + RBAC</td>
+<td>Isolasi jaringan total &amp; otentikasi hak akses per divisi</td>
+</tr>
+</tbody>
+</table>
+<h3>4. Dampak &amp; Hasil Terukur</h3>
+<p>
+                  Setelah implementasi penuh selama 8 minggu, sistem ini menghasilkan perbaikan performa operasional yang signifikan:
+                </p>
+<ul>
+<li><strong>Efisiensi Waktu Audit:</strong> Waktu yang dihabiskan divisi compliance untuk mencari dan menjustifikasi regulasi turun 85%, dari rata-rata 4 jam menjadi hanya 3-5 menit per kasus.</li>
+<li><strong>Kepatuhan &amp; Keamanan Penuh:</strong> Audit keamanan siber independen mengonfirmasi 0 bytes data meninggalkan perimeter jaringan perbankan klien.</li>
+<li><strong>Adopsi Pengguna:</strong> Lebih dari 1.200 analis risiko dan staf kepatuhan aktif menggunakan asisten AI ini setiap hari kerja dengan tingkat kepuasan 94.6%.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA SECTION -->
+<section class="section cta">
+<div class="container">
+<div class="cta-content">
+<div class="cta-wrapper sai-cta-scale">
+<div class="cta-typography">
+<div class="cta-title-wrapper">
+<h6 class="cta-subtitle">
+                    Ingin Mengimplementasikan Sistem AI Serupa di Organisasi Anda?
+                  </h6>
+<h2 class="cta-title">Diskusikan Arsitektur AI Anda Bersama Insinyur SAI Tech</h2>
+</div>
+<div class="cta-button-wrapper">
+<a class="primary-button w-inline-block" href="contact"><div class="primary-button-inner w-variant-87a1fbc7-f066-f125-80d5-39847f18f3e6">
+<div class="primary-button-text-wrap">
+<div class="primary-button-text-block w-variant-87a1fbc7-f066-f125-80d5-39847f18f3e6">
+                          Konsultasi Teknis Sekarang
+                        </div>
+<div class="primary-button-text-block w-variant-87a1fbc7-f066-f125-80d5-39847f18f3e6 is-text-absolute">
+                          Konsultasi Teknis Sekarang
+                        </div>
+</div>
+</div></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<section class="section footer sai-footer-fade">
+<div class="footer-top-content">
+<div class="container">
+<div class="footer-content">
+<div class="footer-form-wrapper">
+<div class="footer-form-details-wrapper">
+<h4 class="footer-form-details-title">
+                    Dapatkan wawasan teknis seputar arsitektur AI on-premise, model privat, dan tren rekayasa komputasi enterprise langsung di inbox Anda.
+                  </h4>
+</div>
+<div class="footer-form-details-single">
+<div class="footer-form-block w-form">
+<form class="footer-form" data-name="Newsletter Form" id="wf-form-Newsletter-Form" method="get" name="wf-form-Newsletter-Form">
+<div class="footer-form-single">
+<input class="footer-form-input-filed w-input" data-name="Email" id="email" maxlength="256" name="email" placeholder="email.perusahaan@domain.com" required="" type="email"/><input class="footer-form-submit-button w-button" data-wait="" type="submit" value="Berlangganan"/>
+</div>
+</form>
+<div class="success-message w-form-done">
+<div>Terima kasih! Email Anda telah terdaftar.</div>
+</div>
+<div class="w-form-fail">
+<div>
+                        Terjadi kendala saat mengirimkan data. Silakan coba lagi.
+                      </div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-menu-wrapper">
+<div class="footer-menu-single">
+<div class="footer-menu-title-wrapper">
+<h5 class="footer-menu-title">Navigasi Utama</h5>
+</div>
+<ul class="footer-menu-list-wrapper" role="list">
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="/">Beranda</a>
+</li>
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="services">Layanan</a>
+</li>
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="katalog">Katalog Digital</a>
+</li>
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="pricing">Harga</a>
+</li>
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="blog">Blog &amp; Riset</a>
+</li>
+<li class="footer-menu-list-item">
+<a aria-current="page" class="footer-menu-text-link" href="portfolio">Portofolio</a>
+</li>
+</ul>
+</div>
+<div class="footer-menu-single">
+<div class="footer-menu-title-wrapper">
+<h5 class="footer-menu-title">Perusahaan</h5>
+</div>
+<ul class="footer-menu-list-wrapper" role="list">
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="about">Tentang Kami</a>
+</li>
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="team">Tim Insinyur</a>
+</li>
+<li class="footer-menu-list-item">
+<a class="footer-menu-text-link" href="contact">Hubungi Kami</a>
+</li>
+</ul>
+</div>
+<div class="footer-menu-single footer-information">
+<div class="footer-menu-title-wrapper">
+<h5 class="footer-menu-title">Kontak &amp; Kantor</h5>
+</div>
+<div class="footer-information-wrapper">
+<div class="footer-information-single">
+<div class="footer-information-icon-wrap">
+<img alt="Phone" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d524270b31a7ec0bc18e6_Footer%20Information%20Icon1.svg"/>
+</div>
+<a class="footer-information-text" href="https://wa.me/6282163732969" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" target="_blank" title="Chat WhatsApp">+62 821 6373 2969</a>
+</div>
+<div class="footer-information-single">
+<div class="footer-information-icon-wrap">
+<img alt="Email" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d5242abbe0b1f836c110a_Footer%20Information%20Icon2.svg"/>
+</div>
+<a class="footer-information-text" href="mailto:saitech.officialid@gmail.com" style="color: inherit; text-decoration: none;" title="Kirim Email">saitech.officialid@gmail.com</a>
+</div>
+<div class="footer-information-single">
+<div class="footer-information-icon-wrap">
+<img alt="Location" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d5242cbc750356beb3959_Footer%20Information%20Icon3.svg"/>
+</div>
+<div class="footer-information-text location">
+                        Bandar Lampung, Lampung, Indonesia
+                      </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-middle-content">
+<div class="footer-details-wrapper">
+<div class="container">
+<div class="footer-details-content">
+<div class="footer-details-text">
+                  © 2026 SAI Tech. All Rights Reserved. Rekayasa Sistem AI On-Premise Enterprise.
+                </div>
+<div class="footer-social-media-wrapper"><div class="footer-social-media-title">Ikuti Kami</div><a class="footer-social-media-icon" href="https://www.instagram.com/saitech_id/" rel="noopener noreferrer" target="_blank" title="Instagram: @saitech_id"></a><a class="footer-social-media-icon" href="https://www.tiktok.com/@saitech.officialid" rel="noopener noreferrer" target="_blank" title="TikTok: @saitech.officialid"></a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom-content">
+<div class="container">
+<a class="footer-logo-wrapper w-inline-block" href="/"><img alt="SAI Tech Logo" class="footer-logo-image" loading="lazy" src="assets/ritovex/saitech-footer-logo.svg"/></a>
+</div>
+</div>
+</section>
+</div>
+<!-- SCRIPTS -->
+<script crossorigin="anonymous" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" src="assets/ritovex/jquery-3.5.1.min.dc5e7f18c8.js?site=6877e02f5387b6bdd6d338ec" type="text/javascript"></script>
+<script src="assets/ritovex/webflow.schunk.300bb1e9d1d59bcb.js" type="text/javascript"></script>
+<script src="assets/ritovex/webflow.schunk.1f51a299c4a843e1.js" type="text/javascript"></script>
+<script src="assets/ritovex/webflow.31837de7.1756091d1d28d78f.js" type="text/javascript"></script>
+<script src="assets/ritovex/motion.js?v=9.0" type="text/javascript"></script>
+<script id="sai-kinetic-suite">
+  (function() {
+    var motionSelectors = [
+      '.sai-zoom-fade',
+      '.sai-slide-down',
+      '.sai-card-left',
+      '.sai-card-center',
+      '.sai-card-right',
+      '.sai-cta-scale',
+      '.sai-footer-fade'
+    ];
+
+    var allMotionElements = document.querySelectorAll(motionSelectors.join(', '));
+    if (!allMotionElements.length) return;
+
+    if ('IntersectionObserver' in window) {
+      var motionObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('sai-in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -120px 0px'
+      });
+
+      allMotionElements.forEach(function(el) {
+        motionObserver.observe(el);
+      });
+    } else {
+      allMotionElements.forEach(function(el) {
+        el.classList.add('sai-in-view');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

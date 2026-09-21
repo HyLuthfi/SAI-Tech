@@ -1,0 +1,6 @@
+<svg width="120" height="86" viewBox="0 0 120 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#141414">
+    <path d="M12.001 0a12 12 0 0 0-2.17 23.805l.923-2.391a9.544 9.544 0 1 1 7.788-15.02l1.96-1.378A11.96 11.96 0 0 0 12.001 0zm2.25 3.375a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z" transform="translate(42, 10) scale(1.5)"/>
+  </g>
+  <text x="60" y="74" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="700" fill="#141414" letter-spacing="-0.2px">PyTorch</text>
+</svg>

@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Portal - Kelola Pesanan | SAI Tech</title>
+  <link rel="icon" type="image/png" href="assets/ritovex/saitech-favicon-32x32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f6f7fb;
+      color: #1a1a36;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Top Navbar */
+    .admin-navbar {
+      background: #00004d;
+      color: #ffffff;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 77, 0.15);
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .admin-logo {
+      height: 32px;
+      width: auto;
+    }
+
+    .admin-badge {
+      background: rgba(224, 189, 106, 0.2);
+      color: #e0bd6a;
+      border: 1px solid rgba(224, 189, 106, 0.4);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .admin-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .admin-user-pill {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 5px 12px 5px 6px;
+      border-radius: 30px;
+      font-size: 12px;
+      color: #ffffff;
+    }
+
+    .admin-user-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #e0bd6a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 11px;
+      color: #00004d;
+    }
+
+    .admin-user-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      text-align: left;
+    }
+
+    .admin-user-name {
+      font-weight: 700;
+      font-size: 12px;
+      max-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .admin-user-email {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 8px 14px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-nav-danger {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+
+    .btn-nav-danger:hover {
+      background: rgba(239, 68, 68, 0.35);
+      color: #ffffff;
+    }
+
+    /* Container */
+    .admin-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 32px 24px 80px 24px;
+    }
+
+    /* Live Status Banner */
+    .live-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .live-status-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #00004d;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: 0 4px 18px rgba(0, 0, 77, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .kpi-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #656473;
+      margin-bottom: 6px;
+    }
+
+    .kpi-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #00004d;
+    }
+
+    .kpi-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f6f6f9;
+      color: #00004d;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 77, 0.03);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #f6f6f9;
+      border: 1px solid rgba(0, 0, 77, 0.06);
+      color: #656473;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: #00004d;
+      background: #eef0f7;
+    }
+
+    .filter-btn.active {
+      background: #00004d;
+      color: #ffffff;
+      border-color: #00004d;
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      background: #f6f6f9;
+      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      border-radius: 10px;
+      padding: 8px 14px;
+      gap: 10px;
+      min-width: 260px;
+    }
+
+    .search-input-wrap input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13.5px;
+      color: #00004d;
+      width: 100%;
+    }
+
+    /* Orders Table Card */
+    .orders-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(0, 0, 77, 0.04);
+      overflow: hidden;
+    }
+
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .orders-table th {
+      background: #f8f9fd;
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #656473;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1.5px solid rgba(0, 0, 77, 0.08);
+    }
+
+    .orders-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(0, 0, 77, 0.06);
+      font-size: 13.5px;
+      vertical-align: middle;
+    }
+
+    .orders-table tr:hover td {
+      background: #fafbfe;
+    }
+
+    .order-id-link {
+      font-family: monospace;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #00004d;
+      display: block;
+    }
+
+    .order-time {
+      font-size: 11.5px;
+      color: #8c8b98;
+      margin-top: 2px;
+    }
+
+    .product-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .product-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      background: #f6f6f9;
+      flex-shrink: 0;
+    }
+
+    .product-info-name {
+      font-weight: 700;
+      color: #00004d;
+      line-height: 1.3;
+    }
+
+    .product-info-pkg {
+      font-size: 12px;
+      color: #656473;
+    }
+
+    .price-tag {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #00004d;
+    }
+
+    /* Contact Badges */
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-wa {
+      background: rgba(34, 197, 94, 0.1);
+      color: #15803d;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+
+    .contact-wa:hover {
+      background: rgba(34, 197, 94, 0.18);
+    }
+
+    .contact-email {
+      background: rgba(37, 99, 235, 0.1);
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 235, 0.25);
+    }
+
+    .contact-email:hover {
+      background: rgba(37, 99, 235, 0.18);
+    }
+
+    .order-note-text {
+      font-size: 11.5px;
+      color: #71707d;
+      margin-top: 4px;
+      display: block;
+      max-width: 220px;
+      line-height: 1.35;
+    }
+
+    /* Proof of Payment Thumbnail */
+    .proof-preview-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: #f6f6f9;
+      border: 1.5px solid rgba(0, 0, 77, 0.1);
+      border-radius: 8px;
+      color: #00004d;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .proof-preview-btn:hover {
+      background: #00004d;
+      color: #ffffff;
+      border-color: #00004d;
+    }
+
+    /* Status Badges */
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.12);
+      color: #b45309;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .status-completed {
+      background: rgba(34, 197, 94, 0.12);
+      color: #15803d;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .status-cancelled {
+      background: rgba(239, 68, 68, 0.12);
+      color: #b91c1c;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    /* Actions */
+    .action-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-action {
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-action-wa {
+      background: #22c55e;
+      color: #ffffff;
+    }
+
+    .btn-action-wa:hover {
+      background: #16a34a;
+    }
+
+    .btn-action-check {
+      background: #00004d;
+      color: #ffffff;
+    }
+
+    .btn-action-check:hover {
+      background: #1a1a70;
+    }
+
+    .btn-action-del {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 7px 9px;
+    }
+
+    .btn-action-del:hover {
+      background: #dc2626;
+      color: #ffffff;
+    }
+
+    /* Empty State */
+    .empty-state {
+      padding: 60px 20px;
+      text-align: center;
+      color: #71707d;
+    }
+
+    .empty-state svg {
+      margin-bottom: 14px;
+      color: #a0a0b2;
+    }
+
+    /* Auth Gate Overlay */
+    .auth-gate-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #000033 0%, #00004d 55%, #080854 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 24px;
+    }
+
+    .auth-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 38px 34px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #e0bd6a, #22c55e, #3b82f6);
+    }
+
+    .auth-card-emblem {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background: #f6f6f9;
+      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px auto;
+    }
+
+    .auth-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      color: #00004d;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .auth-sub {
+      font-size: 13px;
+      color: #5d5c6b;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .auth-error-box {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      margin-bottom: 16px;
+      text-align: left;
+      display: none;
+      line-height: 1.45;
+    }
+
+    .auth-dev-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 13px 14px;
+      margin-top: 14px;
+      text-align: left;
+    }
+
+    .btn-dev-bypass {
+      width: 100%;
+      background: #16a34a;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 11px;
+      border-radius: 9px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-dev-bypass:hover {
+      background: #15803d;
+    }
+
+    /* Modal Generic */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 77, 0.55);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-panel {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 77, 0.25);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(0, 0, 77, 0.08);
+    }
+
+    .modal-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #00004d;
+    }
+
+    .modal-close-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #f6f6f9;
+      border: 1px solid rgba(0, 0, 77, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #00004d;
+      cursor: pointer;
+    }
+
+    .modal-form-group {
+      margin-bottom: 16px;
+    }
+
+    .modal-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #00004d;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 9px;
+      border: 1.5px solid rgba(0, 0, 77, 0.12);
+      font-size: 13.5px;
+      outline: none;
+    }
+
+    .modal-input:focus {
+      border-color: #00004d;
+    }
+
+    .msg-preview-box {
+      background: #f6f6f9;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 12.5px;
+      color: #33334d;
+      white-space: pre-wrap;
+      font-family: monospace;
+      max-height: 160px;
+      overflow-y: auto;
+      line-height: 1.5;
+    }
+
+    /* Lightbox Modal for Proof Image */
+    .lightbox-panel {
+      max-width: 700px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+      position: relative;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 77, 0.1);
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #00004d;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      z-index: 10000;
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 860px) {
+      .orders-table th:nth-child(3),
+      .orders-table td:nth-child(3) {
+        display: none;
+      }
+      .controls-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-input-wrap {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Authentication Gate -->
+  <div class="auth-gate-overlay" id="authGate">
+    <div class="auth-card">
+      <div class="auth-card-emblem">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+        </svg>
+      </div>
+      <h2 class="auth-title">Portal Admin SAI Tech</h2>
+      <p class="auth-sub">Masuk dengan akun Google resmi admin. Akses diverifikasi ketat terhadap daftar Whitelist Email Perusahaan.</p>
+
+      <div class="auth-error-box" id="authErrorMsg"></div>
+
+      <!-- Google Sign In Button Target -->
+      <div id="gsiButtonContainer" style="display: flex; justify-content: center; min-height: 44px; margin-bottom: 12px;">
+        <div style="font-size: 13px; color: #8c8b98; padding: 10px;">Menghubungkan ke layanan Google...</div>
+      </div>
+
+      <!-- Unconfigured Notice / Localhost Dev Bypass -->
+      <div id="unconfiguredNotice" style="display: none;">
+        <div style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #92400e; margin-bottom: 12px; text-align: left; line-height: 1.45;">
+          <strong>Google Client ID Belum Diatur:</strong> Masukkan Client ID dari Google Cloud Console agar tombol login Google aktif.
+          <div style="margin-top: 8px;">
+            <button onclick="openConfigModal()" style="background: #00004d; color: #ffffff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 600; cursor: pointer;">
+              Atur Google Client ID &amp; Whitelist
+            </button>
+          </div>
+        </div>
+
+        <div class="auth-dev-box" id="devBypassBox" style="display: none;">
+          <div style="font-size: 11.5px; font-weight: 700; color: #166534; margin-bottom: 4px;">PENGUJIAN LOKAL (LOCALHOST DEV)</div>
+          <div style="font-size: 11.5px; color: #15803d; margin-bottom: 10px; line-height: 1.4;">
+            Anda sedang menjalankan di localhost. Anda dapat masuk langsung untuk menguji dashboard sekarang.
+          </div>
+          <button class="btn-dev-bypass" onclick="executeDevBypass()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+            <span>Masuk Mode Pengembang (Bypass)</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="font-size: 11.5px; color: #8c8b98; margin-top: 18px; line-height: 1.4; border-top: 1px solid #f0f0f5; padding-top: 14px;">
+        <div style="display: inline-flex; align-items: center; gap: 5px; color: #00004d; font-weight: 600; margin-bottom: 3px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Keamanan Bebas Serangan Brute-Force</span>
+        </div>
+        <div>Verifikasi resmi server Google dengan proteksi Whitelist Email Admin.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Admin Interface -->
+  <header class="admin-navbar">
+    <a class="admin-brand" href="/">
+      <img alt="SAI Tech Logo" class="admin-logo" src="assets/ritovex/saitech-emblem-white.png" />
+      <div>
+        <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -0.02em;">SAI Tech</span>
+        <span class="admin-badge">Admin Orders</span>
+      </div>
+    </a>
+    <div class="admin-nav-actions">
+      <!-- Admin Profile Pill -->
+      <div class="admin-user-pill" id="adminUserPill" style="display: none;">
+        <img id="adminUserAvatar" class="admin-user-avatar" src="" alt="Avatar" style="display: none;" />
+        <div id="adminUserAvatarFallback" class="admin-user-avatar">A</div>
+        <div class="admin-user-info">
+          <span class="admin-user-name" id="adminUserName">Admin</span>
+          <span class="admin-user-email" id="adminUserEmail">admin@saitech.id</span>
+        </div>
+      </div>
+
+      <a class="btn-nav" href="/katalog" target="_blank" title="Buka Halaman Katalog">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <span>Lihat Web</span>
+      </a>
+      <button class="btn-nav" onclick="openConfigModal()" title="Pengaturan OAuth &amp; Whitelist">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span>Whitelist</span>
+      </button>
+      <button class="btn-nav btn-nav-danger" onclick="logoutAdmin()" title="Kunci Dashboard">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>Keluar</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    
+    <!-- Title & Live Indicator -->
+    <div class="live-status-bar">
+      <div class="live-status-title">
+        <div class="pulse-dot"></div>
+        <span>Daftar Pesanan Masuk</span>
+      </div>
+      <button class="btn-nav" onclick="fetchOrders(true)" style="background: #ffffff; color: #00004d; border-color: rgba(0,0,77,0.15);">
+        <svg id="refreshIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        <span>Perbarui Data</span>
+      </button>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div>
+          <div class="kpi-label">Total Pesanan</div>
+          <div class="kpi-value" id="kpiTotal">0</div>
+        </div>
+        <div class="kpi-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+      </div>
+
+      <div class="kpi-card" style="border-color: rgba(245, 158, 11, 0.3);">
+        <div>
+          <div class="kpi-label" style="color: #b45309;">Menunggu Verifikasi</div>
+          <div class="kpi-value" id="kpiPending" style="color: #b45309;">0</div>
+        </div>
+        <div class="kpi-icon-wrap" style="background: rgba(245, 158, 11, 0.1); color: #b45309;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+      </div>
+
+      <div class="kpi-card" style="border-color: rgba(34, 197, 94, 0.3);">
+        <div>
+          <div class="kpi-label" style="color: #15803d;">Pesanan Selesai</div>
+          <div class="kpi-value" id="kpiCompleted" style="color: #15803d;">0</div>
+        </div>
+        <div class="kpi-icon-wrap" style="background: rgba(34, 197, 94, 0.1); color: #15803d;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div>
+          <div class="kpi-label">Total Pendapatan</div>
+          <div class="kpi-value" id="kpiRevenue">Rp 0</div>
+        </div>
+        <div class="kpi-icon-wrap" style="background: rgba(224, 189, 106, 0.15); color: #00004d;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="setFilter('ALL', this)">Semua Pesanan</button>
+        <button class="filter-btn" onclick="setFilter('MENUNGGU_VERIFIKASI', this)">Perlu Diproses</button>
+        <button class="filter-btn" onclick="setFilter('SELESAI', this)">Selesai</button>
+        <button class="filter-btn" onclick="setFilter('DIBATALKAN', this)">Dibatalkan</button>
+      </div>
+
+      <div class="search-input-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="searchInput" oninput="handleSearch()" placeholder="Cari ID, Nama, No WA/Email..." type="text" />
+      </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="orders-card">
+      <div style="overflow-x: auto;">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>ID &amp; Waktu</th>
+              <th>Produk &amp; Paket</th>
+              <th>Nominal</th>
+              <th>Kontak Pembeli</th>
+              <th>Bukti Bayar</th>
+              <th>Status</th>
+              <th style="text-align: right;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+        <div style="font-weight: 700; font-size: 16px; color: #00004d; margin-bottom: 4px;">Belum Ada Pesanan</div>
+        <div style="font-size: 13px;">Pesanan yang masuk melalui QRIS katalog akan langsung muncul di sini.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL: Kirim Akun via WhatsApp -->
+  <div class="modal-backdrop" id="modalSendWa">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Kirim Akun ke Pembeli (WhatsApp)</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalSendWa')">×</button>
+      </div>
+
+      <div style="background: #f6f6f9; border-radius: 10px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: #00004d;">
+        <div><strong>Penerima:</strong> <span id="waModalRecipient">-</span></div>
+        <div><strong>Pesanan:</strong> <span id="waModalProduct">-</span> (<span id="waModalPackage">-</span>)</div>
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Email / Username Akun</label>
+        <input class="modal-input" id="waInputAccount" oninput="updateWaPreview()" placeholder="Contoh: user@domain.com" type="text" />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Password / Kredensial</label>
+        <input class="modal-input" id="waInputPassword" oninput="updateWaPreview()" placeholder="Contoh: SecretPass123" type="text" />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Catatan Tambahan (Profil / Masa Berlaku)</label>
+        <input class="modal-input" id="waInputNotes" oninput="updateWaPreview()" placeholder="Contoh: Profil 2 PIN 1234, Aktif s/d 30 hari" type="text" />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Pratinjau Pesan Siap Kirim:</label>
+        <div class="msg-preview-box" id="waMsgPreview">-</div>
+      </div>
+
+      <div style="margin-bottom: 18px;">
+        <label style="font-size: 12.5px; color: #5d5c6b; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input id="chkAutoFinish" type="checkbox" checked />
+          <span>Otomatis tandai pesanan ini sebagai <strong>"Selesai"</strong> setelah dikirim</span>
+        </label>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-action btn-action-wa" onclick="executeSendWa()" style="flex: 1; justify-content: center; padding: 12px; font-size: 14px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Buka WhatsApp &amp; Kirim Akun</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Kirim Akun via Email -->
+  <div class="modal-backdrop" id="modalSendEmail">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h3 class="modal-title">Kirim Akun ke Pembeli (Email)</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalSendEmail')">×</button>
+      </div>
+
+      <div style="background: #f6f6f9; border-radius: 10px; padding: 12px; margin-bottom: 16px; font-size: 13px; color: #00004d;">
+        <div><strong>Email Pembeli:</strong> <span id="emailModalRecipient">-</span></div>
+        <div><strong>Pesanan:</strong> <span id="emailModalProduct">-</span></div>
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Email / User Akun</label>
+        <input class="modal-input" id="emailInputAccount" oninput="updateEmailPreview()" placeholder="Contoh: user@domain.com" type="text" />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Password</label>
+        <input class="modal-input" id="emailInputPassword" oninput="updateEmailPreview()" placeholder="Contoh: SecretPass123" type="text" />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Catatan Tambahan</label>
+        <input class="modal-input" id="emailInputNotes" oninput="updateEmailPreview()" placeholder="Contoh: Masa berlaku 30 hari" type="text" />
+      </div>
+
+      <div class="modal-form-group">
+        <label class="modal-label">Template Teks Email:</label>
+        <div class="msg-preview-box" id="emailMsgPreview">-</div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn-action btn-action-check" onclick="copyEmailText()" style="flex: 1; justify-content: center; padding: 11px;">
+          <span>Salin Teks Pesan</span>
+        </button>
+        <a class="btn-action btn-action-wa" href="#" id="emailMailtoBtn" style="flex: 1; justify-content: center; padding: 11px;">
+          <span>Buka Aplikasi Email</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Lightbox Bukti Transfer -->
+  <div class="modal-backdrop" id="modalLightbox" onclick="closeModal('modalLightbox')">
+    <div class="lightbox-panel" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <div style="font-weight: 700; color: #00004d;" id="lightboxCaption">Bukti Transfer</div>
+        <button class="modal-close-btn" onclick="closeModal('modalLightbox')">×</button>
+      </div>
+      <img alt="Bukti Transfer" class="lightbox-img" id="lightboxImg" src="" />
+      <div style="margin-top: 12px;">
+        <a class="btn-action btn-action-check" href="#" id="lightboxDownloadBtn" target="_blank">Unduh Gambar Asli</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Pengaturan Google OAuth & Whitelist -->
+  <div class="modal-backdrop" id="modalConfig">
+    <div class="modal-panel" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Pengaturan Google OAuth &amp; Whitelist</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalConfig')">×</button>
+      </div>
+
+      <div style="background: #f6f6f9; border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 12px; color: #5d5c6b; line-height: 1.45;">
+        <strong style="color: #00004d;">Keamanan Google Sign-In:</strong> Hanya email admin yang terdaftar di daftar whitelist di bawah yang diizinkan mengakses dashboard.
+      </div>
+
+      <form onsubmit="handleSaveConfig(event)">
+        <div class="modal-form-group">
+          <label class="modal-label">Google Client ID</label>
+          <input class="modal-input" id="cfgGoogleClientId" placeholder="Contoh: 123456789-xxxx.apps.googleusercontent.com" type="text" />
+          <div style="font-size: 11.5px; color: #656473; margin-top: 5px; line-height: 1.4;">
+            Dapatkan di <strong>Google Cloud Console</strong> &rarr; <em>Credentials</em> &rarr; <em>OAuth client ID</em> (Web application). Pastikan Authorized JavaScript origins mencakup <code>http://localhost:3000</code>.
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">Whitelist Email Admin (1 Email per Baris)</label>
+          <textarea class="modal-input" id="cfgAllowedEmails" rows="4" style="resize: vertical; font-family: monospace; font-size: 12px;" placeholder="owner@saitech.id&#10;admin@saitech.id&#10;email-anda@gmail.com"></textarea>
+          <div style="font-size: 11.5px; color: #656473; margin-top: 5px;">
+            Hanya email di atas yang dapat login setelah verifikasi Google.
+          </div>
+        </div>
+
+        <div class="auth-error-box" id="cfgErrorMsg"></div>
+
+        <div style="display: flex; gap: 10px; margin-top: 18px;">
+          <button class="btn-action btn-action-check" type="submit" style="flex: 1; justify-content: center; padding: 12px; font-size: 13.5px;">
+            <span>Simpan Konfigurasi</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Message -->
+  <div class="toast-msg" id="toastMsg">Pesanan diperbarui</div>
+
+  <script>
+    var currentToken = sessionStorage.getItem('sai_admin_token') || '';
+    var currentAdmin = null;
+    try {
+      currentAdmin = JSON.parse(sessionStorage.getItem('sai_admin_profile') || 'null');
+    } catch(e) {
+      currentAdmin = null;
+    }
+    var authConfig = null;
+    var allOrders = [];
+    var currentFilter = 'ALL';
+    var activeOrderContext = null;
+
+    // Initialize Auth & Data on Load
+    window.addEventListener('DOMContentLoaded', function() {
+      loadAuthConfig();
+      if (currentToken) {
+        verifySession();
+      } else {
+        showAuthGate();
+      }
+    });
+
+    function showToast(msg) {
+      var t = document.getElementById('toastMsg');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(function() { t.style.display = 'none'; }, 2800);
+    }
+
+    function showAuthGate() {
+      document.getElementById('authGate').style.display = 'flex';
+    }
+
+    function hideAuthGate() {
+      document.getElementById('authGate').style.display = 'none';
+    }
+
+    function loadAuthConfig() {
+      fetch('/api/admin/auth/config')
+        .then(function(res) { return res.json(); })
+        .then(function(cfg) {
+          authConfig = cfg;
+          populateConfigForm(cfg);
+
+          var notice = document.getElementById('unconfiguredNotice');
+          var devBox = document.getElementById('devBypassBox');
+
+          if (cfg.is_localhost && cfg.dev_mode_allowed) {
+            devBox.style.display = 'block';
+          }
+
+          if (cfg.configured && cfg.google_client_id) {
+            notice.style.display = 'none';
+            initGoogleIdentity(cfg.google_client_id);
+          } else {
+            notice.style.display = 'block';
+            document.getElementById('gsiButtonContainer').innerHTML = '<div style="font-size: 13px; color: #8c8b98; padding: 6px;">Google Client ID belum diisi.</div>';
+          }
+        })
+        .catch(function(err) {
+          console.error('Failed to load auth config:', err);
+        });
+    }
+
+    function initGoogleIdentity(clientId) {
+      if (typeof google === 'undefined' || !google.accounts || !google.accounts.id) {
+        setTimeout(function() { initGoogleIdentity(clientId); }, 250);
+        return;
+      }
+
+      try {
+        google.accounts.id.initialize({
+          client_id: clientId,
+          callback: handleGoogleCredentialResponse,
+          auto_select: false
+        });
+
+        var btnContainer = document.getElementById('gsiButtonContainer');
+        btnContainer.innerHTML = '';
+        google.accounts.id.renderButton(btnContainer, {
+          theme: 'filled_blue',
+          size: 'large',
+          type: 'standard',
+          shape: 'pill',
+          text: 'continue_with',
+          logo_alignment: 'left',
+          width: 300
+        });
+      } catch (err) {
+        console.error('Google GSI init error:', err);
+      }
+    }
+
+    function handleGoogleCredentialResponse(response) {
+      var errElem = document.getElementById('authErrorMsg');
+      errElem.style.display = 'none';
+
+      fetch('/api/admin/auth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ credential: response.credential })
+      }).then(function(res) {
+        return res.json().then(function(data) {
+          if (!res.ok) {
+            var err = new Error(data.message || 'Autentikasi gagal');
+            err.statusCode = res.status;
+            throw err;
+          }
+          return data;
+        });
+      }).then(function(data) {
+        currentToken = data.token;
+        currentAdmin = data.admin;
+        sessionStorage.setItem('sai_admin_token', currentToken);
+        sessionStorage.setItem('sai_admin_profile', JSON.stringify(currentAdmin));
+
+        updateAdminUIProfile(currentAdmin);
+        hideAuthGate();
+        showToast('Selamat datang, ' + (currentAdmin.name || 'Admin') + '!');
+        fetchOrders();
+      }).catch(function(err) {
+        errElem.textContent = err.message;
+        errElem.style.display = 'block';
+      });
+    }
+
+    function executeDevBypass() {
+      var errElem = document.getElementById('authErrorMsg');
+      errElem.style.display = 'none';
+
+      fetch('/api/admin/auth/dev-bypass', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: 'Owner Developer', email: 'owner@saitech.id' })
+      }).then(function(res) {
+        return res.json().then(function(data) {
+          if (!res.ok) throw new Error(data.message || 'Bypass gagal');
+          return data;
+        });
+      }).then(function(data) {
+        currentToken = data.token;
+        currentAdmin = data.admin;
+        sessionStorage.setItem('sai_admin_token', currentToken);
+        sessionStorage.setItem('sai_admin_profile', JSON.stringify(currentAdmin));
+
+        updateAdminUIProfile(currentAdmin);
+        hideAuthGate();
+        showToast('Masuk via Mode Pengembang Lokal');
+        fetchOrders();
+      }).catch(function(err) {
+        errElem.textContent = err.message;
+        errElem.style.display = 'block';
+      });
+    }
+
+    function updateAdminUIProfile(admin) {
+      if (!admin) return;
+      var pill = document.getElementById('adminUserPill');
+      var nameElem = document.getElementById('adminUserName');
+      var emailElem = document.getElementById('adminUserEmail');
+      var avatarImg = document.getElementById('adminUserAvatar');
+      var avatarFallback = document.getElementById('adminUserAvatarFallback');
+
+      nameElem.textContent = admin.name || 'Admin';
+      emailElem.textContent = admin.email || '';
+
+      if (admin.picture) {
+        avatarImg.src = admin.picture;
+        avatarImg.style.display = 'block';
+        avatarFallback.style.display = 'none';
+      } else {
+        avatarImg.style.display = 'none';
+        avatarFallback.style.display = 'flex';
+        avatarFallback.textContent = (admin.name || 'A').charAt(0).toUpperCase();
+      }
+      pill.style.display = 'flex';
+    }
+
+    function verifySession() {
+      fetch('/api/admin/auth/session', {
+        headers: { 'Authorization': 'Bearer ' + currentToken }
+      }).then(function(res) {
+        if (!res.ok) throw new Error('Unauthorized');
+        return res.json();
+      }).then(function(data) {
+        if (data.admin) {
+          currentAdmin = data.admin;
+          sessionStorage.setItem('sai_admin_profile', JSON.stringify(currentAdmin));
+          updateAdminUIProfile(currentAdmin);
+        }
+        hideAuthGate();
+        fetchOrders();
+      }).catch(function() {
+        currentToken = '';
+        currentAdmin = null;
+        sessionStorage.removeItem('sai_admin_token');
+        sessionStorage.removeItem('sai_admin_profile');
+        document.getElementById('adminUserPill').style.display = 'none';
+        showAuthGate();
+      });
+    }
+
+    function logoutAdmin() {
+      if (currentToken) {
+        fetch('/api/admin/auth/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + currentToken
+          },
+          body: JSON.stringify({ token: currentToken })
+        }).catch(function() {});
+      }
+
+      currentToken = '';
+      currentAdmin = null;
+      sessionStorage.removeItem('sai_admin_token');
+      sessionStorage.removeItem('sai_admin_profile');
+      document.getElementById('adminUserPill').style.display = 'none';
+      showAuthGate();
+      showToast('Anda telah keluar');
+    }
+
+    function fetchOrders(showToastOnDone) {
+      var icon = document.getElementById('refreshIcon');
+      if (icon) icon.style.transform = 'rotate(180deg)';
+
+      fetch('/api/admin/orders?token=' + encodeURIComponent(currentToken), {
+        headers: { 'Authorization': 'Bearer ' + currentToken }
+      })
+        .then(function(res) {
+          if (res.status === 401) {
+            logoutAdmin();
+            throw new Error('Sesi kedaluwarsa');
+          }
+          return res.json();
+        }).then(function(data) {
+          allOrders = data.orders || [];
+          renderDashboard();
+          if (showToastOnDone) showToast('Data pesanan berhasil diperbarui');
+        }).catch(function(err) {
+          console.error('Fetch orders error:', err);
+        }).finally(function() {
+          if (icon) {
+            setTimeout(function() { icon.style.transform = 'none'; }, 400);
+          }
+        });
+    }
+
+    function renderDashboard() {
+      var filtered = allOrders;
+
+      // Filter by Status
+      if (currentFilter !== 'ALL') {
+        filtered = filtered.filter(function(o) { return o.status === currentFilter; });
+      }
+
+      // Filter by Search Query
+      var q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+      if (q) {
+        filtered = filtered.filter(function(o) {
+          return (o.order_id && o.order_id.toLowerCase().includes(q)) ||
+                 (o.product_name && o.product_name.toLowerCase().includes(q)) ||
+                 (o.phone && o.phone.toLowerCase().includes(q)) ||
+                 (o.email && o.email.toLowerCase().includes(q)) ||
+                 (o.notes && o.notes.toLowerCase().includes(q));
+        });
+      }
+
+      // Update KPI counters
+      var totalCount = allOrders.length;
+      var pendingCount = 0;
+      var completedCount = 0;
+      var revenueSum = 0;
+
+      allOrders.forEach(function(o) {
+        if (o.status === 'MENUNGGU_VERIFIKASI') pendingCount++;
+        if (o.status === 'SELESAI') {
+          completedCount++;
+          var num = parseInt((o.price || '0').replace(/[^0-9]/g, ''), 10);
+          if (!isNaN(num)) revenueSum += num;
+        }
+      });
+
+      document.getElementById('kpiTotal').textContent = totalCount;
+      document.getElementById('kpiPending').textContent = pendingCount;
+      document.getElementById('kpiCompleted').textContent = completedCount;
+      document.getElementById('kpiRevenue').textContent = 'Rp ' + revenueSum.toLocaleString('id-ID');
+
+      // Render Table
+      var tbody = document.getElementById('ordersTableBody');
+      var emptyState = document.getElementById('emptyState');
+      tbody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      filtered.forEach(function(o) {
+        var tr = document.createElement('tr');
+
+        // 1. Order ID & Time
+        var tdId = document.createElement('td');
+        tdId.innerHTML = '<span class="order-id-link">#' + escapeHtml(o.order_id) + '</span>' +
+                         '<div class="order-time">' + escapeHtml(o.created_at || '-') + '</div>';
+
+        // 2. Product & Package
+        var tdProduct = document.createElement('td');
+        var thumb = 'assets/ritovex/Image_Placeholder_Square.png';
+        tdProduct.innerHTML = '<div class="product-cell">' +
+                              '<img class="product-thumb" src="' + thumb + '" alt="Product"/>' +
+                              '<div>' +
+                              '<div class="product-info-name">' + escapeHtml(o.product_name || '-') + '</div>' +
+                              '<div class="product-info-pkg">' + escapeHtml(o.package_duration || '-') + '</div>' +
+                              '</div></div>';
+
+        // 3. Price
+        var tdPrice = document.createElement('td');
+        tdPrice.innerHTML = '<span class="price-tag">' + escapeHtml(o.price || 'Rp 0') + '</span>';
+
+        // 4. Contact
+        var tdContact = document.createElement('td');
+        var contactHtml = '';
+        var hasPhone = o.phone && o.phone !== '-';
+        var hasEmail = o.email && o.email !== '-';
+
+        if (hasPhone) {
+          var cleanPhone = o.phone.replace(/[^0-9]/g, '');
+          if (cleanPhone.startsWith('0')) cleanPhone = '62' + cleanPhone.slice(1);
+          contactHtml += '<a class="contact-badge contact-wa" href="https://wa.me/' + cleanPhone + '" target="_blank">' +
+                         '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>' +
+                         '<span>' + escapeHtml(o.phone) + '</span></a>';
+        }
+        if (hasEmail) {
+          contactHtml += (hasPhone ? '<br style="margin-bottom: 4px;"/>' : '') +
+                         '<a class="contact-badge contact-email" href="mailto:' + escapeHtml(o.email) + '">' +
+                         '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>' +
+                         '<span>' + escapeHtml(o.email) + '</span></a>';
+        }
+        if (!hasPhone && !hasEmail) {
+          contactHtml = '<span style="color: #8c8b98;">-</span>';
+        }
+        if (o.notes) {
+          contactHtml += '<span class="order-note-text" title="' + escapeHtml(o.notes) + '">Catatan: ' + escapeHtml(o.notes) + '</span>';
+        }
+        tdContact.innerHTML = contactHtml;
+
+        // 5. Proof of Payment
+        var tdProof = document.createElement('td');
+        if (o.proof_filename) {
+          var imgUrl = 'uploads/bukti_transfer/' + o.proof_filename;
+          tdProof.innerHTML = '<button class="proof-preview-btn" onclick="openLightbox(\'' + imgUrl + '\', \'#' + escapeHtml(o.order_id) + '\')">' +
+                              '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>' +
+                              '<span>Lihat Struk</span></button>';
+        } else {
+          tdProof.innerHTML = '<span style="color: #8c8b98; font-size: 12px;">Tanpa file</span>';
+        }
+
+        // 6. Status Badge
+        var tdStatus = document.createElement('td');
+        var statusClass = 'status-pending';
+        var statusLabel = 'Menunggu Verifikasi';
+        if (o.status === 'SELESAI') {
+          statusClass = 'status-completed';
+          statusLabel = 'Selesai';
+        } else if (o.status === 'DIBATALKAN') {
+          statusClass = 'status-cancelled';
+          statusLabel = 'Dibatalkan';
+        }
+        tdStatus.innerHTML = '<span class="status-badge ' + statusClass + '">' + statusLabel + '</span>';
+
+        // 7. Actions
+        var tdActions = document.createElement('td');
+        tdActions.style.textAlign = 'right';
+        var actionGroup = document.createElement('div');
+        actionGroup.className = 'action-group';
+        actionGroup.style.justifyContent = 'flex-end';
+
+        // Button: Send Account via WA (if buyer has phone)
+        if (hasPhone) {
+          var btnWa = document.createElement('button');
+          btnWa.className = 'btn-action btn-action-wa';
+          btnWa.title = 'Kirim Kredensial Akun via WhatsApp';
+          btnWa.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>Kirim Akun</span>';
+          btnWa.onclick = (function(order) {
+            return function() { openSendWaModal(order); };
+          })(o);
+          actionGroup.appendChild(btnWa);
+        } else if (hasEmail) {
+          var btnEmail = document.createElement('button');
+          btnEmail.className = 'btn-action btn-action-check';
+          btnEmail.title = 'Kirim Kredensial Akun via Email';
+          btnEmail.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><span>Kirim Akun</span>';
+          btnEmail.onclick = (function(order) {
+            return function() { openSendEmailModal(order); };
+          })(o);
+          actionGroup.appendChild(btnEmail);
+        }
+
+        // Button: Mark Completed (if not already completed)
+        if (o.status !== 'SELESAI') {
+          var btnDone = document.createElement('button');
+          btnDone.className = 'btn-action btn-action-check';
+          btnDone.title = 'Tandai Selesai';
+          btnDone.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          btnDone.onclick = (function(orderId) {
+            return function() { updateOrderStatus(orderId, 'SELESAI'); };
+          })(o.order_id);
+          actionGroup.appendChild(btnDone);
+        }
+
+        // Button: Delete
+        var btnDel = document.createElement('button');
+        btnDel.className = 'btn-action btn-action-del';
+        btnDel.title = 'Hapus Pesanan';
+        btnDel.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>';
+        btnDel.onclick = (function(orderId) {
+          return function() { deleteOrder(orderId); };
+        })(o.order_id);
+        actionGroup.appendChild(btnDel);
+
+        tdActions.appendChild(actionGroup);
+
+        tr.appendChild(tdId);
+        tr.appendChild(tdProduct);
+        tr.appendChild(tdPrice);
+        tr.appendChild(tdContact);
+        tr.appendChild(tdProof);
+        tr.appendChild(tdStatus);
+        tr.appendChild(tdActions);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function setFilter(filterType, btnElem) {
+      currentFilter = filterType;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      if (btnElem) btnElem.classList.add('active');
+      renderDashboard();
+    }
+
+    function handleSearch() {
+      renderDashboard();
+    }
+
+    // Status Update API
+    function updateOrderStatus(orderId, newStatus) {
+      fetch('/api/admin/update-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: currentToken,
+          order_id: orderId,
+          status: newStatus
+        })
+      }).then(function(res) {
+        return res.json();
+      }).then(function() {
+        showToast('Status pesanan #' + orderId + ' diubah ke ' + newStatus);
+        fetchOrders();
+      }).catch(function(err) {
+        alert('Gagal mengubah status: ' + err.message);
+      });
+    }
+
+    // Delete Order API
+    function deleteOrder(orderId) {
+      if (!confirm('Apakah Anda yakin ingin menghapus data pesanan #' + orderId + '?')) return;
+
+      fetch('/api/admin/delete-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          token: currentToken,
+          order_id: orderId
+        })
+      }).then(function(res) {
+        return res.json();
+      }).then(function() {
+        showToast('Pesanan #' + orderId + ' berhasil dihapus');
+        fetchOrders();
+      }).catch(function(err) {
+        alert('Gagal menghapus pesanan: ' + err.message);
+      });
+    }
+
+    // WA Send Modal Logic
+    function openSendWaModal(order) {
+      activeOrderContext = order;
+      document.getElementById('waModalRecipient').textContent = order.phone || '-';
+      document.getElementById('waModalProduct').textContent = order.product_name || '-';
+      document.getElementById('waModalPackage').textContent = order.package_duration || '-';
+      document.getElementById('waInputAccount').value = '';
+      document.getElementById('waInputPassword').value = '';
+      document.getElementById('waInputNotes').value = '';
+      updateWaPreview();
+      openModal('modalSendWa');
+    }
+
+    function updateWaPreview() {
+      if (!activeOrderContext) return;
+      var o = activeOrderContext;
+      var acc = (document.getElementById('waInputAccount').value || '').trim() || '[Email / Username]';
+      var pass = (document.getElementById('waInputPassword').value || '').trim() || '[Password Akun]';
+      var notes = (document.getElementById('waInputNotes').value || '').trim();
+
+      var lines = [
+        'Halo Kak! Terima kasih telah memesan di SAI Tech.',
+        '',
+        'Pesanan Anda #' + o.order_id + ' (' + o.product_name + ' - ' + o.package_duration + ') telah kami proses dan aktif:',
+        '',
+        'Detail Kredensial Akun:',
+        '• Akun / Email: ' + acc,
+        '• Password: ' + pass,
+        (notes ? '• Catatan Tambahan: ' + notes : ''),
+        '',
+        'Panduan Penggunaan: Mohon tidak mengubah data tagihan atau email utama agar garansi akun tetap berlaku.',
+        '',
+        'Jika butuh bantuan teknis, silakan hubungi CS kami. Selamat menikmati layanan kami!'
+      ];
+
+      var cleanMsg = lines.filter(Boolean).join('\n');
+      document.getElementById('waMsgPreview').textContent = cleanMsg;
+    }
+
+    function executeSendWa() {
+      if (!activeOrderContext) return;
+      var o = activeOrderContext;
+      var msg = document.getElementById('waMsgPreview').textContent;
+      var cleanPhone = (o.phone || '').replace(/[^0-9]/g, '');
+      if (cleanPhone.startsWith('0')) cleanPhone = '62' + cleanPhone.slice(1);
+
+      var waUrl = 'https://wa.me/' + cleanPhone + '?text=' + encodeURIComponent(msg);
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      // Auto update status if checked
+      if (document.getElementById('chkAutoFinish').checked && o.status !== 'SELESAI') {
+        updateOrderStatus(o.order_id, 'SELESAI');
+      }
+
+      closeModal('modalSendWa');
+      showToast('WhatsApp pembeli dibuka. Pesan siap dikirim!');
+    }
+
+    // Email Send Modal Logic
+    function openSendEmailModal(order) {
+      activeOrderContext = order;
+      document.getElementById('emailModalRecipient').textContent = order.email || '-';
+      document.getElementById('emailModalProduct').textContent = order.product_name || '-';
+      document.getElementById('emailInputAccount').value = '';
+      document.getElementById('emailInputPassword').value = '';
+      document.getElementById('emailInputNotes').value = '';
+      updateEmailPreview();
+      openModal('modalSendEmail');
+    }
+
+    function updateEmailPreview() {
+      if (!activeOrderContext) return;
+      var o = activeOrderContext;
+      var acc = (document.getElementById('emailInputAccount').value || '').trim() || '[Email / Username]';
+      var pass = (document.getElementById('emailInputPassword').value || '').trim() || '[Password Akun]';
+      var notes = (document.getElementById('emailInputNotes').value || '').trim();
+
+      var text = 'Halo,\n\nTerima kasih telah berbelanja di SAI Tech.\nPesanan Anda #' + o.order_id + ' (' + o.product_name + ' - ' + o.package_duration + ') telah kami aktifkan.\n\nDetail Akun:\nAkun: ' + acc + '\nPassword: ' + pass + (notes ? '\nCatatan: ' + notes : '') + '\n\nSalam hangat,\nTim SAI Tech';
+      document.getElementById('emailMsgPreview').textContent = text;
+
+      var mailto = 'mailto:' + encodeURIComponent(o.email) +
+                   '?subject=' + encodeURIComponent('Detail Akun ' + o.product_name + ' - Pesanan #' + o.order_id) +
+                   '&body=' + encodeURIComponent(text);
+      document.getElementById('emailMailtoBtn').href = mailto;
+    }
+
+    function copyEmailText() {
+      var text = document.getElementById('emailMsgPreview').textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('Template teks email berhasil disalin!');
+      });
+    }
+
+    // Lightbox Modal Logic
+    function openLightbox(imgUrl, caption) {
+      document.getElementById('lightboxImg').src = imgUrl;
+      document.getElementById('lightboxCaption').textContent = 'Bukti Transfer Pesanan ' + caption;
+      document.getElementById('lightboxDownloadBtn').href = imgUrl;
+      openModal('modalLightbox');
+    }
+
+    // Config & Whitelist Modal Logic
+    function populateConfigForm(cfg) {
+      if (!cfg) return;
+      document.getElementById('cfgGoogleClientId').value = cfg.google_client_id || '';
+      document.getElementById('cfgAllowedEmails').value = (cfg.allowed_emails || []).join('\n');
+    }
+
+    function openConfigModal() {
+      var err = document.getElementById('cfgErrorMsg');
+      if (err) err.style.display = 'none';
+      if (authConfig) {
+        populateConfigForm(authConfig);
+      }
+      openModal('modalConfig');
+    }
+
+    function handleSaveConfig(e) {
+      e.preventDefault();
+      var clientId = (document.getElementById('cfgGoogleClientId').value || '').trim();
+      var rawEmails = (document.getElementById('cfgAllowedEmails').value || '').split('\n');
+      var emails = rawEmails.map(function(s) { return s.trim().toLowerCase(); }).filter(Boolean);
+      var err = document.getElementById('cfgErrorMsg');
+
+      fetch('/api/admin/auth/config', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + currentToken
+        },
+        body: JSON.stringify({
+          token: currentToken,
+          google_client_id: clientId,
+          allowed_emails: emails
+        })
+      }).then(function(res) {
+        return res.json().then(function(data) {
+          if (!res.ok) throw new Error(data.message || 'Gagal menyimpan konfigurasi');
+          return data;
+        });
+      }).then(function(data) {
+        showToast('Konfigurasi Google OAuth & Whitelist disimpan');
+        closeModal('modalConfig');
+        loadAuthConfig();
+      }).catch(function(error) {
+        err.textContent = error.message;
+        err.style.display = 'block';
+      });
+    }
+
+    // Generic Modal Functions
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-backdrop').forEach(function(m) { m.classList.remove('active'); });
+      }
+    });
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>
