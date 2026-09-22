@@ -922,6 +922,34 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* In-App Floating Toast Notification (Zero Native Alerts) */
+    .katalog-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #00004d;
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 77, 0.25);
+      z-index: 100000;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: toastFadeIn 0.25s ease;
+    }
+    .katalog-toast.toast-error {
+      background: #ef4444 !important;
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.35) !important;
+    }
+    @keyframes toastFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -1768,6 +1796,16 @@
 
     <!-- Interactive Catalog Script -->
   <script>
+    function showKatalogToast(msg, isError) {
+      var t = document.getElementById('katalogToast');
+      if (!t) return;
+      t.textContent = msg;
+      t.className = isError ? 'katalog-toast toast-error' : 'katalog-toast';
+      t.style.display = 'flex';
+      clearTimeout(t._timer);
+      t._timer = setTimeout(function() { t.style.display = 'none'; }, 3200);
+    }
+
     // 1. Dropdown Package Change Handler
     function onPackageSelectChange(selectElem) {
       var targetKey = selectElem.getAttribute('data-target');
@@ -2010,7 +2048,7 @@
         var phoneInput = document.getElementById('orderPhone');
         var phoneVal = (phoneInput.value || '').trim();
         if (!phoneVal || phoneVal.length < 8) {
-          alert('Mohon masukkan Nomor WhatsApp aktif untuk pengiriman detail akun.');
+          showKatalogToast('Mohon masukkan Nomor WhatsApp aktif untuk pengiriman detail akun.', true);
           phoneInput.focus();
           return;
         }
@@ -2021,7 +2059,7 @@
         var emailInput = document.getElementById('orderEmail');
         var emailVal = (emailInput.value || '').trim();
         if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-          alert('Mohon masukkan Alamat Email yang valid untuk pengiriman detail akun.');
+          showKatalogToast('Mohon masukkan Alamat Email yang valid untuk pengiriman detail akun.', true);
           emailInput.focus();
           return;
         }
@@ -2040,7 +2078,7 @@
         btn.textContent = 'Tersalin!';
         setTimeout(function() { btn.textContent = 'Salin Nominal'; }, 2000);
       }).catch(function() {
-        alert('Nominal: ' + currentOrder.price);
+        showKatalogToast('Nominal: ' + currentOrder.price);
       });
     }
 
@@ -2049,7 +2087,7 @@
       if (!file) return;
 
       if (file.size > 5 * 1024 * 1024) {
-        alert('Ukuran file maksimal 5MB.');
+        showKatalogToast('Ukuran file bukti transfer maksimal 5MB.', true);
         return;
       }
 
@@ -2067,7 +2105,7 @@
 
     function submitManualOrder() {
       if (!currentOrder.proofBase64) {
-        alert('Mohon pilih file bukti transfer Anda terlebih dahulu.');
+        showKatalogToast('Mohon pilih file bukti transfer Anda terlebih dahulu.', true);
         return;
       }
 
@@ -2162,5 +2200,6 @@
       }
     }
   </script>
+<div id="katalogToast" class="katalog-toast"></div>
 </body>
 </html>

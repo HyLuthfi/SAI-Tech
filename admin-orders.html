@@ -1013,18 +1013,27 @@
     /* Toast Notification */
     .toast-msg {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 28px;
+      right: 28px;
       background: #00004d;
       color: #ffffff;
-      padding: 12px 20px;
-      border-radius: 10px;
+      padding: 12px 22px;
+      border-radius: 12px;
       font-size: 13.5px;
       font-weight: 600;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
       z-index: 10000;
       display: none;
       animation: fadeIn 0.25s ease;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .toast-msg.toast-error {
+      background: #ef4444 !important;
+      border-color: rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 0 12px 35px rgba(239, 68, 68, 0.35) !important;
     }
 
     @keyframes fadeIn {
@@ -1976,6 +1985,21 @@
     </div>
   </div>
 
+  <!-- MODAL: Custom In-App Confirmation Dialog (Zero Native Alerts) -->
+  <div class="modal-backdrop" id="modalConfirmDialog">
+    <div class="modal-panel" style="max-width: 440px; text-align: center; padding: 28px 24px; border-radius: 20px;">
+      <div id="confirmIconWrap" style="width: 56px; height: 56px; border-radius: 50%; background: rgba(239, 68, 68, 0.1); color: #ef4444; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </div>
+      <h3 id="confirmTitle" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 800; color: #00004d; margin-bottom: 8px;">Konfirmasi Tindakan</h3>
+      <p id="confirmMessage" style="font-size: 13.5px; color: #64748b; line-height: 1.5; margin-bottom: 24px;">Apakah Anda yakin ingin melanjutkan?</p>
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button type="button" class="btn-nav" id="btnConfirmCancel" onclick="closeModal('modalConfirmDialog')" style="background: #f1f1f5; color: #475569; border-color: rgba(0,0,77,0.1); padding: 9px 22px; font-size: 13px;">Batal</button>
+        <button type="button" class="btn-nav" id="btnConfirmSubmit" style="background: #ef4444; color: #ffffff; border-color: #ef4444; padding: 9px 24px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 14px rgba(239, 68, 68, 0.28);">Hapus</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Message -->
   <div class="toast-msg" id="toastMsg">Pesanan diperbarui</div>
 
@@ -2002,11 +2026,58 @@
       }
     });
 
-    function showToast(msg) {
+    var confirmActionCallback = null;
+
+    function showConfirmModal(opts) {
+      document.getElementById('confirmTitle').textContent = opts.title || 'Konfirmasi Tindakan';
+      document.getElementById('confirmMessage').innerHTML = opts.message || 'Apakah Anda yakin ingin melanjutkan tindakan ini?';
+      var submitBtn = document.getElementById('btnConfirmSubmit');
+      submitBtn.textContent = opts.confirmText || 'Konfirmasi';
+      
+      var iconWrap = document.getElementById('confirmIconWrap');
+      if (opts.isDanger !== false) {
+        iconWrap.style.background = 'rgba(239, 68, 68, 0.1)';
+        iconWrap.style.color = '#ef4444';
+        submitBtn.style.background = '#ef4444';
+        submitBtn.style.borderColor = '#ef4444';
+        submitBtn.style.boxShadow = '0 4px 14px rgba(239, 68, 68, 0.3)';
+      } else {
+        iconWrap.style.background = 'rgba(0, 0, 77, 0.08)';
+        iconWrap.style.color = '#00004d';
+        submitBtn.style.background = '#00004d';
+        submitBtn.style.borderColor = '#00004d';
+        submitBtn.style.boxShadow = '0 4px 14px rgba(0, 0, 77, 0.2)';
+      }
+
+      confirmActionCallback = opts.onConfirm;
+      openModal('modalConfirmDialog');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var btnSubmit = document.getElementById('btnConfirmSubmit');
+      if (btnSubmit) {
+        btnSubmit.onclick = function() {
+          closeModal('modalConfirmDialog');
+          if (typeof confirmActionCallback === 'function') {
+            confirmActionCallback();
+            confirmActionCallback = null;
+          }
+        };
+      }
+    });
+
+    function showToast(msg, type) {
       var t = document.getElementById('toastMsg');
+      if (!t) return;
       t.textContent = msg;
-      t.style.display = 'block';
-      setTimeout(function() { t.style.display = 'none'; }, 2800);
+      if (type === 'error') {
+        t.className = 'toast-msg toast-error';
+      } else {
+        t.className = 'toast-msg';
+      }
+      t.style.display = 'flex';
+      clearTimeout(t._toastTimer);
+      t._toastTimer = setTimeout(function() { t.style.display = 'none'; }, 3200);
     }
 
     function showAuthGate() {
@@ -2444,28 +2515,34 @@
         showToast('Status pesanan #' + orderId + ' diubah ke ' + newStatus);
         fetchOrders();
       }).catch(function(err) {
-        alert('Gagal mengubah status: ' + err.message);
+        showToast('Gagal mengubah status: ' + err.message, 'error');
       });
     }
 
     // Delete Order API
     function deleteOrder(orderId) {
-      if (!confirm('Apakah Anda yakin ingin menghapus data pesanan #' + orderId + '?')) return;
-
-      fetch('/api/admin/delete-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          token: currentToken,
-          order_id: orderId
-        })
-      }).then(function(res) {
-        return res.json();
-      }).then(function() {
-        showToast('Pesanan #' + orderId + ' berhasil dihapus');
-        fetchOrders();
-      }).catch(function(err) {
-        alert('Gagal menghapus pesanan: ' + err.message);
+      showConfirmModal({
+        title: 'Hapus Data Pesanan?',
+        message: 'Apakah Anda yakin ingin menghapus data pesanan <strong>#' + escapeHtml(orderId) + '</strong>? Data transaksi ini akan dihapus secara permanen.',
+        confirmText: 'Hapus Pesanan',
+        isDanger: true,
+        onConfirm: function() {
+          fetch('/api/admin/delete-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              token: currentToken,
+              order_id: orderId
+            })
+          }).then(function(res) {
+            return res.json();
+          }).then(function() {
+            showToast('Pesanan #' + orderId + ' berhasil dihapus');
+            fetchOrders();
+          }).catch(function(err) {
+            showToast('Gagal menghapus pesanan: ' + err.message, 'error');
+          });
+        }
       });
     }
 
@@ -2853,7 +2930,7 @@
       // Collect Packages
       var pkgRows = document.querySelectorAll('#pkgRowsContainer .pkg-builder-row');
       if (pkgRows.length === 0) {
-        alert('Mohon tambahkan minimal 1 paket durasi & harga untuk produk ini.');
+        showToast('Mohon tambahkan minimal 1 paket durasi & harga untuk produk ini.', 'error');
         return;
       }
 
@@ -2868,7 +2945,7 @@
       });
 
       if (packages.length === 0) {
-        alert('Mohon isi detail label dan harga paket dengan lengkap.');
+        showToast('Mohon isi detail label dan harga paket dengan lengkap.', 'error');
         return;
       }
 
@@ -2903,12 +2980,12 @@
           showToast(data.message || 'Produk berhasil disimpan');
           fetchProductsAdmin();
         } else {
-          alert('Gagal menyimpan: ' + (data.message || 'Terjadi kesalahan'));
+          showToast(data.message || 'Gagal menyimpan produk', 'error');
         }
       })
       .catch(function(err) {
         console.error('Error saving product:', err);
-        alert('Gagal menghubungi server');
+        showToast('Gagal menghubungi server', 'error');
       })
       .finally(function() {
         submitBtn.disabled = false;
@@ -2928,7 +3005,7 @@
           showToast(data.message);
           fetchProductsAdmin();
         } else {
-          alert('Gagal mengubah status: ' + (data.message || 'Error'));
+          showToast(data.message || 'Gagal mengubah status', 'error');
         }
       })
       .catch(function(err) {
@@ -2940,26 +3017,31 @@
       var p = allProducts.find(function(item) { return item.id === prodId; });
       var pName = p ? p.name : 'produk ini';
 
-      if (!confirm('Apakah Anda yakin ingin menghapus ' + pName + ' dari katalog?')) {
-        return;
-      }
-
-      fetch('/api/admin/products/delete', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: currentToken, id: prodId })
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        if (data && data.status === 'success') {
-          showToast(data.message || 'Produk berhasil dihapus');
-          fetchProductsAdmin();
-        } else {
-          alert('Gagal menghapus: ' + (data.message || 'Error'));
+      showConfirmModal({
+        title: 'Hapus Produk dari Katalog?',
+        message: 'Apakah Anda yakin ingin menghapus <strong>' + escapeHtml(pName) + '</strong> dari katalog publik? Tindakan ini tidak dapat dibatalkan.',
+        confirmText: 'Hapus Produk',
+        isDanger: true,
+        onConfirm: function() {
+          fetch('/api/admin/products/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: currentToken, id: prodId })
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data && data.status === 'success') {
+              showToast(data.message || 'Produk berhasil dihapus');
+              fetchProductsAdmin();
+            } else {
+              showToast(data.message || 'Gagal menghapus produk', 'error');
+            }
+          })
+          .catch(function(err) {
+            console.error('Error deleting product:', err);
+            showToast('Gagal menghubungi server', 'error');
+          });
         }
-      })
-      .catch(function(err) {
-        console.error('Error deleting product:', err);
       });
     }
 
