@@ -40,29 +40,98 @@
       box-shadow: 0 4px 20px rgba(0, 0, 77, 0.15);
     }
 
-    .admin-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: #ffffff;
+    .navbar-logo {
+      display: inline-flex !important;
+      align-items: flex-end !important;
+      grid-column-gap: 8px !important;
+      text-decoration: none !important;
+      position: relative !important;
+      flex: none !important;
+      padding: 0 !important;
+      height: 38px !important;
     }
 
-    .admin-logo {
-      height: 32px;
-      width: auto;
+    .navbar-logo-emblem {
+      height: 38px !important;
+      width: auto !important;
+      object-fit: contain !important;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+      flex: none !important;
+      display: block !important;
+      align-self: flex-end !important;
     }
 
-    .admin-badge {
-      background: rgba(224, 189, 106, 0.2);
-      color: #e0bd6a;
-      border: 1px solid rgba(224, 189, 106, 0.4);
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+    .navbar-tech-word {
+      display: inline-flex !important;
+      align-items: flex-end !important;
+      align-self: flex-end !important;
+      grid-column-gap: 2px !important;
+      height: 19px !important;
+      margin-bottom: 2px !important;
+      position: relative !important;
+      flex: none !important;
+      line-height: 1 !important;
+    }
+
+    .tech-char {
+      display: inline-flex !important;
+      align-items: flex-end !important;
+      height: 19px !important;
+      position: relative !important;
+      will-change: transform, filter;
+    }
+
+    .tech-char img {
+      height: 19px !important;
+      width: auto !important;
+      display: block !important;
+      object-fit: contain !important;
+      pointer-events: none !important;
+    }
+
+    .tech-char-1 { animation: techWave_T 3.4s ease-in-out infinite !important; }
+    .tech-char-2 { animation: techWave_E 3.4s ease-in-out infinite !important; }
+    .tech-char-3 { animation: techWave_C 3.4s ease-in-out infinite !important; }
+    .tech-char-4 { animation: techWave_H 3.4s ease-in-out infinite !important; }
+
+    @keyframes techWave_T {
+      0% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      3.8% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      6.5% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      8.4%, 39.4% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      43.1% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      45.8% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      47.8%, 100% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+    }
+
+    @keyframes techWave_E {
+      0%, 5.0% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      8.8% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      11.5% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      13.4%, 34.4% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      38.1% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      40.8% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      42.8%, 100% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+    }
+
+    @keyframes techWave_C {
+      0%, 10.0% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      13.7% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      16.4% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      18.4%, 29.4% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      33.1% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      35.8% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      37.8%, 100% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+    }
+
+    @keyframes techWave_H {
+      0%, 15.0% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      18.7% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      21.4% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      23.4%, 24.4% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
+      28.1% { transform: translateY(-4px); filter: drop-shadow(0 4px 10px rgba(224, 189, 106, 0.85)) brightness(1.22); }
+      30.8% { transform: translateY(0.35px); filter: drop-shadow(0 1px 3px rgba(224, 189, 106, 0.3)); }
+      32.8%, 100% { transform: translateY(0); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)); }
     }
 
     .admin-nav-actions {
@@ -1059,12 +1128,14 @@
 
   <!-- Main Admin Interface -->
   <header class="admin-navbar">
-    <a class="admin-brand" href="/">
-      <img alt="SAI Tech Logo" class="admin-logo" src="assets/ritovex/saitech-emblem-white.png" />
-      <div>
-        <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -0.02em;">SAI Tech</span>
-        <span class="admin-badge">Admin Orders</span>
-      </div>
+    <a aria-current="page" class="navbar-logo" href="/" title="Kembali ke Beranda SAI Tech">
+      <img alt="SAI" class="navbar-logo-emblem" loading="lazy" src="assets/ritovex/saitech-emblem-white.png"/>
+      <span class="navbar-tech-word">
+        <span class="tech-char tech-char-1"><img alt="T" loading="lazy" src="assets/ritovex/saitech-t.png"/></span>
+        <span class="tech-char tech-char-2"><img alt="e" loading="lazy" src="assets/ritovex/saitech-e.png"/></span>
+        <span class="tech-char tech-char-3"><img alt="c" loading="lazy" src="assets/ritovex/saitech-c.png"/></span>
+        <span class="tech-char tech-char-4"><img alt="h" loading="lazy" src="assets/ritovex/saitech-h.png"/></span>
+      </span>
     </a>
     <div class="admin-nav-actions">
       <!-- Admin Profile Pill -->
