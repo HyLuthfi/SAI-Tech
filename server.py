@@ -14,6 +14,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 ADMIN_CONFIG_PATH = os.path.join('data', 'admin_config.json')
 ADMIN_SESSIONS_PATH = os.path.join('data', 'admin_sessions.json')
 PRODUCTS_PATH = os.path.join('data', 'products.json')
+ARTICLES_PATH = os.path.join('data', 'articles.json')
 LOGIN_ATTEMPTS = {}  # client_ip -> {'failed_count': int, 'locked_until': float, 'last_failed_at': float}
 MAX_FAILED_ATTEMPTS = 5
 LOCKOUT_DURATION = 900  # 15 minutes in seconds
@@ -32,6 +33,21 @@ def save_products(products):
     os.makedirs(os.path.dirname(PRODUCTS_PATH), exist_ok=True)
     with open(PRODUCTS_PATH, 'w', encoding='utf-8') as f:
         json.dump(products, f, indent=2, ensure_ascii=False)
+
+def load_articles():
+    if not os.path.exists(ARTICLES_PATH):
+        return []
+    try:
+        with open(ARTICLES_PATH, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"[ERROR] Failed to load articles: {e}")
+        return []
+
+def save_articles(articles):
+    os.makedirs(os.path.dirname(ARTICLES_PATH), exist_ok=True)
+    with open(ARTICLES_PATH, 'w', encoding='utf-8') as f:
+        json.dump(articles, f, indent=2, ensure_ascii=False)
 
 def load_dotenv(dotenv_path='.env'):
     if os.path.isfile(dotenv_path):
@@ -702,6 +718,113 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 self.send_json_response(500, {'status': 'error', 'message': str(e)})
                 return
 
+        elif path == '/api/admin/articles':
+            # Add or update blog article
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                data = json.loads(body)
+                token = self.get_auth_token(data)
+                if not is_valid_admin_token(token):
+                    self.send_json_response(401, {'status': 'error', 'message': 'Sesi login tidak valid'})
+                    return
+                
+                art_data = data.get('article', {})
+                if not art_data.get('title'):
+                    self.send_json_response(400, {'status': 'error', 'message': 'Judul artikel wajib diisi'})
+                    return
+                
+                articles = load_articles()
+                art_id = art_data.get('id')
+                
+                # Ensure clean slug
+                if not art_data.get('slug'):
+                    raw_slug = re.sub(r'[^a-zA-Z0-9]', '-', art_data.get('title', '').lower()).strip('-')
+                    art_data['slug'] = raw_slug[:40] or f"artikel-{int(time.time())}"
+                
+                if art_id:
+                    # Update existing article
+                    updated = False
+                    for i, a in enumerate(articles):
+                        if a.get('id') == art_id:
+                            art_data['updated_at'] = time.strftime('%Y-%m-%d %H:%M:%S')
+                            articles[i] = art_data
+                            updated = True
+                            break
+                    if not updated:
+                        self.send_json_response(404, {'status': 'error', 'message': 'Artikel tidak ditemukan'})
+                        return
+                else:
+                    # Create new article
+                    new_id = f"art-{art_data.get('slug')}-{int(time.time())}"
+                    art_data['id'] = new_id
+                    art_data['created_at'] = time.strftime('%Y-%m-%d %H:%M:%S')
+                    art_data['sort_order'] = 0  # placed at the top
+                    articles.insert(0, art_data)
+                
+                save_articles(articles)
+                self.send_json_response(200, {'status': 'success', 'message': 'Artikel berhasil disimpan', 'article': art_data})
+                return
+            except Exception as e:
+                self.send_json_response(500, {'status': 'error', 'message': str(e)})
+                return
+
+        elif path == '/api/admin/articles/delete':
+            # Delete blog article
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                data = json.loads(body)
+                token = self.get_auth_token(data)
+                if not is_valid_admin_token(token):
+                    self.send_json_response(401, {'status': 'error', 'message': 'Sesi login tidak valid'})
+                    return
+                
+                art_id = data.get('id')
+                articles = load_articles()
+                orig_len = len(articles)
+                articles = [a for a in articles if a.get('id') != art_id and a.get('slug') != art_id]
+                if len(articles) < orig_len:
+                    save_articles(articles)
+                    self.send_json_response(200, {'status': 'success', 'message': 'Artikel berhasil dihapus'})
+                else:
+                    self.send_json_response(404, {'status': 'error', 'message': 'Artikel tidak ditemukan'})
+                return
+            except Exception as e:
+                self.send_json_response(500, {'status': 'error', 'message': str(e)})
+                return
+
+        elif path == '/api/admin/articles/toggle':
+            # Toggle published / draft status
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                data = json.loads(body)
+                token = self.get_auth_token(data)
+                if not is_valid_admin_token(token):
+                    self.send_json_response(401, {'status': 'error', 'message': 'Sesi login tidak valid'})
+                    return
+                
+                art_id = data.get('id')
+                articles = load_articles()
+                found = False
+                new_status = 'published'
+                for a in articles:
+                    if a.get('id') == art_id or a.get('slug') == art_id:
+                        a['status'] = 'draft' if a.get('status') == 'published' else 'published'
+                        new_status = a['status']
+                        found = True
+                        break
+                if found:
+                    save_articles(articles)
+                    self.send_json_response(200, {'status': 'success', 'message': f'Status artikel diubah menjadi {new_status}', 'status_val': new_status})
+                else:
+                    self.send_json_response(404, {'status': 'error', 'message': 'Artikel tidak ditemukan'})
+                return
+            except Exception as e:
+                self.send_json_response(500, {'status': 'error', 'message': str(e)})
+                return
+
         self.send_error(404, "Not Found")
 
     def do_HEAD(self):
@@ -734,6 +857,41 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 'picture': ''
             }
             self.send_json_response(200, {'status': 'success', 'admin': data})
+            return
+
+        if path == '/api/articles':
+            # Public API: Return published articles (or single article if ?slug=... or ?article=...)
+            articles = load_articles()
+            params = urllib.parse.parse_qs(parsed.query)
+            target_slug = (params.get('slug', [''])[0] or params.get('article', [''])[0]).strip()
+            
+            if target_slug:
+                found_art = None
+                for a in articles:
+                    if a.get('slug') == target_slug or a.get('id') == target_slug:
+                        found_art = a
+                        break
+                if found_art:
+                    self.send_json_response(200, {'status': 'success', 'article': found_art})
+                else:
+                    self.send_json_response(404, {'status': 'error', 'message': 'Artikel tidak ditemukan'})
+                return
+            
+            # Return all published
+            published_arts = [a for a in articles if a.get('status') == 'published']
+            published_arts = sorted(published_arts, key=lambda x: x.get('sort_order', 999))
+            self.send_json_response(200, {'status': 'success', 'articles': published_arts})
+            return
+
+        if path == '/api/admin/articles':
+            # Admin API: Return all articles (including drafts)
+            token = self.get_auth_token()
+            if not is_valid_admin_token(token):
+                self.send_json_response(401, {'status': 'error', 'message': 'Sesi login admin tidak valid'})
+                return
+            articles = load_articles()
+            articles = sorted(articles, key=lambda x: x.get('sort_order', 999))
+            self.send_json_response(200, {'status': 'success', 'articles': articles})
             return
 
         if path == '/api/products':

@@ -2131,5 +2131,42 @@
     });
   }, 1200);
 </script>
+
+    <script>
+      (function() {
+        fetch('/api/articles')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data && data.status === 'success' && data.articles && data.articles.length > 0) {
+              var blogItems = document.querySelectorAll('.blog-collection-list-item');
+              var topArticles = data.articles.slice(0, 3);
+              topArticles.forEach(function(a, idx) {
+                var item = blogItems[idx];
+                if (!item) return;
+                var singleHref = 'blog-single?article=' + encodeURIComponent(a.slug || a.id);
+                var img = item.querySelector('.blog-image');
+                if (img && a.image_url) img.src = a.image_url;
+                var cat = item.querySelector('.blog-category');
+                if (cat) cat.textContent = a.category || 'AI Riset';
+                var date = item.querySelector('.blog-date');
+                if (date) date.textContent = a.date || '14 September 2026';
+                var title = item.querySelector('.blog-title');
+                if (title) {
+                  title.textContent = a.title;
+                  title.href = singleHref;
+                }
+                var desc = item.querySelector('.blog-description-text');
+                if (desc) desc.textContent = a.excerpt || '';
+                var imgWrap = item.querySelector('.blog-image-wrapper');
+                if (imgWrap) imgWrap.href = singleHref;
+              });
+            }
+          })
+          .catch(function(err) {
+            console.warn('Sync homepage blog notice:', err);
+          });
+      })();
+    </script>
+
 </body>
 </html>

@@ -1636,6 +1636,11 @@
           <span>Kelola Katalog &amp; Produk</span>
           <span class="seg-badge" id="tabBadgeProducts">0</span>
         </button>
+        <button class="section-seg-btn" id="tabBtnArticles" onclick="switchAdminView('articles')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Kelola Konten &amp; Riset</span>
+          <span class="seg-badge" id="tabBadgeArticles">0</span>
+        </button>
       </div>
     </div>
 
@@ -1799,6 +1804,70 @@
       <div class="empty-state" id="emptyProductsState" style="display: none; background: #ffffff; border-radius: 18px; padding: 48px; border: 1.5px dashed rgba(0,0,77,0.12); margin-top: 10px;">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
         <div style="font-weight: 700; font-size: 16px; color: #00004d; margin-top: 12px; margin-bottom: 4px;">Tidak Ada Produk Ditemukan</div>
+        <div style="font-size: 13px; color: #64748b;">Coba ubah kata kunci pencarian atau pilih filter kategori lainnya.</div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: KELOLA KONTEN & RISET BLOG -->
+    <div id="viewArticles" style="display: none;">
+      
+      <!-- Top Title & Action Header -->
+      <div class="live-status-bar" style="margin-bottom: 20px;">
+        <div class="live-status-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00004d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Publikasi Riset &amp; Blog SAI Tech</span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a class="btn-nav" href="/blog" target="_blank" style="background: #ffffff; color: #00004d; border-color: rgba(0,0,77,0.15);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Buka Halaman Blog</span>
+          </a>
+          <button class="btn-nav" onclick="fetchArticlesAdmin(true)" style="background: #ffffff; color: #00004d; border-color: rgba(0,0,77,0.15);">
+            <svg id="refreshArticlesIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Segarkan</span>
+          </button>
+          <button class="btn-nav" onclick="openArticleModal()" style="background: #00004d; color: #ffffff; border-color: #00004d; box-shadow: 0 4px 14px rgba(0,0,77,0.2);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Tulis Artikel Baru</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls: Category Filter Segmented Tabs & Search Bar -->
+      <div class="catalog-admin-controls">
+        <div class="cat-seg-bar" id="artCatSegBar">
+          <button class="cat-seg-btn active" data-artcat="all" onclick="filterArticlesCategory('all', this)">
+            <span>Semua Artikel</span>
+            <span class="seg-badge" id="countArtAll">0</span>
+          </button>
+          <button class="cat-seg-btn" data-artcat="llm" onclick="filterArticlesCategory('llm', this)">
+            <span>LLM &amp; RAG</span>
+            <span class="seg-badge" id="countArtLlm">0</span>
+          </button>
+          <button class="cat-seg-btn" data-artcat="cv" onclick="filterArticlesCategory('cv', this)">
+            <span>Computer Vision</span>
+            <span class="seg-badge" id="countArtCv">0</span>
+          </button>
+          <button class="cat-seg-btn" data-artcat="iot" onclick="filterArticlesCategory('iot', this)">
+            <span>Predictive IoT</span>
+            <span class="seg-badge" id="countArtIot">0</span>
+          </button>
+        </div>
+
+        <div class="search-box-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input id="searchArticleInput" oninput="filterArticlesSearch()" placeholder="Cari judul artikel, topik riset, atau penulis..." type="text" />
+        </div>
+      </div>
+
+      <!-- ARTICLE CARDS GRID -->
+      <div class="admin-products-grid" id="articlesCardsGrid">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <div class="empty-state" id="emptyArticlesState" style="display: none; background: #ffffff; border-radius: 18px; padding: 48px; border: 1.5px dashed rgba(0,0,77,0.12); margin-top: 10px;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <div style="font-weight: 700; font-size: 16px; color: #00004d; margin-top: 12px; margin-bottom: 4px;">Tidak Ada Artikel Ditemukan</div>
         <div style="font-size: 13px; color: #64748b;">Coba ubah kata kunci pencarian atau pilih filter kategori lainnya.</div>
       </div>
     </div>
@@ -1980,6 +2049,87 @@
         <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid rgba(0,0,77,0.08); padding-top: 16px;">
           <button type="button" class="btn-nav" onclick="closeModal('modalProductForm')" style="background: #ffffff; color: #555466; border-color: rgba(0,0,77,0.15);">Batal</button>
           <button type="submit" id="btnSaveProduct" class="btn-nav" style="background: #00004d; color: #ffffff; border-color: #00004d;">Simpan Produk</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Tulis / Edit Artikel Riset & Blog -->
+  <div class="modal-backdrop" id="modalArticleForm">
+    <div class="modal-panel" style="max-width: 720px; max-height: 92vh; overflow-y: auto;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="articleModalTitle">Tulis Artikel Riset Baru</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalArticleForm')">×</button>
+      </div>
+
+      <form id="formArticle" onsubmit="saveArticleForm(event)">
+        <input type="hidden" id="artFormId" value="" />
+
+        <div class="modal-form-group">
+          <label class="modal-label">Judul Artikel *</label>
+          <input class="modal-input" id="artFormTitle" required oninput="autoGenerateSlug(this.value)" placeholder="Contoh: Arsitektur Sovereign RAG: Membangun Mesin AI Finansial Mandiri" type="text" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Slug URL (Identifier Web) *</label>
+            <input class="modal-input" id="artFormSlug" required placeholder="sovereign-rag-finansial" type="text" style="font-family: monospace; font-size: 13px;" />
+          </div>
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Kategori Riset *</label>
+            <input class="modal-input" id="artFormCategory" required list="categorySuggestions" placeholder="Private LLM & RAG" type="text" />
+            <datalist id="categorySuggestions">
+              <option value="Private LLM & RAG">
+              <option value="Computer Vision">
+              <option value="Predictive IoT">
+              <option value="Speech AI">
+              <option value="Infrastruktur AI">
+              <option value="Keamanan Siber">
+              <option value="Healthcare AI">
+              <option value="Document AI">
+            </datalist>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Tanggal Publikasi</label>
+            <input class="modal-input" id="artFormDate" placeholder="14 September 2026" type="text" />
+          </div>
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Penulis Riset</label>
+            <input class="modal-input" id="artFormAuthor" value="Tim Insinyur SAI Tech" placeholder="Tim Insinyur SAI Tech" type="text" />
+          </div>
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Status Visibilitas</label>
+            <select class="modal-input" id="artFormStatus" style="cursor: pointer;">
+              <option value="published">Publikasikan (Tampil di Web)</option>
+              <option value="draft">Draft (Simpan Internal)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">URL Cover / Thumbnail Gambar</label>
+          <input class="modal-input" id="artFormImg" value="assets/ritovex/01.png" placeholder="assets/ritovex/01.png atau URL luar" type="text" />
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">Ringkasan Singkat (Excerpt / Preview Text) *</label>
+          <textarea class="modal-input" id="artFormExcerpt" rows="2" required style="resize: vertical;" placeholder="1-2 kalimat ringkasan yang muncul di kartu katalog blog..."></textarea>
+        </div>
+
+        <div class="modal-form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <label class="modal-label" style="margin-bottom: 0;">Konten Artikel Lengkap (HTML / Paragraphs)</label>
+            <span style="font-size: 11px; color: #8c8b98;">Mendukung &lt;p&gt;, &lt;h2&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;</span>
+          </div>
+          <textarea class="modal-input" id="artFormContent" rows="8" style="resize: vertical; font-family: monospace; font-size: 13px;" placeholder="<p>Isi artikel teknis lengkap...</p>"></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid rgba(0,0,77,0.08); padding-top: 16px;">
+          <button type="button" class="btn-nav" onclick="closeModal('modalArticleForm')" style="background: #ffffff; color: #555466; border-color: rgba(0,0,77,0.15);">Batal</button>
+          <button type="submit" id="btnSaveArticle" class="btn-nav" style="background: #00004d; color: #ffffff; border-color: #00004d; font-weight: 700;">Simpan &amp; Publikasikan</button>
         </div>
       </form>
     </div>
@@ -2682,22 +2832,25 @@
     function switchAdminView(view) {
       var tabOrders = document.getElementById('tabBtnOrders');
       var tabProducts = document.getElementById('tabBtnProducts');
+      var tabArticles = document.getElementById('tabBtnArticles');
       var viewOrders = document.getElementById('viewOrders');
       var viewProducts = document.getElementById('viewProducts');
+      var viewArticles = document.getElementById('viewArticles');
+
+      [tabOrders, tabProducts, tabArticles].forEach(function(b) { if (b) b.classList.remove('active'); });
+      [viewOrders, viewProducts, viewArticles].forEach(function(v) { if (v) v.style.display = 'none'; });
 
       if (view === 'products') {
-        tabOrders.classList.remove('active');
-        tabProducts.classList.add('active');
-        viewOrders.style.display = 'none';
-        viewProducts.style.display = 'block';
-        if (allProducts.length === 0) {
-          fetchProductsAdmin();
-        }
+        if (tabProducts) tabProducts.classList.add('active');
+        if (viewProducts) viewProducts.style.display = 'block';
+        if (allProducts.length === 0) fetchProductsAdmin();
+      } else if (view === 'articles') {
+        if (tabArticles) tabArticles.classList.add('active');
+        if (viewArticles) viewArticles.style.display = 'block';
+        if (allArticles.length === 0) fetchArticlesAdmin();
       } else {
-        tabProducts.classList.remove('active');
-        tabOrders.classList.add('active');
-        viewProducts.style.display = 'none';
-        viewOrders.style.display = 'block';
+        if (tabOrders) tabOrders.classList.add('active');
+        if (viewOrders) viewOrders.style.display = 'block';
       }
     }
 
@@ -3039,6 +3192,307 @@
           })
           .catch(function(err) {
             console.error('Error deleting product:', err);
+            showToast('Gagal menghubungi server', 'error');
+          });
+        }
+      });
+    }
+
+
+    // ==========================================================================
+    // DYNAMIC BLOG & CONTENT MANAGEMENT JAVASCRIPT SYSTEM
+    // ==========================================================================
+    var allArticles = [];
+    var currentArtCat = 'all';
+    var currentArtQuery = '';
+
+    function fetchArticlesAdmin(showToastOnDone) {
+      var icon = document.getElementById('refreshArticlesIcon');
+      if (icon) icon.style.animation = 'spin 0.8s linear infinite';
+
+      fetch('/api/admin/articles', {
+        headers: { 'Authorization': 'Bearer ' + currentToken }
+      })
+      .then(function(res) {
+        if (res.status === 401) {
+          showAuthGate();
+          throw new Error('Sesi admin kedaluwarsa');
+        }
+        return res.json();
+      })
+      .then(function(data) {
+        if (data && data.status === 'success') {
+          allArticles = data.articles || [];
+          document.getElementById('tabBadgeArticles').textContent = allArticles.length;
+          document.getElementById('countArtAll').textContent = allArticles.length;
+
+          // Count categories
+          var countLlm = 0, countCv = 0, countIot = 0;
+          allArticles.forEach(function(a) {
+            var c = (a.category || '').toLowerCase();
+            if (c.includes('llm') || c.includes('rag')) countLlm++;
+            else if (c.includes('vision') || c.includes('cv')) countCv++;
+            else if (c.includes('iot') || c.includes('predictive')) countIot++;
+          });
+          var elLlm = document.getElementById('countArtLlm'); if (elLlm) elLlm.textContent = countLlm;
+          var elCv = document.getElementById('countArtCv'); if (elCv) elCv.textContent = countCv;
+          var elIot = document.getElementById('countArtIot'); if (elIot) elIot.textContent = countIot;
+
+          renderArticlesAdmin();
+          if (showToastOnDone) showToast('Daftar artikel riset diperbarui (' + allArticles.length + ' item)');
+        }
+      })
+      .catch(function(err) {
+        console.error('Fetch articles error:', err);
+      })
+      .finally(function() {
+        if (icon) icon.style.animation = '';
+      });
+    }
+
+    function filterArticlesCategory(cat, btn) {
+      currentArtCat = cat;
+      document.querySelectorAll('[data-artcat]').forEach(function(b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      renderArticlesAdmin();
+    }
+
+    function filterArticlesSearch() {
+      var input = document.getElementById('searchArticleInput');
+      currentArtQuery = (input ? input.value : '').toLowerCase().trim();
+      renderArticlesAdmin();
+    }
+
+    function renderArticlesAdmin() {
+      var grid = document.getElementById('articlesCardsGrid');
+      var emptyState = document.getElementById('emptyArticlesState');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      var filtered = allArticles.filter(function(a) {
+        var c = (a.category || '').toLowerCase();
+        var matchCat = true;
+        if (currentArtCat === 'llm') matchCat = c.includes('llm') || c.includes('rag');
+        else if (currentArtCat === 'cv') matchCat = c.includes('vision') || c.includes('cv');
+        else if (currentArtCat === 'iot') matchCat = c.includes('iot') || c.includes('predictive');
+
+        var str = (a.title + ' ' + (a.category || '') + ' ' + (a.excerpt || '') + ' ' + (a.author || '')).toLowerCase();
+        var matchQuery = (!currentArtQuery || str.indexOf(currentArtQuery) !== -1);
+        return matchCat && matchQuery;
+      });
+
+      if (filtered.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      // 1. Quick Add Article Card
+      var addCard = document.createElement('div');
+      addCard.className = 'product-quick-add-card';
+      addCard.onclick = function() { openArticleModal(); };
+      addCard.innerHTML = '<div class="quick-add-icon-box">' +
+                          '  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>' +
+                          '</div>' +
+                          '<div style="font-weight: 800; font-size: 15px; color: #00004d; margin-bottom: 4px;">Tulis Artikel Baru</div>' +
+                          '<div style="font-size: 12px; color: #64748b;">Publikasikan riset dan artikel teknologi baru ke situs</div>';
+      grid.appendChild(addCard);
+
+      // 2. Render Article Cards
+      filtered.forEach(function(a) {
+        var card = document.createElement('div');
+        var isPublished = (a.status === 'published');
+        card.className = 'admin-prod-card' + (isPublished ? '' : ' is-draft');
+
+        var imgUrl = a.image_url || 'assets/ritovex/01.png';
+        var singleUrl = '/blog-single?article=' + encodeURIComponent(a.slug || a.id);
+
+        card.innerHTML = '' +
+          '<div class="card-top-row">' +
+          '  <img class="card-prod-thumb" style="width: 56px; height: 56px; border-radius: 12px; object-fit: cover;" src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(a.title) + '" onerror="this.src=\'assets/ritovex/01.png\'" />' +
+          '  <div class="card-meta-wrap">' +
+          '    <span class="card-category-badge">' + escapeHtml(a.category || 'AI Riset') + '</span>' +
+          '    <div class="card-title-text" style="font-size: 15px;" title="' + escapeHtml(a.title) + '">' + escapeHtml(a.title) + '</div>' +
+          '    <div style="font-size: 11px; color: #8c8b98; display: flex; gap: 8px; align-items: center; margin-top: 2px;">' +
+          '      <span>' + escapeHtml(a.date || '-') + '</span>' +
+          '      <span>·</span>' +
+          '      <span style="font-family: monospace;">#' + escapeHtml(a.slug || a.id) + '</span>' +
+          '    </div>' +
+          '  </div>' +
+          '  <div class="card-status-toggle" onclick="toggleArticleStatus(\'' + escapeHtml(a.id) + '\')" title="Klik untuk ubah status">' +
+          '    <span class="status-pill-toggle ' + (isPublished ? 'status-pill-active' : 'status-pill-draft') + '">' +
+          '      ' + (isPublished ? '● Terbit' : '○ Draft') +
+          '    </span>' +
+          '  </div>' +
+          '</div>' +
+          '<div class="card-desc-text" style="height: 48px; -webkit-line-clamp: 2; margin-bottom: 16px;">' + escapeHtml(a.excerpt || a.content || '-') + '</div>' +
+          '<div class="card-actions-row">' +
+          '  <button class="btn-card-edit" onclick="openArticleModal(\'' + escapeHtml(a.id) + '\')">' +
+          '    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>' +
+          '    <span>Edit Artikel</span>' +
+          '  </button>' +
+          '  <a class="btn-card-icon" href="' + singleUrl + '" target="_blank" title="Lihat di Web">' +
+          '    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>' +
+          '  </a>' +
+          '  <button class="btn-card-icon btn-card-danger" onclick="deleteArticleAdmin(\'' + escapeHtml(a.id) + '\')" title="Hapus Artikel">' +
+          '    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>' +
+          '  </button>' +
+          '</div>';
+
+        grid.appendChild(card);
+      });
+    }
+
+    function autoGenerateSlug(title) {
+      var slugInput = document.getElementById('artFormSlug');
+      var idInput = document.getElementById('artFormId');
+      if (!idInput.value) {
+        var s = title.toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .slice(0, 40);
+        slugInput.value = s;
+      }
+    }
+
+    function openArticleModal(artId) {
+      var form = document.getElementById('formArticle');
+      var titleElem = document.getElementById('articleModalTitle');
+      form.reset();
+
+      if (artId) {
+        var a = allArticles.find(function(item) { return item.id === artId; });
+        if (!a) return;
+        titleElem.textContent = 'Edit Artikel: ' + a.title;
+        document.getElementById('artFormId').value = a.id;
+        document.getElementById('artFormTitle').value = a.title || '';
+        document.getElementById('artFormSlug').value = a.slug || '';
+        document.getElementById('artFormCategory').value = a.category || 'Private LLM & RAG';
+        document.getElementById('artFormDate').value = a.date || '';
+        document.getElementById('artFormAuthor').value = a.author || 'Tim Insinyur SAI Tech';
+        document.getElementById('artFormStatus').value = a.status || 'published';
+        document.getElementById('artFormImg').value = a.image_url || 'assets/ritovex/01.png';
+        document.getElementById('artFormExcerpt').value = a.excerpt || '';
+        document.getElementById('artFormContent').value = a.content || '';
+      } else {
+        titleElem.textContent = 'Tulis Artikel Riset Baru';
+        document.getElementById('artFormId').value = '';
+        document.getElementById('artFormCategory').value = 'Private LLM & RAG';
+        document.getElementById('artFormAuthor').value = 'Tim Insinyur SAI Tech';
+        document.getElementById('artFormDate').value = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+        document.getElementById('artFormStatus').value = 'published';
+        document.getElementById('artFormImg').value = 'assets/ritovex/01.png';
+        document.getElementById('artFormContent').value = '<h2>1. Pendahuluan &amp; Latar Belakang</h2>\n<p>Tuliskan ringkasan konteks teknis di sini...</p>\n\n<h2>2. Arsitektur Teknis &amp; Implementasi</h2>\n<p>Jelaskan alur sistem dan komponen kunci...</p>\n\n<h2>3. Hasil Pengujian &amp; Kesimpulan</h2>\n<p>Paparkan metrik performa dan evaluasi akhir...</p>';
+      }
+
+      openModal('modalArticleForm');
+    }
+
+    function saveArticleForm(e) {
+      e.preventDefault();
+
+      var artId = document.getElementById('artFormId').value;
+      var title = document.getElementById('artFormTitle').value.trim();
+      var slug = document.getElementById('artFormSlug').value.trim();
+      var category = document.getElementById('artFormCategory').value.trim();
+      var dateStr = document.getElementById('artFormDate').value.trim() || new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+      var author = document.getElementById('artFormAuthor').value.trim() || 'Tim Insinyur SAI Tech';
+      var status = document.getElementById('artFormStatus').value;
+      var imageUrl = document.getElementById('artFormImg').value.trim() || 'assets/ritovex/01.png';
+      var excerpt = document.getElementById('artFormExcerpt').value.trim();
+      var content = document.getElementById('artFormContent').value.trim();
+
+      var submitBtn = document.getElementById('btnSaveArticle');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Menyimpan...';
+
+      var payload = {
+        token: currentToken,
+        article: {
+          id: artId || undefined,
+          slug: slug,
+          title: title,
+          category: category,
+          date: dateStr,
+          author: author,
+          status: status,
+          image_url: imageUrl,
+          excerpt: excerpt,
+          content: content
+        }
+      };
+
+      fetch('/api/admin/articles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data && data.status === 'success') {
+          closeModal('modalArticleForm');
+          showToast(data.message || 'Artikel berhasil disimpan');
+          fetchArticlesAdmin();
+        } else {
+          showToast(data.message || 'Gagal menyimpan artikel', 'error');
+        }
+      })
+      .catch(function(err) {
+        console.error('Error saving article:', err);
+        showToast('Gagal menghubungi server', 'error');
+      })
+      .finally(function() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Simpan & Publikasikan';
+      });
+    }
+
+    function toggleArticleStatus(artId) {
+      fetch('/api/admin/articles/toggle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: currentToken, id: artId })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data && data.status === 'success') {
+          showToast(data.message);
+          fetchArticlesAdmin();
+        } else {
+          showToast(data.message || 'Gagal mengubah status', 'error');
+        }
+      })
+      .catch(function(err) {
+        console.error('Error toggling status:', err);
+      });
+    }
+
+    function deleteArticleAdmin(artId) {
+      var a = allArticles.find(function(item) { return item.id === artId; });
+      var aTitle = a ? a.title : 'artikel ini';
+
+      showConfirmModal({
+        title: 'Hapus Artikel Riset?',
+        message: 'Apakah Anda yakin ingin menghapus <strong>' + escapeHtml(aTitle) + '</strong>? Artikel ini tidak akan dapat diakses lagi dari halaman blog.',
+        confirmText: 'Hapus Artikel',
+        isDanger: true,
+        onConfirm: function() {
+          fetch('/api/admin/articles/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: currentToken, id: artId })
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data && data.status === 'success') {
+              showToast(data.message || 'Artikel berhasil dihapus');
+              fetchArticlesAdmin();
+            } else {
+              showToast(data.message || 'Gagal menghapus artikel', 'error');
+            }
+          })
+          .catch(function(err) {
+            console.error('Error deleting article:', err);
             showToast('Gagal menghubungi server', 'error');
           });
         }
