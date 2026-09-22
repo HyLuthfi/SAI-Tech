@@ -27,6 +27,26 @@
         clip: rect(0, 0, 0, 0) !important;
       }
 
+      /* Ensure page wrapper and content are always visible */
+      html,
+      body,
+      .page-wrapper {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .banner-typography,
+      .section-title-wrapper,
+      .services-contenr,
+      .portfolio-top-content,
+      .portfolio-bottom-content,
+      .working-process-typography,
+      .blog-section-title-wrapper,
+      .blog-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
       /* High-contrast hover styles for blog cards */
       .blog-collection-list-item:hover .blog-typography,
       .blog-single:hover .blog-typography {
@@ -306,7 +326,7 @@
     </style>
 </head>
 <body>
-<div class="page-wrapper" style="opacity: 0">
+<div class="page-wrapper" style="opacity: 1">
 <div class="navbar w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-w-id="dc85cfd6-5958-0268-b0b5-61e0ce28d0e1" role="banner">
 <div class="container">
 <div class="navbar-wrapper">
@@ -346,7 +366,7 @@
 <section class="section banner">
 <div class="container">
 <div class="banner-content">
-<div class="banner-typography" data-w-id="db7935d5-57cb-b75f-1898-33dad220484a" style="opacity: 0">
+<div class="banner-typography" data-w-id="db7935d5-57cb-b75f-1898-33dad220484a" style="opacity: 1">
 <div class="banner-subtitle-wrapper">
 <div class="banner-subtitle">SAI Tech AI Solutions</div>
 </div>
@@ -722,7 +742,7 @@
 </section>
 <section class="section about-us">
 <div class="container">
-<div class="section-title-wrapper" data-w-id="228f26aa-160d-196c-02df-7fd9ea62bf0e" style="opacity: 0">
+<div class="section-title-wrapper" data-w-id="228f26aa-160d-196c-02df-7fd9ea62bf0e" style="opacity: 1">
 <div class="section-subtitle-wrap">
 <div class="section-subtitle-single">
 <img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/687810aa5293f9e8c955c26a_Section Subtitle Icon.svg"/>
@@ -935,7 +955,7 @@
 </section>
 <section class="section services">
 <div class="container">
-<div class="section-title-wrapper" data-w-id="ebae1c82-ecdc-5adb-477c-b019b406fa33" style="opacity: 0">
+<div class="section-title-wrapper" data-w-id="ebae1c82-ecdc-5adb-477c-b019b406fa33" style="opacity: 1">
 <div class="section-subtitle-wrap">
 <div class="section-subtitle-single gray-bg">
 <img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/68a8be303fa5a8c72f1cf197_Section%20Subtitle%20Icon2.svg"/>
@@ -949,7 +969,7 @@
               aman, dan siap produksi untuk kebutuhan bisnis Anda.
             </p>
 </div>
-<div class="services-contenr" data-w-id="017cecda-a5e0-76bd-6275-33e4804df14f" style="opacity: 0">
+<div class="services-contenr" data-w-id="017cecda-a5e0-76bd-6275-33e4804df14f" style="opacity: 1">
 <div class="services-single-wrapper">
 <div class="services-collection-list-wrapper w-dyn-list">
 <div class="services-collection-list w-dyn-items" role="list">
@@ -1087,7 +1107,7 @@
 <section class="section portfolio">
 <div class="portfolio-content-vh" data-w-id="d81279eb-b65a-12ac-3c6b-923ba4aec547">
 <div class="portfolio-sticky">
-<div class="portfolio-top-content" data-w-id="d8bc331c-18b1-e368-99a8-fcb762a865dc" style="opacity: 0">
+<div class="portfolio-top-content" data-w-id="d8bc331c-18b1-e368-99a8-fcb762a865dc" style="opacity: 1">
 <div class="container">
 <div class="section-title-wrapper">
 <div class="section-subtitle-wrap">
@@ -1102,7 +1122,7 @@
 </div>
 </div>
 </div>
-<div class="portfolio-bottom-content" data-w-id="e23b0936-8c9a-3b99-e905-3956027dbd67" style="opacity: 0">
+<div class="portfolio-bottom-content" data-w-id="e23b0936-8c9a-3b99-e905-3956027dbd67" style="opacity: 1">
 <div class="portfolio-ticker-wrapper">
 <div class="portfolio-ticker">
 <div class="portfolio-ticker-flex">
@@ -1222,7 +1242,7 @@
 <section class="section working-process">
 <div class="container">
 <div class="working-process-content">
-<div class="working-process-typography" data-w-id="047b47af-3804-d638-e4c3-f8a568a842a4" style="opacity: 0">
+<div class="working-process-typography" data-w-id="047b47af-3804-d638-e4c3-f8a568a842a4" style="opacity: 1">
 <div class="section-subtitle-wrap left-alignment">
 <div class="section-subtitle-single">
 <img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/687810aa5293f9e8c955c26a_Section Subtitle Icon.svg"/>
@@ -1850,7 +1870,7 @@
 </section>
 <section class="section blog">
 <div class="container">
-<div class="blog-section-title-wrapper" data-w-id="fa61ef6a-25ab-020b-093c-44cf3d5db811" style="opacity: 0">
+<div class="blog-section-title-wrapper" data-w-id="fa61ef6a-25ab-020b-093c-44cf3d5db811" style="opacity: 1">
 <div class="blog-section-title-single-wrapper">
 <div class="section-subtitle-wrap left-alignment">
 <div class="section-subtitle-single">
@@ -1875,7 +1895,7 @@
 </div></a>
 </div>
 </div>
-<div class="blog-content" data-w-id="d2fc4b9d-1861-33bf-fad7-f7c0a5d4684b" style="opacity: 0">
+<div class="blog-content" data-w-id="d2fc4b9d-1861-33bf-fad7-f7c0a5d4684b" style="opacity: 1">
 <div class="blog-collection-list-wrapper w-dyn-list">
 <div class="blog-collection-list w-dyn-items" role="list">
 <div class="blog-collection-list-item w-dyn-item" role="listitem">
