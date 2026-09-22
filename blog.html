@@ -82,109 +82,50 @@
       }
     </style>
 <style id="sai-blog-kinetic-styles">
-      /* ==========================================================================
-         SAI TECH ENTERPRISE: KINETIC MOTION SUITE (PAGE: BLOG.HTML)
-         Fokus Murni: Animasi & Motion Sinematik (1.65s - 1.85s)
-         Tanpa modifikasi visual styling / warna / border bawaan
-         ========================================================================== */
-
-      /* 1. Zoom & Focus Blur (Inner Banner Title) */
-      .sai-zoom-fade {
-        opacity: 0 !important;
-        transform: scale(0.85) translateY(-30px) !important;
-        filter: blur(10px) !important;
-        will-change: transform, opacity, filter;
-        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1),
-                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1),
-                    filter 1.75s cubic-bezier(0.22, 1, 0.36, 1) !important;
-      }
-
-      .sai-zoom-fade.sai-in-view {
+      /* Ensure all content, cards, and text are always visible */
+      html,
+      body,
+      .page-wrapper,
+      .blog-content,
+      .blog-collection-list-wrapper,
+      .blog-collection-list,
+      .blog-collection-list-item,
+      .blog-single,
+      .blog-typography,
+      .inner-banner-title,
+      .inner-banner-description {
+        visibility: visible !important;
         opacity: 1 !important;
-        transform: scale(1) translateY(0) !important;
-        filter: blur(0px) !important;
       }
 
-      /* 2. Slide Down (Banner Description) */
-      .sai-slide-down {
-        opacity: 0 !important;
-        transform: translateY(-40px) !important;
-        will-change: transform, opacity;
-        transition: transform 1.7s cubic-bezier(0.22, 1, 0.36, 1),
-                    opacity 1.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      /* Entrance Animation */
+      .inner-banner-title {
+        animation: heroTextSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
       }
 
-      .sai-slide-down.sai-in-view {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
+      .inner-banner-description {
+        animation: heroTextSlideUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
       }
 
-      /* 3. Tri-Directional Blog Card Convergence (Left, Center, Right) */
-      .blog-collection-list {
-        overflow: hidden !important;
+      .blog-collection-list-item {
+        animation: heroTextSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
       }
 
-      /* Kartu Kolom Kiri: Masuk dari kiri secara halus */
-      .sai-card-left {
-        opacity: 0 !important;
-        transform: translateX(-80px) !important;
-        will-change: transform, opacity;
-        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
-                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s !important;
+      .blog-collection-list-item:hover {
+        transform: translateY(-6px);
       }
 
-      /* Kartu Kolom Tengah: Terangkat dari bawah dengan kedalaman dimensi */
-      .sai-card-center {
-        opacity: 0 !important;
-        transform: translateY(80px) scale(0.95) !important;
-        will-change: transform, opacity;
-        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
-                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s !important;
-      }
-
-      /* Kartu Kolom Kanan: Masuk dari kanan secara halus */
-      .sai-card-right {
-        opacity: 0 !important;
-        transform: translateX(80px) !important;
-        will-change: transform, opacity;
-        transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
-                    opacity 1.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s !important;
-      }
-
-      .sai-card-left.sai-in-view,
-      .sai-card-center.sai-in-view,
-      .sai-card-right.sai-in-view {
-        opacity: 1 !important;
-        transform: translate(0, 0) scale(1) !important;
-      }
-
-      /* Fallback responsif layar tablet / smartphone (<=991px) */
-      @media screen and (max-width: 991px) {
-        .sai-card-left,
-        .sai-card-center,
-        .sai-card-right {
-          transform: translateY(55px) scale(0.96) !important;
+      @keyframes heroTextSlideUp {
+        0% {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
-
-      /* 4. Footer Kinetic Fade */
-      .sai-footer-fade {
-        opacity: 0 !important;
-        transform: translateY(35px) !important;
-        will-change: transform, opacity;
-        transition: transform 1.7s cubic-bezier(0.22, 1, 0.36, 1),
-                    opacity 1.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
-      }
-
-      .sai-footer-fade.sai-in-view {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-      }
-
-      /* 5. Stagger Delays */
-      .sai-delay-1 { transition-delay: 0.15s !important; }
-      .sai-delay-2 { transition-delay: 0.30s !important; }
-      .sai-delay-3 { transition-delay: 0.45s !important; }
     </style>
 </head>
 <body>
@@ -645,104 +586,73 @@
 <script src="assets/ritovex/webflow.31837de7.1756091d1d28d78f.js" type="text/javascript"></script>
 <script src="assets/ritovex/motion.js?v=9.0" type="text/javascript"></script>
 <script id="sai-kinetic-suite">
-      (function() {
-        var motionSelectors = [
-          '.sai-zoom-fade',
-          '.sai-slide-down',
-          '.sai-card-left',
-          '.sai-card-center',
-          '.sai-card-right',
-          '.sai-footer-fade'
-        ];
+  (function() {
+    document.querySelectorAll('.sai-zoom-fade, .sai-slide-down, .sai-card-left, .sai-card-center, .sai-card-right, .sai-footer-fade').forEach(function(el) {
+      el.classList.add('sai-in-view');
+    });
+  })();
+</script>
 
-        var allMotionElements = document.querySelectorAll(motionSelectors.join(', '));
-        if (!allMotionElements.length) return;
+<script>
+  function renderDynamicArticles(articles) {
+    var listElem = document.querySelector('.blog-collection-list');
+    if (!listElem || !articles || !articles.length) return;
 
-        if ('IntersectionObserver' in window) {
-          var motionObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('sai-in-view');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -120px 0px'
-          });
+    var html = '';
+    articles.forEach(function(a, idx) {
+      var singleHref = 'blog-single?article=' + encodeURIComponent(a.slug || a.id);
+      var imgUrl = a.image_url || ('assets/ritovex/0' + ((idx % 4) + 1) + '.png');
 
-          allMotionElements.forEach(function(el) {
-            motionObserver.observe(el);
-          });
-        } else {
-          allMotionElements.forEach(function(el) {
-            el.classList.add('sai-in-view');
-          });
+      html += '<div class="blog-collection-list-item w-dyn-item" role="listitem" style="opacity: 1 !important; visibility: visible !important;">';
+      html += '  <div class="blog-single">';
+      html += '    <a class="blog-image-wrapper w-inline-block" href="' + singleHref + '">';
+      html += '      <img alt="' + escapeHtml(a.title) + '" class="blog-image" loading="lazy" src="' + escapeHtml(imgUrl) + '" />';
+      html += '    </a>';
+      html += '    <div class="blog-typography">';
+      html += '      <div class="blog-category-tag-date-wrapper">';
+      html += '        <div class="blog-category">' + escapeHtml(a.category || 'AI Riset') + '</div>';
+      html += '        <div class="blog-date-wrapper">';
+      html += '          <img alt="Date" loading="lazy" src="assets/ritovex/688ebdbfcf1bd5a5f84021f3_Blog%20Date%20Icon.svg"/>';
+      html += '          <div class="blog-date">' + escapeHtml(a.date || '14 September 2026') + '</div>';
+      html += '        </div>';
+      html += '      </div>';
+      html += '      <div class="blog-title-description">';
+      html += '        <a class="blog-title" href="' + singleHref + '">' + escapeHtml(a.title) + '</a>';
+      html += '        <p class="blog-description-text">' + escapeHtml(a.excerpt || '') + '</p>';
+      html += '      </div>';
+      html += '    </div>';
+      html += '  </div>';
+      html += '</div>';
+    });
+
+    listElem.innerHTML = html;
+  }
+
+  function loadDynamicArticles() {
+    fetch('/api/articles')
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data && data.status === 'success' && data.articles && data.articles.length > 0) {
+          renderDynamicArticles(data.articles);
         }
-      })();
-    </script>
+      })
+      .catch(function(err) {
+        console.warn('Error fetching dynamic articles:', err);
+      });
+  }
 
-    <script>
-      function renderDynamicArticles(articles) {
-        var listElem = document.querySelector('.blog-collection-list');
-        if (!listElem || !articles || !articles.length) return;
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
 
-        var html = '';
-        articles.forEach(function(a, idx) {
-          var animClass = (idx % 3 === 0) ? 'sai-card-left' : (idx % 3 === 1) ? 'sai-card-center' : 'sai-card-right';
-          var singleHref = 'blog-single?article=' + encodeURIComponent(a.slug || a.id);
-          var imgUrl = a.image_url || ('assets/ritovex/0' + ((idx % 4) + 1) + '.png');
-
-          html += '<div class="blog-collection-list-item w-dyn-item ' + animClass + '" role="listitem">';
-          html += '  <div class="blog-single">';
-          html += '    <a class="blog-image-wrapper w-inline-block" href="' + singleHref + '">';
-          html += '      <img alt="' + escapeHtml(a.title) + '" class="blog-image" loading="lazy" src="' + escapeHtml(imgUrl) + '" />';
-          html += '    </a>';
-          html += '    <div class="blog-typography">';
-          html += '      <div class="blog-category-tag-date-wrapper">';
-          html += '        <div class="blog-category">' + escapeHtml(a.category || 'AI Riset') + '</div>';
-          html += '        <div class="blog-date-wrapper">';
-          html += '          <img alt="Date" loading="lazy" src="assets/ritovex/688ebdbfcf1bd5a5f84021f3_Blog%20Date%20Icon.svg"/>';
-          html += '          <div class="blog-date">' + escapeHtml(a.date || '14 September 2026') + '</div>';
-          html += '        </div>';
-          html += '      </div>';
-          html += '      <div class="blog-title-description">';
-          html += '        <a class="blog-title" href="' + singleHref + '">' + escapeHtml(a.title) + '</a>';
-          html += '        <p class="blog-description-text">' + escapeHtml(a.excerpt || '') + '</p>';
-          html += '      </div>';
-          html += '    </div>';
-          html += '  </div>';
-          html += '</div>';
-        });
-
-        listElem.innerHTML = html;
-      }
-
-      function loadDynamicArticles() {
-        fetch('/api/articles')
-          .then(function(res) { return res.json(); })
-          .then(function(data) {
-            if (data && data.status === 'success' && data.articles && data.articles.length > 0) {
-              renderDynamicArticles(data.articles);
-            }
-          })
-          .catch(function(err) {
-            console.warn('Error fetching dynamic articles:', err);
-          });
-      }
-
-      function escapeHtml(str) {
-        if (!str) return '';
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
-      }
-
-      window.addEventListener('DOMContentLoaded', loadDynamicArticles);
-    </script>
+  loadDynamicArticles();
+</script>
 
 </body>
 </html>

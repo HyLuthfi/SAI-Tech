@@ -2843,11 +2843,19 @@
       if (view === 'products') {
         if (tabProducts) tabProducts.classList.add('active');
         if (viewProducts) viewProducts.style.display = 'block';
-        if (allProducts.length === 0) fetchProductsAdmin();
+        if (allProducts.length === 0) {
+          fetchProductsAdmin();
+        } else {
+          renderProductsAdmin();
+        }
       } else if (view === 'articles') {
         if (tabArticles) tabArticles.classList.add('active');
         if (viewArticles) viewArticles.style.display = 'block';
-        if (allArticles.length === 0) fetchArticlesAdmin();
+        if (allArticles.length === 0) {
+          fetchArticlesAdmin();
+        } else {
+          renderArticlesAdmin();
+        }
       } else {
         if (tabOrders) tabOrders.classList.add('active');
         if (viewOrders) viewOrders.style.display = 'block';
