@@ -693,35 +693,28 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 420px;
+      max-width: 380px;
       text-align: center;
     }
 
-    /* Status badge */
-    .auth-status-badge {
-      display: inline-flex;
+    /* Emblem Icon */
+    .auth-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(224, 189, 106, 0.08);
+      border: 1px solid rgba(224, 189, 106, 0.25);
+      display: flex;
       align-items: center;
-      gap: 7px;
-      background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.22);
-      border-radius: 99px;
-      padding: 5px 13px 5px 10px;
-      margin-bottom: 26px;
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      color: rgba(34, 197, 94, 0.85);
-      text-transform: uppercase;
+      justify-content: center;
+      margin: 0 auto 24px auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .auth-status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      flex-shrink: 0;
-      animation: auth-pulse-dot 2.2s ease-in-out infinite;
+    .auth-icon-img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
     }
 
     .auth-title {
@@ -729,25 +722,20 @@
       font-size: 26px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: -0.03em;
       line-height: 1.2;
     }
 
     .auth-sub {
-      font-size: 13px;
-      color: #9494a8;
-      line-height: 1.65;
-      margin-bottom: 30px;
-      max-width: 360px;
+      font-size: 13.5px;
+      color: #8f8fa3;
+      line-height: 1.55;
+      margin-bottom: 32px;
+      max-width: 320px;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    .auth-divider {
-      height: 1px;
-      background: rgba(255,255,255,0.07);
-      margin-bottom: 24px;
+      font-family: 'Inter', sans-serif;
     }
 
     .auth-error-box {
@@ -793,37 +781,6 @@
     .btn-dev-bypass:hover {
       background: rgba(21, 128, 61, 0.95);
       border-color: rgba(34, 197, 94, 0.6);
-    }
-
-    /* Security info box (right column bottom) */
-    .auth-security-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 10px;
-      padding: 13px 15px;
-      margin-top: 20px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .auth-security-row {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      color: #767588;
-      line-height: 1.3;
-    }
-
-    .auth-telemetry-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(224, 189, 106, 0.45);
-      flex-shrink: 0;
     }
 
     /* Right column footer */
@@ -1055,21 +1012,18 @@
       <!-- Form console -->
       <div class="auth-console">
 
-        <!-- Status Badge -->
-        <div class="auth-status-badge">
-          <span class="auth-status-dot"></span>
-          RESTRICTED ACCESS // LEVEL-1 CONSOLE
+        <!-- Emblem / Brand Icon -->
+        <div class="auth-icon-wrap">
+          <img src="assets/ritovex/saitech-emblem-white.png" alt="SAI Tech" class="auth-icon-img" />
         </div>
 
-        <h2 class="auth-title">Portal Admin SAI Tech</h2>
-        <p class="auth-sub">Masuk dengan akun Google resmi administrator untuk mengelola pesanan, verifikasi transaksi QRIS, dan lisensi digital.</p>
-
-        <div class="auth-divider"></div>
+        <h2 class="auth-title">Masuk ke Portal Admin</h2>
+        <p class="auth-sub">Gunakan akun Google administrator yang terdaftar.</p>
 
         <div class="auth-error-box" id="authErrorMsg"></div>
 
         <!-- Google Sign In Button Target -->
-        <div id="gsiButtonContainer" style="display: flex; justify-content: center; min-height: 44px; margin-bottom: 12px;">
+        <div id="gsiButtonContainer" style="display: flex; justify-content: center; min-height: 44px; margin: 20px 0 16px;">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9494a8; padding: 10px;">Menghubungkan ke layanan Google...</div>
         </div>
 
@@ -1093,18 +1047,6 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
               <span>Masuk Mode Pengembang (Bypass)</span>
             </button>
-          </div>
-        </div>
-
-        <!-- Security Info Box -->
-        <div class="auth-security-box">
-          <div class="auth-security-row">
-            <span class="auth-telemetry-dot"></span>
-            <span>WHITELIST — luthfirg2502@gmail.com</span>
-          </div>
-          <div class="auth-security-row">
-            <span class="auth-telemetry-dot"></span>
-            <span>TLS 1.3 // Zero-Trust Session Token</span>
           </div>
         </div>
 
