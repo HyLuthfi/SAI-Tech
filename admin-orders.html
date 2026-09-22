@@ -1032,12 +1032,7 @@
         <!-- Unconfigured Notice / Localhost Dev Bypass -->
         <div id="unconfiguredNotice" style="display: none;">
           <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #fbbf24; margin-bottom: 12px; text-align: left; line-height: 1.5; font-family: 'JetBrains Mono', monospace;">
-            <strong style="color: #fcd34d;">CLIENT ID TIDAK DITEMUKAN —</strong> Masukkan Google Cloud Console Client ID untuk mengaktifkan autentikasi.
-            <div style="margin-top: 10px;">
-              <button onclick="openConfigModal()" style="background: rgba(224,189,106,0.15); color: #e0bd6a; border: 1px solid rgba(224,189,106,0.35); padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; transition: background 0.2s;">
-                [ KONFIGURASI CLIENT ID ]
-              </button>
-            </div>
+            <strong style="color: #fcd34d;">CLIENT ID TIDAK DITEMUKAN —</strong> Masukkan Google Cloud Console Client ID di file konfigurasi server untuk mengaktifkan autentikasi.
           </div>
 
           <div class="auth-dev-box" id="devBypassBox" style="display: none;">
@@ -1086,10 +1081,6 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         <span>Lihat Web</span>
       </a>
-      <button class="btn-nav" onclick="openConfigModal()" title="Pengaturan OAuth &amp; Whitelist">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        <span>Whitelist</span>
-      </button>
       <button class="btn-nav btn-nav-danger" onclick="logoutAdmin()" title="Kunci Dashboard">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
         <span>Keluar</span>
@@ -1305,46 +1296,6 @@
     </div>
   </div>
 
-  <!-- MODAL: Pengaturan Google OAuth & Whitelist -->
-  <div class="modal-backdrop" id="modalConfig">
-    <div class="modal-panel" style="max-width: 480px;">
-      <div class="modal-header">
-        <h3 class="modal-title">Pengaturan Google OAuth &amp; Whitelist</h3>
-        <button class="modal-close-btn" onclick="closeModal('modalConfig')">×</button>
-      </div>
-
-      <div style="background: #f6f6f9; border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 12px; color: #5d5c6b; line-height: 1.45;">
-        <strong style="color: #00004d;">Keamanan Google Sign-In:</strong> Hanya email admin yang terdaftar di daftar whitelist di bawah yang diizinkan mengakses dashboard.
-      </div>
-
-      <form onsubmit="handleSaveConfig(event)">
-        <div class="modal-form-group">
-          <label class="modal-label">Google Client ID</label>
-          <input class="modal-input" id="cfgGoogleClientId" placeholder="Contoh: 123456789-xxxx.apps.googleusercontent.com" type="text" />
-          <div style="font-size: 11.5px; color: #656473; margin-top: 5px; line-height: 1.4;">
-            Dapatkan di <strong>Google Cloud Console</strong> &rarr; <em>Credentials</em> &rarr; <em>OAuth client ID</em> (Web application). Pastikan Authorized JavaScript origins mencakup <code>http://localhost:3000</code>.
-          </div>
-        </div>
-
-        <div class="modal-form-group">
-          <label class="modal-label">Whitelist Email Admin (1 Email per Baris)</label>
-          <textarea class="modal-input" id="cfgAllowedEmails" rows="4" style="resize: vertical; font-family: monospace; font-size: 12px;" placeholder="owner@saitech.id&#10;admin@saitech.id&#10;email-anda@gmail.com"></textarea>
-          <div style="font-size: 11.5px; color: #656473; margin-top: 5px;">
-            Hanya email di atas yang dapat login setelah verifikasi Google.
-          </div>
-        </div>
-
-        <div class="auth-error-box" id="cfgErrorMsg"></div>
-
-        <div style="display: flex; gap: 10px; margin-top: 18px;">
-          <button class="btn-action btn-action-check" type="submit" style="flex: 1; justify-content: center; padding: 12px; font-size: 13.5px;">
-            <span>Simpan Konfigurasi</span>
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- Toast Message -->
   <div class="toast-msg" id="toastMsg">Pesanan diperbarui</div>
 
@@ -1391,7 +1342,6 @@
         .then(function(res) { return res.json(); })
         .then(function(cfg) {
           authConfig = cfg;
-          populateConfigForm(cfg);
 
           var notice = document.getElementById('unconfiguredNotice');
           var devBox = document.getElementById('devBypassBox');
@@ -1937,55 +1887,6 @@
       document.getElementById('lightboxCaption').textContent = 'Bukti Transfer Pesanan ' + caption;
       document.getElementById('lightboxDownloadBtn').href = imgUrl;
       openModal('modalLightbox');
-    }
-
-    // Config & Whitelist Modal Logic
-    function populateConfigForm(cfg) {
-      if (!cfg) return;
-      document.getElementById('cfgGoogleClientId').value = cfg.google_client_id || '';
-      document.getElementById('cfgAllowedEmails').value = (cfg.allowed_emails || []).join('\n');
-    }
-
-    function openConfigModal() {
-      var err = document.getElementById('cfgErrorMsg');
-      if (err) err.style.display = 'none';
-      if (authConfig) {
-        populateConfigForm(authConfig);
-      }
-      openModal('modalConfig');
-    }
-
-    function handleSaveConfig(e) {
-      e.preventDefault();
-      var clientId = (document.getElementById('cfgGoogleClientId').value || '').trim();
-      var rawEmails = (document.getElementById('cfgAllowedEmails').value || '').split('\n');
-      var emails = rawEmails.map(function(s) { return s.trim().toLowerCase(); }).filter(Boolean);
-      var err = document.getElementById('cfgErrorMsg');
-
-      fetch('/api/admin/auth/config', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + currentToken
-        },
-        body: JSON.stringify({
-          token: currentToken,
-          google_client_id: clientId,
-          allowed_emails: emails
-        })
-      }).then(function(res) {
-        return res.json().then(function(data) {
-          if (!res.ok) throw new Error(data.message || 'Gagal menyimpan konfigurasi');
-          return data;
-        });
-      }).then(function(data) {
-        showToast('Konfigurasi Google OAuth & Whitelist disimpan');
-        closeModal('modalConfig');
-        loadAuthConfig();
-      }).catch(function(error) {
-        err.textContent = error.message;
-        err.style.display = 'block';
-      });
     }
 
     // Generic Modal Functions

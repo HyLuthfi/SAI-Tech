@@ -413,39 +413,6 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 self.send_json_response(500, {'status': 'error', 'message': str(e)})
                 return
 
-        elif path == '/api/admin/auth/config':
-            try:
-                content_length = int(self.headers.get('Content-Length', 0))
-                body = self.rfile.read(content_length).decode('utf-8')
-                data = json.loads(body)
-                token = self.get_auth_token(data)
-                cfg = get_admin_config()
-
-                client_ip = self.get_client_ip()
-                is_local = client_ip in ('127.0.0.1', '::1', 'localhost')
-
-                # Allow update if valid admin session, OR if client_id is empty on localhost
-                if not is_valid_admin_token(token) and not (is_local and not cfg.get('google_client_id')):
-                    self.send_json_response(401, {'status': 'error', 'message': 'Sesi admin diperlukan untuk mengubah konfigurasi'})
-                    return
-
-                if 'google_client_id' in data:
-                    cfg['google_client_id'] = str(data['google_client_id']).strip()
-                if 'allowed_emails' in data and isinstance(data['allowed_emails'], list):
-                    cfg['allowed_emails'] = [str(e).strip().lower() for e in data['allowed_emails'] if str(e).strip()]
-                save_admin_config(cfg)
-
-                self.send_json_response(200, {
-                    'status': 'success',
-                    'message': 'Pengaturan Google OAuth & Whitelist berhasil disimpan',
-                    'google_client_id': cfg.get('google_client_id', ''),
-                    'allowed_emails': cfg.get('allowed_emails', [])
-                })
-                return
-            except Exception as e:
-                self.send_json_response(500, {'status': 'error', 'message': str(e)})
-                return
-
         elif path == '/api/admin/auth/logout':
             try:
                 token = self.get_auth_token()
@@ -627,7 +594,6 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
             self.send_json_response(200, {
                 'configured': bool(cfg.get('google_client_id')),
                 'google_client_id': cfg.get('google_client_id', ''),
-                'allowed_emails': cfg.get('allowed_emails', []),
                 'is_localhost': is_local,
                 'dev_mode_allowed': cfg.get('dev_mode_allowed', True) and is_local
             })
