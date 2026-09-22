@@ -540,7 +540,11 @@
       color: #a0a0b2;
     }
 
-    /* Auth Gate Overlay */@keyframes auth-pulse-dot {
+    /* =============================================
+       AUTH GATE — FULL PAGE SPLIT-SCREEN ENTERPRISE
+       ============================================= */
+
+    @keyframes auth-pulse-dot {
       0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
       50% { opacity: 0.7; box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
     }
@@ -550,80 +554,236 @@
       100% { background-position: 40px 40px; }
     }
 
-    @keyframes auth-glow-pulse {
-      0%, 100% { opacity: 0.45; }
-      50% { opacity: 0.7; }
-    }
-
+    /* Full-screen container */
     .auth-gate-overlay {
       position: fixed;
       inset: 0;
-      background: #060814;
+      min-height: 100vh;
+      width: 100vw;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 24px;
+      z-index: 99999;
+      background: #060814;
       overflow: hidden;
     }
 
-    .auth-gate-overlay::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(ellipse 70% 55% at 50% 38%, #00004d 0%, transparent 70%);
-      animation: auth-glow-pulse 6s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .auth-gate-overlay::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
-      background-size: 28px 28px;
-      animation: auth-grid-drift 18s linear infinite;
-      pointer-events: none;
-      opacity: 0.5;
-    }
-
-    .auth-card {
-      background: #0d1024;
-      border-radius: 20px;
-      padding: 42px 38px;
-      max-width: 448px;
-      width: 100%;
-      text-align: center;
-      box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.7),
-        0 0 0 1px rgba(224, 189, 106, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    /* ---- LEFT COLUMN: Brand & Sovereign AI Showcase ---- */
+    .auth-split-left {
+      flex: 0 0 55%;
+      width: 55%;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 64px 72px;
       overflow: hidden;
+    }
+
+    .auth-split-left-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/ritovex/about_ai_datacenter.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .auth-split-left-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(6, 8, 20, 0.92) 0%, rgba(0, 0, 77, 0.85) 60%, rgba(6, 8, 20, 0.95) 100%);
       z-index: 1;
     }
 
-    .auth-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 18%;
-      right: 18%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(224, 189, 106, 0.6), transparent);
+    .auth-left-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
     }
 
-    .auth-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 30%;
-      right: 30%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(224, 189, 106, 0.2), transparent);
+    .auth-left-logo-wrap {
+      display: block;
     }
 
+    .auth-left-logo {
+      height: 40px;
+      width: auto;
+      filter: drop-shadow(0 2px 16px rgba(224, 189, 106, 0.25));
+    }
+
+    .auth-left-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 0 36px;
+    }
+
+    .auth-left-headline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(22px, 2.2vw, 32px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.22;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .auth-left-sub {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.65;
+      max-width: 460px;
+      margin-bottom: 40px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Metric cards */
+    .auth-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .auth-metric-card {
+      background: rgba(6, 8, 20, 0.55);
+      border: 1px solid rgba(224, 189, 106, 0.2);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .auth-metric-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(224, 189, 106, 0.12);
+      border: 1px solid rgba(224, 189, 106, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #e0bd6a;
+    }
+
+    .auth-metric-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .auth-metric-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(224, 189, 106, 0.7);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Bottom telemetry strip */
+    .auth-left-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 22px;
+    }
+
+    .auth-tele-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.42);
+      letter-spacing: 0.05em;
+    }
+
+    .auth-tele-dot-green {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
+      animation: auth-pulse-dot 2.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    .auth-tele-dot-gold {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #e0bd6a;
+      flex-shrink: 0;
+    }
+
+    /* ---- RIGHT COLUMN: Authentication Console ---- */
+    .auth-split-right {
+      flex: 0 0 45%;
+      width: 45%;
+      min-height: 100vh;
+      background: #080a18;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 40px;
+      overflow-y: auto;
+    }
+
+    .auth-split-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.028) 1px, transparent 1px);
+      background-size: 26px 26px;
+      animation: auth-grid-drift 22s linear infinite;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    /* Back link top-right */
+    .auth-back-link {
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+      z-index: 3;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .auth-back-link:hover {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Form console container */
+    .auth-console {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    /* Status badge */
     .auth-status-badge {
       display: inline-flex;
       align-items: center;
@@ -632,7 +792,7 @@
       border: 1px solid rgba(34, 197, 94, 0.22);
       border-radius: 99px;
       padding: 5px 13px 5px 10px;
-      margin-bottom: 22px;
+      margin-bottom: 26px;
       font-family: 'JetBrains Mono', 'Courier New', monospace;
       font-size: 10px;
       font-weight: 500;
@@ -650,33 +810,22 @@
       animation: auth-pulse-dot 2.2s ease-in-out infinite;
     }
 
-    .auth-logo-block {
-      margin: 0 auto 20px auto;
-    }
-
-    .auth-logo-img {
-      height: 38px;
-      width: auto;
-      opacity: 0.96;
-      filter: drop-shadow(0 2px 12px rgba(224, 189, 106, 0.2));
-    }
-
     .auth-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 8px;
-      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
       line-height: 1.2;
     }
 
     .auth-sub {
       font-size: 13px;
       color: #9494a8;
-      line-height: 1.6;
-      margin-bottom: 26px;
-      max-width: 320px;
+      line-height: 1.65;
+      margin-bottom: 30px;
+      max-width: 360px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -684,7 +833,7 @@
     .auth-divider {
       height: 1px;
       background: rgba(255,255,255,0.07);
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .auth-error-box {
@@ -732,21 +881,24 @@
       border-color: rgba(34, 197, 94, 0.6);
     }
 
-    .auth-telemetry {
-      margin-top: 22px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+    /* Security info box (right column bottom) */
+    .auth-security-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: 13px 15px;
+      margin-top: 20px;
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
     }
 
-    .auth-telemetry-row {
+    .auth-security-row {
       display: flex;
       align-items: center;
       gap: 7px;
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 10.5px;
       color: #767588;
       line-height: 1.3;
@@ -760,9 +912,43 @@
       flex-shrink: 0;
     }
 
+    /* Right column footer */
+    .auth-right-footer {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.2);
+      font-family: 'Inter', sans-serif;
+      z-index: 2;
+      padding: 0 24px;
+    }
+
     /* Google button dark wrapper override */
     #gsiButtonContainer iframe {
       border-radius: 8px !important;
+    }
+
+    /* ---- RESPONSIVE: mobile hides left column ---- */
+    @media (max-width: 991px) {
+      .auth-split-left {
+        display: none;
+      }
+      .auth-split-right {
+        flex: 0 0 100%;
+        width: 100%;
+        min-height: 100vh;
+        padding: 60px 24px 80px;
+      }
+      .auth-back-link {
+        top: 20px;
+        right: 20px;
+      }
+      .auth-right-footer {
+        bottom: 20px;
+      }
     }
 
     /* Modal Generic */
@@ -921,69 +1107,143 @@
 </head>
 <body>
 
-  <!-- Google Authentication Gate -->
+  <!-- Google Authentication Gate — Full Page Split-Screen -->
   <div class="auth-gate-overlay" id="authGate">
-    <div class="auth-card">
 
-      <!-- Status Badge -->
-      <div class="auth-status-badge">
-        <span class="auth-status-dot"></span>
-        RESTRICTED ACCESS // LEVEL-1 CONSOLE
+    <!-- LEFT COLUMN: Brand & Sovereign AI Showcase -->
+    <div class="auth-split-left">
+      <div class="auth-split-left-bg"></div>
+      <div class="auth-split-left-overlay"></div>
+      <div class="auth-left-content">
+
+        <!-- Logo top-left -->
+        <div class="auth-left-logo-wrap">
+          <img src="assets/ritovex/saitech-horizontal-white.png" alt="SAI Tech" class="auth-left-logo" />
+        </div>
+
+        <!-- Headline + Metrics center -->
+        <div class="auth-left-body">
+          <h1 class="auth-left-headline">Sovereign AI Infrastructure<br>&amp; Real-Time Enterprise<br>Operations.</h1>
+          <p class="auth-left-sub">Platform terpadu untuk orkestrasi pesanan digital, verifikasi QRIS instan, dan manajemen lisensi berbasis infrastruktur AI sovereign on-premise SAI Tech.</p>
+
+          <div class="auth-metrics">
+            <div class="auth-metric-card">
+              <div class="auth-metric-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <div>
+                <div class="auth-metric-value">99.85%</div>
+                <div class="auth-metric-label">Edge Vision Accuracy — TensorRT On-Premise</div>
+              </div>
+            </div>
+            <div class="auth-metric-card">
+              <div class="auth-metric-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div>
+                <div class="auth-metric-value">0% Data Leakage</div>
+                <div class="auth-metric-label">Isolated Financial &amp; Gov RAG — Zero Exfiltration</div>
+              </div>
+            </div>
+            <div class="auth-metric-card">
+              <div class="auth-metric-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="auth-metric-value">&lt;45ms Latency</div>
+                <div class="auth-metric-label">Sub-Second Inference — Real-Time Edge Compute</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom telemetry -->
+        <div class="auth-left-telemetry">
+          <div class="auth-tele-item">
+            <span class="auth-tele-dot-green"></span>
+            <span>SYSTEM STATUS: ALL NODES OPERATIONAL</span>
+          </div>
+          <div class="auth-tele-item">
+            <span class="auth-tele-dot-gold"></span>
+            <span>ENCRYPTION: TLS 1.3 // SHA-256</span>
+          </div>
+        </div>
+
       </div>
+    </div>
 
-      <!-- Logo -->
-      <div class="auth-logo-block">
-        <img src="assets/ritovex/saitech-horizontal-white.png" alt="SAI Tech" class="auth-logo-img" />
-      </div>
+    <!-- RIGHT COLUMN: Authentication Console -->
+    <div class="auth-split-right">
+      <!-- Back to home link -->
+      <a href="/" class="auth-back-link">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Kembali ke Beranda
+      </a>
 
-      <h2 class="auth-title">Portal Admin SAI Tech</h2>
-      <p class="auth-sub">Masuk dengan akun Google resmi admin. Akses diverifikasi ketat terhadap Whitelist Email Perusahaan.</p>
+      <!-- Form console -->
+      <div class="auth-console">
 
-      <div class="auth-divider"></div>
+        <!-- Status Badge -->
+        <div class="auth-status-badge">
+          <span class="auth-status-dot"></span>
+          RESTRICTED ACCESS // LEVEL-1 CONSOLE
+        </div>
 
-      <div class="auth-error-box" id="authErrorMsg"></div>
+        <h2 class="auth-title">Portal Admin SAI Tech</h2>
+        <p class="auth-sub">Masuk dengan akun Google resmi administrator untuk mengelola pesanan, verifikasi transaksi QRIS, dan lisensi digital.</p>
 
-      <!-- Google Sign In Button Target -->
-      <div id="gsiButtonContainer" style="display: flex; justify-content: center; min-height: 44px; margin-bottom: 12px;">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9494a8; padding: 10px;">Menghubungkan ke layanan Google...</div>
-      </div>
+        <div class="auth-divider"></div>
 
-      <!-- Unconfigured Notice / Localhost Dev Bypass -->
-      <div id="unconfiguredNotice" style="display: none;">
-        <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #fbbf24; margin-bottom: 12px; text-align: left; line-height: 1.5; font-family: 'JetBrains Mono', monospace;">
-          <strong style="color: #fcd34d;">CLIENT ID TIDAK DITEMUKAN —</strong> Masukkan Google Cloud Console Client ID untuk mengaktifkan autentikasi.
-          <div style="margin-top: 10px;">
-            <button onclick="openConfigModal()" style="background: rgba(224,189,106,0.15); color: #e0bd6a; border: 1px solid rgba(224,189,106,0.35); padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; transition: background 0.2s;">
-              [ KONFIGURASI CLIENT ID ]
+        <div class="auth-error-box" id="authErrorMsg"></div>
+
+        <!-- Google Sign In Button Target -->
+        <div id="gsiButtonContainer" style="display: flex; justify-content: center; min-height: 44px; margin-bottom: 12px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9494a8; padding: 10px;">Menghubungkan ke layanan Google...</div>
+        </div>
+
+        <!-- Unconfigured Notice / Localhost Dev Bypass -->
+        <div id="unconfiguredNotice" style="display: none;">
+          <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #fbbf24; margin-bottom: 12px; text-align: left; line-height: 1.5; font-family: 'JetBrains Mono', monospace;">
+            <strong style="color: #fcd34d;">CLIENT ID TIDAK DITEMUKAN —</strong> Masukkan Google Cloud Console Client ID untuk mengaktifkan autentikasi.
+            <div style="margin-top: 10px;">
+              <button onclick="openConfigModal()" style="background: rgba(224,189,106,0.15); color: #e0bd6a; border: 1px solid rgba(224,189,106,0.35); padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; transition: background 0.2s;">
+                [ KONFIGURASI CLIENT ID ]
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-dev-box" id="devBypassBox" style="display: none;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #4ade80; margin-bottom: 4px; letter-spacing: 0.07em; text-transform: uppercase;">// LOCALHOST DEV MODE</div>
+            <div style="font-size: 11.5px; color: #86efac; margin-bottom: 10px; line-height: 1.4;">
+              Session localhost terdeteksi. Bypass tersedia untuk pengujian lokal.
+            </div>
+            <button class="btn-dev-bypass" onclick="executeDevBypass()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+              <span>Masuk Mode Pengembang (Bypass)</span>
             </button>
           </div>
         </div>
 
-        <div class="auth-dev-box" id="devBypassBox" style="display: none;">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #4ade80; margin-bottom: 4px; letter-spacing: 0.07em; text-transform: uppercase;">// LOCALHOST DEV MODE</div>
-          <div style="font-size: 11.5px; color: #86efac; margin-bottom: 10px; line-height: 1.4;">
-            Session localhost terdeteksi. Bypass tersedia untuk pengujian lokal.
+        <!-- Security Info Box -->
+        <div class="auth-security-box">
+          <div class="auth-security-row">
+            <span class="auth-telemetry-dot"></span>
+            <span>WHITELIST — luthfirg2502@gmail.com</span>
           </div>
-          <button class="btn-dev-bypass" onclick="executeDevBypass()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
-            <span>Masuk Mode Pengembang (Bypass)</span>
-          </button>
+          <div class="auth-security-row">
+            <span class="auth-telemetry-dot"></span>
+            <span>TLS 1.3 // Zero-Trust Session Token</span>
+          </div>
         </div>
+
       </div>
 
-      <!-- Security Telemetry Footer -->
-      <div class="auth-telemetry">
-        <div class="auth-telemetry-row">
-          <span class="auth-telemetry-dot"></span>
-          <span>WHITELIST — luthfirg2502@gmail.com</span>
-        </div>
-        <div class="auth-telemetry-row">
-          <span class="auth-telemetry-dot"></span>
-          <span>TLS 1.3 // Zero-Trust Session Token</span>
-        </div>
+      <!-- Right column footer -->
+      <div class="auth-right-footer">
+        © 2026 PT Solusi Agen Indonesia (SAI Tech). All rights reserved.
       </div>
-
     </div>
+
   </div>
 
   <!-- Main Admin Interface -->
