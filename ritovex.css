@@ -11922,38 +11922,100 @@ a, button, input, textarea {
   100% { transform: translateY(48px); }
 }
 
+.banner-typography,
 .inner-banner-typography,
 .about-us-banner-typography,
 .pricing-typography {
   position: relative;
   z-index: 1;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
+.banner-subtitle-wrapper,
 .inner-banner-title,
 .about-us-banner-title,
 .pricing-banner-title {
   animation: heroTextSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both !important;
 }
 
+.banner-title {
+  animation: heroTextSlideUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both !important;
+}
+
+.banner-description-text,
 .inner-banner-description,
 .about-us-banner-description,
 .pricing-banner-description {
-  animation: heroTextSlideUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both !important;
+  animation: heroTextSlideUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both !important;
 }
 
+.banner-button-wrapper,
 .services-button-wrapper,
 .about-us-banner-button-wrapper {
-  animation: heroTextSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both !important;
+  animation: heroTextSlideUp 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both !important;
 }
 
+.banner-image-wrapper,
 .services-banner-image-wrapper {
-  animation: bannerFloat 6s ease-in-out infinite alternate !important;
+  animation: bannerFloat 6s ease-in-out 1.2s infinite alternate !important;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease !important;
+  position: relative !important;
 }
 
+.banner-image-wrapper:hover,
 .services-banner-image-wrapper:hover {
   transform: translateY(-6px) scale(1.02) !important;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 35px rgba(224, 189, 106, 0.25) !important;
+}
+
+.banner-image {
+  animation: heroImageEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both !important;
+}
+
+.banner-image-wrapper .image-overlay-left {
+  animation: curtainRevealLeft 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards !important;
+  transform-origin: left center !important;
+}
+
+.banner-image-wrapper .image-overlay-right {
+  animation: curtainRevealRight 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards !important;
+  transform-origin: right center !important;
+}
+
+@keyframes curtainRevealLeft {
+  0% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes curtainRevealRight {
+  0% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes heroImageEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes bannerFloat {
