@@ -1,9 +1,7 @@
 {
   "google_client_id": "812872192102-ohs88jgciq99maoubd8adpmcir8klt43.apps.googleusercontent.com",
   "allowed_emails": [
-    "luthfirg2502@gmail.com",
-    "owner@saitech.id",
-    "admin@saitech.id"
+    "luthfirg2502@gmail.com"
   ],
   "dev_mode_allowed": true,
   "token_salt": "sai_tech_secure_salt_2026"

@@ -37,7 +37,7 @@ def get_admin_config():
     load_dotenv()
     cfg = {
         "google_client_id": os.environ.get("GOOGLE_CLIENT_ID", "").strip(),
-        "allowed_emails": [e.strip().lower() for e in os.environ.get("ADMIN_ALLOWED_EMAILS", "owner@saitech.id,admin@saitech.id").split(",") if e.strip()],
+        "allowed_emails": [e.strip().lower() for e in os.environ.get("ADMIN_ALLOWED_EMAILS", "luthfirg2502@gmail.com").split(",") if e.strip()],
         "dev_mode_allowed": os.environ.get("DEV_MODE_ALLOWED", "true").lower() in ("true", "1", "yes"),
         "pin": "1234",
         "token_salt": "sai_tech_secure_salt_2026"
