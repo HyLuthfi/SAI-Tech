@@ -217,6 +217,9 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
 
     def end_headers(self):
         # Enterprise HTTP Security Headers
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
         self.send_header('X-Frame-Options', 'SAMEORIGIN')
         self.send_header('X-Content-Type-Options', 'nosniff')
         self.send_header('Referrer-Policy', 'strict-origin-when-cross-origin')
