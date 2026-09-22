@@ -354,7 +354,7 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 if not check_admin_whitelist(email, cfg):
                     self.send_json_response(403, {
                         'status': 'forbidden',
-                        'message': f'Akses Ditolak: Akun Google ({email}) bukan admin resmi SAI Tech. Daftarkan email ini ke Whitelist Admin.'
+                        'message': 'Akses Ditolak'
                     })
                     return
 
