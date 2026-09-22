@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="assets/ritovex/saitech-favicon-32x32.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   
   <style>
@@ -540,86 +540,171 @@
       color: #a0a0b2;
     }
 
-    /* Auth Gate Overlay */
+    /* Auth Gate Overlay */@keyframes auth-pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+    }
+
+    @keyframes auth-grid-drift {
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 40px; }
+    }
+
+    @keyframes auth-glow-pulse {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.7; }
+    }
+
     .auth-gate-overlay {
       position: fixed;
       inset: 0;
-      background: linear-gradient(135deg, #000033 0%, #00004d 55%, #080854 100%);
+      background: #060814;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 9999;
       padding: 24px;
+      overflow: hidden;
+    }
+
+    .auth-gate-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 70% 55% at 50% 38%, #00004d 0%, transparent 70%);
+      animation: auth-glow-pulse 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .auth-gate-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+      animation: auth-grid-drift 18s linear infinite;
+      pointer-events: none;
+      opacity: 0.5;
     }
 
     .auth-card {
-      background: #ffffff;
-      border-radius: 22px;
-      padding: 38px 34px;
-      max-width: 440px;
+      background: #0d1024;
+      border-radius: 20px;
+      padding: 42px 38px;
+      max-width: 448px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(224, 189, 106, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
 
     .auth-card::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #e0bd6a, #22c55e, #3b82f6);
+      left: 18%;
+      right: 18%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(224, 189, 106, 0.6), transparent);
     }
 
-    .auth-card-emblem {
-      width: 60px;
-      height: 60px;
-      border-radius: 18px;
-      background: #f6f6f9;
-      border: 1.5px solid rgba(0, 0, 77, 0.08);
-      display: flex;
+    .auth-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 30%;
+      right: 30%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(224, 189, 106, 0.2), transparent);
+    }
+
+    .auth-status-badge {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      margin: 0 auto 18px auto;
+      gap: 7px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      border-radius: 99px;
+      padding: 5px 13px 5px 10px;
+      margin-bottom: 22px;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: rgba(34, 197, 94, 0.85);
+      text-transform: uppercase;
+    }
+
+    .auth-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+      animation: auth-pulse-dot 2.2s ease-in-out infinite;
+    }
+
+    .auth-logo-block {
+      margin: 0 auto 20px auto;
+    }
+
+    .auth-logo-img {
+      height: 38px;
+      width: auto;
+      opacity: 0.96;
+      filter: drop-shadow(0 2px 12px rgba(224, 189, 106, 0.2));
     }
 
     .auth-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 21px;
+      font-size: 22px;
       font-weight: 800;
-      color: #00004d;
-      margin-bottom: 6px;
-      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
     }
 
     .auth-sub {
       font-size: 13px;
-      color: #5d5c6b;
-      line-height: 1.5;
+      color: #9494a8;
+      line-height: 1.6;
+      margin-bottom: 26px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .auth-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
       margin-bottom: 22px;
     }
 
     .auth-error-box {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      color: #b91c1c;
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 12.5px;
+      background: rgba(185, 28, 28, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      border-radius: 10px;
+      padding: 11px 13px;
+      font-size: 12px;
       margin-bottom: 16px;
       text-align: left;
       display: none;
-      line-height: 1.45;
+      line-height: 1.5;
+      font-family: 'JetBrains Mono', monospace;
     }
 
     .auth-dev-box {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.07);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 10px;
       padding: 13px 14px;
       margin-top: 14px;
       text-align: left;
@@ -627,23 +712,57 @@
 
     .btn-dev-bypass {
       width: 100%;
-      background: #16a34a;
+      background: rgba(22, 163, 74, 0.85);
       color: #ffffff;
       font-weight: 700;
       font-size: 13px;
       padding: 11px;
-      border-radius: 9px;
-      border: none;
+      border-radius: 8px;
+      border: 1px solid rgba(34, 197, 94, 0.4);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
 
     .btn-dev-bypass:hover {
-      background: #15803d;
+      background: rgba(21, 128, 61, 0.95);
+      border-color: rgba(34, 197, 94, 0.6);
+    }
+
+    .auth-telemetry {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .auth-telemetry-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 10.5px;
+      color: #767588;
+      line-height: 1.3;
+    }
+
+    .auth-telemetry-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(224, 189, 106, 0.45);
+      flex-shrink: 0;
+    }
+
+    /* Google button dark wrapper override */
+    #gsiButtonContainer iframe {
+      border-radius: 8px !important;
     }
 
     /* Modal Generic */
@@ -805,54 +924,65 @@
   <!-- Google Authentication Gate -->
   <div class="auth-gate-overlay" id="authGate">
     <div class="auth-card">
-      <div class="auth-card-emblem">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
-        </svg>
+
+      <!-- Status Badge -->
+      <div class="auth-status-badge">
+        <span class="auth-status-dot"></span>
+        RESTRICTED ACCESS // LEVEL-1 CONSOLE
       </div>
+
+      <!-- Logo -->
+      <div class="auth-logo-block">
+        <img src="assets/ritovex/saitech-horizontal-white.png" alt="SAI Tech" class="auth-logo-img" />
+      </div>
+
       <h2 class="auth-title">Portal Admin SAI Tech</h2>
-      <p class="auth-sub">Masuk dengan akun Google resmi admin. Akses diverifikasi ketat terhadap daftar Whitelist Email Perusahaan.</p>
+      <p class="auth-sub">Masuk dengan akun Google resmi admin. Akses diverifikasi ketat terhadap Whitelist Email Perusahaan.</p>
+
+      <div class="auth-divider"></div>
 
       <div class="auth-error-box" id="authErrorMsg"></div>
 
       <!-- Google Sign In Button Target -->
       <div id="gsiButtonContainer" style="display: flex; justify-content: center; min-height: 44px; margin-bottom: 12px;">
-        <div style="font-size: 13px; color: #8c8b98; padding: 10px;">Menghubungkan ke layanan Google...</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9494a8; padding: 10px;">Menghubungkan ke layanan Google...</div>
       </div>
 
       <!-- Unconfigured Notice / Localhost Dev Bypass -->
       <div id="unconfiguredNotice" style="display: none;">
-        <div style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #92400e; margin-bottom: 12px; text-align: left; line-height: 1.45;">
-          <strong>Google Client ID Belum Diatur:</strong> Masukkan Client ID dari Google Cloud Console agar tombol login Google aktif.
-          <div style="margin-top: 8px;">
-            <button onclick="openConfigModal()" style="background: #00004d; color: #ffffff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 600; cursor: pointer;">
-              Atur Google Client ID &amp; Whitelist
+        <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #fbbf24; margin-bottom: 12px; text-align: left; line-height: 1.5; font-family: 'JetBrains Mono', monospace;">
+          <strong style="color: #fcd34d;">CLIENT ID TIDAK DITEMUKAN —</strong> Masukkan Google Cloud Console Client ID untuk mengaktifkan autentikasi.
+          <div style="margin-top: 10px;">
+            <button onclick="openConfigModal()" style="background: rgba(224,189,106,0.15); color: #e0bd6a; border: 1px solid rgba(224,189,106,0.35); padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; transition: background 0.2s;">
+              [ KONFIGURASI CLIENT ID ]
             </button>
           </div>
         </div>
 
         <div class="auth-dev-box" id="devBypassBox" style="display: none;">
-          <div style="font-size: 11.5px; font-weight: 700; color: #166534; margin-bottom: 4px;">PENGUJIAN LOKAL (LOCALHOST DEV)</div>
-          <div style="font-size: 11.5px; color: #15803d; margin-bottom: 10px; line-height: 1.4;">
-            Anda sedang menjalankan di localhost. Anda dapat masuk langsung untuk menguji dashboard sekarang.
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: #4ade80; margin-bottom: 4px; letter-spacing: 0.07em; text-transform: uppercase;">// LOCALHOST DEV MODE</div>
+          <div style="font-size: 11.5px; color: #86efac; margin-bottom: 10px; line-height: 1.4;">
+            Session localhost terdeteksi. Bypass tersedia untuk pengujian lokal.
           </div>
           <button class="btn-dev-bypass" onclick="executeDevBypass()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
             <span>Masuk Mode Pengembang (Bypass)</span>
           </button>
         </div>
       </div>
 
-      <div style="font-size: 11.5px; color: #8c8b98; margin-top: 18px; line-height: 1.4; border-top: 1px solid #f0f0f5; padding-top: 14px;">
-        <div style="display: inline-flex; align-items: center; gap: 5px; color: #00004d; font-weight: 600; margin-bottom: 3px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          <span>Keamanan Bebas Serangan Brute-Force</span>
+      <!-- Security Telemetry Footer -->
+      <div class="auth-telemetry">
+        <div class="auth-telemetry-row">
+          <span class="auth-telemetry-dot"></span>
+          <span>WHITELIST — luthfirg2502@gmail.com</span>
         </div>
-        <div>Verifikasi resmi server Google dengan proteksi Whitelist Email Admin.</div>
+        <div class="auth-telemetry-row">
+          <span class="auth-telemetry-dot"></span>
+          <span>TLS 1.3 // Zero-Trust Session Token</span>
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -1199,7 +1329,7 @@
             initGoogleIdentity(cfg.google_client_id);
           } else {
             notice.style.display = 'block';
-            document.getElementById('gsiButtonContainer').innerHTML = '<div style="font-size: 13px; color: #8c8b98; padding: 6px;">Google Client ID belum diisi.</div>';
+            document.getElementById('gsiButtonContainer').innerHTML = '<div style="font-family: JetBrains Mono, monospace; font-size: 12px; color: #767588; padding: 6px;">// Google Client ID belum dikonfigurasi</div>';
           }
         })
         .catch(function(err) {
@@ -1223,10 +1353,10 @@
         var btnContainer = document.getElementById('gsiButtonContainer');
         btnContainer.innerHTML = '';
         google.accounts.id.renderButton(btnContainer, {
-          theme: 'filled_blue',
+          theme: 'filled_black',
           size: 'large',
           type: 'standard',
-          shape: 'pill',
+          shape: 'rectangular',
           text: 'continue_with',
           logo_alignment: 'left',
           width: 300
