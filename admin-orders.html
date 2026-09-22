@@ -1046,36 +1046,103 @@
       }
     }
 
-    /* Admin Top Section Tabs */
-    
-    /* Modern Controls Bar & Category Filter Segmented Tabs */
-    .controls-bar {
+    /* ==========================================================================
+       ENTERPRISE CATALOG CARD GRID DESIGN SYSTEM
+       Tactile, Anti-Slop, High Visual Density Product Cards
+       ========================================================================== */
+
+    /* Top Segmented Navigation Tabs */
+    .admin-section-tabs-wrap {
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .admin-section-segmented {
+      display: inline-flex;
+      background: #eaeaf2;
+      padding: 5px;
+      border-radius: 14px;
+      gap: 5px;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .section-seg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      background: transparent;
+      color: #64748b;
+      border: none;
+      outline: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .section-seg-btn:hover {
+      color: #00004d;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .section-seg-btn.active {
+      background: #00004d;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.22);
+    }
+
+    .seg-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(0, 0, 0, 0.08);
+      color: inherit;
+    }
+
+    .section-seg-btn.active .seg-badge {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+
+    /* Controls Bar: Search & Category Pills */
+    .catalog-admin-controls {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       flex-wrap: wrap;
     }
 
-    .filter-tabs {
+    .cat-seg-bar {
       display: inline-flex;
       align-items: center;
-      background: #f1f1f5;
-      padding: 4px;
+      background: #ffffff;
+      padding: 5px;
       border-radius: 12px;
-      gap: 3px;
-      border: 1px solid rgba(0, 0, 77, 0.07);
+      gap: 4px;
+      border: 1px solid rgba(0, 0, 77, 0.09);
+      box-shadow: 0 2px 8px rgba(0, 0, 77, 0.03);
     }
 
-    .filter-btn, .filter-tab {
+    .cat-seg-btn {
       background: transparent;
       border: none;
       outline: none;
       color: #64748b;
       font-size: 13px;
       font-weight: 600;
-      padding: 7px 14px;
+      padding: 7px 15px;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
@@ -1085,228 +1152,353 @@
       font-family: inherit;
     }
 
-    .filter-btn:hover, .filter-tab:hover {
+    .cat-seg-btn:hover {
       color: #00004d;
-      background: rgba(255, 255, 255, 0.6);
+      background: #f6f6fb;
     }
 
-    .filter-btn.active, .filter-tab.active {
-      background: #ffffff;
-      color: #00004d;
+    .cat-seg-btn.active {
+      background: #00004d;
+      color: #ffffff;
       font-weight: 700;
-      box-shadow: 0 2px 8px rgba(0, 0, 77, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 77, 0.15);
     }
 
-    .search-input-wrap {
+    .cat-seg-btn.active .seg-badge {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    .search-box-wrap {
       display: flex;
       align-items: center;
       gap: 10px;
       background: #ffffff;
-      border: 1px solid rgba(0, 0, 77, 0.12);
-      border-radius: 10px;
-      padding: 7px 14px;
-      min-width: 280px;
-      box-shadow: 0 2px 6px rgba(0, 0, 77, 0.03);
-      transition: all 0.2s ease;
+      border: 1.5px solid rgba(0, 0, 77, 0.1);
+      border-radius: 12px;
+      padding: 8px 16px;
+      min-width: 300px;
+      box-shadow: 0 2px 8px rgba(0, 0, 77, 0.03);
+      transition: all 0.25s ease;
     }
 
-    .search-input-wrap:focus-within {
+    .search-box-wrap:focus-within {
       border-color: #00004d;
       box-shadow: 0 0 0 3px rgba(0, 0, 77, 0.08);
     }
 
-    .search-input-wrap input {
+    .search-box-wrap input {
       border: none;
       outline: none;
-      font-size: 13px;
+      font-size: 13.5px;
       color: #00004d;
       width: 100%;
       background: transparent;
       font-family: inherit;
     }
 
-    .search-input-wrap input::placeholder {
+    .search-box-wrap input::placeholder {
       color: #94a3b8;
     }
 
-    /* Orders & Products Table Styling */
-    .orders-card, .table-card {
-      background: #ffffff;
-      border-radius: 16px;
-      border: 1px solid rgba(0, 0, 77, 0.08);
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 77, 0.05);
-      overflow: hidden;
+    /* PRODUCT CARDS GRID SYSTEM (3-4 Columns Responsive) */
+    .admin-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+      margin-bottom: 50px;
     }
 
-    .orders-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    .orders-table th {
-      background: #fbfbfd;
-      color: #767588;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(0, 0, 77, 0.08);
-    }
-
-    .orders-table td {
-      padding: 16px 18px;
-      border-bottom: 1px solid rgba(0, 0, 77, 0.05);
-      vertical-align: middle;
-      font-size: 13px;
-      color: #334155;
-    }
-
-    .orders-table tbody tr {
-      transition: background 0.15s ease;
-    }
-
-    .orders-table tbody tr:hover {
-      background: #f8f8fc;
-    }
-
-    .orders-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* Product Details & Action Buttons */
-    .product-row-info {
+    /* Empty Quick Add Card */
+    .product-quick-add-card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 2px dashed rgba(0, 0, 77, 0.18);
+      border-radius: 18px;
+      min-height: 290px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      text-align: center;
     }
 
-    .product-row-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
+    .product-quick-add-card:hover {
+      background: #ffffff;
+      border-color: #00004d;
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(0, 0, 77, 0.08);
+    }
+
+    .quick-add-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(0, 0, 77, 0.06);
       color: #00004d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .product-quick-add-card:hover .quick-add-icon-box {
+      background: #00004d;
+      color: #ffffff;
+      transform: scale(1.08);
+    }
+
+    /* Real Product Card */
+    .admin-prod-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 0, 77, 0.09);
+      border-radius: 18px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 18px rgba(0, 0, 77, 0.04);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .admin-prod-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 77, 0.09);
+      border-color: rgba(224, 189, 106, 0.65);
+    }
+
+    .admin-prod-card.is-draft {
+      opacity: 0.72;
+      background: #fafafc;
+      border-style: dashed;
+    }
+
+    /* Card Top Header */
+    .card-top-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .card-prod-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #f6f6f9;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      flex-shrink: 0;
+    }
+
+    .card-meta-wrap {
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .card-category-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2.5px 7px;
+      border-radius: 5px;
+      background: rgba(0, 0, 77, 0.06);
+      color: #00004d;
+      margin-bottom: 4px;
+    }
+
+    .card-title-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: #00004d;
+      line-height: 1.25;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-status-toggle {
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .status-pill-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .status-pill-active {
+      background: rgba(16, 185, 129, 0.12);
+      color: #059669;
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .status-pill-draft {
+      background: rgba(100, 116, 139, 0.12);
+      color: #64748b;
+      border-color: rgba(100, 116, 139, 0.2);
+    }
+
+    /* Card Description */
+    .card-desc-text {
+      font-size: 12.5px;
+      color: #5d5c6b;
+      line-height: 1.45;
+      margin-bottom: 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 36px;
+    }
+
+    /* Packages Tier Box Inside Card */
+    .card-packages-box {
+      background: #f7f7fb;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(0, 0, 77, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .card-pkg-entry {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+    }
+
+    .card-pkg-name {
+      color: #475569;
+      font-weight: 600;
+      max-width: 170px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-pkg-val {
+      font-family: 'JetBrains Mono', monospace, sans-serif;
+      font-weight: 700;
+      color: #059669;
+      font-size: 12px;
+    }
+
+    /* Card Action Footer Row */
+    .card-actions-row {
       display: flex;
       align-items: center;
       gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(0, 0, 77, 0.07);
     }
 
-    .category-badge-pill {
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 6px;
-      background: rgba(0, 0, 77, 0.06);
-      color: #00004d;
-      display: inline-block;
-      letter-spacing: 0.02em;
-    }
-
-    .product-row-desc {
-      font-size: 12px;
-      color: #64748b;
-      max-width: 360px;
-      line-height: 1.45;
-    }
-
-    .pkg-grid-compact {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .pkg-row-item {
+    .btn-card-edit {
+      flex-grow: 1;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      font-size: 12px;
-    }
-
-    .pkg-row-name {
-      color: #475569;
-      font-weight: 600;
-    }
-
-    .pkg-row-divider {
-      color: #cbd5e1;
-      font-size: 11px;
-    }
-
-    .pkg-row-price {
-      color: #059669;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace, sans-serif;
-      font-size: 11.5px;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 10px;
-      border-radius: 99px;
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .status-badge-active {
-      background: rgba(16, 185, 129, 0.1);
-      color: #059669;
-      border: 1px solid rgba(16, 185, 129, 0.25);
-    }
-
-    .status-badge-draft {
-      background: rgba(100, 116, 139, 0.1);
-      color: #64748b;
-      border: 1px solid rgba(100, 116, 139, 0.2);
-    }
-
-    .table-actions-group {
-      display: inline-flex;
-      align-items: center;
+      justify-content: center;
       gap: 6px;
-      justify-content: flex-end;
+      padding: 8px 14px;
+      border-radius: 9px;
+      background: #00004d;
+      color: #ffffff;
+      border: 1px solid #00004d;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .btn-action-pill {
+    .btn-card-edit:hover {
+      background: #000033;
+      box-shadow: 0 4px 12px rgba(0, 0, 77, 0.2);
+    }
+
+    .btn-card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
+      justify-content: center;
+      background: #f8f8fc;
       border: 1px solid rgba(0, 0, 77, 0.1);
-      background: #f8f8fb;
-      color: #00004d;
-      transition: all 0.2s ease;
-      font-family: inherit;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
     }
 
-    .btn-action-pill:hover {
+    .btn-card-icon:hover {
       background: #ffffff;
       border-color: #00004d;
-      box-shadow: 0 2px 6px rgba(0, 0, 77, 0.08);
+      color: #00004d;
     }
 
-    .btn-action-danger {
-      padding: 6px 9px;
+    .btn-card-danger {
       color: #ef4444;
       border-color: rgba(239, 68, 68, 0.2);
       background: rgba(239, 68, 68, 0.04);
     }
 
-    .btn-action-danger:hover {
+    .btn-card-danger:hover {
       background: #ef4444;
       border-color: #ef4444;
       color: #ffffff;
-      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
     }
 
-</style>
+    .pkg-builder-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr auto;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .btn-pkg-remove {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #ef4444;
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      transition: all 0.2s;
+    }
+
+    .btn-pkg-remove:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -1423,17 +1615,19 @@
   <main class="admin-container">
     
     <!-- Top Level Section Tabs -->
-    <div class="admin-section-tabs">
-      <button class="section-tab-btn active" id="tabBtnOrders" onclick="switchAdminView('orders')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-        <span>Pesanan Masuk</span>
-        <span class="section-tab-badge" id="tabBadgeOrders">0</span>
-      </button>
-      <button class="section-tab-btn" id="tabBtnProducts" onclick="switchAdminView('products')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-        <span>Kelola Katalog &amp; Produk</span>
-        <span class="section-tab-badge" id="tabBadgeProducts">0</span>
-      </button>
+    <div class="admin-section-tabs-wrap">
+      <div class="admin-section-segmented">
+        <button class="section-seg-btn active" id="tabBtnOrders" onclick="switchAdminView('orders')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Pesanan Masuk</span>
+          <span class="seg-badge" id="tabBadgeOrders">0</span>
+        </button>
+        <button class="section-seg-btn" id="tabBtnProducts" onclick="switchAdminView('products')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Kelola Katalog &amp; Produk</span>
+          <span class="seg-badge" id="tabBadgeProducts">0</span>
+        </button>
+      </div>
     </div>
 
     <!-- VIEW 1: PESANAN MASUK -->
@@ -1538,62 +1732,65 @@
 
     <!-- VIEW 2: KELOLA KATALOG & PRODUK -->
     <div id="viewProducts" style="display: none;">
-      <!-- Title & Action Bar -->
-      <div class="live-status-bar">
+      
+      <!-- Top Title & Action Header -->
+      <div class="live-status-bar" style="margin-bottom: 20px;">
         <div class="live-status-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00004d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          <span>Daftar Produk Katalog</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00004d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Katalog Produk SAI Tech</span>
         </div>
         <div style="display: flex; gap: 10px;">
           <button class="btn-nav" onclick="fetchProductsAdmin(true)" style="background: #ffffff; color: #00004d; border-color: rgba(0,0,77,0.15);">
             <svg id="refreshProductsIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
             <span>Segarkan</span>
           </button>
-          <button class="btn-nav" onclick="openProductModal()" style="background: #00004d; color: #ffffff; border-color: #00004d;">
+          <button class="btn-nav" onclick="openProductModal()" style="background: #00004d; color: #ffffff; border-color: #00004d; box-shadow: 0 4px 14px rgba(0,0,77,0.2);">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Tambah Produk</span>
+            <span>Tambah Produk Baru</span>
           </button>
         </div>
       </div>
 
-      <!-- Controls: Category Filter & Search -->
-      <div class="controls-bar" style="margin-bottom: 20px;">
-        <div class="filter-tabs">
-          <button class="filter-tab active" data-prodcat="all" onclick="filterProductsCategory('all', this)">Semua (<span id="countProdAll">0</span>)</button>
-          <button class="filter-tab" data-prodcat="ai" onclick="filterProductsCategory('ai', this)">AI &amp; Dev (<span id="countProdAi">0</span>)</button>
-          <button class="filter-tab" data-prodcat="streaming" onclick="filterProductsCategory('streaming', this)">Streaming (<span id="countProdStreaming">0</span>)</button>
-          <button class="filter-tab" data-prodcat="creative" onclick="filterProductsCategory('creative', this)">Desain (<span id="countProdCreative">0</span>)</button>
-          <button class="filter-tab" data-prodcat="tools" onclick="filterProductsCategory('tools', this)">Tools &amp; VPN (<span id="countProdTools">0</span>)</button>
+      <!-- Controls: Category Filter Segmented Tabs & Search Bar -->
+      <div class="catalog-admin-controls">
+        <div class="cat-seg-bar">
+          <button class="cat-seg-btn active" data-prodcat="all" onclick="filterProductsCategory('all', this)">
+            <span>Semua Produk</span>
+            <span class="seg-badge" id="countProdAll">0</span>
+          </button>
+          <button class="cat-seg-btn" data-prodcat="ai" onclick="filterProductsCategory('ai', this)">
+            <span>AI &amp; Dev</span>
+            <span class="seg-badge" id="countProdAi">0</span>
+          </button>
+          <button class="cat-seg-btn" data-prodcat="streaming" onclick="filterProductsCategory('streaming', this)">
+            <span>Streaming</span>
+            <span class="seg-badge" id="countProdStreaming">0</span>
+          </button>
+          <button class="cat-seg-btn" data-prodcat="creative" onclick="filterProductsCategory('creative', this)">
+            <span>Desain</span>
+            <span class="seg-badge" id="countProdCreative">0</span>
+          </button>
+          <button class="cat-seg-btn" data-prodcat="tools" onclick="filterProductsCategory('tools', this)">
+            <span>Tools &amp; VPN</span>
+            <span class="seg-badge" id="countProdTools">0</span>
+          </button>
         </div>
-        <div class="search-input-wrap">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input class="search-input" id="searchProductInput" oninput="filterProductsSearch()" placeholder="Cari nama produk / keyword..." type="text" />
+
+        <div class="search-box-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input id="searchProductInput" oninput="filterProductsSearch()" placeholder="Cari nama produk, paket, atau deskripsi..." type="text" />
         </div>
       </div>
 
-      <!-- Products Table Card -->
-      <div class="table-card">
-        <div class="table-responsive">
-          <table class="orders-table">
-            <thead>
-              <tr>
-                <th style="width: 50px;">Foto</th>
-                <th>Nama Produk &amp; Kategori</th>
-                <th>Pilihan Paket Durasi &amp; Harga</th>
-                <th style="width: 100px;">Status</th>
-                <th style="text-align: right; width: 210px;">Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="productsTableBody">
-              <!-- Rendered by JS -->
-            </tbody>
-          </table>
-        </div>
-        <div class="empty-state" id="emptyProductsState" style="display: none;">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          <div style="font-weight: 700; font-size: 16px; color: #00004d; margin-bottom: 4px;">Tidak Ada Produk</div>
-          <div style="font-size: 13px;">Belum ada produk yang cocok dengan pencarian atau filter kategori ini.</div>
-        </div>
+      <!-- PRODUCT CARDS GRID -->
+      <div class="admin-products-grid" id="productsCardsGrid">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <div class="empty-state" id="emptyProductsState" style="display: none; background: #ffffff; border-radius: 18px; padding: 48px; border: 1.5px dashed rgba(0,0,77,0.12); margin-top: 10px;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <div style="font-weight: 700; font-size: 16px; color: #00004d; margin-top: 12px; margin-bottom: 4px;">Tidak Ada Produk Ditemukan</div>
+        <div style="font-size: 13px; color: #64748b;">Coba ubah kata kunci pencarian atau pilih filter kategori lainnya.</div>
       </div>
     </div>
 
@@ -2491,10 +2688,10 @@
     }
 
     function renderProductsAdmin() {
-      var tbody = document.getElementById('productsTableBody');
+      var grid = document.getElementById('productsCardsGrid');
       var emptyState = document.getElementById('emptyProductsState');
-      if (!tbody) return;
-      tbody.innerHTML = '';
+      if (!grid) return;
+      grid.innerHTML = '';
 
       var filtered = allProducts.filter(function(p) {
         var matchCat = (currentProdCat === 'all' || p.category === currentProdCat);
@@ -2509,73 +2706,71 @@
       }
       emptyState.style.display = 'none';
 
+      // 1. Quick Add New Product Card (Always placed first for fast management)
+      var addCard = document.createElement('div');
+      addCard.className = 'product-quick-add-card';
+      addCard.onclick = function() { openProductModal(); };
+      addCard.innerHTML = '<div class="quick-add-icon-box">' +
+                          '  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>' +
+                          '</div>' +
+                          '<div style="font-weight: 800; font-size: 15px; color: #00004d; margin-bottom: 4px;">Tambah Produk Baru</div>' +
+                          '<div style="font-size: 12px; color: #64748b;">Klik untuk menambahkan item baru ke katalog publik</div>';
+      grid.appendChild(addCard);
+
+      // 2. Render Real Product Cards
       filtered.forEach(function(p) {
-        var tr = document.createElement('tr');
+        var card = document.createElement('div');
+        var isActive = (p.status === 'active');
+        card.className = 'admin-prod-card' + (isActive ? '' : ' is-draft');
 
-        // 1. Photo
-        var tdPhoto = document.createElement('td');
         var imgUrl = p.image_url || 'assets/ritovex/Image_Placeholder_Square.png';
-        tdPhoto.innerHTML = '<img class="product-thumb-sm" style="width: 44px; height: 44px; border-radius: 10px; object-fit: cover; background: #f8f8fb; border: 1px solid rgba(0,0,77,0.08);" src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(p.name) + '" onerror="this.src=\'assets/ritovex/Image_Placeholder_Square.png\'" />';
-
-        // 2. Name & Category
-        var tdInfo = document.createElement('td');
         var catName = p.category;
         if (catName === 'ai') catName = 'AI & Produktivitas';
         else if (catName === 'streaming') catName = 'Streaming & Hiburan';
         else if (catName === 'creative') catName = 'Desain & Kreatif';
         else if (catName === 'tools') catName = 'Tools & VPN';
 
-        tdInfo.innerHTML = '<div class="product-row-info">' +
-                           '  <div class="product-row-title">' +
-                           '    <span>' + escapeHtml(p.name) + '</span>' +
-                           '    <span class="category-badge-pill">' + escapeHtml(catName) + '</span>' +
-                           '  </div>' +
-                           '  <div class="product-row-desc">' + escapeHtml(p.description || '-') + '</div>' +
-                           '</div>';
-
-        // 3. Structured Packages & Pricing List
-        var tdPkgs = document.createElement('td');
-        var pkgsHtml = '<div class="pkg-grid-compact">';
+        // Packages List HTML
+        var pkgsHtml = '';
         (p.packages || []).forEach(function(pkg) {
-          pkgsHtml += '<div class="pkg-row-item">' +
-                      '  <span class="pkg-row-name">' + escapeHtml(pkg.label || 'Paket') + '</span>' +
-                      '  <span class="pkg-row-divider">·</span>' +
-                      '  <span class="pkg-row-price">' + escapeHtml(pkg.price) + '</span>' +
+          pkgsHtml += '<div class="card-pkg-entry">' +
+                      '  <span class="card-pkg-name">' + escapeHtml(pkg.label || 'Paket') + '</span>' +
+                      '  <span class="card-pkg-val">' + escapeHtml(pkg.price) + '</span>' +
                       '</div>';
         });
-        pkgsHtml += '</div>';
-        tdPkgs.innerHTML = pkgsHtml;
 
-        // 4. Status Badge
-        var tdStatus = document.createElement('td');
-        var isActive = (p.status === 'active');
-        tdStatus.innerHTML = '<span class="status-badge ' + (isActive ? 'status-badge-active' : 'status-badge-draft') + '">' +
-                             (isActive ? '<span style="width: 6px; height: 6px; border-radius: 50%; background: #059669; display: inline-block;"></span> Aktif' : 'Draft') +
-                             '</span>';
+        card.innerHTML = '' +
+          '<div class="card-top-row">' +
+          '  <img class="card-prod-thumb" src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(p.name) + '" onerror="this.src=\'assets/ritovex/Image_Placeholder_Square.png\'" />' +
+          '  <div class="card-meta-wrap">' +
+          '    <span class="card-category-badge">' + escapeHtml(catName) + '</span>' +
+          '    <div class="card-title-text" title="' + escapeHtml(p.name) + '">' + escapeHtml(p.name) + '</div>' +
+          '  </div>' +
+          '  <div class="card-status-toggle" onclick="toggleProductStatus(\'' + escapeHtml(p.id) + '\')" title="Klik untuk ubah status">' +
+          '    <span class="status-pill-toggle ' + (isActive ? 'status-pill-active' : 'status-pill-draft') + '">' +
+          '      ' + (isActive ? '● Aktif' : '○ Draft') +
+          '    </span>' +
+          '  </div>' +
+          '</div>' +
+          '<div class="card-desc-text">' + escapeHtml(p.description || '-') + '</div>' +
+          '<div class="card-packages-box">' +
+          '  <div style="font-size: 10px; font-weight: 700; color: #8c8b98; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px;">Pilihan Paket &amp; Harga:</div>' +
+          '  ' + pkgsHtml +
+          '</div>' +
+          '<div class="card-actions-row">' +
+          '  <button class="btn-card-edit" onclick="openProductModal(\'' + escapeHtml(p.id) + '\')">' +
+          '    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>' +
+          '    <span>Edit Produk</span>' +
+          '  </button>' +
+          '  <button class="btn-card-icon" onclick="toggleProductStatus(\'' + escapeHtml(p.id) + '\')" title="' + (isActive ? 'Sembunyikan ke Draft' : 'Publikasikan ke Katalog') + '">' +
+          '    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (isActive ? '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>' : '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>') + '</svg>' +
+          '  </button>' +
+          '  <button class="btn-card-icon btn-card-danger" onclick="deleteProductAdmin(\'' + escapeHtml(p.id) + '\')" title="Hapus Produk Permanen">' +
+          '    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>' +
+          '  </button>' +
+          '</div>';
 
-        // 5. Action Buttons
-        var tdActions = document.createElement('td');
-        tdActions.style.textAlign = 'right';
-        tdActions.innerHTML = '<div class="table-actions-group">' +
-                              '  <button class="btn-action-pill" onclick="openProductModal(\'' + escapeHtml(p.id) + '\')" title="Edit Data & Harga">' +
-                              '    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>' +
-                              '    <span>Edit</span>' +
-                              '  </button>' +
-                              '  <button class="btn-action-pill" onclick="toggleProductStatus(\'' + escapeHtml(p.id) + '\')" title="Ubah Visibilitas">' +
-                              '    <span>' + (isActive ? 'Nonaktifkan' : 'Aktifkan') + '</span>' +
-                              '  </button>' +
-                              '  <button class="btn-action-pill btn-action-danger" onclick="deleteProductAdmin(\'' + escapeHtml(p.id) + '\')" title="Hapus Produk">' +
-                              '    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>' +
-                              '  </button>' +
-                              '</div>';
-
-        tr.appendChild(tdPhoto);
-        tr.appendChild(tdInfo);
-        tr.appendChild(tdPkgs);
-        tr.appendChild(tdStatus);
-        tr.appendChild(tdActions);
-
-        tbody.appendChild(tr);
+        grid.appendChild(card);
       });
     }
 
