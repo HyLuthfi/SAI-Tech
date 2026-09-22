@@ -613,6 +613,9 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
 
         self.send_error(404, "Not Found")
 
+    def do_HEAD(self):
+        return self.do_GET()
+
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path

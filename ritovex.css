@@ -4214,8 +4214,9 @@ figure {
   display: flex;
 }
 
-.footer-information-text {
-  color: var(--_colors-plates---white);
+.footer-information-text,
+a.footer-information-text {
+  color: var(--_colors-plates---white) !important;
 }
 
 .footer-information-text.location {
