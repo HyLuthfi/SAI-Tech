@@ -1778,7 +1778,72 @@
       }
     }
 
-    // 2. Category Filter & Search Handlers
+    // 2. Dynamic Products Loader from Backend API
+    function renderDynamicProducts(products) {
+      var grid = document.getElementById('productsGrid');
+      if (!grid || !products || !products.length) return;
+      
+      var html = '';
+      products.forEach(function(p) {
+        var pkgs = p.packages || [];
+        var firstPrice = pkgs[0] ? pkgs[0].price : 'Rp 0';
+        var key = p.key || p.id;
+        var searchName = (p.name + ' ' + (p.search_keywords || '') + ' ' + (p.description || '')).toLowerCase();
+        
+        var optionsHtml = '';
+        pkgs.forEach(function(pkg) {
+          optionsHtml += '<option value="' + pkg.price + '" data-duration="' + (pkg.duration || pkg.label) + '">' + pkg.label + ' — ' + pkg.price + '</option>';
+        });
+
+        html += '<div class="product-box" data-category="' + (p.category || 'ai') + '" data-name="' + searchName + '">';
+        html += '  <div class="product-img-wrap">';
+        html += '    <img src="' + (p.image_url || 'assets/ritovex/Image_Placeholder_Square.png') + '" alt="' + p.name + '" class="product-img" loading="lazy" />';
+        html += '  </div>';
+        html += '  <div class="product-body">';
+        html += '    <h3 class="product-title">' + p.name + '</h3>';
+        html += '    <p class="product-desc">' + (p.description || '') + '</p>';
+        html += '    <div class="dur-dropdown-wrap">';
+        html += '      <span class="dur-label">Pilihan Paket:</span>';
+        html += '      <div class="custom-select-wrapper">';
+        html += '        <select class="dur-select" data-target="' + key + '" onchange="onPackageSelectChange(this)">';
+        html += optionsHtml;
+        html += '        </select>';
+        html += '        <span class="select-chevron">';
+        html += '          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00004d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+        html += '        </span>';
+        html += '      </div>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '  <div class="product-action-row">';
+        html += '    <div class="product-price-wrap">';
+        html += '      <span class="product-price-label">Harga Paket</span>';
+        html += '      <span class="product-price" id="price-' + key + '">' + firstPrice + '</span>';
+        html += '    </div>';
+        html += '    <a href="#" class="btn-pesan" onclick="orderProduct(event, \'' + p.name.replace(/'/g, "\\'") + '\', \'' + key + '\')">Beli</a>';
+        html += '  </div>';
+        html += '</div>';
+      });
+
+      grid.innerHTML = html;
+      if (typeof window.applyCatalogFilter === 'function') {
+        window.applyCatalogFilter();
+      }
+    }
+
+    function loadDynamicProducts() {
+      fetch('/api/products')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data && data.status === 'success' && data.products && data.products.length > 0) {
+            renderDynamicProducts(data.products);
+          }
+        })
+        .catch(function(err) {
+          console.warn('Load dynamic products notice:', err);
+        });
+    }
+
+    // 3. Category Filter & Search Handlers
     (function() {
       var catButtons = document.querySelectorAll('.cat-pill-btn');
       var searchInput = document.getElementById('catalogSearch');
@@ -1822,6 +1887,9 @@
           emptyNotice.style.display = (visibleCount === 0) ? 'block' : 'none';
         }
       }
+
+      window.applyCatalogFilter = filterProducts;
+      loadDynamicProducts();
     })();
 
         // ==========================================================================

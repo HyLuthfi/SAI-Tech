@@ -1045,6 +1045,121 @@
         width: 100%;
       }
     }
+
+    /* Admin Top Section Tabs */
+    .admin-section-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(0, 0, 77, 0.08);
+      padding-bottom: 16px;
+    }
+    .section-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #f4f4f7;
+      color: #555466;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      transition: all 0.2s ease;
+    }
+    .section-tab-btn:hover {
+      background: #eaeaf0;
+      color: #00004d;
+    }
+    .section-tab-btn.active {
+      background: #00004d;
+      color: #ffffff;
+      border-color: #00004d;
+      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.18);
+    }
+    .section-tab-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(0, 0, 0, 0.08);
+      color: inherit;
+    }
+    .section-tab-btn.active .section-tab-badge {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+
+    /* Product Management Styles */
+    .product-thumb-sm {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #f0f0f4;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      vertical-align: middle;
+    }
+    .pkg-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pkg-pill-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #f0f0f8;
+      color: #00004d;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+    }
+    .pkg-pill-price {
+      font-weight: 700;
+      color: #15803d;
+    }
+    .status-badge-active {
+      background: rgba(34, 197, 94, 0.12);
+      color: #15803d;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+    .status-badge-draft {
+      background: rgba(148, 163, 184, 0.15);
+      color: #64748b;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    .pkg-builder-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr auto;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .btn-pkg-remove {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #ef4444;
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      transition: all 0.2s;
+    }
+    .btn-pkg-remove:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
@@ -1161,7 +1276,23 @@
 
   <main class="admin-container">
     
-    <!-- Title & Live Indicator -->
+    <!-- Top Level Section Tabs -->
+    <div class="admin-section-tabs">
+      <button class="section-tab-btn active" id="tabBtnOrders" onclick="switchAdminView('orders')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span>Pesanan Masuk</span>
+        <span class="section-tab-badge" id="tabBadgeOrders">0</span>
+      </button>
+      <button class="section-tab-btn" id="tabBtnProducts" onclick="switchAdminView('products')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Kelola Katalog &amp; Produk</span>
+        <span class="section-tab-badge" id="tabBadgeProducts">0</span>
+      </button>
+    </div>
+
+    <!-- VIEW 1: PESANAN MASUK -->
+    <div id="viewOrders">
+      <!-- Title & Live Indicator -->
     <div class="live-status-bar">
       <div class="live-status-title">
         <div class="pulse-dot"></div>
@@ -1255,6 +1386,68 @@
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="15" x2="15" y2="15"></line></svg>
         <div style="font-weight: 700; font-size: 16px; color: #00004d; margin-bottom: 4px;">Belum Ada Pesanan</div>
         <div style="font-size: 13px;">Pesanan yang masuk melalui QRIS katalog akan langsung muncul di sini.</div>
+      </div>
+    </div>
+    </div> <!-- Close viewOrders -->
+
+    <!-- VIEW 2: KELOLA KATALOG & PRODUK -->
+    <div id="viewProducts" style="display: none;">
+      <!-- Title & Action Bar -->
+      <div class="live-status-bar">
+        <div class="live-status-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00004d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Daftar Produk Katalog</span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn-nav" onclick="fetchProductsAdmin(true)" style="background: #ffffff; color: #00004d; border-color: rgba(0,0,77,0.15);">
+            <svg id="refreshProductsIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Segarkan</span>
+          </button>
+          <button class="btn-nav" onclick="openProductModal()" style="background: #00004d; color: #ffffff; border-color: #00004d;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>+ Tambah Produk</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls: Category Filter & Search -->
+      <div class="controls-bar" style="margin-bottom: 20px;">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-prodcat="all" onclick="filterProductsCategory('all', this)">Semua (<span id="countProdAll">0</span>)</button>
+          <button class="filter-tab" data-prodcat="ai" onclick="filterProductsCategory('ai', this)">AI &amp; Dev (<span id="countProdAi">0</span>)</button>
+          <button class="filter-tab" data-prodcat="streaming" onclick="filterProductsCategory('streaming', this)">Streaming (<span id="countProdStreaming">0</span>)</button>
+          <button class="filter-tab" data-prodcat="creative" onclick="filterProductsCategory('creative', this)">Desain (<span id="countProdCreative">0</span>)</button>
+          <button class="filter-tab" data-prodcat="tools" onclick="filterProductsCategory('tools', this)">Tools &amp; VPN (<span id="countProdTools">0</span>)</button>
+        </div>
+        <div class="search-input-wrap">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input class="search-input" id="searchProductInput" oninput="filterProductsSearch()" placeholder="Cari nama produk / keyword..." type="text" />
+        </div>
+      </div>
+
+      <!-- Products Table Card -->
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">Foto</th>
+                <th>Nama Produk &amp; Kategori</th>
+                <th>Pilihan Paket Durasi &amp; Harga</th>
+                <th style="width: 100px;">Status</th>
+                <th style="text-align: right; width: 210px;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="emptyProductsState" style="display: none;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <div style="font-weight: 700; font-size: 16px; color: #00004d; margin-bottom: 4px;">Tidak Ada Produk</div>
+          <div style="font-size: 13px;">Belum ada produk yang cocok dengan pencarian atau filter kategori ini.</div>
+        </div>
       </div>
     </div>
 
@@ -1364,6 +1557,79 @@
       <div style="margin-top: 12px;">
         <a class="btn-action btn-action-check" href="#" id="lightboxDownloadBtn" target="_blank">Unduh Gambar Asli</a>
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Tambah / Edit Produk -->
+  <div class="modal-backdrop" id="modalProductForm">
+    <div class="modal-panel" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="productModalTitle">Tambah Produk Baru</h3>
+        <button class="modal-close-btn" onclick="closeModal('modalProductForm')">×</button>
+      </div>
+
+      <form id="formProduct" onsubmit="saveProductForm(event)">
+        <input type="hidden" id="prodFormId" value="" />
+        <input type="hidden" id="prodFormKey" value="" />
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Nama Produk *</label>
+            <input class="modal-input" id="prodFormName" required placeholder="Contoh: Perplexity AI Pro" type="text" />
+          </div>
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Kategori *</label>
+            <select class="modal-input" id="prodFormCategory" required style="cursor: pointer;">
+              <option value="ai">AI &amp; Produktivitas</option>
+              <option value="streaming">Streaming &amp; Hiburan</option>
+              <option value="creative">Desain &amp; Kreatif</option>
+              <option value="tools">Tools &amp; VPN</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">Deskripsi Singkat</label>
+          <textarea class="modal-input" id="prodFormDesc" rows="2" style="resize: vertical;" placeholder="Deskripsi fitur utama produk untuk katalog..."></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">URL Foto / Thumbnail</label>
+            <input class="modal-input" id="prodFormImg" value="assets/ritovex/Image_Placeholder_Square.png" placeholder="assets/ritovex/... atau URL eksternal" type="text" />
+          </div>
+          <div class="modal-form-group" style="margin-bottom: 0;">
+            <label class="modal-label">Status Visibilitas</label>
+            <select class="modal-input" id="prodFormStatus" style="cursor: pointer;">
+              <option value="active">Aktif (Tampil di Katalog)</option>
+              <option value="draft">Draft (Sembunyikan)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">Kata Kunci Pencarian (Search Keywords)</label>
+          <input class="modal-input" id="prodFormKeywords" placeholder="Contoh: perplexity search gpt ai riset" type="text" />
+        </div>
+
+        <!-- Package Builder -->
+        <div style="border-top: 1px solid rgba(0, 0, 77, 0.08); padding-top: 16px; margin-top: 18px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <label class="modal-label" style="margin-bottom: 0; font-size: 13px; font-weight: 700; color: #00004d;">Pilihan Paket Durasi &amp; Harga</label>
+            <button type="button" class="btn-nav" onclick="addPackageRow('', '', '')" style="padding: 4px 10px; font-size: 12px; background: #f0f0f8; color: #00004d; border-color: rgba(0,0,77,0.15);">
+              + Tambah Paket
+            </button>
+          </div>
+          <div id="pkgRowsContainer">
+            <!-- Dynamic rows will be inserted here -->
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid rgba(0,0,77,0.08); padding-top: 16px;">
+          <button type="button" class="btn-nav" onclick="closeModal('modalProductForm')" style="background: #ffffff; color: #555466; border-color: rgba(0,0,77,0.15);">Batal</button>
+          <button type="submit" id="btnSaveProduct" class="btn-nav" style="background: #00004d; color: #ffffff; border-color: #00004d;">Simpan Produk</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -1490,6 +1756,7 @@
         hideAuthGate();
         showToast('Selamat datang, ' + (currentAdmin.name || 'Admin') + '!');
         fetchOrders();
+        fetchProductsAdmin();
       }).catch(function(err) {
         errElem.textContent = err.message;
         errElem.style.display = 'block';
@@ -1984,6 +2251,372 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     }
+
+    // ==========================================================================
+    // DYNAMIC CATALOG & PRODUCT MANAGEMENT JAVASCRIPT SYSTEM
+    // ==========================================================================
+    var allProducts = [];
+    var currentProdCat = 'all';
+    var currentProdQuery = '';
+
+    function switchAdminView(view) {
+      var tabOrders = document.getElementById('tabBtnOrders');
+      var tabProducts = document.getElementById('tabBtnProducts');
+      var viewOrders = document.getElementById('viewOrders');
+      var viewProducts = document.getElementById('viewProducts');
+
+      if (view === 'products') {
+        tabOrders.classList.remove('active');
+        tabProducts.classList.add('active');
+        viewOrders.style.display = 'none';
+        viewProducts.style.display = 'block';
+        if (allProducts.length === 0) {
+          fetchProductsAdmin();
+        }
+      } else {
+        tabProducts.classList.remove('active');
+        tabOrders.classList.add('active');
+        viewProducts.style.display = 'none';
+        viewOrders.style.display = 'block';
+      }
+    }
+
+    function fetchProductsAdmin(showToastOnDone) {
+      var icon = document.getElementById('refreshProductsIcon');
+      if (icon) icon.style.animation = 'spin 0.8s linear infinite';
+
+      fetch('/api/admin/products', {
+        headers: {
+          'Authorization': 'Bearer ' + currentToken
+        }
+      })
+      .then(function(res) {
+        if (res.status === 401) {
+          showAuthGate();
+          throw new Error('Sesi admin kedaluwarsa');
+        }
+        return res.json();
+      })
+      .then(function(data) {
+        if (data && data.status === 'success') {
+          allProducts = data.products || [];
+          document.getElementById('tabBadgeProducts').textContent = allProducts.length;
+
+          // Update Category Counts
+          var countAll = allProducts.length;
+          var countAi = 0, countStreaming = 0, countCreative = 0, countTools = 0;
+          allProducts.forEach(function(p) {
+            if (p.category === 'ai') countAi++;
+            else if (p.category === 'streaming') countStreaming++;
+            else if (p.category === 'creative') countCreative++;
+            else if (p.category === 'tools') countTools++;
+          });
+          document.getElementById('countProdAll').textContent = countAll;
+          document.getElementById('countProdAi').textContent = countAi;
+          document.getElementById('countProdStreaming').textContent = countStreaming;
+          document.getElementById('countProdCreative').textContent = countCreative;
+          document.getElementById('countProdTools').textContent = countTools;
+
+          renderProductsAdmin();
+          if (showToastOnDone) showToast('Katalog produk diperbarui (' + allProducts.length + ' item)');
+        }
+      })
+      .catch(function(err) {
+        console.error('Fetch products error:', err);
+      })
+      .finally(function() {
+        if (icon) icon.style.animation = '';
+      });
+    }
+
+    function filterProductsCategory(cat, btn) {
+      currentProdCat = cat;
+      document.querySelectorAll('[data-prodcat]').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      if (btn) btn.classList.add('active');
+      renderProductsAdmin();
+    }
+
+    function filterProductsSearch() {
+      var input = document.getElementById('searchProductInput');
+      currentProdQuery = (input ? input.value : '').toLowerCase().trim();
+      renderProductsAdmin();
+    }
+
+    function renderProductsAdmin() {
+      var tbody = document.getElementById('productsTableBody');
+      var emptyState = document.getElementById('emptyProductsState');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      var filtered = allProducts.filter(function(p) {
+        var matchCat = (currentProdCat === 'all' || p.category === currentProdCat);
+        var str = (p.name + ' ' + (p.search_keywords || '') + ' ' + (p.description || '')).toLowerCase();
+        var matchQuery = (!currentProdQuery || str.indexOf(currentProdQuery) !== -1);
+        return matchCat && matchQuery;
+      });
+
+      if (filtered.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      filtered.forEach(function(p) {
+        var tr = document.createElement('tr');
+
+        // 1. Photo
+        var tdPhoto = document.createElement('td');
+        var imgUrl = p.image_url || 'assets/ritovex/Image_Placeholder_Square.png';
+        tdPhoto.innerHTML = '<img class="product-thumb-sm" src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(p.name) + '" onerror="this.src=\'assets/ritovex/Image_Placeholder_Square.png\'" />';
+
+        // 2. Name, Key & Category
+        var tdInfo = document.createElement('td');
+        var catName = p.category;
+        if (catName === 'ai') catName = 'AI & Produktivitas';
+        else if (catName === 'streaming') catName = 'Streaming & Hiburan';
+        else if (catName === 'creative') catName = 'Desain & Kreatif';
+        else if (catName === 'tools') catName = 'Tools & VPN';
+
+        tdInfo.innerHTML = '<div style="font-weight: 700; color: #00004d; font-size: 14px; margin-bottom: 3px;">' + escapeHtml(p.name) + '</div>' +
+                           '<div style="display: flex; gap: 6px; align-items: center; margin-bottom: 4px;">' +
+                           '  <span class="status-badge" style="background: rgba(0,0,77,0.06); color: #00004d; font-size: 10px; font-weight: 700; padding: 2px 6px;">' + escapeHtml(catName) + '</span>' +
+                           '  <span style="font-size: 11px; color: #888698; font-family: monospace;">#' + escapeHtml(p.key || p.id) + '</span>' +
+                           '</div>' +
+                           '<div style="font-size: 12px; color: #64748b; max-width: 320px; line-height: 1.4;">' + escapeHtml(p.description || '-') + '</div>';
+
+        // 3. Packages & Prices
+        var tdPkgs = document.createElement('td');
+        var pkgsHtml = '<div class="pkg-pill-list">';
+        (p.packages || []).forEach(function(pkg) {
+          pkgsHtml += '<span class="pkg-pill-tag">' + escapeHtml(pkg.label || 'Paket') + ': <strong class="pkg-pill-price">' + escapeHtml(pkg.price) + '</strong></span>';
+        });
+        pkgsHtml += '</div>';
+        tdPkgs.innerHTML = pkgsHtml;
+
+        // 4. Status Badge
+        var tdStatus = document.createElement('td');
+        var isActive = (p.status === 'active');
+        tdStatus.innerHTML = '<span class="status-badge ' + (isActive ? 'status-badge-active' : 'status-badge-draft') + '">' +
+                             (isActive ? 'Aktif' : 'Draft') +
+                             '</span>';
+
+        // 5. Actions
+        var tdActions = document.createElement('td');
+        tdActions.style.textAlign = 'right';
+        tdActions.innerHTML = '<div style="display: inline-flex; gap: 6px;">' +
+                              '  <button class="btn-table-action" onclick="openProductModal(\'' + escapeHtml(p.id) + '\')" title="Edit Produk">' +
+                              '    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>' +
+                              '    <span>Edit</span>' +
+                              '  </button>' +
+                              '  <button class="btn-table-action" onclick="toggleProductStatus(\'' + escapeHtml(p.id) + '\')" title="Ubah Status Aktif/Draft">' +
+                              '    <span>' + (isActive ? 'Nonaktifkan' : 'Aktifkan') + '</span>' +
+                              '  </button>' +
+                              '  <button class="btn-table-action" onclick="deleteProductAdmin(\'' + escapeHtml(p.id) + '\')" style="color: #ef4444;" title="Hapus Produk">' +
+                              '    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>' +
+                              '  </button>' +
+                              '</div>';
+
+        tr.appendChild(tdPhoto);
+        tr.appendChild(tdInfo);
+        tr.appendChild(tdPkgs);
+        tr.appendChild(tdStatus);
+        tr.appendChild(tdActions);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function addPackageRow(label, duration, price) {
+      var container = document.getElementById('pkgRowsContainer');
+      if (!container) return;
+
+      var row = document.createElement('div');
+      row.className = 'pkg-builder-row';
+      row.innerHTML = '<input class="modal-input pkg-input-label" placeholder="Label (misal: 1 Bulan)" value="' + escapeHtml(label || '') + '" required style="padding: 7px 10px; font-size: 13px;" type="text" />' +
+                      '<input class="modal-input pkg-input-dur" placeholder="Durasi (1 Bulan Private)" value="' + escapeHtml(duration || '') + '" required style="padding: 7px 10px; font-size: 13px;" type="text" />' +
+                      '<input class="modal-input pkg-input-price" placeholder="Harga (Rp 28.000)" value="' + escapeHtml(price || '') + '" required style="padding: 7px 10px; font-size: 13px;" type="text" />' +
+                      '<button type="button" class="btn-pkg-remove" onclick="removePackageRow(this)" title="Hapus Paket">×</button>';
+
+      container.appendChild(row);
+    }
+
+    function removePackageRow(btn) {
+      var row = btn.closest('.pkg-builder-row');
+      if (row) row.remove();
+    }
+
+    function openProductModal(prodId) {
+      var modal = document.getElementById('modalProductForm');
+      var title = document.getElementById('productModalTitle');
+      var form = document.getElementById('formProduct');
+      var pkgContainer = document.getElementById('pkgRowsContainer');
+
+      form.reset();
+      pkgContainer.innerHTML = '';
+
+      if (prodId) {
+        var p = allProducts.find(function(item) { return item.id === prodId; });
+        if (!p) return;
+
+        title.textContent = 'Edit Produk: ' + p.name;
+        document.getElementById('prodFormId').value = p.id;
+        document.getElementById('prodFormKey').value = p.key || '';
+        document.getElementById('prodFormName').value = p.name || '';
+        document.getElementById('prodFormCategory').value = p.category || 'ai';
+        document.getElementById('prodFormDesc').value = p.description || '';
+        document.getElementById('prodFormImg').value = p.image_url || 'assets/ritovex/Image_Placeholder_Square.png';
+        document.getElementById('prodFormStatus').value = p.status || 'active';
+        document.getElementById('prodFormKeywords').value = p.search_keywords || '';
+
+        if (p.packages && p.packages.length > 0) {
+          p.packages.forEach(function(pkg) {
+            addPackageRow(pkg.label, pkg.duration, pkg.price);
+          });
+        } else {
+          addPackageRow('1 Paket', '1 Paket', 'Rp 0');
+        }
+      } else {
+        title.textContent = 'Tambah Produk Baru';
+        document.getElementById('prodFormId').value = '';
+        document.getElementById('prodFormKey').value = '';
+        document.getElementById('prodFormImg').value = 'assets/ritovex/Image_Placeholder_Square.png';
+        document.getElementById('prodFormStatus').value = 'active';
+
+        // Default 2 package rows
+        addPackageRow('1 Bulan', '1 Bulan Private', 'Rp 25.000');
+        addPackageRow('3 Bulan', '3 Bulan Private', 'Rp 65.000');
+      }
+
+      openModal('modalProductForm');
+    }
+
+    function saveProductForm(e) {
+      e.preventDefault();
+
+      var prodId = document.getElementById('prodFormId').value;
+      var key = document.getElementById('prodFormKey').value;
+      var name = document.getElementById('prodFormName').value.trim();
+      var category = document.getElementById('prodFormCategory').value;
+      var description = document.getElementById('prodFormDesc').value.trim();
+      var imageUrl = document.getElementById('prodFormImg').value.trim() || 'assets/ritovex/Image_Placeholder_Square.png';
+      var status = document.getElementById('prodFormStatus').value;
+      var searchKeywords = document.getElementById('prodFormKeywords').value.trim();
+
+      // Collect Packages
+      var pkgRows = document.querySelectorAll('#pkgRowsContainer .pkg-builder-row');
+      if (pkgRows.length === 0) {
+        alert('Mohon tambahkan minimal 1 paket durasi & harga untuk produk ini.');
+        return;
+      }
+
+      var packages = [];
+      pkgRows.forEach(function(row) {
+        var label = row.querySelector('.pkg-input-label').value.trim();
+        var dur = row.querySelector('.pkg-input-dur').value.trim();
+        var price = row.querySelector('.pkg-input-price').value.trim();
+        if (label && price) {
+          packages.append ? packages.append({ label: label, duration: dur || label, price: price }) : packages.push({ label: label, duration: dur || label, price: price });
+        }
+      });
+
+      if (packages.length === 0) {
+        alert('Mohon isi detail label dan harga paket dengan lengkap.');
+        return;
+      }
+
+      var submitBtn = document.getElementById('btnSaveProduct');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Menyimpan...';
+
+      var payload = {
+        token: currentToken,
+        product: {
+          id: prodId || undefined,
+          key: key || undefined,
+          name: name,
+          category: category,
+          description: description,
+          image_url: imageUrl,
+          status: status,
+          search_keywords: searchKeywords,
+          packages: packages
+        }
+      };
+
+      fetch('/api/admin/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data && data.status === 'success') {
+          closeModal('modalProductForm');
+          showToast(data.message || 'Produk berhasil disimpan');
+          fetchProductsAdmin();
+        } else {
+          alert('Gagal menyimpan: ' + (data.message || 'Terjadi kesalahan'));
+        }
+      })
+      .catch(function(err) {
+        console.error('Error saving product:', err);
+        alert('Gagal menghubungi server');
+      })
+      .finally(function() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Simpan Produk';
+      });
+    }
+
+    function toggleProductStatus(prodId) {
+      fetch('/api/admin/products/toggle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: currentToken, id: prodId })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data && data.status === 'success') {
+          showToast(data.message);
+          fetchProductsAdmin();
+        } else {
+          alert('Gagal mengubah status: ' + (data.message || 'Error'));
+        }
+      })
+      .catch(function(err) {
+        console.error('Error toggling status:', err);
+      });
+    }
+
+    function deleteProductAdmin(prodId) {
+      var p = allProducts.find(function(item) { return item.id === prodId; });
+      var pName = p ? p.name : 'produk ini';
+
+      if (!confirm('Apakah Anda yakin ingin menghapus ' + pName + ' dari katalog?')) {
+        return;
+      }
+
+      fetch('/api/admin/products/delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: currentToken, id: prodId })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data && data.status === 'success') {
+          showToast(data.message || 'Produk berhasil dihapus');
+          fetchProductsAdmin();
+        } else {
+          alert('Gagal menghapus: ' + (data.message || 'Error'));
+        }
+      })
+      .catch(function(err) {
+        console.error('Error deleting product:', err);
+      });
+    }
+
   </script>
 </body>
 </html>

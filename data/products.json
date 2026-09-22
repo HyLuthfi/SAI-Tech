@@ -1,0 +1,318 @@
+[
+  {
+    "id": "prod-netflix",
+    "key": "netflix",
+    "name": "Netflix Premium 4K",
+    "category": "streaming",
+    "search_keywords": "netflix premium 4k uhd film movie streaming",
+    "description": "Streaming film & series kualitas 4K UHD + HDR tanpa jeda iklan dengan audio spasial.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bln Sharing",
+        "duration": "1 Bulan (Sharing 1 User)",
+        "price": "Rp 28.000"
+      },
+      {
+        "label": "1 Bln Private",
+        "duration": "1 Bulan (Private 4 User)",
+        "price": "Rp 120.000"
+      },
+      {
+        "label": "3 Bln Sharing",
+        "duration": "3 Bulan (Sharing 1 User)",
+        "price": "Rp 78.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 1
+  },
+  {
+    "id": "prod-canva",
+    "key": "canva",
+    "name": "Canva Pro Premium",
+    "category": "creative",
+    "search_keywords": "canva pro premium desain grafis template magic studio ai",
+    "description": "Akses 100+ juta template premium, Magic Studio AI, Brand Kit, dan background remover 1-klik.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bulan",
+        "duration": "1 Bulan Private Email",
+        "price": "Rp 15.000"
+      },
+      {
+        "label": "1 Tahun",
+        "duration": "1 Tahun Private Email",
+        "price": "Rp 45.000"
+      },
+      {
+        "label": "Lifetime",
+        "duration": "Lifetime Edu Pro",
+        "price": "Rp 75.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 2
+  },
+  {
+    "id": "prod-youtube",
+    "key": "youtube",
+    "name": "YouTube Premium",
+    "category": "streaming",
+    "search_keywords": "youtube premium yt music bebas iklan background play",
+    "description": "Bebas iklan, download offline, putar di latar belakang, plus akses YouTube Music Premium.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bulan",
+        "duration": "1 Bulan Family Plan",
+        "price": "Rp 15.000"
+      },
+      {
+        "label": "3 Bulan",
+        "duration": "3 Bulan Family Plan",
+        "price": "Rp 38.000"
+      },
+      {
+        "label": "6 Bulan",
+        "duration": "6 Bulan Family Plan",
+        "price": "Rp 70.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 3
+  },
+  {
+    "id": "prod-chatgpt",
+    "key": "chatgpt",
+    "name": "ChatGPT Plus (GPT-4o)",
+    "category": "ai",
+    "search_keywords": "chatgpt plus gpt-4o openai ai assistant dalle 3",
+    "description": "Akses model GPT-4o pintar, DALL-E 3, analisis data dokumen mendalam, dan browsing internet real-time.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bln Sharing",
+        "duration": "1 Bulan Sharing",
+        "price": "Rp 65.000"
+      },
+      {
+        "label": "1 Bln Private",
+        "duration": "1 Bulan Private Akun",
+        "price": "Rp 330.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 4
+  },
+  {
+    "id": "prod-spotify",
+    "key": "spotify",
+    "name": "Spotify Premium",
+    "category": "streaming",
+    "search_keywords": "spotify premium music streaming podcast lagu hq",
+    "description": "Bebas jeda iklan, skip lagu tanpa batas, kualitas audio sangat tinggi, dan mode offline.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bulan",
+        "duration": "1 Bulan Individual/Family",
+        "price": "Rp 18.000"
+      },
+      {
+        "label": "3 Bulan",
+        "duration": "3 Bulan Individual/Family",
+        "price": "Rp 45.000"
+      },
+      {
+        "label": "6 Bulan",
+        "duration": "6 Bulan Individual/Family",
+        "price": "Rp 85.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 5
+  },
+  {
+    "id": "prod-capcut",
+    "key": "capcut",
+    "name": "CapCut Pro",
+    "category": "creative",
+    "search_keywords": "capcut pro video editor template efek transisi tiktok",
+    "description": "Buka semua fitur dan efek pro, transisi viral, auto-caption otomatis AI, dan export tanpa watermark.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bln Sharing",
+        "duration": "1 Bulan Sharing",
+        "price": "Rp 25.000"
+      },
+      {
+        "label": "1 Bln Private",
+        "duration": "1 Bulan Private 1 Device",
+        "price": "Rp 75.000"
+      },
+      {
+        "label": "1 Thn Private",
+        "duration": "1 Tahun Private 1 Device",
+        "price": "Rp 280.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 6
+  },
+  {
+    "id": "prod-microsoft365",
+    "key": "microsoft365",
+    "name": "Microsoft 365 + 1TB",
+    "category": "ai",
+    "search_keywords": "microsoft 365 office word excel powerpoint onedrive cloud",
+    "description": "Word, Excel, PowerPoint resmi + 1TB penyimpanan cloud OneDrive aman untuk 5 perangkat.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Tahun",
+        "duration": "1 Tahun Family Invite",
+        "price": "Rp 45.000"
+      },
+      {
+        "label": "Lifetime",
+        "duration": "Lifetime Pro Plus Akun",
+        "price": "Rp 95.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 7
+  },
+  {
+    "id": "prod-disney",
+    "key": "disney",
+    "name": "Disney+ Hotstar",
+    "category": "streaming",
+    "search_keywords": "disney hotstar marvel star wars pixar film streaming",
+    "description": "Streaming film & serial blockbuster Disney, Marvel, Pixar, Star Wars, dan National Geographic.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bulan",
+        "duration": "1 Bulan Sharing",
+        "price": "Rp 35.000"
+      },
+      {
+        "label": "3 Bulan",
+        "duration": "3 Bulan Sharing",
+        "price": "Rp 95.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 8
+  },
+  {
+    "id": "prod-claude",
+    "key": "claude",
+    "name": "Claude Pro (Anthropic)",
+    "category": "ai",
+    "search_keywords": "claude pro sonnet 3.5 anthropic ai coding dev",
+    "description": "Model Claude 3.5 Sonnet terbaik untuk coding tingkat lanjut, riset panjang, dan analisis dokumen.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bln Sharing",
+        "duration": "1 Bulan Sharing",
+        "price": "Rp 70.000"
+      },
+      {
+        "label": "1 Bln Private",
+        "duration": "1 Bulan Private",
+        "price": "Rp 340.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 9
+  },
+  {
+    "id": "prod-turnitin",
+    "key": "turnitin",
+    "name": "Turnitin No-Repository",
+    "category": "tools",
+    "search_keywords": "turnitin no-repo plagiarisme cek skripsi jurnal mahasiswa",
+    "description": "Cek plagiarisme akurat tanpa tersimpan di database repositori (*no-repo*), 100% aman.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 File",
+        "duration": "1 File Pengecekan",
+        "price": "Rp 10.000"
+      },
+      {
+        "label": "Paket 5 File",
+        "duration": "Paket 5 File Pengecekan",
+        "price": "Rp 40.000"
+      },
+      {
+        "label": "Akun 1 Bln",
+        "duration": "Akun Student 1 Bulan",
+        "price": "Rp 60.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 10
+  },
+  {
+    "id": "prod-vpn",
+    "key": "vpn",
+    "name": "ExpressVPN / NordVPN",
+    "category": "tools",
+    "search_keywords": "vpn expressvpn nordvpn privasi sekuriti ip luar negeri",
+    "description": "Koneksi terenkripsi tingkat tinggi, akses ribuan server global ultra cepat, dan privasi penuh.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "1 Bulan",
+        "duration": "1 Bulan Sharing",
+        "price": "Rp 30.000"
+      },
+      {
+        "label": "3 Bulan",
+        "duration": "3 Bulan Sharing",
+        "price": "Rp 75.000"
+      },
+      {
+        "label": "1 Tahun",
+        "duration": "1 Tahun Sharing",
+        "price": "Rp 210.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 11
+  },
+  {
+    "id": "prod-googleone",
+    "key": "googleone",
+    "name": "Google One Storage",
+    "category": "ai",
+    "search_keywords": "google one storage gdrive drive gmail photos cloud backup",
+    "description": "Penyimpanan cloud resmi untuk Google Drive, Gmail, dan Google Photos original tanpa kompresi.",
+    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
+    "packages": [
+      {
+        "label": "100 GB (1 Thn)",
+        "duration": "100 GB Storage (1 Tahun)",
+        "price": "Rp 45.000"
+      },
+      {
+        "label": "200 GB (1 Thn)",
+        "duration": "200 GB Storage (1 Tahun)",
+        "price": "Rp 75.000"
+      },
+      {
+        "label": "2 TB (1 Thn)",
+        "duration": "2 TB Storage (1 Tahun)",
+        "price": "Rp 195.000"
+      }
+    ],
+    "status": "active",
+    "sort_order": 12
+  }
+]

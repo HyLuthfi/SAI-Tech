@@ -6,15 +6,32 @@ import time
 import hashlib
 import hmac
 import secrets
+import re
 import urllib.parse
 import urllib.request
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 
 ADMIN_CONFIG_PATH = os.path.join('data', 'admin_config.json')
 ADMIN_SESSIONS_PATH = os.path.join('data', 'admin_sessions.json')
+PRODUCTS_PATH = os.path.join('data', 'products.json')
 LOGIN_ATTEMPTS = {}  # client_ip -> {'failed_count': int, 'locked_until': float, 'last_failed_at': float}
 MAX_FAILED_ATTEMPTS = 5
 LOCKOUT_DURATION = 900  # 15 minutes in seconds
+
+def load_products():
+    if not os.path.exists(PRODUCTS_PATH):
+        return []
+    try:
+        with open(PRODUCTS_PATH, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"[ERROR] Failed to load products: {e}")
+        return []
+
+def save_products(products):
+    os.makedirs(os.path.dirname(PRODUCTS_PATH), exist_ok=True)
+    with open(PRODUCTS_PATH, 'w', encoding='utf-8') as f:
+        json.dump(products, f, indent=2, ensure_ascii=False)
 
 def load_dotenv(dotenv_path='.env'):
     if os.path.isfile(dotenv_path):
@@ -581,6 +598,110 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 self.send_json_response(500, {'status': 'error', 'message': str(e)})
                 return
 
+        elif path == '/api/admin/products':
+            # Add or update product
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                data = json.loads(body)
+                token = self.get_auth_token(data)
+                if not is_valid_admin_token(token):
+                    self.send_json_response(401, {'status': 'error', 'message': 'Sesi login tidak valid'})
+                    return
+                
+                prod_data = data.get('product', {})
+                if not prod_data.get('name'):
+                    self.send_json_response(400, {'status': 'error', 'message': 'Nama produk wajib diisi'})
+                    return
+                
+                products = load_products()
+                prod_id = prod_data.get('id')
+                
+                if prod_id:
+                    # Update existing product
+                    updated = False
+                    for i, p in enumerate(products):
+                        if p.get('id') == prod_id:
+                            prod_data['updated_at'] = time.strftime('%Y-%m-%d %H:%M:%S')
+                            products[i] = prod_data
+                            updated = True
+                            break
+                    if not updated:
+                        self.send_json_response(404, {'status': 'error', 'message': 'Produk tidak ditemukan'})
+                        return
+                else:
+                    # Add new product
+                    clean_name = re.sub(r'[^a-zA-Z0-9]', '', prod_data.get('name', '').lower())[:15] or str(int(time.time()))
+                    new_id = f"prod-{clean_name}-{int(time.time())}"
+                    prod_data['id'] = new_id
+                    prod_data['key'] = prod_data.get('key') or clean_name
+                    prod_data['created_at'] = time.strftime('%Y-%m-%d %H:%M:%S')
+                    prod_data['sort_order'] = len(products) + 1
+                    products.append(prod_data)
+                
+                save_products(products)
+                self.send_json_response(200, {'status': 'success', 'message': 'Produk berhasil disimpan', 'product': prod_data})
+                return
+            except Exception as e:
+                self.send_json_response(500, {'status': 'error', 'message': str(e)})
+                return
+
+        elif path == '/api/admin/products/delete':
+            # Delete product
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                data = json.loads(body)
+                token = self.get_auth_token(data)
+                if not is_valid_admin_token(token):
+                    self.send_json_response(401, {'status': 'error', 'message': 'Sesi login tidak valid'})
+                    return
+                
+                prod_id = data.get('id')
+                products = load_products()
+                orig_len = len(products)
+                products = [p for p in products if p.get('id') != prod_id]
+                if len(products) < orig_len:
+                    save_products(products)
+                    self.send_json_response(200, {'status': 'success', 'message': 'Produk berhasil dihapus'})
+                else:
+                    self.send_json_response(404, {'status': 'error', 'message': 'Produk tidak ditemukan'})
+                return
+            except Exception as e:
+                self.send_json_response(500, {'status': 'error', 'message': str(e)})
+                return
+
+        elif path == '/api/admin/products/toggle':
+            # Toggle active / draft status
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                data = json.loads(body)
+                token = self.get_auth_token(data)
+                if not is_valid_admin_token(token):
+                    self.send_json_response(401, {'status': 'error', 'message': 'Sesi login tidak valid'})
+                    return
+                
+                prod_id = data.get('id')
+                products = load_products()
+                found = False
+                new_status = 'active'
+                for p in products:
+                    if p.get('id') == prod_id:
+                        p['status'] = 'draft' if p.get('status') == 'active' else 'active'
+                        new_status = p['status']
+                        found = True
+                        break
+                if found:
+                    save_products(products)
+                    self.send_json_response(200, {'status': 'success', 'message': f'Status diubah menjadi {new_status}', 'status_val': new_status})
+                else:
+                    self.send_json_response(404, {'status': 'error', 'message': 'Produk tidak ditemukan'})
+                return
+            except Exception as e:
+                self.send_json_response(500, {'status': 'error', 'message': str(e)})
+                return
+
         self.send_error(404, "Not Found")
 
     def do_HEAD(self):
@@ -613,6 +734,25 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 'picture': ''
             }
             self.send_json_response(200, {'status': 'success', 'admin': data})
+            return
+
+        if path == '/api/products':
+            # Public API: Return all active products for katalog.html
+            products = load_products()
+            active_products = [p for p in products if p.get('status') == 'active']
+            active_products = sorted(active_products, key=lambda x: x.get('sort_order', 999))
+            self.send_json_response(200, {'status': 'success', 'products': active_products})
+            return
+
+        if path == '/api/admin/products':
+            # Admin API: Return all products (including drafts)
+            token = self.get_auth_token()
+            if not is_valid_admin_token(token):
+                self.send_json_response(401, {'status': 'error', 'message': 'Sesi login admin tidak valid'})
+                return
+            products = load_products()
+            products = sorted(products, key=lambda x: x.get('sort_order', 999))
+            self.send_json_response(200, {'status': 'success', 'products': products})
             return
 
         if path == '/api/admin/orders':
