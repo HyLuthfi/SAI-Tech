@@ -1,33 +1,5 @@
 [
   {
-    "id": "prod-netflix",
-    "key": "netflix",
-    "name": "Netflix Premium 4K",
-    "category": "streaming",
-    "search_keywords": "netflix premium 4k uhd film movie streaming",
-    "description": "Streaming film & series kualitas 4K UHD + HDR tanpa jeda iklan dengan audio spasial.",
-    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
-    "packages": [
-      {
-        "label": "1 Bln Sharing",
-        "duration": "1 Bulan (Sharing 1 User)",
-        "price": "Rp 28.000"
-      },
-      {
-        "label": "1 Bln Private",
-        "duration": "1 Bulan (Private 4 User)",
-        "price": "Rp 120.000"
-      },
-      {
-        "label": "3 Bln Sharing",
-        "duration": "3 Bulan (Sharing 1 User)",
-        "price": "Rp 78.000"
-      }
-    ],
-    "status": "active",
-    "sort_order": 1
-  },
-  {
     "id": "prod-canva",
     "key": "canva",
     "name": "Canva Pro Premium",
@@ -82,29 +54,6 @@
     ],
     "status": "active",
     "sort_order": 3
-  },
-  {
-    "id": "prod-chatgpt",
-    "key": "chatgpt",
-    "name": "ChatGPT Plus (GPT-4o)",
-    "category": "ai",
-    "search_keywords": "chatgpt plus gpt-4o openai ai assistant dalle 3",
-    "description": "Akses model GPT-4o pintar, DALL-E 3, analisis data dokumen mendalam, dan browsing internet real-time.",
-    "image_url": "assets/ritovex/Image_Placeholder_Square.png",
-    "packages": [
-      {
-        "label": "1 Bln Sharing",
-        "duration": "1 Bulan Sharing",
-        "price": "Rp 65.000"
-      },
-      {
-        "label": "1 Bln Private",
-        "duration": "1 Bulan Private Akun",
-        "price": "Rp 330.000"
-      }
-    ],
-    "status": "active",
-    "sort_order": 4
   },
   {
     "id": "prod-spotify",
