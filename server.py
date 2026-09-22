@@ -675,6 +675,13 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
                 self.path += '?' + parsed.query
             return super().do_GET()
 
+        # Redirect /admin to /admin-orders
+        if path == '/admin':
+            self.send_response(301)
+            self.send_header('Location', '/admin-orders')
+            self.end_headers()
+            return
+
         # 2. Redirect /index or /index.html to /
         if path in ['/index', '/index.html']:
             new_url = '/'
