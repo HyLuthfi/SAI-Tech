@@ -1047,120 +1047,266 @@
     }
 
     /* Admin Top Section Tabs */
-    .admin-section-tabs {
+    
+    /* Modern Controls Bar & Category Filter Segmented Tabs */
+    .controls-bar {
       display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-      border-bottom: 1px solid rgba(0, 0, 77, 0.08);
-      padding-bottom: 16px;
-    }
-    .section-tab-btn {
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      background: #f4f4f7;
-      color: #555466;
-      border: 1px solid rgba(0, 0, 77, 0.08);
-      transition: all 0.2s ease;
-    }
-    .section-tab-btn:hover {
-      background: #eaeaf0;
-      color: #00004d;
-    }
-    .section-tab-btn.active {
-      background: #00004d;
-      color: #ffffff;
-      border-color: #00004d;
-      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.18);
-    }
-    .section-tab-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2px 8px;
-      border-radius: 99px;
-      font-size: 11px;
-      font-weight: 800;
-      background: rgba(0, 0, 0, 0.08);
-      color: inherit;
-    }
-    .section-tab-btn.active .section-tab-badge {
-      background: rgba(255, 255, 255, 0.22);
-      color: #ffffff;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    /* Product Management Styles */
-    .product-thumb-sm {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #f0f0f4;
-      border: 1px solid rgba(0, 0, 77, 0.08);
-      vertical-align: middle;
-    }
-    .pkg-pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .pkg-pill-tag {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      background: #f0f0f8;
-      color: #00004d;
-      border: 1px solid rgba(0, 0, 77, 0.08);
-    }
-    .pkg-pill-price {
-      font-weight: 700;
-      color: #15803d;
-    }
-    .status-badge-active {
-      background: rgba(34, 197, 94, 0.12);
-      color: #15803d;
-      border: 1px solid rgba(34, 197, 94, 0.25);
-    }
-    .status-badge-draft {
-      background: rgba(148, 163, 184, 0.15);
-      color: #64748b;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-    }
-    .pkg-builder-row {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr 1fr auto;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .btn-pkg-remove {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.25);
-      color: #ef4444;
-      border-radius: 8px;
-      width: 32px;
-      height: 32px;
+    .filter-tabs {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      background: #f1f1f5;
+      padding: 4px;
+      border-radius: 12px;
+      gap: 3px;
+      border: 1px solid rgba(0, 0, 77, 0.07);
+    }
+
+    .filter-btn, .filter-tab {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover, .filter-tab:hover {
+      color: #00004d;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .filter-btn.active, .filter-tab.active {
+      background: #ffffff;
+      color: #00004d;
       font-weight: 700;
-      line-height: 1;
-      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 77, 0.08);
     }
-    .btn-pkg-remove:hover {
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 77, 0.12);
+      border-radius: 10px;
+      padding: 7px 14px;
+      min-width: 280px;
+      box-shadow: 0 2px 6px rgba(0, 0, 77, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: #00004d;
+      box-shadow: 0 0 0 3px rgba(0, 0, 77, 0.08);
+    }
+
+    .search-input-wrap input {
+      border: none;
+      outline: none;
+      font-size: 13px;
+      color: #00004d;
+      width: 100%;
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .search-input-wrap input::placeholder {
+      color: #94a3b8;
+    }
+
+    /* Orders & Products Table Styling */
+    .orders-card, .table-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 77, 0.05);
+      overflow: hidden;
+    }
+
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .orders-table th {
+      background: #fbfbfd;
+      color: #767588;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(0, 0, 77, 0.08);
+    }
+
+    .orders-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(0, 0, 77, 0.05);
+      vertical-align: middle;
+      font-size: 13px;
+      color: #334155;
+    }
+
+    .orders-table tbody tr {
+      transition: background 0.15s ease;
+    }
+
+    .orders-table tbody tr:hover {
+      background: #f8f8fc;
+    }
+
+    .orders-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Product Details & Action Buttons */
+    .product-row-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-row-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #00004d;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .category-badge-pill {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(0, 0, 77, 0.06);
+      color: #00004d;
+      display: inline-block;
+      letter-spacing: 0.02em;
+    }
+
+    .product-row-desc {
+      font-size: 12px;
+      color: #64748b;
+      max-width: 360px;
+      line-height: 1.45;
+    }
+
+    .pkg-grid-compact {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .pkg-row-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+    }
+
+    .pkg-row-name {
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .pkg-row-divider {
+      color: #cbd5e1;
+      font-size: 11px;
+    }
+
+    .pkg-row-price {
+      color: #059669;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace, sans-serif;
+      font-size: 11.5px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .status-badge-active {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .status-badge-draft {
+      background: rgba(100, 116, 139, 0.1);
+      color: #64748b;
+      border: 1px solid rgba(100, 116, 139, 0.2);
+    }
+
+    .table-actions-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .btn-action-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 77, 0.1);
+      background: #f8f8fb;
+      color: #00004d;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-action-pill:hover {
+      background: #ffffff;
+      border-color: #00004d;
+      box-shadow: 0 2px 6px rgba(0, 0, 77, 0.08);
+    }
+
+    .btn-action-danger {
+      padding: 6px 9px;
+      color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.2);
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .btn-action-danger:hover {
       background: #ef4444;
+      border-color: #ef4444;
       color: #ffffff;
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
     }
-  </style>
+
+</style>
 </head>
 <body>
 
@@ -1405,7 +1551,7 @@
           </button>
           <button class="btn-nav" onclick="openProductModal()" style="background: #00004d; color: #ffffff; border-color: #00004d;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>+ Tambah Produk</span>
+            <span>Tambah Produk</span>
           </button>
         </div>
       </div>
@@ -2369,9 +2515,9 @@
         // 1. Photo
         var tdPhoto = document.createElement('td');
         var imgUrl = p.image_url || 'assets/ritovex/Image_Placeholder_Square.png';
-        tdPhoto.innerHTML = '<img class="product-thumb-sm" src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(p.name) + '" onerror="this.src=\'assets/ritovex/Image_Placeholder_Square.png\'" />';
+        tdPhoto.innerHTML = '<img class="product-thumb-sm" style="width: 44px; height: 44px; border-radius: 10px; object-fit: cover; background: #f8f8fb; border: 1px solid rgba(0,0,77,0.08);" src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(p.name) + '" onerror="this.src=\'assets/ritovex/Image_Placeholder_Square.png\'" />';
 
-        // 2. Name, Key & Category
+        // 2. Name & Category
         var tdInfo = document.createElement('td');
         var catName = p.category;
         if (catName === 'ai') catName = 'AI & Produktivitas';
@@ -2379,18 +2525,23 @@
         else if (catName === 'creative') catName = 'Desain & Kreatif';
         else if (catName === 'tools') catName = 'Tools & VPN';
 
-        tdInfo.innerHTML = '<div style="font-weight: 700; color: #00004d; font-size: 14px; margin-bottom: 3px;">' + escapeHtml(p.name) + '</div>' +
-                           '<div style="display: flex; gap: 6px; align-items: center; margin-bottom: 4px;">' +
-                           '  <span class="status-badge" style="background: rgba(0,0,77,0.06); color: #00004d; font-size: 10px; font-weight: 700; padding: 2px 6px;">' + escapeHtml(catName) + '</span>' +
-                           '  <span style="font-size: 11px; color: #888698; font-family: monospace;">#' + escapeHtml(p.key || p.id) + '</span>' +
-                           '</div>' +
-                           '<div style="font-size: 12px; color: #64748b; max-width: 320px; line-height: 1.4;">' + escapeHtml(p.description || '-') + '</div>';
+        tdInfo.innerHTML = '<div class="product-row-info">' +
+                           '  <div class="product-row-title">' +
+                           '    <span>' + escapeHtml(p.name) + '</span>' +
+                           '    <span class="category-badge-pill">' + escapeHtml(catName) + '</span>' +
+                           '  </div>' +
+                           '  <div class="product-row-desc">' + escapeHtml(p.description || '-') + '</div>' +
+                           '</div>';
 
-        // 3. Packages & Prices
+        // 3. Structured Packages & Pricing List
         var tdPkgs = document.createElement('td');
-        var pkgsHtml = '<div class="pkg-pill-list">';
+        var pkgsHtml = '<div class="pkg-grid-compact">';
         (p.packages || []).forEach(function(pkg) {
-          pkgsHtml += '<span class="pkg-pill-tag">' + escapeHtml(pkg.label || 'Paket') + ': <strong class="pkg-pill-price">' + escapeHtml(pkg.price) + '</strong></span>';
+          pkgsHtml += '<div class="pkg-row-item">' +
+                      '  <span class="pkg-row-name">' + escapeHtml(pkg.label || 'Paket') + '</span>' +
+                      '  <span class="pkg-row-divider">·</span>' +
+                      '  <span class="pkg-row-price">' + escapeHtml(pkg.price) + '</span>' +
+                      '</div>';
         });
         pkgsHtml += '</div>';
         tdPkgs.innerHTML = pkgsHtml;
@@ -2399,22 +2550,22 @@
         var tdStatus = document.createElement('td');
         var isActive = (p.status === 'active');
         tdStatus.innerHTML = '<span class="status-badge ' + (isActive ? 'status-badge-active' : 'status-badge-draft') + '">' +
-                             (isActive ? 'Aktif' : 'Draft') +
+                             (isActive ? '<span style="width: 6px; height: 6px; border-radius: 50%; background: #059669; display: inline-block;"></span> Aktif' : 'Draft') +
                              '</span>';
 
-        // 5. Actions
+        // 5. Action Buttons
         var tdActions = document.createElement('td');
         tdActions.style.textAlign = 'right';
-        tdActions.innerHTML = '<div style="display: inline-flex; gap: 6px;">' +
-                              '  <button class="btn-table-action" onclick="openProductModal(\'' + escapeHtml(p.id) + '\')" title="Edit Produk">' +
-                              '    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>' +
+        tdActions.innerHTML = '<div class="table-actions-group">' +
+                              '  <button class="btn-action-pill" onclick="openProductModal(\'' + escapeHtml(p.id) + '\')" title="Edit Data & Harga">' +
+                              '    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>' +
                               '    <span>Edit</span>' +
                               '  </button>' +
-                              '  <button class="btn-table-action" onclick="toggleProductStatus(\'' + escapeHtml(p.id) + '\')" title="Ubah Status Aktif/Draft">' +
+                              '  <button class="btn-action-pill" onclick="toggleProductStatus(\'' + escapeHtml(p.id) + '\')" title="Ubah Visibilitas">' +
                               '    <span>' + (isActive ? 'Nonaktifkan' : 'Aktifkan') + '</span>' +
                               '  </button>' +
-                              '  <button class="btn-table-action" onclick="deleteProductAdmin(\'' + escapeHtml(p.id) + '\')" style="color: #ef4444;" title="Hapus Produk">' +
-                              '    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>' +
+                              '  <button class="btn-action-pill btn-action-danger" onclick="deleteProductAdmin(\'' + escapeHtml(p.id) + '\')" title="Hapus Produk">' +
+                              '    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>' +
                               '  </button>' +
                               '</div>';
 
