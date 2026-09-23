@@ -1194,51 +1194,111 @@
         font-size: 13.5px !important;
       }
 
-      /* Product Grid on Mobile (Single Column, Proportional Thumbnails) */
+      /* High-Density 2-Column Product Grid on Mobile (4x Information Density) */
       .catalog-products-grid {
-        grid-template-columns: 1fr !important;
-        gap: 18px !important;
-        margin-bottom: 40px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        margin-bottom: 32px !important;
       }
 
       .product-box {
-        padding: 14px 16px !important;
-        border-radius: 18px !important;
+        padding: 10px !important;
+        border-radius: 14px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(0, 0, 77, 0.08) !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 77, 0.04) !important;
       }
 
       .product-img-wrap {
-        aspect-ratio: 16 / 9 !important;
-        max-height: 180px !important;
-        border-radius: 12px !important;
-        margin-bottom: 12px !important;
+        aspect-ratio: 16 / 11 !important;
+        max-height: 100px !important;
+        border-radius: 10px !important;
+        margin-bottom: 8px !important;
       }
 
       .product-title {
-        font-size: 17px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        line-height: 1.25 !important;
+        margin-bottom: 4px !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        min-height: 32px !important;
       }
 
+      /* Hide long descriptive paragraphs on mobile grid for clean high density */
       .product-desc {
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-        margin-bottom: 12px !important;
+        display: none !important;
       }
 
       .dur-dropdown-wrap {
-        margin-bottom: 14px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .dur-label {
+        font-size: 9.5px !important;
+        margin-bottom: 2px !important;
+        color: #64748b !important;
+        display: block !important;
       }
 
       .dur-select {
-        font-size: 13px !important;
-        padding: 9px 32px 9px 12px !important;
+        font-size: 11px !important;
+        padding: 5px 18px 5px 6px !important;
+        height: 28px !important;
+        border-radius: 6px !important;
+        border: 1px solid rgba(0, 0, 77, 0.12) !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+      }
+
+      .select-chevron {
+        right: 6px !important;
+      }
+
+      .product-action-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px !important;
+        padding-top: 6px !important;
+        border-top: 1px dashed rgba(0, 0, 77, 0.08) !important;
+        margin-top: 4px !important;
+      }
+
+      .product-price-wrap {
+        display: flex !important;
+        align-items: baseline !important;
+        justify-content: space-between !important;
+      }
+
+      .product-price-label {
+        font-size: 9.5px !important;
+        color: #8892b0 !important;
       }
 
       .product-price {
-        font-size: 17px !important;
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        color: #00004d !important;
       }
 
       .btn-pesan {
-        padding: 9px 24px !important;
-        font-size: 13.5px !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 7px 10px !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        border-radius: 8px !important;
+        box-sizing: border-box !important;
+        background: #00004d !important;
+        color: #ffffff !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 77, 0.15) !important;
       }
 
       /* Checkout Modal Mobile Tuning */
