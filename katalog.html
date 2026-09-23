@@ -212,6 +212,31 @@
       background: #f6f6f9;
       margin-bottom: 16px;
     }
+    .product-cat-badge {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 18px;
+      padding: 0 6px;
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e0bd6a;
+      background: rgba(6, 8, 24, 0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(224, 189, 106, 0.35);
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+      pointer-events: none;
+      z-index: 2;
+      line-height: 1;
+    }
+
 
     .product-img {
       width: 100%;
@@ -2356,7 +2381,7 @@
         html += '<div class="product-box" data-category="' + (p.category || 'ai') + '" data-name="' + searchName + '">';
         html += '  <div class="product-img-wrap" style="position: relative;">';
         html += '    <img src="' + (p.image_url || 'assets/ritovex/Image_Placeholder_Square.png') + '" alt="' + p.name + '" class="product-img" loading="lazy" />';
-        html += '    <span style="position: absolute; top: 10px; left: 10px; background: rgba(0, 0, 77, 0.85); color: #e0bd6a; font-size: 10.5px; font-weight: 700; padding: 3px 10px; border-radius: 20px; backdrop-filter: blur(4px); letter-spacing: 0.6px; border: 1px solid rgba(224, 189, 106, 0.35);">' + catBadgeText + '</span>';
+        html += '    <span class="product-cat-badge">' + catBadgeText + '</span>';
         html += '  </div>';
         html += '  <div class="product-body">';
         html += '    <h3 class="product-title">' + p.name + '</h3>';
