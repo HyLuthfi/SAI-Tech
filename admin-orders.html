@@ -988,6 +988,333 @@
         text-align: center !important;
         width: 100% !important;
       }
+    
+      /* ==========================================================================
+         SAI TECH ADMIN PANEL MOBILE RESPONSIVE ENGINE
+         High-Density 2x2 KPI Grid, Horizontal Tab Swipe, Compact Quick Add Banner,
+         Single-Column Product/Article Cards, Scrollable Table & Bottom-Sheet Modals
+         ========================================================================== */
+
+      .admin-container {
+        padding: 14px 12px 36px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Navbar Mobile Tuning */
+      .admin-navbar {
+        padding: 8px 12px !important;
+      }
+
+      .navbar-logo {
+        height: 32px !important;
+      }
+
+      .navbar-logo-emblem {
+        height: 32px !important;
+      }
+
+      .navbar-tech-word {
+        height: 16px !important;
+      }
+
+      .admin-nav-actions {
+        gap: 6px !important;
+      }
+
+      .admin-user-pill {
+        padding: 4px 8px !important;
+        gap: 6px !important;
+      }
+
+      .admin-user-avatar {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 11px !important;
+      }
+
+      .admin-user-email {
+        display: none !important;
+      }
+
+      .admin-user-name {
+        font-size: 11px !important;
+        max-width: 85px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+      }
+
+      .admin-nav-actions .btn-nav span {
+        display: none !important;
+      }
+
+      .admin-nav-actions .btn-nav {
+        padding: 7px !important;
+        width: 32px !important;
+        height: 32px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 8px !important;
+      }
+
+      /* Top Section Navigation Tabs (Smooth Horizontal Scroll) */
+      .admin-section-tabs-wrap {
+        width: 100% !important;
+        overflow: hidden !important;
+        margin-bottom: 14px !important;
+      }
+
+      .admin-section-segmented {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        scrollbar-width: none !important;
+        gap: 4px !important;
+        padding: 4px !important;
+        background: #eaeaf2 !important;
+        border-radius: 12px !important;
+      }
+
+      .admin-section-segmented::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .section-seg-btn {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        gap: 6px !important;
+        border-radius: 9px !important;
+      }
+
+      .section-seg-btn span:first-of-type {
+        white-space: nowrap !important;
+      }
+
+      .seg-badge {
+        font-size: 10.5px !important;
+        padding: 2px 6px !important;
+      }
+
+      /* Live Status Bars & Action Headers */
+      .live-status-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .live-status-title {
+        font-size: 16px !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+      }
+
+      .live-status-bar > div:last-child {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        width: 100% !important;
+      }
+
+      .live-status-bar > div:last-child .btn-nav,
+      .live-status-bar > div:last-child a.btn-nav,
+      .live-status-bar > div:last-child button.btn-nav {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 9px 12px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        justify-content: center !important;
+        text-decoration: none !important;
+      }
+
+      .live-status-bar > div:last-child .btn-nav span {
+        display: inline !important;
+      }
+
+      /* High-Density 2x2 KPI Grid (Drops Height from 500px to 140px) */
+      .kpi-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .kpi-card {
+        padding: 10px 12px !important;
+        border-radius: 12px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        position: relative !important;
+        gap: 4px !important;
+      }
+
+      .kpi-icon-wrap {
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 8px !important;
+        position: absolute !important;
+        top: 10px !important;
+        right: 10px !important;
+      }
+
+      .kpi-icon-wrap svg {
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .kpi-label {
+        font-size: 10.5px !important;
+        margin-bottom: 2px !important;
+        padding-right: 32px !important;
+        line-height: 1.25 !important;
+      }
+
+      .kpi-value {
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+      }
+
+      /* Category Filter Pills (Horizontal Touch Swipe) */
+      .cat-seg-bar,
+      #artCatSegBar {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        gap: 6px !important;
+        padding: 5px 6px !important;
+        margin-bottom: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .cat-seg-bar::-webkit-scrollbar,
+      #artCatSegBar::-webkit-scrollbar {
+        display: none !important;
+      }
+
+      .cat-seg-btn,
+      .art-cat-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        font-size: 11.5px !important;
+        padding: 6px 12px !important;
+        border-radius: 20px !important;
+      }
+
+      /* Search Box Mobile Tuning */
+      .search-box-wrap {
+        width: 100% !important;
+        margin-bottom: 12px !important;
+      }
+
+      .search-box-wrap input {
+        font-size: 12.5px !important;
+        padding: 10px 14px 10px 38px !important;
+      }
+
+      /* High-Density Quick Add Cards (Height ~60px instead of 290px!) */
+      .product-quick-add-card {
+        min-height: unset !important;
+        height: auto !important;
+        padding: 12px 14px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        border-radius: 12px !important;
+        margin-bottom: 12px !important;
+        text-align: left !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1.5px dashed rgba(0, 0, 77, 0.25) !important;
+        box-sizing: border-box !important;
+      }
+
+      .product-quick-add-card .quick-add-icon-box {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        border-radius: 10px !important;
+        margin-bottom: 0 !important;
+        background: rgba(0, 0, 77, 0.08) !important;
+      }
+
+      .product-quick-add-card .quick-add-icon-box svg {
+        width: 18px !important;
+        height: 18px !important;
+      }
+
+      .product-quick-add-card h3 {
+        font-size: 13.5px !important;
+        margin-bottom: 2px !important;
+        font-weight: 700 !important;
+        color: #00004d !important;
+      }
+
+      .product-quick-add-card p {
+        display: none !important;
+      }
+
+      /* Admin Product Cards Grid */
+      .admin-products-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        margin-bottom: 30px !important;
+      }
+
+      .admin-prod-card,
+      .admin-art-card {
+        padding: 14px !important;
+        border-radius: 14px !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Table Card for Orders (No page wobble) */
+      .table-card {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        border-radius: 14px !important;
+        width: 100% !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 77, 0.04) !important;
+        margin-bottom: 30px !important;
+      }
+
+      .orders-table {
+        min-width: 580px !important;
+      }
+
+      /* Bottom-Sheet Modals on Mobile */
+      .modal-backdrop {
+        padding: 0 !important;
+        align-items: flex-end !important;
+      }
+
+      .modal-panel {
+        padding: 22px 18px 28px 18px !important;
+        border-radius: 22px 22px 0 0 !important;
+        max-height: 90vh !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .modal-title {
+        font-size: 16px !important;
+      }
+
     }
 
     /* Modal Generic */
