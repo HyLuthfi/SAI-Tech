@@ -826,24 +826,57 @@
 
       /* Compact Hero Section Header */
       .section.about-us-banner {
-        padding-top: 80px !important;
-        padding-bottom: 24px !important;
+        padding-top: 75px !important;
+        padding-bottom: 20px !important;
       }
 
       .about-us-banner-title {
-        font-size: clamp(22px, 5.5vw, 28px) !important;
+        font-size: 24px !important;
+        font-weight: 800 !important;
         line-height: 1.25 !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 8px !important;
         opacity: 1 !important;
         filter: none !important;
         transform: none !important;
       }
 
       .about-us-banner-description {
-        font-size: 13px !important;
-        line-height: 1.48 !important;
+        font-size: 12.5px !important;
+        line-height: 1.5 !important;
         color: #64748b !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .about-us-banner-button-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+      }
+
+      .about-us-banner-button-wrapper .primary-button {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 11px 18px !important;
+        font-size: 13px !important;
+      }
+
+      /* Eliminate useless wireframe banner placeholder on mobile */
+      .about-us-banner-image-wrapper {
+        display: none !important;
+      }
+
+      /* Features Grid on Mobile */
+      .about-us-banner-features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+
+      .about-us-card {
+        padding: 14px 16px !important;
+        border-radius: 14px !important;
       }
 
       /* Why Choose Us & Company Section Stacking */
