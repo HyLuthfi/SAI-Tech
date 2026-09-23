@@ -194,6 +194,527 @@
           height: 0px;
         }
       }
+    
+    /* ==========================================================================
+       SAI TECH MOBILE RESPONSIVE ENGINE (PAGE: INDEX.HTML)
+       Precision Mobile Layout, Fluid Typography, Tactile Tap Targets
+       Zero Horizontal Overflow & Zero Blank Content Locks
+       ========================================================================== */
+
+    /* Global Visibility Safeguard for all Webflow IX2 sections */
+    .section,
+    .container,
+    .banner-typography,
+    .banner-image-wrapper,
+    .section-title-wrapper,
+    .services-contenr,
+    .about-us-card-wrapper,
+    .portfolio-top-content,
+    .portfolio-bottom-content,
+    .working-process-typography,
+    .working-process-card-wrapper,
+    .testimonial-top-content,
+    .testimonial-bottom-content,
+    .cta-content,
+    .blog-section-title-wrapper,
+    .blog-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* Prevent any accidental horizontal scroll on mobile devices */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      position: relative !important;
+    }
+
+    .page-wrapper {
+      overflow-x: clip !important;
+      max-width: 100vw !important;
+    }
+
+    /* Mobile Breakpoint <= 991px (Tablets & Mobile) */
+    @media screen and (max-width: 991px) {
+      /* Floating Navbar Mobile Container */
+      .navbar {
+        top: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100% - 24px) !important;
+        max-width: 600px !important;
+        border-radius: 18px !important;
+        padding: 10px 16px !important;
+        background: rgba(6, 8, 24, 0.96) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(224, 189, 106, 0.25) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+        z-index: 9999 !important;
+      }
+
+      .navbar-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+      }
+
+      .navbar-logo {
+        height: 34px !important;
+      }
+
+      .navbar-logo-emblem {
+        height: 34px !important;
+      }
+
+      .menu-button {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(224, 189, 106, 0.3) !important;
+        border-radius: 10px !important;
+        padding: 8px !important;
+        width: 40px !important;
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+      }
+
+      .hamburger-menu-icon {
+        width: 22px !important;
+        height: 22px !important;
+      }
+
+      /* Mobile Navigation Drawer / Menu (Opaque, High Contrast, Tactile) */
+      .w-nav-overlay {
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        padding-top: 8px !important;
+        overflow: visible !important;
+      }
+
+      /* Mobile Menu: Strictly Hidden by Default, Displayed ONLY when open */
+      .nav-menu:not(.w--open):not([data-nav-menu-open]) {
+        display: none !important;
+      }
+
+      .w-nav-overlay .nav-menu,
+      .nav-menu.w--open,
+      .nav-menu[data-nav-menu-open] {
+        display: flex !important;
+        flex-direction: column !important;
+        background: #060818 !important;
+        border: 1px solid rgba(224, 189, 106, 0.28) !important;
+        border-radius: 18px !important;
+        padding: 16px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85) !important;
+        gap: 6px !important;
+        width: 100% !important;
+        max-height: 82vh !important;
+        overflow-y: auto !important;
+        margin-top: 8px !important;
+      }
+
+      .nav-link {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-height: 44px !important;
+        padding: 12px 16px !important;
+        border-radius: 10px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: rgba(255, 255, 255, 0.92) !important;
+        text-decoration: none !important;
+        background: transparent !important;
+        transition: all 0.2s ease !important;
+      }
+
+      .nav-link:hover {
+        background: rgba(224, 189, 106, 0.12) !important;
+        color: #e0bd6a !important;
+        padding-left: 20px !important;
+      }
+
+      .nav-link.w--current {
+        background: rgba(224, 189, 106, 0.18) !important;
+        color: #e0bd6a !important;
+        font-weight: 700 !important;
+        border-left: 3px solid #e0bd6a !important;
+      }
+
+      /* Dropdown inside Mobile Menu */
+      .menu-dropdown-wrapper {
+        width: 100% !important;
+      }
+
+      .dropdown-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        min-height: 44px !important;
+        padding: 12px 16px !important;
+        border-radius: 10px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: rgba(255, 255, 255, 0.92) !important;
+        background: transparent !important;
+      }
+
+      .resource-dropdown-wrap.w--open {
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 10px !important;
+        padding: 6px 8px !important;
+        margin-top: 4px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .dropdown-menu-text-link-text {
+        display: flex !important;
+        align-items: center !important;
+        padding: 10px 14px !important;
+        color: rgba(246, 246, 249, 0.8) !important;
+        font-size: 14px !important;
+        border-radius: 8px !important;
+        text-decoration: none !important;
+      }
+
+      .dropdown-menu-text-link-text:hover {
+        background: rgba(224, 189, 106, 0.12) !important;
+        color: #e0bd6a !important;
+      }
+
+      /* Mobile Hero Section Tuning */
+      .section.banner {
+        padding-top: 100px !important;
+        padding-bottom: 50px !important;
+      }
+
+      .banner-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 28px !important;
+      }
+
+      .banner-typography {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+      }
+
+      .banner-subtitle-wrapper {
+        justify-content: center !important;
+        display: flex !important;
+        margin-bottom: 12px !important;
+      }
+
+      .banner-title {
+        font-size: clamp(28px, 7.5vw, 42px) !important;
+        line-height: 1.22 !important;
+        letter-spacing: -0.8px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .banner-description-text {
+        font-size: 14.5px !important;
+        line-height: 1.6 !important;
+        max-width: 95% !important;
+        margin: 0 auto 24px auto !important;
+      }
+
+      .banner-button-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+        flex-wrap: wrap !important;
+        margin-bottom: 10px !important;
+      }
+
+      .banner-image-wrapper {
+        width: 100% !important;
+        max-width: 440px !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+        margin: 0 auto !important;
+        box-shadow: 0 16px 40px rgba(0, 0, 77, 0.08) !important;
+      }
+
+      .banner-image {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        border-radius: 18px !important;
+      }
+
+      .image-overlay {
+        display: none !important;
+      }
+
+      /* About Us Section Tuning */
+      .section.about-us {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .section-title {
+        font-size: clamp(24px, 6vw, 36px) !important;
+        line-height: 1.26 !important;
+        letter-spacing: -0.5px !important;
+      }
+
+      .section-description.about-us {
+        font-size: 14.5px !important;
+        line-height: 1.6 !important;
+      }
+
+      .about-us-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      /* Services Section Tuning */
+      .section.services {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .services-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      .services-image {
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 14px !important;
+      }
+
+      /* Portfolio Section Tuning */
+      .section.portfolio {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .portfolio-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      /* Working Process Section */
+      .section.working-process {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .working-process-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      /* Testimonials Section Tuning */
+      .section.testimonial {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .testimonial-card {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+      /* CTA Banner Card */
+      .section.cta {
+        padding-top: 40px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .cta-content {
+        padding: 36px 20px !important;
+        border-radius: 20px !important;
+        text-align: center !important;
+      }
+
+      .cta-title {
+        font-size: clamp(22px, 5.5vw, 32px) !important;
+        line-height: 1.3 !important;
+        margin-bottom: 16px !important;
+      }
+
+      /* Blog Cards Section Tuning */
+      .section.blog {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .blog-collection-list {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      .blog-single {
+        border-radius: 16px !important;
+        overflow: hidden !important;
+      }
+
+      /* Footer Section Tuning */
+      .section.footer {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+      }
+
+      .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 36px !important;
+      }
+
+      .footer-menu-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+      }
+
+      .footer-form-single {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        position: relative !important;
+        width: 100% !important;
+      }
+
+      .footer-form-input-filed {
+        width: 100% !important;
+        padding: 14px 16px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: #ffffff !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+      }
+
+      .footer-form-input-filed::placeholder {
+        color: rgba(255, 255, 255, 0.5) !important;
+      }
+
+      .footer-form-submit-button {
+        position: static !important;
+        width: 100% !important;
+        padding: 14px 20px !important;
+        border-radius: 12px !important;
+        background-color: #e0bd6a !important;
+        color: #00004d !important;
+        font-weight: 800 !important;
+        font-size: 14px !important;
+        background-image: none !important;
+        text-align: center !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 4px 16px rgba(224, 189, 106, 0.28) !important;
+        border: none !important;
+      }
+
+      .footer-form-submit-button:hover {
+        background-color: #f3ce7a !important;
+        transform: translateY(-2px) !important;
+      }
+    }
+
+    
+    /* Additional Mobile Polish for Sections */
+    @media screen and (max-width: 767px) {
+      .footer-menu-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+      }
+      .footer-information-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+      .footer-information-single {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+      }
+      .footer-bottom-content {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+      }
+
+      /* Testimonials Ticker on Mobile */
+      .testimonial-card {
+        width: min(85vw, 320px) !important;
+        padding: 20px 18px !important;
+        border-radius: 16px !important;
+        margin-right: 14px !important;
+      }
+      .testimonial-card-description-text {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      .testimonial-card-author-name {
+        font-size: 14px !important;
+      }
+      .testimonial-card-author-bio {
+        font-size: 12px !important;
+      }
+
+      /* Working Process on Mobile */
+      .working-process-card {
+        padding: 22px 18px !important;
+        border-radius: 16px !important;
+      }
+
+      /* Services Single on Mobile */
+      .services-single {
+        padding: 20px 16px !important;
+        border-radius: 16px !important;
+      }
+
+      /* Section Header Spacing on Mobile */
+      .section-title-wrapper {
+        margin-bottom: 28px !important;
+      }
+    }
+
+    /* Small Mobile Phones <= 480px */
+    @media screen and (max-width: 480px) {
+      .banner-button-wrapper {
+        flex-direction: column !important;
+        width: 100% !important;
+      }
+
+      .banner-button-wrapper .btn-primary,
+      .banner-button-wrapper .btn-secondary,
+      .banner-button-wrapper .hero-button-single {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+
+      .btn-primary-inner {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+
     </style>
 <style>
       /* Ensure page wrapper and base layout are visible */
@@ -311,6 +832,527 @@
           letter-spacing: 0.04em !important;
         }
       }
+    
+    /* ==========================================================================
+       SAI TECH MOBILE RESPONSIVE ENGINE (PAGE: INDEX.HTML)
+       Precision Mobile Layout, Fluid Typography, Tactile Tap Targets
+       Zero Horizontal Overflow & Zero Blank Content Locks
+       ========================================================================== */
+
+    /* Global Visibility Safeguard for all Webflow IX2 sections */
+    .section,
+    .container,
+    .banner-typography,
+    .banner-image-wrapper,
+    .section-title-wrapper,
+    .services-contenr,
+    .about-us-card-wrapper,
+    .portfolio-top-content,
+    .portfolio-bottom-content,
+    .working-process-typography,
+    .working-process-card-wrapper,
+    .testimonial-top-content,
+    .testimonial-bottom-content,
+    .cta-content,
+    .blog-section-title-wrapper,
+    .blog-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* Prevent any accidental horizontal scroll on mobile devices */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      position: relative !important;
+    }
+
+    .page-wrapper {
+      overflow-x: clip !important;
+      max-width: 100vw !important;
+    }
+
+    /* Mobile Breakpoint <= 991px (Tablets & Mobile) */
+    @media screen and (max-width: 991px) {
+      /* Floating Navbar Mobile Container */
+      .navbar {
+        top: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: calc(100% - 24px) !important;
+        max-width: 600px !important;
+        border-radius: 18px !important;
+        padding: 10px 16px !important;
+        background: rgba(6, 8, 24, 0.96) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(224, 189, 106, 0.25) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+        z-index: 9999 !important;
+      }
+
+      .navbar-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+      }
+
+      .navbar-logo {
+        height: 34px !important;
+      }
+
+      .navbar-logo-emblem {
+        height: 34px !important;
+      }
+
+      .menu-button {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(224, 189, 106, 0.3) !important;
+        border-radius: 10px !important;
+        padding: 8px !important;
+        width: 40px !important;
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+      }
+
+      .hamburger-menu-icon {
+        width: 22px !important;
+        height: 22px !important;
+      }
+
+      /* Mobile Navigation Drawer / Menu (Opaque, High Contrast, Tactile) */
+      .w-nav-overlay {
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        padding-top: 8px !important;
+        overflow: visible !important;
+      }
+
+      /* Mobile Menu: Strictly Hidden by Default, Displayed ONLY when open */
+      .nav-menu:not(.w--open):not([data-nav-menu-open]) {
+        display: none !important;
+      }
+
+      .w-nav-overlay .nav-menu,
+      .nav-menu.w--open,
+      .nav-menu[data-nav-menu-open] {
+        display: flex !important;
+        flex-direction: column !important;
+        background: #060818 !important;
+        border: 1px solid rgba(224, 189, 106, 0.28) !important;
+        border-radius: 18px !important;
+        padding: 16px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85) !important;
+        gap: 6px !important;
+        width: 100% !important;
+        max-height: 82vh !important;
+        overflow-y: auto !important;
+        margin-top: 8px !important;
+      }
+
+      .nav-link {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-height: 44px !important;
+        padding: 12px 16px !important;
+        border-radius: 10px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: rgba(255, 255, 255, 0.92) !important;
+        text-decoration: none !important;
+        background: transparent !important;
+        transition: all 0.2s ease !important;
+      }
+
+      .nav-link:hover {
+        background: rgba(224, 189, 106, 0.12) !important;
+        color: #e0bd6a !important;
+        padding-left: 20px !important;
+      }
+
+      .nav-link.w--current {
+        background: rgba(224, 189, 106, 0.18) !important;
+        color: #e0bd6a !important;
+        font-weight: 700 !important;
+        border-left: 3px solid #e0bd6a !important;
+      }
+
+      /* Dropdown inside Mobile Menu */
+      .menu-dropdown-wrapper {
+        width: 100% !important;
+      }
+
+      .dropdown-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        min-height: 44px !important;
+        padding: 12px 16px !important;
+        border-radius: 10px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: rgba(255, 255, 255, 0.92) !important;
+        background: transparent !important;
+      }
+
+      .resource-dropdown-wrap.w--open {
+        background: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 10px !important;
+        padding: 6px 8px !important;
+        margin-top: 4px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .dropdown-menu-text-link-text {
+        display: flex !important;
+        align-items: center !important;
+        padding: 10px 14px !important;
+        color: rgba(246, 246, 249, 0.8) !important;
+        font-size: 14px !important;
+        border-radius: 8px !important;
+        text-decoration: none !important;
+      }
+
+      .dropdown-menu-text-link-text:hover {
+        background: rgba(224, 189, 106, 0.12) !important;
+        color: #e0bd6a !important;
+      }
+
+      /* Mobile Hero Section Tuning */
+      .section.banner {
+        padding-top: 100px !important;
+        padding-bottom: 50px !important;
+      }
+
+      .banner-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 28px !important;
+      }
+
+      .banner-typography {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+      }
+
+      .banner-subtitle-wrapper {
+        justify-content: center !important;
+        display: flex !important;
+        margin-bottom: 12px !important;
+      }
+
+      .banner-title {
+        font-size: clamp(28px, 7.5vw, 42px) !important;
+        line-height: 1.22 !important;
+        letter-spacing: -0.8px !important;
+        margin-bottom: 14px !important;
+      }
+
+      .banner-description-text {
+        font-size: 14.5px !important;
+        line-height: 1.6 !important;
+        max-width: 95% !important;
+        margin: 0 auto 24px auto !important;
+      }
+
+      .banner-button-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+        flex-wrap: wrap !important;
+        margin-bottom: 10px !important;
+      }
+
+      .banner-image-wrapper {
+        width: 100% !important;
+        max-width: 440px !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+        margin: 0 auto !important;
+        box-shadow: 0 16px 40px rgba(0, 0, 77, 0.08) !important;
+      }
+
+      .banner-image {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        border-radius: 18px !important;
+      }
+
+      .image-overlay {
+        display: none !important;
+      }
+
+      /* About Us Section Tuning */
+      .section.about-us {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .section-title {
+        font-size: clamp(24px, 6vw, 36px) !important;
+        line-height: 1.26 !important;
+        letter-spacing: -0.5px !important;
+      }
+
+      .section-description.about-us {
+        font-size: 14.5px !important;
+        line-height: 1.6 !important;
+      }
+
+      .about-us-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      /* Services Section Tuning */
+      .section.services {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .services-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      .services-image {
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 14px !important;
+      }
+
+      /* Portfolio Section Tuning */
+      .section.portfolio {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .portfolio-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      /* Working Process Section */
+      .section.working-process {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .working-process-card-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      /* Testimonials Section Tuning */
+      .section.testimonial {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .testimonial-card {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+      /* CTA Banner Card */
+      .section.cta {
+        padding-top: 40px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .cta-content {
+        padding: 36px 20px !important;
+        border-radius: 20px !important;
+        text-align: center !important;
+      }
+
+      .cta-title {
+        font-size: clamp(22px, 5.5vw, 32px) !important;
+        line-height: 1.3 !important;
+        margin-bottom: 16px !important;
+      }
+
+      /* Blog Cards Section Tuning */
+      .section.blog {
+        padding-top: 50px !important;
+        padding-bottom: 60px !important;
+      }
+
+      .blog-collection-list {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      .blog-single {
+        border-radius: 16px !important;
+        overflow: hidden !important;
+      }
+
+      /* Footer Section Tuning */
+      .section.footer {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+      }
+
+      .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 36px !important;
+      }
+
+      .footer-menu-wrapper {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+      }
+
+      .footer-form-single {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        position: relative !important;
+        width: 100% !important;
+      }
+
+      .footer-form-input-filed {
+        width: 100% !important;
+        padding: 14px 16px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: #ffffff !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+      }
+
+      .footer-form-input-filed::placeholder {
+        color: rgba(255, 255, 255, 0.5) !important;
+      }
+
+      .footer-form-submit-button {
+        position: static !important;
+        width: 100% !important;
+        padding: 14px 20px !important;
+        border-radius: 12px !important;
+        background-color: #e0bd6a !important;
+        color: #00004d !important;
+        font-weight: 800 !important;
+        font-size: 14px !important;
+        background-image: none !important;
+        text-align: center !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 4px 16px rgba(224, 189, 106, 0.28) !important;
+        border: none !important;
+      }
+
+      .footer-form-submit-button:hover {
+        background-color: #f3ce7a !important;
+        transform: translateY(-2px) !important;
+      }
+    }
+
+    
+    /* Additional Mobile Polish for Sections */
+    @media screen and (max-width: 767px) {
+      .footer-menu-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+      }
+      .footer-information-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+      .footer-information-single {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+      }
+      .footer-bottom-content {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+      }
+
+      /* Testimonials Ticker on Mobile */
+      .testimonial-card {
+        width: min(85vw, 320px) !important;
+        padding: 20px 18px !important;
+        border-radius: 16px !important;
+        margin-right: 14px !important;
+      }
+      .testimonial-card-description-text {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+      .testimonial-card-author-name {
+        font-size: 14px !important;
+      }
+      .testimonial-card-author-bio {
+        font-size: 12px !important;
+      }
+
+      /* Working Process on Mobile */
+      .working-process-card {
+        padding: 22px 18px !important;
+        border-radius: 16px !important;
+      }
+
+      /* Services Single on Mobile */
+      .services-single {
+        padding: 20px 16px !important;
+        border-radius: 16px !important;
+      }
+
+      /* Section Header Spacing on Mobile */
+      .section-title-wrapper {
+        margin-bottom: 28px !important;
+      }
+    }
+
+    /* Small Mobile Phones <= 480px */
+    @media screen and (max-width: 480px) {
+      .banner-button-wrapper {
+        flex-direction: column !important;
+        width: 100% !important;
+      }
+
+      .banner-button-wrapper .btn-primary,
+      .banner-button-wrapper .btn-secondary,
+      .banner-button-wrapper .hero-button-single {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+
+      .btn-primary-inner {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+
     </style>
 </head>
 <body>
@@ -730,7 +1772,7 @@
 </section>
 <section class="section about-us">
 <div class="container">
-<div class="section-title-wrapper" data-w-id="228f26aa-160d-196c-02df-7fd9ea62bf0e" style="opacity: 0">
+<div class="section-title-wrapper" data-w-id="228f26aa-160d-196c-02df-7fd9ea62bf0e" style="opacity: 1">
 <div class="section-subtitle-wrap">
 <div class="section-subtitle-single">
 <img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/687810aa5293f9e8c955c26a_Section Subtitle Icon.svg"/>
@@ -943,7 +1985,7 @@
 </section>
 <section class="section services">
 <div class="container">
-<div class="section-title-wrapper" data-w-id="ebae1c82-ecdc-5adb-477c-b019b406fa33" style="opacity: 0">
+<div class="section-title-wrapper" data-w-id="ebae1c82-ecdc-5adb-477c-b019b406fa33" style="opacity: 1">
 <div class="section-subtitle-wrap">
 <div class="section-subtitle-single gray-bg">
 <img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/68a8be303fa5a8c72f1cf197_Section%20Subtitle%20Icon2.svg"/>
@@ -957,7 +1999,7 @@
               aman, dan siap produksi untuk kebutuhan bisnis Anda.
             </p>
 </div>
-<div class="services-contenr" data-w-id="017cecda-a5e0-76bd-6275-33e4804df14f" style="opacity: 0">
+<div class="services-contenr" data-w-id="017cecda-a5e0-76bd-6275-33e4804df14f" style="opacity: 1">
 <div class="services-single-wrapper">
 <div class="services-collection-list-wrapper w-dyn-list">
 <div class="services-collection-list w-dyn-items" role="list">
@@ -1095,7 +2137,7 @@
 <section class="section portfolio">
 <div class="portfolio-content-vh" data-w-id="d81279eb-b65a-12ac-3c6b-923ba4aec547">
 <div class="portfolio-sticky">
-<div class="portfolio-top-content" data-w-id="d8bc331c-18b1-e368-99a8-fcb762a865dc" style="opacity: 0">
+<div class="portfolio-top-content" data-w-id="d8bc331c-18b1-e368-99a8-fcb762a865dc" style="opacity: 1">
 <div class="container">
 <div class="section-title-wrapper">
 <div class="section-subtitle-wrap">
@@ -1110,7 +2152,7 @@
 </div>
 </div>
 </div>
-<div class="portfolio-bottom-content" data-w-id="e23b0936-8c9a-3b99-e905-3956027dbd67" style="opacity: 0">
+<div class="portfolio-bottom-content" data-w-id="e23b0936-8c9a-3b99-e905-3956027dbd67" style="opacity: 1">
 <div class="portfolio-ticker-wrapper">
 <div class="portfolio-ticker">
 <div class="portfolio-ticker-flex">
@@ -1230,7 +2272,7 @@
 <section class="section working-process">
 <div class="container">
 <div class="working-process-content">
-<div class="working-process-typography" data-w-id="047b47af-3804-d638-e4c3-f8a568a842a4" style="opacity: 0">
+<div class="working-process-typography" data-w-id="047b47af-3804-d638-e4c3-f8a568a842a4" style="opacity: 1">
 <div class="section-subtitle-wrap left-alignment">
 <div class="section-subtitle-single">
 <img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/687810aa5293f9e8c955c26a_Section Subtitle Icon.svg"/>
@@ -1858,7 +2900,7 @@
 </section>
 <section class="section blog">
 <div class="container">
-<div class="blog-section-title-wrapper" data-w-id="fa61ef6a-25ab-020b-093c-44cf3d5db811" style="opacity: 0">
+<div class="blog-section-title-wrapper" data-w-id="fa61ef6a-25ab-020b-093c-44cf3d5db811" style="opacity: 1">
 <div class="blog-section-title-single-wrapper">
 <div class="section-subtitle-wrap left-alignment">
 <div class="section-subtitle-single">
@@ -1883,7 +2925,7 @@
 </div></a>
 </div>
 </div>
-<div class="blog-content" data-w-id="d2fc4b9d-1861-33bf-fad7-f7c0a5d4684b" style="opacity: 0">
+<div class="blog-content" data-w-id="d2fc4b9d-1861-33bf-fad7-f7c0a5d4684b" style="opacity: 1">
 <div class="blog-collection-list-wrapper w-dyn-list">
 <div class="blog-collection-list w-dyn-items" role="list">
 <div class="blog-collection-list-item w-dyn-item" role="listitem">
@@ -1986,132 +3028,97 @@
 </div>
 </section>
 <section class="section footer">
-<div class="footer-top-content">
-<div class="container">
-<div class="footer-content">
-<div class="footer-form-wrapper">
-<div class="footer-form-details-wrapper">
-<h4 class="footer-form-details-title">
-                    Dapatkan pembaruan riset AI terapan, arsitektur software,
-                    dan inovasi sistem langsung di email Anda.
-                  </h4>
-</div>
-<div class="footer-form-details-single">
-<div class="footer-form-block w-form">
-<form class="footer-form" data-name="Newsletter Form" data-wf-element-id="25784bba-5a93-67ab-c98b-b4d3aa891732" data-wf-page-id="6877e02f5387b6bdd6d338ed" id="wf-form-Newsletter-Form" method="get" name="wf-form-Newsletter-Form">
-<div class="footer-form-single">
-<input class="footer-form-input-filed w-input" data-name="Email" id="email" maxlength="256" name="email" placeholder="jhon@examlpe.com" required="" type="email"/><input class="footer-form-submit-button w-button" data-wait="" type="submit" value="Subcribe Now"/>
-</div>
-</form>
-<div class="success-message w-form-done">
-<div>Thank you! Your submission has been received!</div>
-</div>
-<div class="w-form-fail">
-<div>
-                        Oops! Something went wrong while submitting the form.
-                      </div>
-</div>
-</div>
-</div>
-</div>
-<div class="footer-menu-wrapper">
-<div class="footer-menu-single">
-<div class="footer-menu-title-wrapper">
-<h5 class="footer-menu-title">Site Map</h5>
-</div>
-<ul class="footer-menu-list-wrapper" role="list">
-<li class="footer-menu-list-item">
-<a aria-current="page" class="footer-menu-text-link w--current" href="/">Beranda</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="services">Layanan</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="katalog">Katalog Digital</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="pricing">Pricing</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="blog">Blogs</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="portfolio">Portofolio</a>
-</li>
-</ul>
-</div>
-<div class="footer-menu-single">
-<div class="footer-menu-title-wrapper">
-<h5 class="footer-menu-title">Support</h5>
-</div>
-<ul class="footer-menu-list-wrapper" role="list">
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="contact">Contact Us</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="about">Tentang</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="team">Team Member</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="/authentications-pages/login-now">Login Now</a>
-</li>
-<li class="footer-menu-list-item">
-<a class="footer-menu-text-link" href="/authentications-pages/register-now">Register Now</a>
-</li>
-</ul>
-</div>
-<div class="footer-menu-single footer-information">
-<div class="footer-menu-title-wrapper">
-<h5 class="footer-menu-title">Contact Us</h5>
-</div>
-<div class="footer-information-wrapper">
-<div class="footer-information-single">
-<div class="footer-information-icon-wrap">
-<img alt="" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d524270b31a7ec0bc18e6_Footer Information Icon1.svg"/>
-</div>
-<a class="footer-information-text" href="https://wa.me/6282163732969" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" target="_blank" title="Chat WhatsApp">+62 821 6373 2969</a>
-</div>
-<div class="footer-information-single">
-<div class="footer-information-icon-wrap">
-<img alt="" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d5242abbe0b1f836c110a_Footer Information Icon2.svg"/>
-</div>
-<a class="footer-information-text" href="mailto:saitech.officialid@gmail.com" style="color: inherit; text-decoration: none;" title="Kirim Email">saitech.officialid@gmail.com</a>
-</div>
-<div class="footer-information-single">
-<div class="footer-information-icon-wrap">
-<img alt="" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d5242cbc750356beb3959_Footer Information Icon3.svg"/>
-</div>
-<div class="footer-information-text location">
-                        Bandar Lampung, Lampung, Indonesia
-                      </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="footer-middle-content">
-<div class="footer-details-wrapper">
-<div class="container">
-<div class="footer-details-content">
-<div class="footer-details-text">
-                  Designed by
-                  <a aria-current="page" class="footer-details-text-link w--current" href="/">SAI Tech</a>
-</div>
-<div class="footer-social-media-wrapper"><div class="footer-social-media-title">Ikuti Kami</div><a class="footer-social-media-icon" href="https://www.instagram.com/saitech_id/" rel="noopener noreferrer" target="_blank" title="Instagram: @saitech_id"></a><a class="footer-social-media-icon" href="https://www.tiktok.com/@saitech.officialid" rel="noopener noreferrer" target="_blank" title="TikTok: @saitech.officialid"></a></div>
-</div>
-</div>
-</div>
-</div>
-<div class="footer-bottom-content">
-<div class="container">
-<a aria-current="page" class="footer-logo-wrapper w-inline-block w--current" href="/"><img alt="" class="footer-logo-image" loading="lazy" src="assets/ritovex/saitech-footer-logo.svg"/></a>
-</div>
-</div>
-</section>
+      <div class="footer-top-content">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-form-wrapper">
+              <div class="footer-form-details-wrapper">
+                <h4 class="footer-form-details-title" style="margin-bottom: 8px;">Berlangganan Wawasan &amp; Riset AI</h4>
+                <div style="color: rgba(255, 255, 255, 0.75); font-size: 14px; line-height: 1.5;">
+                  Dapatkan analisis teknis arsitektur AI on-premise, sizing hardware GPU, dan kedaulatan data enterprise langsung ke inbox Anda.
+                </div>
+              </div>
+              <div class="footer-form-details-single">
+                <div class="footer-form-block w-form">
+                  <form class="footer-form" data-name="Footer Form" id="email-form" method="get" name="email-form">
+                    <div class="footer-form-single">
+                      <input class="footer-form-input-filed w-input" data-name="Email" id="email" maxlength="256" name="email" placeholder="nama@perusahaan.co.id" required="" type="email"/>
+                      <input class="footer-form-submit-button w-button" data-wait="Mohon Tunggu..." type="submit" value="Berlangganan"/>
+                    </div>
+                  </form>
+                  <div class="success-message w-form-done">
+                    <div>Terima kasih! Email Anda telah terdaftar.</div>
+                  </div>
+                  <div class="w-form-fail">
+                    <div>Oops! Terjadi kesalahan saat memproses langganan.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-menu-wrapper">
+              <div class="footer-menu-single">
+                <div class="footer-menu-title-wrapper">
+                  <h5 class="footer-menu-title">Site Map</h5>
+                </div>
+                <ul class="footer-menu-list-wrapper" role="list">
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="/">Beranda</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="services">Layanan</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="katalog">Katalog Digital</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="pricing">Harga</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="blog">Blog &amp; Riset</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="portfolio">Portofolio</a></li>
+                </ul>
+              </div>
+              <div class="footer-menu-single">
+                <div class="footer-menu-title-wrapper">
+                  <h5 class="footer-menu-title">Support &amp; Info</h5>
+                </div>
+                <ul class="footer-menu-list-wrapper" role="list">
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="contact">Kontak</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="about">Tentang Kami</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="team">Tim Insinyur</a></li>
+                  <li class="footer-menu-list-item"><a class="footer-menu-text-link" href="https://wa.me/6282163732969" target="_blank" rel="noopener noreferrer">Pusat Bantuan WA</a></li>
+                </ul>
+              </div>
+              <div class="footer-menu-single footer-information">
+                <div class="footer-menu-title-wrapper">
+                  <h5 class="footer-menu-title">Kontak Resmi</h5>
+                </div>
+                <div class="footer-information-wrapper">
+                  <div class="footer-information-single">
+                    <div class="footer-information-icon-wrap">
+                      <img alt="" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d524270b31a7ec0bc18e6_Footer%20Information%20Icon1.svg"/>
+                    </div>
+                    <a class="footer-information-text" href="https://wa.me/6282163732969" rel="noopener noreferrer" style="color: #ffffff !important; text-decoration: none;" target="_blank" title="Chat WhatsApp">+62 821 6373 2969</a>
+                  </div>
+                  <div class="footer-information-single">
+                    <div class="footer-information-icon-wrap">
+                      <img alt="" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d5242abbe0b1f836c110a_Footer%20Information%20Icon2.svg"/>
+                    </div>
+                    <a class="footer-information-text" href="mailto:saitech.officialid@gmail.com" style="color: #ffffff !important; text-decoration: none;" title="Kirim Email">saitech.officialid@gmail.com</a>
+                  </div>
+                  <div class="footer-information-single">
+                    <div class="footer-information-icon-wrap">
+                      <img alt="" class="footer-information-icon" loading="lazy" src="assets/ritovex/687d5242cbc750356beb3959_Footer%20Information%20Icon3.svg"/>
+                    </div>
+                    <div class="footer-information-text" style="color: #ffffff !important;">Bandar Lampung, Lampung, Indonesia</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom-content" style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 24px; margin-top: 36px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+            <div class="footer-copyright-text" style="color: rgba(255, 255, 255, 0.65); font-size: 13px;">
+              &copy; 2026 PT Solusi Agen Indonesia (SAI Tech). All rights reserved.
+            </div>
+            <div style="display: flex; gap: 16px;">
+              <a href="https://www.instagram.com/saitech_id/" target="_blank" rel="noopener noreferrer" style="color: #e0bd6a; text-decoration: none; font-size: 13px; font-weight: 600;">Instagram</a>
+              <a href="https://www.tiktok.com/@saitech.officialid" target="_blank" rel="noopener noreferrer" style="color: #e0bd6a; text-decoration: none; font-size: 13px; font-weight: 600;">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 </div>
 <script src="assets/ritovex/jquery-3.5.1.min.dc5e7f18c8.js?site=6877e02f5387b6bdd6d338ec" type="text/javascript"></script>
 <script src="assets/ritovex/webflow.schunk.300bb1e9d1d59bcb.js" type="text/javascript"></script>
