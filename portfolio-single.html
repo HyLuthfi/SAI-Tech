@@ -1753,7 +1753,7 @@
       line-height: 1.35;
     }
 
-    /* 2. Full-Width Seamless Tech Ribbon (NO CARD CONTAINER) */
+    /* 2. Full-Width Dual Bidirectional Tech Ribbons (AI Core & Supporting Stack) */
     .tech-ribbon-section {
       margin: 36px 0 44px;
       border-top: 1px solid rgba(0, 0, 77, 0.08);
@@ -1762,6 +1762,9 @@
       padding: 18px 0;
       overflow: hidden;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .tech-ribbon-wrapper {
@@ -1775,12 +1778,30 @@
     .tech-ribbon-track {
       display: flex;
       width: max-content;
-      animation: techMarqueeScroll 28s linear infinite;
       gap: 12px;
+      will-change: transform;
+    }
+
+    .tech-ribbon-track.is-left {
+      animation: techRibbonScrollLeft 32s linear infinite;
+    }
+
+    .tech-ribbon-track.is-right {
+      animation: techRibbonScrollRight 34s linear infinite;
     }
 
     .tech-ribbon-wrapper:hover .tech-ribbon-track {
       animation-play-state: paused;
+    }
+
+    @keyframes techRibbonScrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes techRibbonScrollRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
     }
 
     .tech-ribbon-pill {
@@ -1801,6 +1822,27 @@
       border-color: #e0bd6a;
       background: #fffdf7;
       transform: translateY(-2px);
+    }
+
+    .tech-ribbon-pill.is-ai {
+      border-color: rgba(224, 189, 106, 0.35);
+      background: #ffffff;
+    }
+
+    .tech-ribbon-pill.is-ai:hover {
+      border-color: #e0bd6a;
+      background: #fffbf0;
+      box-shadow: 0 4px 12px rgba(224, 189, 106, 0.15);
+    }
+
+    .tech-ribbon-pill.is-ai .tech-ribbon-icon {
+      background: rgba(224, 189, 106, 0.18);
+      color: #b45309;
+    }
+
+    .tech-ribbon-pill.is-ai .tech-ribbon-tag {
+      background: rgba(224, 189, 106, 0.15);
+      color: #b45309;
     }
 
     .tech-ribbon-icon {
@@ -2682,96 +2724,170 @@
           </div>
         </div>
 
-        <!-- 2. SEAMLESS FULL-WIDTH TECH RIBBON (NO BOX CARD!) -->
+        <!-- 2. DUAL BIDIRECTIONAL TECH RIBBONS (AI CORE & SUPPORTING STACK) -->
         <div class="tech-ribbon-section">
+          <!-- ROW 1: AI & COGNITIVE ENGINE TECHNOLOGIES (SCROLLING LEFT) -->
           <div class="tech-ribbon-wrapper">
-            <div class="tech-ribbon-track">
-              <!-- Item 1 -->
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">N</span>
-                <span class="tech-ribbon-name">Next.js 14</span>
-                <span class="tech-ribbon-tag">App Router</span>
-              </div>
-              <!-- Item 2 -->
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">&lambda;</span>
-                <span class="tech-ribbon-name">FastAPI Python</span>
-                <span class="tech-ribbon-tag">Async Backend</span>
-              </div>
-              <!-- Item 3 -->
-              <div class="tech-ribbon-pill">
+            <div class="tech-ribbon-track is-left">
+              <!-- Item AI 1 -->
+              <div class="tech-ribbon-pill is-ai">
                 <span class="tech-ribbon-icon">✦</span>
                 <span class="tech-ribbon-name">Google Gemini 1.5 Pro</span>
                 <span class="tech-ribbon-tag">Multimodal LLM</span>
               </div>
-              <!-- Item 4 -->
-              <div class="tech-ribbon-pill">
+              <!-- Item AI 2 -->
+              <div class="tech-ribbon-pill is-ai">
                 <span class="tech-ribbon-icon">B</span>
-                <span class="tech-ribbon-name">Taksonomi Bloom</span>
-                <span class="tech-ribbon-tag">C1-C6 HOTS</span>
+                <span class="tech-ribbon-name">Taksonomi Bloom Engine</span>
+                <span class="tech-ribbon-tag">HOTS &amp; LOTS C1-C6</span>
               </div>
-              <!-- Item 5 -->
+              <!-- Item AI 3 -->
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">👁</span>
+                <span class="tech-ribbon-name">Tesseract Vision OCR</span>
+                <span class="tech-ribbon-tag">Ekstraksi Dokumen</span>
+              </div>
+              <!-- Item AI 4 -->
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">⚡</span>
+                <span class="tech-ribbon-name">Prompt Engineering Engine</span>
+                <span class="tech-ribbon-tag">Kurikulum Merdeka</span>
+              </div>
+              <!-- Item AI 5 -->
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">&sum;</span>
+                <span class="tech-ribbon-name">KaTeX Formula Engine</span>
+                <span class="tech-ribbon-tag">Notasi Matematika</span>
+              </div>
+              <!-- Item AI 6 -->
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">🛡️</span>
+                <span class="tech-ribbon-name">Grounding Guardrails</span>
+                <span class="tech-ribbon-tag">Anti-Halusinasi</span>
+              </div>
+              <!-- Item AI 7 -->
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">🧬</span>
+                <span class="tech-ribbon-name">Semantic Chunking</span>
+                <span class="tech-ribbon-tag">Pemetaan Materi</span>
+              </div>
+              <!-- Item AI 8 -->
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">&check;</span>
+                <span class="tech-ribbon-name">Rubrik &amp; Kunci Jawaban AI</span>
+                <span class="tech-ribbon-tag">Step-by-Step</span>
+              </div>
+              <!-- DUPLICATE ROW 1 FOR INFINITE SEAMLESS LOOP -->
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">✦</span>
+                <span class="tech-ribbon-name">Google Gemini 1.5 Pro</span>
+                <span class="tech-ribbon-tag">Multimodal LLM</span>
+              </div>
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">B</span>
+                <span class="tech-ribbon-name">Taksonomi Bloom Engine</span>
+                <span class="tech-ribbon-tag">HOTS &amp; LOTS C1-C6</span>
+              </div>
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">👁</span>
+                <span class="tech-ribbon-name">Tesseract Vision OCR</span>
+                <span class="tech-ribbon-tag">Ekstraksi Dokumen</span>
+              </div>
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">⚡</span>
+                <span class="tech-ribbon-name">Prompt Engineering Engine</span>
+                <span class="tech-ribbon-tag">Kurikulum Merdeka</span>
+              </div>
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">&sum;</span>
+                <span class="tech-ribbon-name">KaTeX Formula Engine</span>
+                <span class="tech-ribbon-tag">Notasi Matematika</span>
+              </div>
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">🛡️</span>
+                <span class="tech-ribbon-name">Grounding Guardrails</span>
+                <span class="tech-ribbon-tag">Anti-Halusinasi</span>
+              </div>
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">🧬</span>
+                <span class="tech-ribbon-name">Semantic Chunking</span>
+                <span class="tech-ribbon-tag">Pemetaan Materi</span>
+              </div>
+              <div class="tech-ribbon-pill is-ai">
+                <span class="tech-ribbon-icon">&check;</span>
+                <span class="tech-ribbon-name">Rubrik &amp; Kunci Jawaban AI</span>
+                <span class="tech-ribbon-tag">Step-by-Step</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROW 2: SUPPORTING INFRASTRUCTURE & FULLSTACK (SCROLLING RIGHT / OPPOSITE DIRECTION) -->
+          <div class="tech-ribbon-wrapper">
+            <div class="tech-ribbon-track is-right">
+              <!-- Item Infra 1 -->
+              <div class="tech-ribbon-pill">
+                <span class="tech-ribbon-icon">N</span>
+                <span class="tech-ribbon-name">Next.js 14</span>
+                <span class="tech-ribbon-tag">App Router &amp; SSR</span>
+              </div>
+              <!-- Item Infra 2 -->
+              <div class="tech-ribbon-pill">
+                <span class="tech-ribbon-icon">&lambda;</span>
+                <span class="tech-ribbon-name">FastAPI Python</span>
+                <span class="tech-ribbon-tag">Async High-Speed API</span>
+              </div>
+              <!-- Item Infra 3 -->
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">S</span>
                 <span class="tech-ribbon-name">Supabase PostgreSQL</span>
                 <span class="tech-ribbon-tag">Database &amp; RLS</span>
               </div>
-              <!-- Item 6 -->
+              <!-- Item Infra 4 -->
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">W</span>
                 <span class="tech-ribbon-name">python-docx Engine</span>
-                <span class="tech-ribbon-tag">DOCX Compiler</span>
+                <span class="tech-ribbon-tag">DOCX Word Compiler</span>
               </div>
-              <!-- Item 7 -->
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">👁</span>
-                <span class="tech-ribbon-name">Tesseract OCR</span>
-                <span class="tech-ribbon-tag">Vision OCR</span>
-              </div>
-              <!-- Item 8 -->
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">🎨</span>
-                <span class="tech-ribbon-name">Tailwind &amp; Motion</span>
-                <span class="tech-ribbon-tag">Tactile UI</span>
-              </div>
-              <!-- Item 9 -->
+              <!-- Item Infra 5 -->
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">📄</span>
                 <span class="tech-ribbon-name">PDFKit Pipeline</span>
-                <span class="tech-ribbon-tag">Vector PDF</span>
+                <span class="tech-ribbon-tag">Vector PDF Engine</span>
               </div>
-              <!-- Item 10 -->
+              <!-- Item Infra 6 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">&sum;</span>
-                <span class="tech-ribbon-name">KaTeX LaTeX</span>
-                <span class="tech-ribbon-tag">Math Formula</span>
+                <span class="tech-ribbon-icon">🎨</span>
+                <span class="tech-ribbon-name">Tailwind CSS &amp; Motion</span>
+                <span class="tech-ribbon-tag">Tactile UI System</span>
               </div>
-              <!-- Item 11 -->
+              <!-- Item Infra 7 -->
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">📱</span>
                 <span class="tech-ribbon-name">Service Worker PWA</span>
-                <span class="tech-ribbon-tag">Offline Ready</span>
+                <span class="tech-ribbon-tag">Dukungan Offline</span>
               </div>
-              <!-- DUPLICATE FOR INFINITE SMOOTH LOOP -->
+              <!-- Item Infra 8 -->
+              <div class="tech-ribbon-pill">
+                <span class="tech-ribbon-icon">🐳</span>
+                <span class="tech-ribbon-name">Docker Containers</span>
+                <span class="tech-ribbon-tag">Microservices</span>
+              </div>
+              <!-- Item Infra 9 -->
+              <div class="tech-ribbon-pill">
+                <span class="tech-ribbon-icon">☁</span>
+                <span class="tech-ribbon-name">Cloudflare Zero Trust</span>
+                <span class="tech-ribbon-tag">Edge Tunnel &amp; SSL</span>
+              </div>
+              <!-- DUPLICATE ROW 2 FOR INFINITE SEAMLESS LOOP -->
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">N</span>
                 <span class="tech-ribbon-name">Next.js 14</span>
-                <span class="tech-ribbon-tag">App Router</span>
+                <span class="tech-ribbon-tag">App Router &amp; SSR</span>
               </div>
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">&lambda;</span>
                 <span class="tech-ribbon-name">FastAPI Python</span>
-                <span class="tech-ribbon-tag">Async Backend</span>
-              </div>
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">✦</span>
-                <span class="tech-ribbon-name">Google Gemini 1.5 Pro</span>
-                <span class="tech-ribbon-tag">Multimodal LLM</span>
-              </div>
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">B</span>
-                <span class="tech-ribbon-name">Taksonomi Bloom</span>
-                <span class="tech-ribbon-tag">C1-C6 HOTS</span>
+                <span class="tech-ribbon-tag">Async High-Speed API</span>
               </div>
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">S</span>
@@ -2781,32 +2897,32 @@
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">W</span>
                 <span class="tech-ribbon-name">python-docx Engine</span>
-                <span class="tech-ribbon-tag">DOCX Compiler</span>
-              </div>
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">👁</span>
-                <span class="tech-ribbon-name">Tesseract OCR</span>
-                <span class="tech-ribbon-tag">Vision OCR</span>
-              </div>
-              <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">🎨</span>
-                <span class="tech-ribbon-name">Tailwind &amp; Motion</span>
-                <span class="tech-ribbon-tag">Tactile UI</span>
+                <span class="tech-ribbon-tag">DOCX Word Compiler</span>
               </div>
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">📄</span>
                 <span class="tech-ribbon-name">PDFKit Pipeline</span>
-                <span class="tech-ribbon-tag">Vector PDF</span>
+                <span class="tech-ribbon-tag">Vector PDF Engine</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">&sum;</span>
-                <span class="tech-ribbon-name">KaTeX LaTeX</span>
-                <span class="tech-ribbon-tag">Math Formula</span>
+                <span class="tech-ribbon-icon">🎨</span>
+                <span class="tech-ribbon-name">Tailwind CSS &amp; Motion</span>
+                <span class="tech-ribbon-tag">Tactile UI System</span>
               </div>
               <div class="tech-ribbon-pill">
                 <span class="tech-ribbon-icon">📱</span>
                 <span class="tech-ribbon-name">Service Worker PWA</span>
-                <span class="tech-ribbon-tag">Offline Ready</span>
+                <span class="tech-ribbon-tag">Dukungan Offline</span>
+              </div>
+              <div class="tech-ribbon-pill">
+                <span class="tech-ribbon-icon">🐳</span>
+                <span class="tech-ribbon-name">Docker Containers</span>
+                <span class="tech-ribbon-tag">Microservices</span>
+              </div>
+              <div class="tech-ribbon-pill">
+                <span class="tech-ribbon-icon">☁</span>
+                <span class="tech-ribbon-name">Cloudflare Zero Trust</span>
+                <span class="tech-ribbon-tag">Edge Tunnel &amp; SSL</span>
               </div>
             </div>
           </div>
