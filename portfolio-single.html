@@ -520,6 +520,7 @@
 <h1 class="inner-banner-title portfolio-details-title sai-zoom-fade" id="caseStudyTitle">
                 Sovereign Financial RAG &amp; Private LLM Engine
               </h1>
+<div id="caseStudyLiveAction" style="display: none; margin-bottom: 16px;"></div>
 <p class="inner-banner-description sai-slide-down" id="caseStudySummary">
                 Implementasi arsitektur Retrieval-Augmented Generation (RAG) dan model bahasa 70B privat on-premise untuk perbankan nasional: query jutaan lembar regulasi OJK &amp; SOP internal tanpa risiko kebocoran data ke cloud publik.
               </p>
@@ -527,22 +528,22 @@
 <div class="portfolio-information-wrapper sai-slide-down sai-delay-1">
 <div class="portfolio-information-single">
 <div class="portfolio-information-title">Tanggal Rilis</div>
-<div class="portfolio-information-text">14 September 2026</div>
+<div class="portfolio-information-text" id="caseStudyDate">14 September 2026</div>
 </div>
 <div class="portfolio-information-line"></div>
 <div class="portfolio-information-single">
 <div class="portfolio-information-title">Kategori</div>
-<div class="portfolio-information-text">Private LLM &amp; Sovereign RAG</div>
+<div class="portfolio-information-text" id="caseStudyCategory">Private LLM &amp; Sovereign RAG</div>
 </div>
 <div class="portfolio-information-line"></div>
 <div class="portfolio-information-single">
 <div class="portfolio-information-title">Sektor Industri</div>
-<div class="portfolio-information-text">Perbankan &amp; Finansial</div>
+<div class="portfolio-information-text" id="caseStudySector">Perbankan &amp; Finansial</div>
 </div>
 <div class="portfolio-information-line"></div>
 <div class="portfolio-information-single">
 <div class="portfolio-information-title">Infrastruktur</div>
-<div class="portfolio-information-text">On-Premise GPU Cluster (Air-Gapped)</div>
+<div class="portfolio-information-text" id="caseStudyInfra">On-Premise GPU Cluster (Air-Gapped)</div>
 </div>
 </div>
 </div>
@@ -556,7 +557,7 @@
 <img alt="AI Case Study Architecture" class="portfolio-details-image" id="caseStudyBannerImg" loading="lazy" src="assets/ritovex/01.png"/>
 </div>
 <div class="portfolio-details-typography">
-<div class="portfolio-details-rich-text w-richtext">
+<div class="portfolio-details-rich-text w-richtext" id="caseStudyRichBody">
 <!-- KPI HIGHLIGHTS -->
 <div class="kpi-grid-container">
 <div class="kpi-box sai-card-left">
@@ -839,5 +840,130 @@
     }
   })();
 </script>
+
+<script>
+(function() {
+  const casesData = {
+    'educraft': {
+      title: 'EduCraft AI: Platform Generatif Cerdas Pembuat Soal HOTS & Asisten Guru Indonesia',
+      summary: 'Platform SaaS terpadu yang mentransformasikan materi kurikulum (PDF, Word, OCR) menjadi bank soal Taksonomi Bloom (C1-C6) siap cetak dan siap ekspor dalam hitungan detik. Dirancang khusus untuk memangkas beban administratif pendidik.',
+      date: '20 September 2026',
+      category: 'Generative AI & EdTech SaaS',
+      sector: 'Pendidikan & Guru Nasional',
+      infra: 'Next.js 14, FastAPI & Gemini Engine',
+      bannerImg: 'assets/ritovex/educraft-showcase.png',
+      liveUrl: 'https://educraft.saitech.co.id',
+      kpis: [
+        { num: '10x', desc: 'Kecepatan Penyusunan Bank Soal' },
+        { num: 'HOTS C4-C6', desc: 'Standar Taksonomi Bloom Otomatis' },
+        { num: '100%', desc: 'Siap Cetak (Word, PDF, Quizizz)' }
+      ],
+      bodyHtml: `
+        <div style="background: rgba(224, 189, 106, 0.08); border: 1.5px solid rgba(224, 189, 106, 0.35); border-radius: 16px; padding: 20px 24px; margin-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;">
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">✦ LIVE FLAGSHIP PLATFORM</div>
+            <div style="font-size: 17px; font-weight: 800; color: #00004d;">Aplikasi EduCraft AI Telah Aktif di Domain Resmi</div>
+            <div style="font-size: 13px; color: #64748b; margin-top: 2px;">Jelajahi langsung dashboard interaktif, generator soal bertenaga AI, dan sistem ekspor modul.</div>
+          </div>
+          <a href="https://educraft.saitech.co.id" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #00004d; color: #ffffff; padding: 12px 22px; border-radius: 10px; font-weight: 800; font-size: 13.5px; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,77,0.25); transition: all 0.2s ease;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Kunjungi educraft.saitech.co.id &nearr;</span>
+          </a>
+        </div>
+
+        <h3>1. Latar Belakang &amp; Beban Administratif Guru</h3>
+        <p>Di era implementasi Kurikulum Merdeka, guru-guru di Indonesia menghadapi beban administratif yang signifikan. Berdasarkan riset lapangan, lebih dari 40% waktu kerja guru tersita di luar jam mengajar hanya untuk menyusun kisi-kisi soal evaluasi, memastikan kesesuaian dengan Taksonomi Bloom (HOTS vs LOTS), dan menyusun modul ajar secara manual.</p>
+        <p>Kebutuhan utama yang diidentifikasi adalah sebuah sistem yang mampu mengekstrak materi ajar dari berbagai format (buku teks PDF, catatan guru Microsoft Word, atau bahkan foto lembar kerja fisik melalui OCR) dan secara instan meramunya menjadi bank soal berbobot tinggi lengkap dengan kunci jawaban dan pembahasan.</p>
+
+        <h3>2. Arsitektur Rekayasa EduCraft AI oleh SAI Tech</h3>
+        <p>SAI Tech merancang EduCraft AI dengan arsitektur modern berlatensi rendah:</p>
+        <ul>
+          <li><strong>Multi-Format Document Extraction Pipeline:</strong> Parser cerdas yang menangani dokumen teks, PDF multi-halaman, berkas DOCX, serta visual OCR dengan pra-pemrosesan kontras untuk membaca dokumen pindaian guru secara presisi.</li>
+          <li><strong>Taksonomi Bloom Engine (C1-C6):</strong> Algoritma prompting berbasis taksonomi kognitif yang memetakan soal secara akurat ke level HOTS (Higher Order Thinking Skills - Analisis, Evaluasi, Kreasi) dan LOTS (Lower Order Thinking Skills).</li>
+          <li><strong>FastAPI Async Engine:</strong> Backend Python berkecepatan tinggi yang menjamin waktu respons inferensi kurang dari 3 detik per paket soal.</li>
+          <li><strong>Universal Export Suite:</strong> Generator file langsung ke format Microsoft Word (.docx) siap cetak kertas ujian tanpa perlu penataan ulang layout, ekspor PDF bersih, serta format kompatibel Quizizz dan Google Form.</li>
+        </ul>
+
+        <h3>3. Spesifikasi Arsitektur &amp; Teknologi</h3>
+        <table class="tech-spec-table">
+          <thead>
+            <tr>
+              <th>Komponen</th>
+              <th>Teknologi Terpasang</th>
+              <th>Fungsi Spesifik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Frontend Client</td>
+              <td>Next.js 14, Tailwind CSS, Framer Motion</td>
+              <td>Antarmuka responsif ultra-cepat (PWA & Desktop)</td>
+            </tr>
+            <tr>
+              <td>AI Generation Engine</td>
+              <td>FastAPI Python + Google Gemini Engine</td>
+              <td>Generasi soal berkonteks kurikulum & penalaran HOTS</td>
+            </tr>
+            <tr>
+              <td>Database & Auth</td>
+              <td>Supabase (PostgreSQL) + Google SSO</td>
+              <td>Penyimpanan profil guru, riwayat soal, dan modul</td>
+            </tr>
+            <tr>
+              <td>Export Engine</td>
+              <td>python-docx & PDFKit Engine</td>
+              <td>Kompilasi berkas Word & PDF siap cetak instan</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>4. Dampak Nyata &amp; Hasil Implementasi</h3>
+        <p>Dengan mengadopsi EduCraft AI, pendidik dapat memangkas waktu persiapan ujian dari rata-rata 3-4 jam menjadi kurang dari 5 menit. Guru dapat lebih memfokuskan energi mereka pada pendampingan pedagogis siswa di kelas daripada berkutat dengan tugas administratif repetitif.</p>
+        
+        <div style="margin-top: 36px; text-align: center;">
+          <a href="https://educraft.saitech.co.id" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 10px; background: #e0bd6a; color: #00004d; padding: 15px 32px; border-radius: 12px; font-weight: 800; font-size: 15px; text-decoration: none; box-shadow: 0 6px 24px rgba(224,189,106,0.35); transition: all 0.25s ease;">
+            <span>Mulai Gunakan EduCraft AI Sekarang &nearr;</span>
+          </a>
+        </div>
+      `
+    }
+  };
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const caseKey = (urlParams.get('case') || 'sovereign-rag').toLowerCase().trim();
+
+  if (caseKey && casesData[caseKey]) {
+    const data = casesData[caseKey];
+    document.title = data.title + ' : SAI Tech';
+    const titleEl = document.getElementById('caseStudyTitle');
+    const summaryEl = document.getElementById('caseStudySummary');
+    const dateEl = document.getElementById('caseStudyDate');
+    const catEl = document.getElementById('caseStudyCategory');
+    const secEl = document.getElementById('caseStudySector');
+    const infraEl = document.getElementById('caseStudyInfra');
+    const imgEl = document.getElementById('caseStudyBannerImg');
+    const richEl = document.getElementById('caseStudyRichBody');
+    const liveEl = document.getElementById('caseStudyLiveAction');
+
+    if (titleEl) titleEl.textContent = data.title;
+    if (summaryEl) summaryEl.textContent = data.summary;
+    if (dateEl) dateEl.textContent = data.date;
+    if (catEl) catEl.textContent = data.category;
+    if (secEl) secEl.textContent = data.sector;
+    if (infraEl) infraEl.textContent = data.infra;
+    if (imgEl && data.bannerImg) imgEl.src = data.bannerImg;
+    
+    if (liveEl && data.liveUrl) {
+      liveEl.style.display = 'block';
+      liveEl.innerHTML = '<a href="' + data.liveUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #00004d; color: #ffffff; padding: 9px 18px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; border: 1px solid rgba(224, 189, 106, 0.4);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span>Buka Aplikasi Live (' + data.liveUrl.replace("https://", "") + ') &nearr;</span></a>';
+    }
+
+    if (richEl && data.bodyHtml) {
+      richEl.innerHTML = data.bodyHtml;
+    }
+  }
+})();
+</script>
+
 </body>
 </html>
