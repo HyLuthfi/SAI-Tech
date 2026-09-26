@@ -1376,6 +1376,212 @@
       }
     }
 
+
+    /* ==========================================================================
+       DEDICATED CASE STUDY HERO CONTAINER (KEN'S EXECUTIVE CONTAINER)
+       ========================================================================== */
+    .case-study-hero-card {
+      background: #ffffff;
+      background: radial-gradient(circle at top right, rgba(224, 189, 106, 0.05) 0%, rgba(0, 0, 77, 0.01) 40%, #ffffff 75%);
+      border: 1.5px solid rgba(0, 0, 77, 0.09);
+      border-top: 3.5px solid #e0bd6a;
+      border-radius: 24px;
+      padding: 38px 42px 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 77, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+      max-width: 1070px;
+      margin: 0 auto 34px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .case-hero-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .case-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 77, 0.04);
+      border: 1px solid rgba(0, 0, 77, 0.09);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #00004d;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .case-hero-badge-icon {
+      width: 13px;
+      height: 13px;
+    }
+
+    .case-hero-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #065f46;
+      letter-spacing: 0.06em;
+    }
+
+    .case-status-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      display: inline-block;
+    }
+
+    .case-hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: clamp(24px, 3.2vw, 36px) !important;
+      font-weight: 800 !important;
+      color: #00004d !important;
+      line-height: 1.22 !important;
+      letter-spacing: -0.02em !important;
+      margin: 0 0 14px 0 !important;
+      text-align: left !important;
+    }
+
+    .case-hero-desc {
+      font-size: 15px !important;
+      line-height: 1.65 !important;
+      color: #475569 !important;
+      max-width: 900px !important;
+      margin: 0 0 22px 0 !important;
+      text-align: left !important;
+    }
+
+    .case-hero-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+
+    .case-hero-btn-primary {
+      background: #00004d;
+      color: #ffffff !important;
+      padding: 12px 22px;
+      border-radius: 11px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none !important;
+      border: 1.5px solid rgba(224, 189, 106, 0.45);
+      box-shadow: 0 4px 16px rgba(0, 0, 77, 0.22);
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: all 0.25s ease;
+    }
+
+    .case-hero-btn-primary:hover {
+      background: #0a0e36;
+      border-color: #e0bd6a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 77, 0.32), 0 0 14px rgba(224, 189, 106, 0.2);
+    }
+
+    .case-hero-btn-secondary {
+      background: #f8fafc;
+      color: #00004d !important;
+      padding: 12px 20px;
+      border-radius: 11px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none !important;
+      border: 1px solid rgba(0, 0, 77, 0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.25s ease;
+    }
+
+    .case-hero-btn-secondary:hover {
+      background: #f1f5f9;
+      border-color: rgba(0, 0, 77, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .case-hero-meta-strip {
+      border-top: 1px solid rgba(0, 0, 77, 0.08);
+      padding-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .case-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .case-meta-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+    }
+
+    .case-meta-value {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #00004d;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 991px) {
+      .case-study-hero-card {
+        padding: 30px 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 24px;
+      }
+      .case-hero-meta-strip {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px 14px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .case-study-hero-card {
+        padding: 22px 16px 18px !important;
+        border-radius: 16px !important;
+      }
+      .case-hero-title {
+        font-size: 22px !important;
+        line-height: 1.25 !important;
+        margin-bottom: 10px !important;
+      }
+      .case-hero-desc {
+        font-size: 13px !important;
+        line-height: 1.55 !important;
+        margin-bottom: 18px !important;
+      }
+      .case-hero-btn-primary,
+      .case-hero-btn-secondary {
+        width: 100% !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1417,46 +1623,54 @@
 </div>
 </div>
 </div>
-<!-- BANNER / CASE STUDY HEADER -->
-<section class="section inner-banner">
+<!-- BANNER / CASE STUDY HEADER (DEDICATED HERO CONTAINER) -->
+<section class="section inner-banner" style="padding-top: 130px; padding-bottom: 10px;">
 <div class="container">
-<div class="inner-banner-content">
-<div class="inner-banner-typography">
-<div class="section-subtitle-wrap" style="margin-bottom: 16px;">
-<div class="section-subtitle-single">
-<img alt="Subtitle Icon" class="section-subtitle-icon" loading="lazy" src="assets/ritovex/687810aa5293f9e8c955c26a_Section%20Subtitle%20Icon.svg"/>
-<div class="section-subtitle">Studi Kasus Rekayasa AI</div>
-</div>
-</div>
-<h1 class="inner-banner-title portfolio-details-title sai-zoom-fade" id="caseStudyTitle">
-                Sovereign Financial RAG &amp; Private LLM Engine
-              </h1>
-<div id="caseStudyLiveAction" style="display: none; margin-bottom: 16px;"></div>
-<p class="inner-banner-description sai-slide-down" id="caseStudySummary">
-                Implementasi arsitektur Retrieval-Augmented Generation (RAG) dan model bahasa 70B privat on-premise untuk perbankan nasional: query jutaan lembar regulasi OJK &amp; SOP internal tanpa risiko kebocoran data ke cloud publik.
-              </p>
-</div>
-<div class="portfolio-information-wrapper sai-slide-down sai-delay-1">
-<div class="portfolio-information-single">
-<div class="portfolio-information-title">Tanggal Rilis</div>
-<div class="portfolio-information-text" id="caseStudyDate">14 September 2026</div>
-</div>
-<div class="portfolio-information-line"></div>
-<div class="portfolio-information-single">
-<div class="portfolio-information-title">Kategori</div>
-<div class="portfolio-information-text" id="caseStudyCategory">Private LLM &amp; Sovereign RAG</div>
-</div>
-<div class="portfolio-information-line"></div>
-<div class="portfolio-information-single">
-<div class="portfolio-information-title">Sektor Industri</div>
-<div class="portfolio-information-text" id="caseStudySector">Perbankan &amp; Finansial</div>
-</div>
-<div class="portfolio-information-line"></div>
-<div class="portfolio-information-single">
-<div class="portfolio-information-title">Infrastruktur</div>
-<div class="portfolio-information-text" id="caseStudyInfra">On-Premise GPU Cluster (Air-Gapped)</div>
-</div>
-</div>
+<div class="case-study-hero-card sai-zoom-fade">
+  <!-- Top Eyebrow & Status Row -->
+  <div class="case-hero-header-row">
+    <div class="case-hero-badge">
+      <img alt="Subtitle Icon" class="case-hero-badge-icon" loading="lazy" src="assets/ritovex/687810aa5293f9e8c955c26a_Section%20Subtitle%20Icon.svg"/>
+      <span id="caseStudyCategoryBadge">STUDI KASUS REKAYASA AI</span>
+    </div>
+    <div class="case-hero-status-pill" id="caseHeroStatusPill">
+      <span class="case-status-indicator"></span>
+      <span class="case-status-text" id="caseHeroStatusText">LIVE PRODUCTION APP</span>
+    </div>
+  </div>
+
+  <!-- Main Headline (H1) -->
+  <h1 class="case-hero-title portfolio-details-title" id="caseStudyTitle">
+    Sovereign Financial RAG &amp; Private LLM Engine
+  </h1>
+
+  <!-- Description Paragraph -->
+  <p class="case-hero-desc" id="caseStudySummary">
+    Implementasi arsitektur Retrieval-Augmented Generation (RAG) dan model bahasa 70B privat on-premise untuk perbankan nasional: query jutaan lembar regulasi OJK &amp; SOP internal tanpa risiko kebocoran data ke cloud publik.
+  </p>
+
+  <!-- Action CTA Row (Under description) -->
+  <div class="case-hero-actions-row" id="caseStudyLiveAction"></div>
+
+  <!-- Integrated Metadata Architecture Strip -->
+  <div class="case-hero-meta-strip">
+    <div class="case-meta-item">
+      <div class="case-meta-label">Tanggal Rilis</div>
+      <div class="case-meta-value" id="caseStudyDate">14 September 2026</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Kategori</div>
+      <div class="case-meta-value" id="caseStudyCategory">Private LLM &amp; Sovereign RAG</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Sektor Industri</div>
+      <div class="case-meta-value" id="caseStudySector">Perbankan &amp; Finansial</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Infrastruktur</div>
+      <div class="case-meta-value" id="caseStudyInfra">On-Premise GPU Cluster (Air-Gapped)</div>
+    </div>
+  </div>
 </div>
 </div>
 </section>
@@ -2209,9 +2423,21 @@
       richEl.innerHTML = data.showcaseHtml;
     }
 
+    const badgeEl = document.getElementById('caseStudyCategoryBadge');
+    if (badgeEl) badgeEl.textContent = 'STUDI KASUS REKAYASA AI & SAAS';
+
     if (liveEl) {
-      liveEl.style.display = 'block';
-      liveEl.innerHTML = '<a href="' + data.liveUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #00004d; color: #ffffff; padding: 10px 20px; border-radius: 9px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid rgba(224, 189, 106, 0.4); box-shadow: 0 4px 14px rgba(0,0,77,0.25);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span>Buka Aplikasi Live (' + data.liveUrl.replace("https://", "") + ') &nearr;</span></a>';
+      liveEl.style.display = 'flex';
+      liveEl.innerHTML = `
+        <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="case-hero-btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>Buka Aplikasi Live (${data.liveUrl.replace("https://", "")}) &nearr;</span>
+        </a>
+        <a href="#caseStudyRichBody" class="case-hero-btn-secondary">
+          <span>Lihat Arsitektur &amp; Fitur</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </a>
+      `;
     }
   }
 })();
