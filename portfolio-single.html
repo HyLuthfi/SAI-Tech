@@ -1755,16 +1755,41 @@
 
     /* 2. Full-Width Dual Bidirectional Tech Ribbons (AI Core & Supporting Stack) */
     .tech-ribbon-section {
-      margin: 36px 0 44px;
+      margin: 40px 0 52px;
       border-top: 1px solid rgba(0, 0, 77, 0.08);
       border-bottom: 1px solid rgba(0, 0, 77, 0.08);
       background: #fafbfc;
-      padding: 18px 0;
+      padding: 32px 0 26px;
       overflow: hidden;
       position: relative;
       display: flex;
       flex-direction: column;
       gap: 12px;
+    }
+
+    .tech-ribbon-header {
+      text-align: center;
+      margin-bottom: 18px;
+      padding: 0 16px;
+    }
+
+    .tech-ribbon-tag-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: #b45309;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .tech-ribbon-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(20px, 2.6vw, 25px);
+      font-weight: 800;
+      color: #00004d;
+      margin: 0;
+      letter-spacing: -0.015em;
     }
 
     .tech-ribbon-wrapper {
@@ -1846,9 +1871,9 @@
     }
 
     .tech-ribbon-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1857,6 +1882,12 @@
       font-weight: 800;
       font-size: 11px;
       flex-shrink: 0;
+    }
+
+    .tech-ribbon-icon svg {
+      width: 12px;
+      height: 12px;
+      display: block;
     }
 
     .tech-ribbon-name {
@@ -2726,95 +2757,101 @@
 
         <!-- 2. DUAL BIDIRECTIONAL TECH RIBBONS (AI CORE & SUPPORTING STACK) -->
         <div class="tech-ribbon-section">
+          <!-- SECTION TITLE & EYEBROW (KEN'S REQUEST) -->
+          <div class="tech-ribbon-header">
+            <span class="tech-ribbon-tag-header">ARSITEKTUR &amp; SPESIFIKASI SISTEM</span>
+            <h2 class="tech-ribbon-title">Teknologi Rekayasa AI &amp; Infrastruktur Pendukung</h2>
+          </div>
+
           <!-- ROW 1: AI & COGNITIVE ENGINE TECHNOLOGIES (SCROLLING LEFT) -->
           <div class="tech-ribbon-wrapper">
             <div class="tech-ribbon-track is-left">
               <!-- Item AI 1 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">✦</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg></span>
                 <span class="tech-ribbon-name">Google Gemini 1.5 Pro</span>
                 <span class="tech-ribbon-tag">Multimodal LLM</span>
               </div>
               <!-- Item AI 2 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">B</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
                 <span class="tech-ribbon-name">Taksonomi Bloom Engine</span>
                 <span class="tech-ribbon-tag">HOTS &amp; LOTS C1-C6</span>
               </div>
               <!-- Item AI 3 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">👁</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
                 <span class="tech-ribbon-name">Tesseract Vision OCR</span>
                 <span class="tech-ribbon-tag">Ekstraksi Dokumen</span>
               </div>
               <!-- Item AI 4 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">⚡</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
                 <span class="tech-ribbon-name">Prompt Engineering Engine</span>
                 <span class="tech-ribbon-tag">Kurikulum Merdeka</span>
               </div>
               <!-- Item AI 5 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">&sum;</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4H6l7 8-7 8h12"/></svg></span>
                 <span class="tech-ribbon-name">KaTeX Formula Engine</span>
                 <span class="tech-ribbon-tag">Notasi Matematika</span>
               </div>
               <!-- Item AI 6 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">🛡️</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
                 <span class="tech-ribbon-name">Grounding Guardrails</span>
                 <span class="tech-ribbon-tag">Anti-Halusinasi</span>
               </div>
               <!-- Item AI 7 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">🧬</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="6" x="3" y="3" rx="1"/><rect width="6" height="6" x="15" y="3" rx="1"/><rect width="6" height="6" x="15" y="15" rx="1"/><rect width="6" height="6" x="3" y="15" rx="1"/></svg></span>
                 <span class="tech-ribbon-name">Semantic Chunking</span>
                 <span class="tech-ribbon-tag">Pemetaan Materi</span>
               </div>
               <!-- Item AI 8 -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">&check;</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg></span>
                 <span class="tech-ribbon-name">Rubrik &amp; Kunci Jawaban AI</span>
                 <span class="tech-ribbon-tag">Step-by-Step</span>
               </div>
               <!-- DUPLICATE ROW 1 FOR INFINITE SEAMLESS LOOP -->
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">✦</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg></span>
                 <span class="tech-ribbon-name">Google Gemini 1.5 Pro</span>
                 <span class="tech-ribbon-tag">Multimodal LLM</span>
               </div>
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">B</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
                 <span class="tech-ribbon-name">Taksonomi Bloom Engine</span>
                 <span class="tech-ribbon-tag">HOTS &amp; LOTS C1-C6</span>
               </div>
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">👁</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
                 <span class="tech-ribbon-name">Tesseract Vision OCR</span>
                 <span class="tech-ribbon-tag">Ekstraksi Dokumen</span>
               </div>
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">⚡</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
                 <span class="tech-ribbon-name">Prompt Engineering Engine</span>
                 <span class="tech-ribbon-tag">Kurikulum Merdeka</span>
               </div>
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">&sum;</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4H6l7 8-7 8h12"/></svg></span>
                 <span class="tech-ribbon-name">KaTeX Formula Engine</span>
                 <span class="tech-ribbon-tag">Notasi Matematika</span>
               </div>
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">🛡️</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
                 <span class="tech-ribbon-name">Grounding Guardrails</span>
                 <span class="tech-ribbon-tag">Anti-Halusinasi</span>
               </div>
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">🧬</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="6" x="3" y="3" rx="1"/><rect width="6" height="6" x="15" y="3" rx="1"/><rect width="6" height="6" x="15" y="15" rx="1"/><rect width="6" height="6" x="3" y="15" rx="1"/></svg></span>
                 <span class="tech-ribbon-name">Semantic Chunking</span>
                 <span class="tech-ribbon-tag">Pemetaan Materi</span>
               </div>
               <div class="tech-ribbon-pill is-ai">
-                <span class="tech-ribbon-icon">&check;</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg></span>
                 <span class="tech-ribbon-name">Rubrik &amp; Kunci Jawaban AI</span>
                 <span class="tech-ribbon-tag">Step-by-Step</span>
               </div>
@@ -2826,108 +2863,107 @@
             <div class="tech-ribbon-track is-right">
               <!-- Item Infra 1 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">N</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 20 4 4 20 20 20 4"/></svg></span>
                 <span class="tech-ribbon-name">Next.js 14</span>
                 <span class="tech-ribbon-tag">App Router &amp; SSR</span>
               </div>
               <!-- Item Infra 2 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">&lambda;</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3 18 21"/><path d="m14.5 15.5-8.5 5.5"/></svg></span>
                 <span class="tech-ribbon-name">FastAPI Python</span>
                 <span class="tech-ribbon-tag">Async High-Speed API</span>
               </div>
               <!-- Item Infra 3 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">S</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>
                 <span class="tech-ribbon-name">Supabase PostgreSQL</span>
                 <span class="tech-ribbon-tag">Database &amp; RLS</span>
               </div>
               <!-- Item Infra 4 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">W</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
                 <span class="tech-ribbon-name">python-docx Engine</span>
                 <span class="tech-ribbon-tag">DOCX Word Compiler</span>
               </div>
               <!-- Item Infra 5 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">📄</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></svg></span>
                 <span class="tech-ribbon-name">PDFKit Pipeline</span>
                 <span class="tech-ribbon-tag">Vector PDF Engine</span>
               </div>
               <!-- Item Infra 6 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">🎨</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 2.2a2 2 0 0 0-1.6 0L2.6 6.1a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8z"/><path d="m22 12.5-8.6 3.9a2 2 0 0 1-1.6 0L2 12.5"/><path d="m22 17.5-8.6 3.9a2 2 0 0 1-1.6 0L2 17.5"/></svg></span>
                 <span class="tech-ribbon-name">Tailwind CSS &amp; Motion</span>
                 <span class="tech-ribbon-tag">Tactile UI System</span>
               </div>
               <!-- Item Infra 7 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">📱</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>
                 <span class="tech-ribbon-name">Service Worker PWA</span>
                 <span class="tech-ribbon-tag">Dukungan Offline</span>
               </div>
               <!-- Item Infra 8 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">🐳</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
                 <span class="tech-ribbon-name">Docker Containers</span>
                 <span class="tech-ribbon-tag">Microservices</span>
               </div>
               <!-- Item Infra 9 -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">☁</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg></span>
                 <span class="tech-ribbon-name">Cloudflare Zero Trust</span>
                 <span class="tech-ribbon-tag">Edge Tunnel &amp; SSL</span>
               </div>
               <!-- DUPLICATE ROW 2 FOR INFINITE SEAMLESS LOOP -->
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">N</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 20 4 4 20 20 20 4"/></svg></span>
                 <span class="tech-ribbon-name">Next.js 14</span>
                 <span class="tech-ribbon-tag">App Router &amp; SSR</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">&lambda;</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3 18 21"/><path d="m14.5 15.5-8.5 5.5"/></svg></span>
                 <span class="tech-ribbon-name">FastAPI Python</span>
                 <span class="tech-ribbon-tag">Async High-Speed API</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">S</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>
                 <span class="tech-ribbon-name">Supabase PostgreSQL</span>
                 <span class="tech-ribbon-tag">Database &amp; RLS</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">W</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
                 <span class="tech-ribbon-name">python-docx Engine</span>
                 <span class="tech-ribbon-tag">DOCX Word Compiler</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">📄</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></svg></span>
                 <span class="tech-ribbon-name">PDFKit Pipeline</span>
                 <span class="tech-ribbon-tag">Vector PDF Engine</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">🎨</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 2.2a2 2 0 0 0-1.6 0L2.6 6.1a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8z"/><path d="m22 12.5-8.6 3.9a2 2 0 0 1-1.6 0L2 12.5"/><path d="m22 17.5-8.6 3.9a2 2 0 0 1-1.6 0L2 17.5"/></svg></span>
                 <span class="tech-ribbon-name">Tailwind CSS &amp; Motion</span>
                 <span class="tech-ribbon-tag">Tactile UI System</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">📱</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>
                 <span class="tech-ribbon-name">Service Worker PWA</span>
                 <span class="tech-ribbon-tag">Dukungan Offline</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">🐳</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
                 <span class="tech-ribbon-name">Docker Containers</span>
                 <span class="tech-ribbon-tag">Microservices</span>
               </div>
               <div class="tech-ribbon-pill">
-                <span class="tech-ribbon-icon">☁</span>
+                <span class="tech-ribbon-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg></span>
                 <span class="tech-ribbon-name">Cloudflare Zero Trust</span>
                 <span class="tech-ribbon-tag">Edge Tunnel &amp; SSL</span>
               </div>
             </div>
           </div>
         </div>
-
         <!-- 3. FLAT TYPOGRAPHIC STAT MATRIX (NO PUFFY CARDS) -->
         <div class="stat-matrix-section">
           <div class="stat-matrix-col">
@@ -2957,7 +2993,7 @@
               <img src="assets/ritovex/educraft-features.png" alt="EduCraft Engine Interface" loading="lazy" />
             </div>
             <div class="split-engine-content">
-              <span class="split-engine-tag">✦ REKAYASA ENGINE UTAMA</span>
+              <span class="split-engine-tag">REKAYASA ENGINE UTAMA</span>
               <h2 class="split-engine-title">Transformasi Materi Kurikulum Menjadi Bank Soal Teruji</h2>
               <p class="split-engine-desc">Guru tidak perlu lagi mengetik ulang buku paket atau modul ajar. AI secara cerdas mengekstrak inti kompetensi dasar dan menghasilkan variasi soal kontekstual.</p>
               
@@ -2991,7 +3027,7 @@
         <!-- 5. HIGH-DENSITY CAPABILITY MATRIX (NO REPETITIVE BOX CARDS!) -->
         <div class="capability-matrix-section">
           <div class="capability-matrix-header">
-            <span class="capability-matrix-tag">✦ CAPABILITY SUITE LENGKAP</span>
+            <span class="capability-matrix-tag">CAPABILITY SUITE LENGKAP</span>
             <h2 class="capability-matrix-title">Modul Cerdas Produktivitas Pendidik</h2>
             <p class="capability-matrix-sub">Satu ekosistem terpadu untuk menyelesaikan seluruh rantai evaluasi belajar dan administrasi kelas secara otomatis:</p>
           </div>
@@ -3079,7 +3115,7 @@
         <!-- 6. CONNECTED PROGRESS TIMELINE (NO BOX CARDS) -->
         <div class="timeline-workflow-section">
           <div class="timeline-workflow-header">
-            <span class="timeline-workflow-tag">✦ ALUR KERJA LINEAR</span>
+            <span class="timeline-workflow-tag">ALUR KERJA LINEAR</span>
             <h3 class="timeline-workflow-title">3 Tahapan Dari Materi Mentah Menjadi Naskah Siap Ujian</h3>
           </div>
           <div class="timeline-track-grid">
@@ -3104,7 +3140,7 @@
         <!-- 7. PANORAMIC VISUAL SHOWCASE (ROADMAP KURIKULUM) -->
         <div class="showcase-gallery-section">
           <div class="showcase-gallery-title-wrap">
-            <span style="font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; display: block;">✦ NATIONAL AI CURRICULUM ROADMAP</span>
+            <span style="font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; display: block;">NATIONAL AI CURRICULUM ROADMAP</span>
             <h2 class="showcase-gallery-title">Peta Kurikulum &amp; Alur Pertemuan AI Terintegrasi</h2>
             <p class="showcase-gallery-sub">Modul ajar 6 bab komprehensif dari fondasi dasar AI, machine learning, etika AI, hingga presentasi karya siswa yang siap diimplementasikan di sekolah.</p>
           </div>
@@ -3117,7 +3153,7 @@
         <!-- 8. LIVE LAUNCHPAD CONVERSION STRIP -->
         <div class="showcase-launchpad-banner">
           <div class="launchpad-content">
-            <div class="launchpad-tag">✦ PLATFORM SAAS RESMI</div>
+            <div class="launchpad-tag">PLATFORM SAAS RESMI</div>
             <h3 class="launchpad-title" style="color: #ffffff !important;">Coba Langsung EduCraft AI Sekarang</h3>
             <p class="launchpad-desc">Aplikasi EduCraft AI aktif melayani ribuan kebutuhan pendidik di domain resmi. Rasakan langsung kemudahan menyusun bank soal dan administrasi pembelajaran.</p>
           </div>
