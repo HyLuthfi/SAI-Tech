@@ -4386,38 +4386,67 @@ a.footer-information-text {
 }
 
 .cta-wrapper {
-  background-image: url("https://cdn.prod.website-files.com/6877e02f5387b6bdd6d338ec/68a606c6b03f8df4687551de_CTA%20Bg.jpg");
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 14px;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  background-color: #060818;
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 77, 0.85) 0%, #060818 100%);
+  border: 1.5px solid rgba(224, 189, 106, 0.45);
+  border-radius: 20px;
+  padding: 44px 32px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  box-shadow: 0 16px 50px rgba(0, 0, 77, 0.25), 0 0 24px rgba(224, 189, 106, 0.1);
+  box-sizing: border-box;
 }
 
 .cta-typography {
   text-align: center;
   width: 100%;
-  max-width: 775px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .cta-title-wrapper {
-  margin-bottom: 80px;
+  margin-bottom: 22px;
 }
 
 .cta-subtitle {
-  color: var(--_colors-plates---white);
+  color: #e0bd6a;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   margin-bottom: 10px;
   display: inline-block;
 }
 
 .cta-title {
-  color: var(--_colors-plates---white);
-  letter-spacing: -2.4px;
-  font-size: 120px;
-  line-height: 100%;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.25;
+  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0 auto;
+}
+
+.cta-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-button-wrapper .primary-button-inner {
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.25s ease !important;
+}
+
+.cta-button-wrapper .primary-button-inner:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
 }
 
 .testimonial-ticker {
@@ -7624,18 +7653,19 @@ a.footer-information-text {
   }
 
   .cta-wrapper {
-    background-size: cover;
-    background-attachment: scroll;
-    padding: 50px 15px;
+    padding: 34px 20px;
+    margin-bottom: 35px;
+    border-radius: 16px;
   }
 
   .cta-title-wrapper {
-    margin-bottom: 30px;
+    margin-bottom: 16px;
   }
 
   .cta-title {
-    letter-spacing: -.8px;
-    font-size: 86px;
+    letter-spacing: -0.02em;
+    font-size: clamp(21px, 3.5vw, 28px);
+    line-height: 1.25;
   }
 
   .testimonial-inner-ticker-wrapper {
@@ -8788,16 +8818,17 @@ a.footer-information-text {
   }
 
   .cta-wrapper {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 28px 16px;
+    margin-bottom: 28px;
   }
 
   .cta-title-wrapper {
-    margin-bottom: 24px;
+    margin-bottom: 14px;
   }
 
   .cta-title {
-    font-size: 58px;
+    font-size: clamp(19px, 4.5vw, 24px);
+    line-height: 1.25;
   }
 
   .testimonial-card {
@@ -9647,23 +9678,25 @@ a.footer-information-text {
   }
 
   .cta-wrapper {
-    border-radius: 10px;
-    padding: 35px 10px;
+    border-radius: 14px;
+    padding: 24px 14px;
+    margin-bottom: 24px;
   }
 
   .cta-title-wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 
   .cta-subtitle {
-    letter-spacing: -.2px;
-    font-size: 15px;
-    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 700;
   }
 
   .cta-title {
-    letter-spacing: -.2px;
-    font-size: 38px;
+    letter-spacing: -0.02em;
+    font-size: 20px;
+    line-height: 1.25;
   }
 
   .testimonial-card {
