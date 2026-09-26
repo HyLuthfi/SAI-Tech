@@ -966,6 +966,416 @@
         padding: 5px 10px !important;
       }
     }
+
+    /* ==========================================================================
+       1. TECH MARQUEE (RUNNING TEXT STACK)
+       ========================================================================== */
+    .tech-marquee-section {
+      scroll-margin-top: 110px;
+      margin-top: 14px;
+      margin-bottom: 44px;
+      background: #080a16;
+      border: 1.5px solid rgba(224, 189, 106, 0.35);
+      border-radius: 20px;
+      padding: 26px 20px 22px;
+      overflow: hidden;
+      box-shadow: 0 16px 50px rgba(0, 0, 77, 0.25);
+      position: relative;
+    }
+
+    .tech-marquee-header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .tech-marquee-subtitle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e0bd6a;
+      background: rgba(224, 189, 106, 0.12);
+      padding: 4px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(224, 189, 106, 0.3);
+      margin-bottom: 8px;
+    }
+
+    .tech-marquee-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .tech-marquee-wrapper {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+      mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+      padding: 4px 0;
+    }
+
+    .tech-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: techMarqueeScroll 28s linear infinite;
+      gap: 12px;
+    }
+
+    .tech-marquee-wrapper:hover .tech-marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes techMarqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .tech-pill-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 7px 15px 7px 11px;
+      border-radius: 100px;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .tech-pill-item:hover {
+      background: rgba(224, 189, 106, 0.12);
+      border-color: rgba(224, 189, 106, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .tech-pill-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(224, 189, 106, 0.18);
+      color: #e0bd6a;
+      font-weight: 800;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .tech-pill-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .tech-pill-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(224, 189, 106, 0.2);
+      color: #e0bd6a;
+      padding: 2px 7px;
+      border-radius: 100px;
+    }
+
+    /* ==========================================================================
+       2. DYNAMIC 7-FEATURE CARDS (CONCEPT CARD 4 ADAPTED)
+       ========================================================================== */
+    .features-suite-section {
+      scroll-margin-top: 110px;
+      margin-bottom: 50px;
+    }
+
+    .features-suite-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .features-suite-subtitle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b45309;
+      background: rgba(224, 189, 106, 0.18);
+      padding: 4px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(224, 189, 106, 0.35);
+      margin-bottom: 8px;
+    }
+
+    .features-suite-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #00004d;
+      margin-bottom: 8px;
+      letter-spacing: -0.015em;
+    }
+
+    .features-suite-desc {
+      font-size: 14px;
+      color: #64748b;
+      max-width: 660px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    .features-suite-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-suite-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      border-radius: 18px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px rgba(0, 0, 77, 0.04);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .feature-suite-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(224, 189, 106, 0.6);
+      box-shadow: 0 16px 36px rgba(0, 0, 77, 0.09), 0 0 20px rgba(224, 189, 106, 0.15);
+    }
+
+    .feature-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .feature-card-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 0, 77, 0.04);
+      border: 1px solid rgba(0, 0, 77, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    .feature-suite-card:hover .feature-card-icon-wrap {
+      background: rgba(224, 189, 106, 0.15);
+      border-color: rgba(224, 189, 106, 0.4);
+    }
+
+    .feature-card-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .feature-card-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 800;
+      color: #b45309;
+      background: rgba(224, 189, 106, 0.16);
+      border: 1px solid rgba(224, 189, 106, 0.3);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .feature-card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #00004d;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card-text {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .feature-card-footer {
+      padding-top: 12px;
+      border-top: 1px dashed rgba(0, 0, 77, 0.08);
+    }
+
+    .feature-card-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #00004d;
+      background: #f8fafc;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+    }
+
+    .feature-card-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #e0bd6a;
+    }
+
+    /* Feature 07 Special Spanning Card */
+    .feature-suite-card.is-wide {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #ffffff 0%, #fdfdfd 100%);
+      border: 1.5px solid rgba(224, 189, 106, 0.45);
+    }
+
+    .feature-wide-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    /* ==========================================================================
+       3. 3-STEP GENERATOR WORKFLOW (WORKING PROCESS CONCEPT)
+       ========================================================================== */
+    .workflow-steps-section {
+      scroll-margin-top: 110px;
+      background: #f8fafc;
+      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      border-radius: 20px;
+      padding: 34px 28px;
+      margin-bottom: 50px;
+    }
+
+    .workflow-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .workflow-subtitle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b45309;
+      background: rgba(224, 189, 106, 0.18);
+      padding: 4px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(224, 189, 106, 0.35);
+      margin-bottom: 8px;
+    }
+
+    .workflow-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #00004d;
+      margin-bottom: 6px;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .workflow-card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 77, 0.08);
+      border-radius: 16px;
+      padding: 22px 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.03);
+      position: relative;
+    }
+
+    .workflow-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      font-weight: 900;
+      color: #e0bd6a;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .workflow-card-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #00004d;
+      margin-bottom: 6px;
+    }
+
+    .workflow-card-text {
+      font-size: 12.5px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 991px) {
+      .features-suite-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 14px !important;
+      }
+      .feature-suite-card.is-wide {
+        grid-column: 1 / -1 !important;
+      }
+      .feature-wide-layout {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+      }
+      .workflow-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .features-suite-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+      .tech-marquee-section {
+      scroll-margin-top: 110px;
+        padding: 20px 14px 18px !important;
+        border-radius: 16px !important;
+      }
+      .tech-marquee-title {
+        font-size: 18px !important;
+      }
+      .features-suite-title {
+        font-size: 21px !important;
+      }
+      .workflow-steps-section {
+      scroll-margin-top: 110px;
+        padding: 24px 16px !important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1378,7 +1788,144 @@
           </div>
         </div>
 
-        <!-- 2. BEFORE VS AFTER OPERATIONAL METRICS -->
+        <!-- 2. RUNNING TEXT MARQUEE FOR TECH STACK (KEN'S SUGGESTION) -->
+        <div class="tech-marquee-section">
+          <div class="tech-marquee-header">
+            <div class="tech-marquee-subtitle">
+              <img src="assets/ritovex/687810aa5293f9e8c955c26a_Section%20Subtitle%20Icon.svg" alt="Sparkle" style="width: 13px; height: 13px;" />
+              <span>STACK TEKNOLOGI &amp; INFRASTRUKTUR</span>
+            </div>
+            <h3 class="tech-marquee-title">Arsitektur Komputasi &amp; Engine Terpasang</h3>
+          </div>
+          <div class="tech-marquee-wrapper">
+            <div class="tech-marquee-track">
+              <!-- Item 1 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">N</span>
+                <span class="tech-pill-name">Next.js 14</span>
+                <span class="tech-pill-badge">App Router</span>
+              </div>
+              <!-- Item 2 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">&lambda;</span>
+                <span class="tech-pill-name">FastAPI Python</span>
+                <span class="tech-pill-badge">Async AI API</span>
+              </div>
+              <!-- Item 3 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">✦</span>
+                <span class="tech-pill-name">Google Gemini 1.5 Pro</span>
+                <span class="tech-pill-badge">Multimodal LLM</span>
+              </div>
+              <!-- Item 4 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">B</span>
+                <span class="tech-pill-name">Taksonomi Bloom</span>
+                <span class="tech-pill-badge">C1-C6 HOTS</span>
+              </div>
+              <!-- Item 5 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">S</span>
+                <span class="tech-pill-name">Supabase PostgreSQL</span>
+                <span class="tech-pill-badge">Database &amp; RLS</span>
+              </div>
+              <!-- Item 6 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">W</span>
+                <span class="tech-pill-name">python-docx Engine</span>
+                <span class="tech-pill-badge">DOCX Compiler</span>
+              </div>
+              <!-- Item 7 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">👁</span>
+                <span class="tech-pill-name">Tesseract OCR</span>
+                <span class="tech-pill-badge">Vision Extraction</span>
+              </div>
+              <!-- Item 8 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">🎨</span>
+                <span class="tech-pill-name">Tailwind &amp; Motion</span>
+                <span class="tech-pill-badge">Responsive UI</span>
+              </div>
+              <!-- Item 9 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">📄</span>
+                <span class="tech-pill-name">PDFKit Pipeline</span>
+                <span class="tech-pill-badge">Vector PDF</span>
+              </div>
+              <!-- Item 10 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">&sum;</span>
+                <span class="tech-pill-name">KaTeX LaTeX</span>
+                <span class="tech-pill-badge">Math Engine</span>
+              </div>
+              <!-- Item 11 -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">📱</span>
+                <span class="tech-pill-name">Service Worker PWA</span>
+                <span class="tech-pill-badge">Offline Ready</span>
+              </div>
+              <!-- DUPLICATE FOR INFINITE SMOOTH LOOP -->
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">N</span>
+                <span class="tech-pill-name">Next.js 14</span>
+                <span class="tech-pill-badge">App Router</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">&lambda;</span>
+                <span class="tech-pill-name">FastAPI Python</span>
+                <span class="tech-pill-badge">Async AI API</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">✦</span>
+                <span class="tech-pill-name">Google Gemini 1.5 Pro</span>
+                <span class="tech-pill-badge">Multimodal LLM</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">B</span>
+                <span class="tech-pill-name">Taksonomi Bloom</span>
+                <span class="tech-pill-badge">C1-C6 HOTS</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">S</span>
+                <span class="tech-pill-name">Supabase PostgreSQL</span>
+                <span class="tech-pill-badge">Database &amp; RLS</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">W</span>
+                <span class="tech-pill-name">python-docx Engine</span>
+                <span class="tech-pill-badge">DOCX Compiler</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">👁</span>
+                <span class="tech-pill-name">Tesseract OCR</span>
+                <span class="tech-pill-badge">Vision Extraction</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">🎨</span>
+                <span class="tech-pill-name">Tailwind &amp; Motion</span>
+                <span class="tech-pill-badge">Responsive UI</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">📄</span>
+                <span class="tech-pill-name">PDFKit Pipeline</span>
+                <span class="tech-pill-badge">Vector PDF</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">&sum;</span>
+                <span class="tech-pill-name">KaTeX LaTeX</span>
+                <span class="tech-pill-badge">Math Engine</span>
+              </div>
+              <div class="tech-pill-item">
+                <span class="tech-pill-icon">📱</span>
+                <span class="tech-pill-name">Service Worker PWA</span>
+                <span class="tech-pill-badge">Offline Ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. KEY METRICS BENTO HIGHLIGHTS -->
         <div class="bento-stats-grid">
           <div class="bento-stat-card">
             <div class="bento-stat-label">Efisiensi Waktu Kerja</div>
@@ -1400,11 +1947,178 @@
           </div>
         </div>
 
-        <!-- 3. MULTI-PERSPECTIVE VISUAL PRODUCT GALLERY -->
+        <!-- 4. ADAPTIVE 7-FEATURE CARDS (KONSEP CARD 4 DIADAPTASI SESUAI FITUR SEBENARNYA) -->
+        <div class="features-suite-section">
+          <div class="features-suite-header">
+            <div class="features-suite-subtitle">
+              <img src="assets/ritovex/687810aa5293f9e8c955c26a_Section%20Subtitle%20Icon.svg" alt="Sparkle" style="width: 13px; height: 13px;" />
+              <span>DAFTAR FITUR LENGKAP PLATFORM</span>
+            </div>
+            <h2 class="features-suite-title">7 Modul Cerdas untuk Produktivitas Pendidik</h2>
+            <p class="features-suite-desc">Dirancang spesifik untuk mengotomasi alur administrasi dan penyusunan instrumen evaluasi pembelajaran secara terpadu.</p>
+          </div>
+          <div class="features-suite-grid">
+            <!-- Feature 01 -->
+            <div class="feature-suite-card">
+              <div>
+                <div class="feature-card-top">
+                  <div class="feature-card-icon-wrap">
+                    <img src="assets/ritovex/68781451c1b2ec734bdb1f89_About%20Us%20Card%20Icon1.svg" class="feature-card-icon" alt="Generator Soal" />
+                  </div>
+                  <span class="feature-card-num">01</span>
+                </div>
+                <h3 class="feature-card-title">Generator Bank Soal Otomatis</h3>
+                <p class="feature-card-text">Ekstraksi bab materi dari PDF buku teks, modul Word, atau foto OCR lembar kerja fisik menjadi butir soal pilihan ganda &amp; esai berstandar Taksonomi Bloom (C1-C6).</p>
+              </div>
+              <div class="feature-card-footer">
+                <span class="feature-card-pill"><span class="feature-card-dot"></span>Taksonomi Bloom C1-C6</span>
+              </div>
+            </div>
+
+            <!-- Feature 02 -->
+            <div class="feature-suite-card">
+              <div>
+                <div class="feature-card-top">
+                  <div class="feature-card-icon-wrap">
+                    <img src="assets/ritovex/68a8d986192c37ebe5b1f6e2_Working%20Process%20Card%20Icon1.svg" class="feature-card-icon" alt="Penjawab AI" />
+                  </div>
+                  <span class="feature-card-num">02</span>
+                </div>
+                <h3 class="feature-card-title">Penjawab &amp; Pembahas Soal AI</h3>
+                <p class="feature-card-text">Menghasilkan kunci jawaban presisi disertai penjabaran langkah demi langkah (step-by-step) untuk memvalidasi kelayakan naskah soal dan persiapan materi pembelajaran guru.</p>
+              </div>
+              <div class="feature-card-footer">
+                <span class="feature-card-pill"><span class="feature-card-dot"></span>Solusi Step-by-Step</span>
+              </div>
+            </div>
+
+            <!-- Feature 03 -->
+            <div class="feature-suite-card">
+              <div>
+                <div class="feature-card-top">
+                  <div class="feature-card-icon-wrap">
+                    <img src="assets/ritovex/68a8d93a82c71a2fa084211d_Working%20Process%20Card%20Icon2.svg" class="feature-card-icon" alt="Koreksi Lembar Ujian" />
+                  </div>
+                  <span class="feature-card-num">03</span>
+                </div>
+                <h3 class="feature-card-title">Koreksi Lembar Ujian Otomatis</h3>
+                <p class="feature-card-text">Pindai lembar jawaban siswa dan peroleh penilaian instan, grading otomatis, serta kalkulasi distribusi ketuntasan nilai kelas secara realtime tanpa koreksi manual.</p>
+              </div>
+              <div class="feature-card-footer">
+                <span class="feature-card-pill"><span class="feature-card-dot"></span>Analisis Ketuntasan Nilai</span>
+              </div>
+            </div>
+
+            <!-- Feature 04 -->
+            <div class="feature-suite-card">
+              <div>
+                <div class="feature-card-top">
+                  <div class="feature-card-icon-wrap">
+                    <img src="assets/ritovex/68a8d93a17433548b70ef818_Working%20Process%20Card%20Icon3.svg" class="feature-card-icon" alt="Absensi Kelas" />
+                  </div>
+                  <span class="feature-card-num">04</span>
+                </div>
+                <h3 class="feature-card-title">Absensi Digital Kelas Cerdas</h3>
+                <p class="feature-card-text">Pencatatan presensi siswa terintegrasi dengan kalkulasi persentase keaktifan belajar otomatis, rekapitulasi kehadiran berkala, dan deteksi dini ketidakhadiran murid.</p>
+              </div>
+              <div class="feature-card-footer">
+                <span class="feature-card-pill"><span class="feature-card-dot"></span>Rekapitulasi Kehadiran Realtime</span>
+              </div>
+            </div>
+
+            <!-- Feature 05 -->
+            <div class="feature-suite-card">
+              <div>
+                <div class="feature-card-top">
+                  <div class="feature-card-icon-wrap">
+                    <img src="assets/ritovex/68af54ee3bafdceb6ffba3dc_Benefit%20Card%20Icon1.svg" class="feature-card-icon" alt="Pembagian Kelompok" />
+                  </div>
+                  <span class="feature-card-num">05</span>
+                </div>
+                <h3 class="feature-card-title">Pembagian Kelompok Belajar</h3>
+                <p class="feature-card-text">Algoritma cerdas yang mendistribusikan siswa ke dalam regu diskusi secara seimbang berdasarkan capaian nilai kognitif heterogen atau preferensi khusus pengajar.</p>
+              </div>
+              <div class="feature-card-footer">
+                <span class="feature-card-pill"><span class="feature-card-dot"></span>Algoritma Distribusi Seimbang</span>
+              </div>
+            </div>
+
+            <!-- Feature 06 -->
+            <div class="feature-suite-card">
+              <div>
+                <div class="feature-card-top">
+                  <div class="feature-card-icon-wrap">
+                    <img src="assets/ritovex/6878145183772d0cdf6005e8_About%20Us%20Card%20Icon2.svg" class="feature-card-icon" alt="Buku Nilai & Ranking" />
+                  </div>
+                  <span class="feature-card-num">06</span>
+                </div>
+                <h3 class="feature-card-title">Buku Nilai &amp; Ranking Otomatis</h3>
+                <p class="feature-card-text">Pengolahan nilai formatif, sumatif, dan tugas harian menjadi ranking kelas otomatis yang siap diimpor langsung ke format buku rapor kurikulum resmi.</p>
+              </div>
+              <div class="feature-card-footer">
+                <span class="feature-card-pill"><span class="feature-card-dot"></span>Export Rapor Kurikulum</span>
+              </div>
+            </div>
+
+            <!-- Feature 07: Special Spanning Wide Feature Card -->
+            <div class="feature-suite-card is-wide">
+              <div class="feature-wide-layout">
+                <div>
+                  <div class="feature-card-top">
+                    <div class="feature-card-icon-wrap">
+                      <img src="assets/ritovex/68b0b6dc6ba3d1a32ddf5155_Contact%20Us%20Details%20Icon1.svg" class="feature-card-icon" alt="Modul Ajar RPP" />
+                    </div>
+                    <span class="feature-card-num">07 (FLAGSHIP)</span>
+                  </div>
+                  <h3 class="feature-card-title" style="font-size: 19px;">Perencana Pembelajaran (Modul Ajar &amp; RPP Kurikulum Merdeka)</h3>
+                  <p class="feature-card-text" style="font-size: 13.5px;">Penyusunan Rencana Pelaksanaan Pembelajaran (RPP), Alur Tujuan Pembelajaran (ATP), dan rubrik asesmen diagnostik yang selaras 100% dengan pedoman Kurikulum Merdeka nasional tanpa perlu menyusun dokumen puluhan lembar secara manual.</p>
+                  <div class="feature-card-footer" style="border: none; padding-top: 4px;">
+                    <span class="feature-card-pill"><span class="feature-card-dot"></span>Pedoman Kurikulum Merdeka Terstandar</span>
+                  </div>
+                </div>
+                <div style="flex-shrink: 0;">
+                  <a href="https://educraft.saitech.co.id" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #00004d; color: #ffffff; padding: 12px 22px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1.5px solid rgba(224, 189, 106, 0.45); box-shadow: 0 4px 16px rgba(0,0,77,0.25);">
+                    <span>Coba Modul RPP &nearr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. 3-STEP WORKFLOW GENERATOR (WORKING PROCESS ENGINE) -->
+        <div class="workflow-steps-section">
+          <div class="workflow-header">
+            <div class="workflow-subtitle">
+              <img src="assets/ritovex/687810aa5293f9e8c955c26a_Section%20Subtitle%20Icon.svg" alt="Sparkle" style="width: 13px; height: 13px;" />
+              <span>ALUR KERJA GENERATOR SOAL</span>
+            </div>
+            <h3 class="workflow-title">3 Langkah Mudah Dari Materi Menjadi Naskah Ujian</h3>
+          </div>
+          <div class="workflow-grid">
+            <div class="workflow-card">
+              <div class="workflow-num">01</div>
+              <h4 class="workflow-card-title">Unggah Materi Dokumen</h4>
+              <p class="workflow-card-text">Unggah modul ajar berformat PDF, berkas Word, atau foto teks fisik. Sistem membaca seluruh bab materi ajar tanpa jeda.</p>
+            </div>
+            <div class="workflow-card">
+              <div class="workflow-num">02</div>
+              <h4 class="workflow-card-title">Formulasi Kognitif AI</h4>
+              <p class="workflow-card-text">AI menganalisis konten, merumuskan butir soal kontekstual, dan memetakan tingkat kognitif Taksonomi Bloom (C1-C6).</p>
+            </div>
+            <div class="workflow-card">
+              <div class="workflow-num">03</div>
+              <h4 class="workflow-card-title">Ekspor Naskah Sekali Klik</h4>
+              <p class="workflow-card-text">Unduh berkas Word (.docx) terformat rapi dengan kop sekolah, kunci jawaban, rubrik penilaian, dan siap cetak langsung.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. MULTI-PERSPECTIVE VISUAL GALLERY (SCREENSHOTS) -->
         <div class="showcase-gallery-section">
           <div class="showcase-gallery-title-wrap">
             <div style="font-size: 11px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px;">✦ PRODUCT WALKTHROUGH</div>
-            <h2 class="showcase-gallery-title">Eksplorasi Antarmuka &amp; Fitur Utama EduCraft</h2>
+            <h2 class="showcase-gallery-title">Eksplorasi Antarmuka &amp; Hasil Ekstraksi</h2>
             <p class="showcase-gallery-sub">Dirancang dengan prinsip kesederhanaan modern agar guru di berbagai penjuru Indonesia dapat menggunakannya tanpa kurva belajar yang rumit.</p>
           </div>
           <div class="showcase-gallery-grid">
@@ -1441,38 +2155,7 @@
           </div>
         </div>
 
-        <!-- 4. TECHNICAL PIPELINE ARCHITECTURE (DATAFLOW) -->
-        <div class="pipeline-section">
-          <div class="pipeline-header">
-            <span class="pipeline-badge">SISTEM &amp; ARSITEKTUR REKAYASA</span>
-            <h2 class="pipeline-title">Pipeline Rekayasa Sistem EduCraft AI</h2>
-            <p class="pipeline-sub">Bagaimana SAI Tech menyusun arsitektur pemrosesan data dokumen cerdas berlatensi rendah:</p>
-          </div>
-          <div class="pipeline-steps-grid">
-            <div class="pipeline-step-card">
-              <div class="pipeline-step-num">01</div>
-              <h4 class="pipeline-step-name">Universal Ingestion</h4>
-              <p class="pipeline-step-text">Ekstraksi dokumen teks, multi-page PDF, DOCX, dan foto OCR dengan auto-contrast normalization.</p>
-            </div>
-            <div class="pipeline-step-card">
-              <div class="pipeline-step-num">02</div>
-              <h4 class="pipeline-step-name">Semantic Chunking</h4>
-              <p class="pipeline-step-text">Pemecahan materi per bab kompetensi dasar tanpa merusak konteks paragraf teoritis.</p>
-            </div>
-            <div class="pipeline-step-card">
-              <div class="pipeline-step-num">03</div>
-              <h4 class="pipeline-step-name">Bloom AI Engine</h4>
-              <p class="pipeline-step-text">Generasi soal berbasis level kognitif C1-C6 dengan guardrail pencegah halusinasi fakta materi.</p>
-            </div>
-            <div class="pipeline-step-card">
-              <div class="pipeline-step-num">04</div>
-              <h4 class="pipeline-step-name">Auto DOCX Compiler</h4>
-              <p class="pipeline-step-text">Penyusunan file Microsoft Word rapi dengan header kop sekolah, tabel soal, dan lembar jawaban.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. LIVE LAUNCHPAD CALL TO ACTION -->
+        <!-- 7. LIVE LAUNCHPAD CALL TO ACTION -->
         <div class="showcase-launchpad-banner">
           <div class="launchpad-content">
             <div class="launchpad-tag">✦ LIVE PRODUCTION APP</div>
