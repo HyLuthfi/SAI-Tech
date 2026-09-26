@@ -2330,8 +2330,7 @@
     Platform SaaS bertenaga AI yang mentransformasikan materi kurikulum (PDF, Word, OCR) menjadi bank soal Taksonomi Bloom (C1-C6) siap cetak dan ekspor instan ke Word, PDF, dan Quizizz dalam hitungan detik.
   </p>
 
-  <!-- Action CTA Row (Under description) -->
-  <div class="editorial-hero-actions-row" id="caseStudyLiveAction"></div>
+  <div id="caseStudyLiveAction" style="display: none;"></div>
 
   <!-- Integrated Metadata Architecture Strip (Directly on canvas with clean hairlines) -->
   <div class="editorial-meta-strip">
@@ -3057,14 +3056,8 @@
     if (badgeEl) badgeEl.textContent = 'STUDI KASUS REKAYASA AI & SAAS';
 
     if (liveEl) {
-      liveEl.style.display = 'flex';
-      liveEl.innerHTML = `
-        <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="editorial-btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          <span>Buka Aplikasi Live (${data.liveUrl.replace("https://", "")}) &nearr;</span>
-        </a>
-
-      `;
+      liveEl.style.display = 'none';
+      liveEl.innerHTML = '';
     }
   }
 })();
