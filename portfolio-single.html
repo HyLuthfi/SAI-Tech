@@ -2339,6 +2339,170 @@
       }
     }
 
+
+    /* ==========================================================================
+       LIGHTWEIGHT DOCK STRIP & INTERVENING CASE STUDY NAVIGATION
+       Replaces heavy dark launchpad with crisp white dock + separating navigation
+       ========================================================================== */
+    .educraft-dock-strip {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 77, 0.09);
+      border-left: 4px solid #e0bd6a;
+      border-radius: 16px;
+      padding: 26px 30px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 77, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-sizing: border-box;
+    }
+
+    .educraft-dock-content {
+      max-width: 640px;
+    }
+
+    .educraft-dock-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #b45309;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .educraft-dock-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      color: #00004d;
+      line-height: 1.3;
+      margin: 0 0 6px 0;
+    }
+
+    .educraft-dock-desc {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .educraft-dock-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #00004d;
+      color: #ffffff !important;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none !important;
+      white-space: nowrap;
+      border: 1.5px solid rgba(224, 189, 106, 0.45);
+      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.18);
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .educraft-dock-btn:hover {
+      background: #0a0e36;
+      border-color: #e0bd6a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 77, 0.25);
+    }
+
+    /* Intervening Case Study Navigation Strip */
+    .case-study-nav-strip {
+      max-width: 1070px;
+      margin: 24px auto 48px;
+      border-top: 1px solid rgba(0, 0, 77, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 77, 0.08);
+      padding: 22px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-sizing: border-box;
+    }
+
+    .case-nav-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .case-nav-item.is-right {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .case-nav-meta {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+
+    .case-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #00004d;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .case-nav-link:hover {
+      color: #b45309;
+      transform: translateX(2px);
+    }
+
+    .case-nav-item.is-left .case-nav-link:hover {
+      transform: translateX(-2px);
+    }
+
+    .case-nav-center-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(0, 0, 77, 0.1);
+    }
+
+    @media (max-width: 991px) {
+      .educraft-dock-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px 20px;
+        gap: 16px;
+      }
+      .educraft-dock-btn {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .case-study-nav-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 20px 8px;
+      }
+      .case-nav-center-divider {
+        display: none;
+      }
+      .case-nav-item.is-right {
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -2523,6 +2687,28 @@
 </div>
 </div>
 </div>
+</section>
+<!-- CASE STUDY INTERVENING NAVIGATION STRIP -->
+<section class="section case-nav-section" style="padding: 0;">
+  <div class="container">
+    <div class="case-study-nav-strip">
+      <div class="case-nav-item is-left">
+        <span class="case-nav-meta">DIREKTORI PORTOFOLIO</span>
+        <a href="portfolio" class="case-nav-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Lihat Semua Proyek Rekayasa AI</span>
+        </a>
+      </div>
+      <div class="case-nav-center-divider"></div>
+      <div class="case-nav-item is-right">
+        <span class="case-nav-meta">STUDI KASUS BERIKUTNYA</span>
+        <a href="portfolio-single?case=sovereign-rag" class="case-nav-link">
+          <span>Sovereign Financial RAG &amp; Private LLM</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- CTA SECTION -->
 <section class="section cta">
@@ -3142,18 +3328,17 @@
           </div>
         </div>
 
-        <!-- 8. LIVE LAUNCHPAD CONVERSION STRIP -->
-        <div class="showcase-launchpad-banner">
-          <div class="launchpad-content">
-            <div class="launchpad-tag">PLATFORM SAAS RESMI</div>
-            <h3 class="launchpad-title" style="color: #ffffff !important;">Coba Langsung EduCraft AI Sekarang</h3>
-            <p class="launchpad-desc">Aplikasi EduCraft AI aktif melayani ribuan kebutuhan pendidik di domain resmi. Rasakan langsung kemudahan menyusun bank soal dan administrasi pembelajaran.</p>
+        <!-- 8. LIVE LIGHTWEIGHT PRODUCT DOCK STRIP -->
+        <div class="educraft-dock-strip">
+          <div class="educraft-dock-content">
+            <span class="educraft-dock-tag">AKSES PLATFORM LIVE</span>
+            <h3 class="educraft-dock-title">Coba Langsung Platform EduCraft AI</h3>
+            <p class="educraft-dock-desc">Aplikasi EduCraft AI aktif melayani ribuan kebutuhan pendidik. Anda dapat langsung menguji coba pembuatan modul naskah soal dan kelengkapan administrasi pembelajaran di domain resmi.</p>
           </div>
-          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
-            <a href="https://educraft.saitech.co.id" target="_blank" rel="noopener noreferrer" class="launchpad-btn">
-              <span>Coba Langsung EduCraft AI &nearr;</span>
+          <div style="flex-shrink: 0;">
+            <a href="https://educraft.saitech.co.id" target="_blank" rel="noopener noreferrer" class="educraft-dock-btn">
+              <span>Kunjungi educraft.saitech.co.id &nearr;</span>
             </a>
-
           </div>
         </div>
       `
