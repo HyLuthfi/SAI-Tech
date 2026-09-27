@@ -576,10 +576,10 @@
       }
     }
 
+    
     /* ==========================================================================
-       ENTERPRISE PORTFOLIO SHOWCASE GRID SYSTEM (STUDIO GRADE OVERHAUL)
-       Replaces awkward horizontal ticker with high-density responsive grid,
-       interactive category filter bar, flagship SaaS showcase, and kinetic reveals.
+       STUDIO-GRADE ENTERPRISE PORTFOLIO GRID (DISCIPLINED, MINIMAL, UNIFIED)
+       Pure whitespace, uncropped 16:9 framed visuals, restrained palette, zero clutter
        ========================================================================== */
 
     .section.inner-banner {
@@ -595,13 +595,13 @@
     }
 
     .portfolio-showcase-section {
-      padding-top: 40px;
-      padding-bottom: 70px;
+      padding-top: 36px;
+      padding-bottom: 80px;
       background: #fafbfc;
       position: relative;
     }
 
-    /* Filter Bar */
+    /* Filter Navigation Bar (Clean Minimal Pills) */
     .portfolio-filter-container {
       max-width: 1140px;
       margin: 0 auto 36px;
@@ -625,13 +625,12 @@
     .portfolio-filter-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
       background: #ffffff;
-      border: 1.5px solid rgba(0, 0, 77, 0.1);
+      border: 1px solid rgba(0, 0, 77, 0.1);
       color: #00004d;
       font-size: 13px;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 100px;
       cursor: pointer;
       white-space: nowrap;
@@ -640,8 +639,8 @@
     }
 
     .portfolio-filter-pill:hover {
-      border-color: #e0bd6a;
-      background: #fffdf5;
+      border-color: #00004d;
+      background: #f8fafc;
       transform: translateY(-2px);
     }
 
@@ -649,260 +648,45 @@
       background: #00004d;
       color: #ffffff;
       border-color: #00004d;
-      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.2);
+      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.18);
     }
 
-    .portfolio-filter-pill .filter-count {
-      font-size: 10px;
-      background: rgba(0, 0, 77, 0.08);
-      color: #00004d;
-      padding: 2px 7px;
-      border-radius: 100px;
-      font-weight: 800;
-    }
-
-    .portfolio-filter-pill.active .filter-count {
-      background: rgba(224, 189, 106, 0.25);
-      color: #e0bd6a;
-    }
-
-    /* Grid Layout */
+    /* Unified 2-Column Responsive Portfolio Grid */
     .portfolio-grid-container {
       max-width: 1140px;
       margin: 0 auto;
       padding: 0 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
     }
 
-    /* 1. Flagship Featured Project Card (Wide Luxury Split) */
-    .portfolio-flagship-card {
-      background: #ffffff;
-      border: 1.5px solid rgba(224, 189, 106, 0.45);
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 16px 45px rgba(0, 0, 77, 0.06), 0 0 24px rgba(224, 189, 106, 0.1);
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-
-    .portfolio-flagship-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 60px rgba(0, 0, 77, 0.1), 0 0 32px rgba(224, 189, 106, 0.18);
-      border-color: #e0bd6a;
-    }
-
-    .flagship-media-wrap {
-      background: #060818;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 340px;
-    }
-
-    .flagship-media-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .portfolio-flagship-card:hover .flagship-media-wrap img {
-      transform: scale(1.03);
-    }
-
-    .flagship-badge-floating {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      background: #e0bd6a;
-      color: #00004d;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 6px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-      z-index: 2;
-    }
-
-    .flagship-content-wrap {
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .flagship-meta-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .flagship-category {
-      font-size: 11px;
-      font-weight: 700;
-      color: #b45309;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .flagship-date-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #cbd5e1;
-    }
-
-    .flagship-date {
-      font-size: 11.5px;
-      color: #94a3b8;
-    }
-
-    .flagship-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #00004d;
-      line-height: 1.25;
-      margin: 0 0 12px 0;
-      letter-spacing: -0.015em;
-    }
-
-    .flagship-title a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .flagship-title a:hover {
-      color: #b45309;
-    }
-
-    .flagship-desc {
-      font-size: 14px;
-      color: #64748b;
-      line-height: 1.6;
-      margin: 0 0 20px 0;
-    }
-
-    .flagship-metrics-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-      padding: 14px 0;
-      border-top: 1px solid rgba(0, 0, 77, 0.08);
-      border-bottom: 1px solid rgba(0, 0, 77, 0.08);
-    }
-
-    .flagship-metric-pill {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #00004d;
-      background: #f1f5f9;
-      padding: 4px 10px;
-      border-radius: 6px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .flagship-metric-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #e0bd6a;
-    }
-
-    .flagship-actions-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .flagship-btn-primary {
-      background: #00004d;
-      color: #ffffff !important;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 700;
-      text-decoration: none !important;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1.5px solid rgba(224, 189, 106, 0.45);
-      box-shadow: 0 4px 14px rgba(0, 0, 77, 0.2);
-      transition: all 0.25s ease;
-    }
-
-    .flagship-btn-primary:hover {
-      background: #0a0e36;
-      border-color: #e0bd6a;
-      transform: translateY(-2px);
-    }
-
-    .flagship-btn-secondary {
-      background: #f8fafc;
-      color: #00004d !important;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none !important;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border: 1px solid rgba(0, 0, 77, 0.1);
-      transition: all 0.25s ease;
-    }
-
-    .flagship-btn-secondary:hover {
-      background: #ffffff;
-      border-color: #e0bd6a;
-      transform: translateY(-2px);
-    }
-
-    /* 2. Enterprise 2-Column Grid */
     .portfolio-cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 28px;
     }
 
-    .portfolio-grid-card {
+    .portfolio-project-card {
       background: #ffffff;
-      border: 1.5px solid rgba(0, 0, 77, 0.08);
+      border: 1px solid rgba(0, 0, 77, 0.09);
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 77, 0.04);
+      box-shadow: 0 4px 18px rgba(0, 0, 77, 0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
       position: relative;
     }
 
-    .portfolio-grid-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0, 0, 77, 0.09), 0 0 20px rgba(224, 189, 106, 0.12);
-      border-color: rgba(224, 189, 106, 0.6);
+    .portfolio-project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 45px rgba(0, 0, 77, 0.08);
+      border-color: rgba(224, 189, 106, 0.5);
     }
 
     .portfolio-card-media {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #060818;
+      aspect-ratio: 16 / 10;
+      background: #070913;
       position: relative;
       overflow: hidden;
     }
@@ -912,20 +696,20 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.5s ease;
     }
 
-    .portfolio-grid-card:hover .portfolio-card-media img {
-      transform: scale(1.03);
+    .portfolio-project-card:hover .portfolio-card-media img {
+      transform: scale(1.025);
     }
 
     .card-badge-status {
       position: absolute;
       top: 14px;
       left: 14px;
-      background: rgba(6, 8, 24, 0.82);
+      background: rgba(7, 9, 19, 0.85);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(224, 189, 106, 0.4);
+      border: 1px solid rgba(224, 189, 106, 0.35);
       color: #e0bd6a;
       font-size: 10px;
       font-weight: 800;
@@ -937,48 +721,30 @@
     }
 
     .portfolio-card-body {
-      padding: 24px 22px;
+      padding: 24px 22px 20px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
       justify-content: space-between;
     }
 
-    .portfolio-card-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
     .card-meta-category {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
       color: #b45309;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-    }
-
-    .card-meta-dot {
-      width: 3.5px;
-      height: 3.5px;
-      border-radius: 50%;
-      background: #cbd5e1;
-    }
-
-    .card-meta-date {
-      font-size: 11px;
-      color: #94a3b8;
+      margin-bottom: 8px;
     }
 
     .portfolio-card-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       color: #00004d;
-      line-height: 1.35;
+      line-height: 1.32;
       margin: 0 0 10px 0;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
     }
 
     .portfolio-card-title a {
@@ -995,8 +761,17 @@
       font-size: 13.5px;
       color: #64748b;
       line-height: 1.55;
-      margin: 0 0 16px 0;
+      margin: 0 0 18px 0;
       flex-grow: 1;
+    }
+
+    .portfolio-card-footer {
+      border-top: 1px solid rgba(0, 0, 77, 0.07);
+      padding-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .portfolio-card-kpi {
@@ -1004,11 +779,10 @@
       font-weight: 700;
       color: #00004d;
       background: #f8fafc;
-      padding: 6px 10px;
+      padding: 4px 9px;
       border-radius: 6px;
       border: 1px solid rgba(0, 0, 77, 0.06);
-      margin-bottom: 18px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
     }
@@ -1030,6 +804,7 @@
       color: #00004d;
       text-decoration: none;
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
     .portfolio-card-action:hover {
@@ -1037,25 +812,16 @@
       transform: translateX(3px);
     }
 
-    /* Kinetic Animation Helpers */
+    /* Kinetic Stagger Helpers */
     .portfolio-project-item {
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    /* Responsive Breakdown */
+    /* Responsive Grid Adaptations */
     @media (max-width: 991px) {
-      .portfolio-flagship-card {
-        grid-template-columns: 1fr;
-      }
-      .flagship-media-wrap {
-        min-height: 240px;
-      }
-      .flagship-content-wrap {
-        padding: 24px 20px;
-      }
       .portfolio-cards-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 20px;
       }
     }
 
@@ -1068,23 +834,22 @@
         gap: 6px;
       }
       .portfolio-filter-pill {
-        font-size: 11.5px;
-        padding: 6px 12px;
-      }
-      .flagship-title {
-        font-size: 19px;
-      }
-      .flagship-btn-primary,
-      .flagship-btn-secondary {
-        width: 100%;
-        justify-content: center;
-        box-sizing: border-box;
+        font-size: 12px;
+        padding: 6px 14px;
       }
       .portfolio-card-body {
-        padding: 18px 16px;
+        padding: 18px 16px 16px;
       }
       .portfolio-card-title {
-        font-size: 16.5px;
+        font-size: 17px;
+      }
+      .portfolio-card-desc {
+        font-size: 13px;
+      }
+      .portfolio-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
     }
 
@@ -1162,88 +927,72 @@
 </section>
 <!-- ENTERPRISE PORTFOLIO SHOWCASE GRID -->
 <section class="section portfolio-showcase-section">
-  <!-- CATEGORY FILTER BAR -->
+  <!-- CATEGORY FILTER BAR (CLEAN MINIMAL PILLS) -->
   <div class="portfolio-filter-container">
     <div class="portfolio-filter-bar">
-      <button class="portfolio-filter-pill active" data-filter="all">Semua Proyek <span class="filter-count">5</span></button>
-      <button class="portfolio-filter-pill" data-filter="saas">Generative AI &amp; SaaS <span class="filter-count">1</span></button>
-      <button class="portfolio-filter-pill" data-filter="rag">Private LLM &amp; RAG <span class="filter-count">1</span></button>
-      <button class="portfolio-filter-pill" data-filter="cv">Computer Vision <span class="filter-count">1</span></button>
-      <button class="portfolio-filter-pill" data-filter="iot">Predictive IoT <span class="filter-count">1</span></button>
-      <button class="portfolio-filter-pill" data-filter="speech">Speech AI <span class="filter-count">1</span></button>
+      <button class="portfolio-filter-pill active" data-filter="all">Semua Proyek</button>
+      <button class="portfolio-filter-pill" data-filter="saas">Generative AI &amp; SaaS</button>
+      <button class="portfolio-filter-pill" data-filter="rag">Private LLM &amp; RAG</button>
+      <button class="portfolio-filter-pill" data-filter="cv">Computer Vision</button>
+      <button class="portfolio-filter-pill" data-filter="iot">Predictive IoT</button>
+      <button class="portfolio-filter-pill" data-filter="speech">Speech AI</button>
     </div>
   </div>
 
   <div class="portfolio-grid-container">
-    <!-- 1. FLAGSHIP PROJECT: EduCraft AI (WIDE LUXURY CARD) -->
-    <div class="portfolio-flagship-card portfolio-project-item sai-portfolio-card sai-delay-1" data-category="saas">
-      <div class="flagship-media-wrap">
-        <span class="flagship-badge-floating">★ LIVE PRODUCTION SAAS</span>
-        <img src="assets/ritovex/educraft-showcase.png" alt="EduCraft AI: Generator Soal Cerdas &amp; Asisten Guru" loading="lazy" />
-      </div>
-      <div class="flagship-content-wrap">
-        <div>
-          <div class="flagship-meta-row">
-            <span class="flagship-category">Generative AI &amp; EdTech SaaS</span>
-            <span class="flagship-date-dot"></span>
-            <span class="flagship-date">20 September 2026</span>
-          </div>
-          <h2 class="flagship-title">
-            <a href="portfolio-single?case=educraft">EduCraft AI: Platform Generatif Soal Cerdas &amp; Asisten Guru</a>
-          </h2>
-          <p class="flagship-desc">
-            Platform SaaS bertenaga AI yang mentransformasikan materi kurikulum (PDF, Word, OCR) menjadi bank soal Taksonomi Bloom (C1-C6) siap cetak dan ekspor instan ke Word, PDF, dan Quizizz dalam hitungan detik.
-          </p>
-        </div>
-
-        <div>
-          <div class="flagship-metrics-strip">
-            <span class="flagship-metric-pill"><span class="flagship-metric-dot"></span>~3 Menit Pembuatan Soal</span>
-            <span class="flagship-metric-pill"><span class="flagship-metric-dot"></span>Bloom C1-C6 HOTS</span>
-            <span class="flagship-metric-pill"><span class="flagship-metric-dot"></span>DOCX &bull; PDF &bull; Quizizz Ready</span>
-          </div>
-          <div class="flagship-actions-row">
-            <a href="portfolio-single?case=educraft" class="flagship-btn-primary">
-              <span>Eksplorasi Studi Kasus</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="https://educraft.saitech.co.id" target="_blank" rel="noopener noreferrer" class="flagship-btn-secondary">
-              <span>Kunjungi educraft.saitech.co.id &nearr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. ENTERPRISE IMPLEMENTATION GRID (2 COLUMNS) -->
     <div class="portfolio-cards-grid">
+      <!-- Project 01: EduCraft AI (Flagship SaaS) -->
+      <div class="portfolio-project-card portfolio-project-item sai-portfolio-card sai-delay-1" data-category="saas">
+        <div class="portfolio-card-media">
+          <span class="card-badge-status">LIVE SAAS PLATFORM</span>
+          <img src="assets/ritovex/educraft-clean-preview.png" alt="EduCraft AI: Platform Generatif Soal Cerdas &amp; Asisten Guru" loading="lazy" />
+        </div>
+        <div class="portfolio-card-body">
+          <div>
+            <div class="card-meta-category">Generative AI &amp; EdTech SaaS</div>
+            <h3 class="portfolio-card-title">
+              <a href="portfolio-single?case=educraft">EduCraft AI: Platform Generatif Soal Cerdas &amp; Asisten Guru</a>
+            </h3>
+            <p class="portfolio-card-desc">
+              Transformasi dokumen materi pelajaran (PDF, Word, OCR) menjadi bank soal Taksonomi Bloom (C1-C6) siap cetak dan ekspor naskah ujian instan.
+            </p>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-kpi">
+              <span class="portfolio-card-kpi-dot"></span>
+              <span>Bloom C1-C6 HOTS &bull; DOCX/PDF Ready</span>
+            </div>
+            <a href="portfolio-single?case=educraft" class="portfolio-card-action">
+              <span>Lihat Studi Kasus</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!-- Project 02: Sovereign Financial RAG -->
-      <div class="portfolio-grid-card portfolio-project-item sai-portfolio-card sai-delay-1" data-category="rag">
+      <div class="portfolio-project-card portfolio-project-item sai-portfolio-card sai-delay-2" data-category="rag">
         <div class="portfolio-card-media">
           <span class="card-badge-status">ON-PREMISE AI CLUSTER</span>
           <img src="assets/ritovex/01.png" alt="Sovereign Financial RAG &amp; Private LLM Engine" loading="lazy" />
         </div>
         <div class="portfolio-card-body">
           <div>
-            <div class="portfolio-card-meta">
-              <span class="card-meta-category">Private LLM &amp; RAG</span>
-              <span class="card-meta-dot"></span>
-              <span class="card-meta-date">14 September 2026</span>
-            </div>
+            <div class="card-meta-category">Private LLM &amp; Sovereign RAG</div>
             <h3 class="portfolio-card-title">
               <a href="portfolio-single?case=sovereign-rag">Sovereign Financial RAG &amp; Private LLM Engine</a>
             </h3>
             <p class="portfolio-card-desc">
-              Arsitektur Retrieval-Augmented Generation terisolasi 100% on-premise untuk perbankan nasional: query jutaan lembar regulasi OJK &amp; SOP internal tanpa risiko kebocoran data ke cloud publik.
+              Arsitektur Retrieval-Augmented Generation terisolasi on-premise untuk perbankan: query regulasi OJK &amp; SOP tanpa risiko kebocoran data.
             </p>
           </div>
-          <div>
+          <div class="portfolio-card-footer">
             <div class="portfolio-card-kpi">
               <span class="portfolio-card-kpi-dot"></span>
-              <span>45ms Latensi Vector &bull; Zero Data Leak &bull; Llama-3 70B</span>
+              <span>45ms Latensi &bull; Zero Data Leak &bull; Llama-3 70B</span>
             </div>
             <a href="portfolio-single?case=sovereign-rag" class="portfolio-card-action">
-              <span>Baca Studi Kasus Lengkap</span>
+              <span>Lihat Studi Kasus</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -1251,32 +1000,28 @@
       </div>
 
       <!-- Project 03: Industrial Defect QC -->
-      <div class="portfolio-grid-card portfolio-project-item sai-portfolio-card sai-delay-2" data-category="cv">
+      <div class="portfolio-project-card portfolio-project-item sai-portfolio-card sai-delay-3" data-category="cv">
         <div class="portfolio-card-media">
           <span class="card-badge-status">EDGE VISION NODE</span>
           <img src="assets/ritovex/02.png" alt="Industrial High-Speed Surface Defect QC" loading="lazy" />
         </div>
         <div class="portfolio-card-body">
           <div>
-            <div class="portfolio-card-meta">
-              <span class="card-meta-category">Computer Vision</span>
-              <span class="card-meta-dot"></span>
-              <span class="card-meta-date">12 September 2026</span>
-            </div>
+            <div class="card-meta-category">Computer Vision &amp; Smart Factory</div>
             <h3 class="portfolio-card-title">
               <a href="portfolio-single?case=industrial-defect">Industrial High-Speed Surface Defect QC</a>
             </h3>
             <p class="portfolio-card-desc">
-              Inspeksi visual conveyor manufaktur 120 FPS dengan segmentasi mikron dan akurasi 99.85% terakselerasi TensorRT pada edge GPU industri untuk pencegahan cacat perakitan.
+              Inspeksi visual conveyor manufaktur 120 FPS dengan segmentasi mikron dan akurasi 99.85% terakselerasi TensorRT pada edge GPU industri.
             </p>
           </div>
-          <div>
+          <div class="portfolio-card-footer">
             <div class="portfolio-card-kpi">
               <span class="portfolio-card-kpi-dot"></span>
-              <span>120 FPS Realtime &bull; 99.85% Akurasi &bull; TensorRT Edge</span>
+              <span>120 FPS Realtime &bull; 99.85% Akurasi &bull; TensorRT</span>
             </div>
             <a href="portfolio-single?case=industrial-defect" class="portfolio-card-action">
-              <span>Baca Studi Kasus Lengkap</span>
+              <span>Lihat Studi Kasus</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -1284,32 +1029,28 @@
       </div>
 
       <!-- Project 04: Predictive Maintenance -->
-      <div class="portfolio-grid-card portfolio-project-item sai-portfolio-card sai-delay-3" data-category="iot">
+      <div class="portfolio-project-card portfolio-project-item sai-portfolio-card sai-delay-4" data-category="iot">
         <div class="portfolio-card-media">
           <span class="card-badge-status">INDUSTRIAL TELEMETRY</span>
           <img src="assets/ritovex/03.png" alt="Turbomachinery Vibration Telemetry AI" loading="lazy" />
         </div>
         <div class="portfolio-card-body">
           <div>
-            <div class="portfolio-card-meta">
-              <span class="card-meta-category">Predictive IoT</span>
-              <span class="card-meta-dot"></span>
-              <span class="card-meta-date">08 September 2026</span>
-            </div>
+            <div class="card-meta-category">Predictive IoT &amp; Heavy Industry</div>
             <h3 class="portfolio-card-title">
               <a href="portfolio-single?case=predictive-maintenance">Turbomachinery Vibration Telemetry AI</a>
             </h3>
             <p class="portfolio-card-desc">
-              Analisis getaran spektral dan deteksi anomali bearing turbin fluida sebelum terjadi kerusakan mekanis katastropik, memberikan jaminan operasional tanpa unplanned downtime.
+              Analisis getaran spektral dan deteksi anomali bearing turbin fluida sebelum terjadi kerusakan mekanis katastropik dengan zero downtime.
             </p>
           </div>
-          <div>
+          <div class="portfolio-card-footer">
             <div class="portfolio-card-kpi">
               <span class="portfolio-card-kpi-dot"></span>
-              <span>72 Jam Early Warning &bull; 0% Unplanned Downtime &bull; FFT AI</span>
+              <span>72 Jam Early Warning &bull; 0% Unplanned Downtime</span>
             </div>
             <a href="portfolio-single?case=predictive-maintenance" class="portfolio-card-action">
-              <span>Baca Studi Kasus Lengkap</span>
+              <span>Lihat Studi Kasus</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -1317,32 +1058,28 @@
       </div>
 
       <!-- Project 05: Speech AI -->
-      <div class="portfolio-grid-card portfolio-project-item sai-portfolio-card sai-delay-4" data-category="speech">
+      <div class="portfolio-project-card portfolio-project-item sai-portfolio-card sai-delay-1" data-category="speech">
         <div class="portfolio-card-media">
           <span class="card-badge-status">SOVEREIGN SPEECH AI</span>
           <img src="assets/ritovex/04.png" alt="On-Premise Multilingual STT &amp; Audio Intelligence" loading="lazy" />
         </div>
         <div class="portfolio-card-body">
           <div>
-            <div class="portfolio-card-meta">
-              <span class="card-meta-category">Speech AI</span>
-              <span class="card-meta-dot"></span>
-              <span class="card-meta-date">05 September 2026</span>
-            </div>
+            <div class="card-meta-category">Speech AI &amp; Sovereign NLU</div>
             <h3 class="portfolio-card-title">
               <a href="portfolio-single?case=speech-intelligence">On-Premise Multilingual STT &amp; Audio Intelligence</a>
             </h3>
             <p class="portfolio-card-desc">
-              Transkripsi otomatis percakapan call center multi-dialek bahasa daerah Indonesia dengan enkripsi PII end-to-end tanpa perantara cloud pihak ketiga.
+              Transkripsi otomatis audio call center multi-dialek bahasa daerah Indonesia dengan enkripsi PII end-to-end tanpa ketergantungan pihak ketiga.
             </p>
           </div>
-          <div>
+          <div class="portfolio-card-footer">
             <div class="portfolio-card-kpi">
               <span class="portfolio-card-kpi-dot"></span>
-              <span>10,000+ Jam/Hari &bull; PII Masking &bull; Multi-Dialek Lokal</span>
+              <span>10,000+ Jam/Hari &bull; PII Masking &bull; Multi-Dialek</span>
             </div>
             <a href="portfolio-single?case=speech-intelligence" class="portfolio-card-action">
-              <span>Baca Studi Kasus Lengkap</span>
+              <span>Lihat Studi Kasus</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
