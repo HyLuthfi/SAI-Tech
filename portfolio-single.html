@@ -2503,6 +2503,152 @@
       }
     }
 
+
+    /* ==========================================================================
+       KINETIC ENTRANCE MOTION ENGINE (STUDIO GRADE SCROLL & ELEMENT ENTRANCES)
+       Smooth 60fps staggered reveals, directional entries, and tactile physics
+       ========================================================================== */
+
+    /* Hero Auto-play Entrance */
+    .editorial-hero-badge {
+      animation: kineticBadgeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    }
+
+    .editorial-hero-title {
+      animation: kineticSlideUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both !important;
+    }
+
+    .editorial-hero-desc {
+      animation: kineticSlideUp 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both !important;
+    }
+
+    .editorial-meta-strip {
+      animation: kineticSlideUp 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both !important;
+    }
+
+    @keyframes kineticBadgeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-16px) scale(0.92);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes kineticSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scroll-Triggered Reveal Classes */
+    .sai-motion-reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .sai-motion-reveal.is-in-view {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* Scale Entrance */
+    .sai-motion-scale {
+      opacity: 0;
+      transform: translateY(36px) scale(0.97);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .sai-motion-scale.is-in-view {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1) !important;
+    }
+
+    /* Directional Left/Right Entrances */
+    .sai-motion-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .sai-motion-left.is-in-view {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+
+    .sai-motion-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .sai-motion-right.is-in-view {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+
+    /* Staggered Delays for Lists & Grids */
+    .delay-1 { transition-delay: 0.08s !important; }
+    .delay-2 { transition-delay: 0.16s !important; }
+    .delay-3 { transition-delay: 0.24s !important; }
+    .delay-4 { transition-delay: 0.32s !important; }
+    .delay-5 { transition-delay: 0.40s !important; }
+    .delay-6 { transition-delay: 0.48s !important; }
+    .delay-7 { transition-delay: 0.56s !important; }
+
+    /* Interactive Tactile Hover States */
+    .capability-row {
+      transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+    }
+
+    .capability-row:hover {
+      background-color: #ffffff !important;
+      transform: translateX(6px) !important;
+      box-shadow: -3px 0 0 #00004d, 0 8px 24px rgba(0, 0, 77, 0.04) !important;
+    }
+
+    .educraft-dock-strip {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+    }
+
+    .educraft-dock-strip:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 16px 36px rgba(0, 0, 77, 0.08) !important;
+      border-color: rgba(224, 189, 106, 0.6) !important;
+    }
+
+    .stat-matrix-col {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .stat-matrix-col:hover {
+      transform: translateY(-4px) !important;
+    }
+
+    .timeline-step-item {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .timeline-step-item:hover {
+      transform: translateY(-4px) !important;
+    }
+
 </style>
 </head>
 <body>
@@ -3385,6 +3531,63 @@
       liveEl.innerHTML = '';
     }
   }
+
+
+  // KINETIC SCROLL REVEAL OBSERVER ENGINE
+  function initKineticEntranceObserver() {
+    const motionItems = [
+      { selector: '.browser-mockup-frame', motion: 'sai-motion-scale' },
+      { selector: '.tech-ribbon-header', motion: 'sai-motion-reveal' },
+      { selector: '.tech-ribbon-section', motion: 'sai-motion-scale' },
+      { selector: '.stat-matrix-section', motion: 'sai-motion-reveal' },
+      { selector: '.stat-matrix-col', motion: 'sai-motion-reveal', stagger: true },
+      { selector: '.split-engine-visual', motion: 'sai-motion-left' },
+      { selector: '.split-engine-content', motion: 'sai-motion-right' },
+      { selector: '.capability-matrix-header', motion: 'sai-motion-reveal' },
+      { selector: '.capability-row', motion: 'sai-motion-reveal', stagger: true },
+      { selector: '.timeline-workflow-header', motion: 'sai-motion-reveal' },
+      { selector: '.timeline-step-item', motion: 'sai-motion-scale', stagger: true },
+      { selector: '.showcase-gallery-section', motion: 'sai-motion-scale' },
+      { selector: '.educraft-dock-strip', motion: 'sai-motion-scale' },
+      { selector: '.case-study-nav-strip', motion: 'sai-motion-reveal' },
+      { selector: '.cta-wrapper', motion: 'sai-motion-scale' }
+    ];
+
+    if (!('IntersectionObserver' in window)) {
+      // Fallback for older environments: reveal all immediately
+      motionItems.forEach(item => {
+        document.querySelectorAll(item.selector).forEach(node => node.classList.add('is-in-view'));
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    motionItems.forEach(item => {
+      const nodes = document.querySelectorAll(item.selector);
+      nodes.forEach((node, idx) => {
+        node.classList.add(item.motion);
+        if (item.stagger) {
+          node.classList.add('delay-' + Math.min(7, (idx % 7) + 1));
+        }
+        observer.observe(node);
+      });
+    });
+  }
+
+  // Trigger observer immediately after DOM elements are ready
+  setTimeout(initKineticEntranceObserver, 80);
+
 })();
 </script>
 
